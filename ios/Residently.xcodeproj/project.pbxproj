@@ -16,6 +16,12 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* ResidentlyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ResidentlyTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		E2CF9C5F04664BA291017E89 /* Graphik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D9B770C01CD43839F28985D /* Graphik-Bold.ttf */; };
+		8F3DE73D7E2F452B9219B8BF /* Graphik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5508CA20B50946D1A0C6E211 /* Graphik-Light.ttf */; };
+		52EA3E20F5054518AEC19F79 /* Graphik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 286A0C040AA3452781E91FF5 /* Graphik-Medium.ttf */; };
+		B8B2D5AE126B4FC6A512D01A /* Graphik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB96E5784CAE4A8E93F7B8F4 /* Graphik-Regular.ttf */; };
+		9752C0957533461BA407B0BD /* Graphik-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83F4D6CC179B478D8835D295 /* Graphik-Semibold.ttf */; };
+		5E167AF8C9F845D59E07381C /* Graphik-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58E8565A148B4B2AA39DFDC2 /* Graphik-Thin.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,12 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Residently/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		4D9B770C01CD43839F28985D /* Graphik-Bold.ttf */ = {isa = PBXFileReference; name = "Graphik-Bold.ttf"; path = "../assets/fonts/Graphik-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5508CA20B50946D1A0C6E211 /* Graphik-Light.ttf */ = {isa = PBXFileReference; name = "Graphik-Light.ttf"; path = "../assets/fonts/Graphik-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		286A0C040AA3452781E91FF5 /* Graphik-Medium.ttf */ = {isa = PBXFileReference; name = "Graphik-Medium.ttf"; path = "../assets/fonts/Graphik-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BB96E5784CAE4A8E93F7B8F4 /* Graphik-Regular.ttf */ = {isa = PBXFileReference; name = "Graphik-Regular.ttf"; path = "../assets/fonts/Graphik-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		83F4D6CC179B478D8835D295 /* Graphik-Semibold.ttf */ = {isa = PBXFileReference; name = "Graphik-Semibold.ttf"; path = "../assets/fonts/Graphik-Semibold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		58E8565A148B4B2AA39DFDC2 /* Graphik-Thin.ttf */ = {isa = PBXFileReference; name = "Graphik-Thin.ttf"; path = "../assets/fonts/Graphik-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +152,7 @@
 				00E356EF1AD99517003FC87E /* ResidentlyTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				1A01E6796B99464BAD6A64E9 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -156,6 +169,20 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		1A01E6796B99464BAD6A64E9 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				4D9B770C01CD43839F28985D /* Graphik-Bold.ttf */,
+				5508CA20B50946D1A0C6E211 /* Graphik-Light.ttf */,
+				286A0C040AA3452781E91FF5 /* Graphik-Medium.ttf */,
+				BB96E5784CAE4A8E93F7B8F4 /* Graphik-Regular.ttf */,
+				83F4D6CC179B478D8835D295 /* Graphik-Semibold.ttf */,
+				58E8565A148B4B2AA39DFDC2 /* Graphik-Thin.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -295,6 +322,12 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				E2CF9C5F04664BA291017E89 /* Graphik-Bold.ttf in Resources */,
+				8F3DE73D7E2F452B9219B8BF /* Graphik-Light.ttf in Resources */,
+				52EA3E20F5054518AEC19F79 /* Graphik-Medium.ttf in Resources */,
+				B8B2D5AE126B4FC6A512D01A /* Graphik-Regular.ttf in Resources */,
+				9752C0957533461BA407B0BD /* Graphik-Semibold.ttf in Resources */,
+				5E167AF8C9F845D59E07381C /* Graphik-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
