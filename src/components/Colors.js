@@ -4,3 +4,6 @@ export const MineShaft = '#232323';
 export const Sceance = '#9615B6';
 export const Green = '#00C995';
 export const Roman = '#DF5A51';
+export const Midnight = '#000A2E';
+export const AthensGray = '#ECEBED';
+export const WhiteLilac = '#F9FAFD';

@@ -6,3 +6,6 @@ export const secondScreenBg = require('./second-screen-bg.png');
 export const thirdScreenBg = require('./third-screen-bg.png');
 export const getStartedBg = require('./get-started-bg.png');
 export const rocketWelcome = require('./rocket-welcome.png');
+export const google = require('./google-icon.png');
+export const facebook = require('./facebook.png');
+export const twitter = require('./twitter.png');
