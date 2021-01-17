@@ -5,7 +5,7 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity,
+  // TouchableOpacity,
 } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { Actions } from 'react-native-router-flux';
@@ -95,10 +95,9 @@ export default class Onboarding extends Component {
   );
 
   handleStatusColor = (index) => {
-    console.log(index);
-    if (index === 0) return Colors.ScienceBlue; // this.setState({ statusColor: Colors.ScienceBlue });
-    if (index === 1) return Colors.MineShaft; // this.setState({ statusColor: Colors.MineShaft });
-    if (index === 2) return Colors.Sceance; // this.setState({ statusColor: Colors.Sceance });
+    if (index === 0) return Colors.ScienceBlue;
+    if (index === 1) return Colors.MineShaft;
+    if (index === 2) return Colors.Sceance;
     return Colors.ScienceBlue;
   };
 
@@ -131,7 +130,7 @@ export default class Onboarding extends Component {
               statusColor: this.handleStatusColor(index),
             })
           }
-          // onDone={() => Actions.}
+          onDone={() => Actions.get_started({ type: 'reset' })}
         />
       </>
     );
