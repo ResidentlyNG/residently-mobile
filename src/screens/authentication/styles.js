@@ -71,6 +71,7 @@ export const getStartedStyles = StyleSheet.create({
 export const loginStyles = StyleSheet.create({
   ...getStartedStyles,
   mainView: {
+    // flex: 1,
     marginTop: hp(35),
     alignItems: 'center',
     backgroundColor: WhiteLilac,
@@ -159,5 +160,51 @@ export const loginStyles = StyleSheet.create({
     fontSize: 16,
     color: Green,
     fontFamily: 'Grahik-Medium',
+  },
+});
+
+export const createAccountStyles = StyleSheet.create({
+  ...getStartedStyles,
+  ...loginStyles,
+  background: {
+    flex: 1,
+    alignItems: 'center',
+    height: '100%', // hdp(758),
+    width: '100%', // wdp(375),
+    backgroundColor: MineShaft,
+  },
+  loginCard: {
+    width: wp(302),
+    height: hp(450),
+    borderRadius: 15,
+    // marginTop: hp(80),
+    // elevation: 6,
+    alignItems: 'center',
+    backgroundColor: White,
+    shadowOffset: { width: 0, height: 24 },
+    shadowColor: 'rgba(0, 0, 0, 0.06)',
+    // shadowOpacity: 1.0,
+  },
+  createAccount: {
+    fontSize: 25,
+    color: Midnight,
+    marginTop: hp(33),
+  },
+  socialsCard: {
+    width: wp(302),
+    height: hp(96),
+    borderRadius: 16,
+    backgroundColor: White,
+    marginTop: hp(15),
+    alignItems: 'center',
+  },
+  bottomText: {
+    marginTop: hp(12),
+    fontSize: 16,
+  },
+  signUpText: {
+    fontSize: 16,
+    color: Green,
+    fontFamily: 'Grahik-Bold',
   },
 });

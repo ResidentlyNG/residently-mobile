@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { BoxShadow } from 'react-native-shadow';
 import {
   getStartedBg,
@@ -48,7 +49,7 @@ const Login = () => {
         resizeMode="stretch">
         <View style={styles.topRow}>
           <MainIcon />
-          <RegularText title="Residently" style={styles.header} />
+          <ParagraphText title="Residently" style={styles.header} />
         </View>
         <MainView style={styles.mainView}>
           <BoxShadow setting={shadowOpt}>
@@ -91,7 +92,13 @@ const Login = () => {
             </View>
           </View>
           <Text style={styles.bottomText}>
-            Have an account? <Text style={styles.signUpText}> Sign Up</Text>
+            Have an account?{' '}
+            <Text
+              style={styles.signUpText}
+              onPress={() => Actions.create_account()}>
+              {' '}
+              Sign Up
+            </Text>
           </Text>
         </MainView>
       </ImageBackground>
