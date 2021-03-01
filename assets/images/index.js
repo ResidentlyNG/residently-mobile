@@ -9,3 +9,6 @@ export const rocketWelcome = require('./rocket-welcome.png');
 export const google = require('./google-icon.png');
 export const facebook = require('./facebook.png');
 export const twitter = require('./twitter.png');
+export const userIntroBG = require('./user_intro.png');
+export const host = require('./host.png');
+export const roomie = require('./roomie.png');

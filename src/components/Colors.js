@@ -7,3 +7,4 @@ export const Roman = '#DF5A51';
 export const Midnight = '#000A2E';
 export const AthensGray = '#ECEBED';
 export const WhiteLilac = '#F9FAFD';
+export const Scorpion = '#595959';

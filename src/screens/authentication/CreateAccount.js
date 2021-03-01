@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { BoxShadow } from 'react-native-shadow';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { Actions } from 'react-native-router-flux';
 import {
   getStartedBg,
   google,
@@ -97,34 +98,38 @@ const CreateAccount = () => {
                   placeholder="Confirm Password"
                   style={styles.passwordInput}
                 />
-                <Button title="Sign Up" style={styles.button} />
+                <Button
+                  title="Sign Up"
+                  style={styles.button}
+                  onPress={() => Actions.user_intro()}
+                />
                 {/* <ParagraphText
                 title="Forgot Password?"
                 style={styles.forgotText}
               /> */}
               </View>
             </BoxShadow>
-          </KeyboardAwareScrollView>
-          <View style={styles.socialsCard}>
-            <RegularText
-              title="Use Socials to login"
-              style={styles.socialsText}
-            />
-            <View style={styles.socialsGroup}>
-              <TouchableOpacity style={styles.socialsCircle}>
-                <Image source={google} style={styles.google} />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.socialsCircle}>
-                <Image source={facebook} style={styles.facebook} />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.socialsCircle}>
-                <Image source={twitter} style={styles.twitter} />
-              </TouchableOpacity>
+            <View style={styles.socialsCard}>
+              <RegularText
+                title="Use Socials to login"
+                style={styles.socialsText}
+              />
+              <View style={styles.socialsGroup}>
+                <TouchableOpacity style={styles.socialsCircle}>
+                  <Image source={google} style={styles.google} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.socialsCircle}>
+                  <Image source={facebook} style={styles.facebook} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.socialsCircle}>
+                  <Image source={twitter} style={styles.twitter} />
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-          <Text style={styles.bottomText}>
-            Have an account? <Text style={styles.signUpText}> Login</Text>
-          </Text>
+            <Text style={styles.bottomText}>
+              Have an account? <Text style={styles.signUpText}> Login</Text>
+            </Text>
+          </KeyboardAwareScrollView>
         </MainView>
       </ImageBackground>
     </>
