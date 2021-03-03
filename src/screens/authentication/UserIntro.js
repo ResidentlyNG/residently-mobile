@@ -1,6 +1,12 @@
 import React from 'react';
-import { StatusBar, ImageBackground, View } from 'react-native';
+import {
+  StatusBar,
+  ImageBackground,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { BoxShadow } from 'react-native-shadow';
+import { Actions } from 'react-native-router-flux';
 import {
   AthensGray,
   Green,
@@ -43,7 +49,9 @@ const UserIntro = () => {
         />
         <BoxShadow setting={shadowOpt}>
           <View style={styles.userCard}>
-            <View style={styles.roleCard}>
+            <TouchableOpacity
+              style={styles.roleCard}
+              onPress={() => Actions.invite()}>
               <View style={styles.cardRow}>
                 <Image source={host} style={styles.host} />
                 <View>
@@ -57,7 +65,7 @@ const UserIntro = () => {
                   <MiniForwardChevrolet />
                 </View>
               </View>
-            </View>
+            </TouchableOpacity>
 
             <View
               style={[

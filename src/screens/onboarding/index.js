@@ -21,6 +21,7 @@ import {
 } from '../../../assets/images';
 import { ForwardIcon, MainIcon } from '../../../assets/svgs';
 import { RegularText } from '../../components';
+import { TouchableOpacity } from 'react-native';
 // import { RightChevrolet } from '../../../assets/svgs';
 
 const slides = [
@@ -68,7 +69,11 @@ export default class Onboarding extends Component {
       resizeMode="stretch">
       <View style={styles.topRow}>
         <MainIcon />
-        <RegularText title="Skip" style={styles.skip} />
+        <TouchableOpacity
+          style={styles.skipButton}
+          onPress={() => Actions.get_started({ type: 'reset' })}>
+          <RegularText title="Skip" style={styles.skip} />
+        </TouchableOpacity>
       </View>
       <View style={styles.imageView}>
         <View style={styles.imageWrapper}>

@@ -38,6 +38,11 @@ export const styles = StyleSheet.create({
     marginTop: hp(30),
     width: wp(311),
   },
+  skipButton: {
+    height: hp(40),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   skip: {
     fontSize: 17,
     color: White,

@@ -67,7 +67,11 @@ const Login = () => {
                 placeholder="Password"
                 style={styles.passwordInput}
               />
-              <Button title="Login" style={styles.button} />
+              <Button
+                title="Login"
+                style={styles.button}
+                onPress={() => Actions.create_account()}
+              />
               <ParagraphText
                 title="Forgot Password?"
                 style={styles.forgotText}
