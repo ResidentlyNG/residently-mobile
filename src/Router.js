@@ -4,9 +4,11 @@ import CreateAccount from './screens/authentication/CreateAccount';
 import GetStarted from './screens/authentication/GetStarted';
 import Invite from './screens/authentication/Invite';
 import InviteSuccess from './screens/authentication/InviteSuccess';
+import Join from './screens/authentication/Join';
 import Login from './screens/authentication/Login';
 import SetUp from './screens/authentication/SetUp';
 import UserIntro from './screens/authentication/UserIntro';
+import Dashboard from './screens/dashboard';
 import Onboarding from './screens/onboarding';
 
 export default class RouterComponent extends Component {
@@ -30,6 +32,8 @@ export default class RouterComponent extends Component {
           <Scene key="invite" component={Invite} />
           <Scene key="invite_success" component={InviteSuccess} />
           <Scene key="setup" component={SetUp} />
+          <Scene key="join" component={Join} />
+          <Scene key="dashboard" component={Dashboard} />
         </Scene>
       </Router>
     );

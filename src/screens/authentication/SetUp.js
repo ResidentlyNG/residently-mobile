@@ -103,7 +103,7 @@ const SetUp = () => {
               title="Skip"
               style={styles.button}
               titleStyle={styles.buttonTitle}
-              onPress={() => Actions.login()}
+              onPress={() => Actions.dashboard()}
             />
           </BoxShadow>
         </MainView>

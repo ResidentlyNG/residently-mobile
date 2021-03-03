@@ -10,3 +10,4 @@ export const WhiteLilac = '#F9FAFD';
 export const Scorpion = '#595959';
 export const DodgerBlue = '#1890FF';
 export const ElectricViolet = '#8207FC';
+export const Alto = '#E0E0E0';

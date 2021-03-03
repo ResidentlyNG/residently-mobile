@@ -579,3 +579,70 @@ export const setUp = StyleSheet.create({
     color: Green,
   },
 });
+
+export const join = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+    height: '100%', // hdp(758),
+    width: '100%', // wdp(375),
+    backgroundColor: Green,
+  },
+  imageBg: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    bottom: 0,
+  },
+  topRow: {
+    alignItems: 'center',
+    marginTop: hp(80),
+    // width: wp(311),
+  },
+  mainView: {
+    marginTop: hp(35),
+    width: wp(338),
+    height: hp(310),
+    borderRadius: 10,
+    backgroundColor: '#F1F1F1',
+    alignItems: 'center',
+  },
+  header: {
+    fontSize: 30,
+    color: White,
+    width: wp(300),
+    alignSelf: 'center',
+    textAlign: 'center',
+    lineHeight: 37,
+    marginTop: hp(29),
+  },
+  rocket: {
+    width: wp(92.5),
+    height: hp(76.4),
+    marginTop: hp(19),
+  },
+  subText: {
+    fontSize: 14,
+    color: Midnight,
+    width: wp(170),
+    alignSelf: 'center',
+    textAlign: 'center',
+    lineHeight: 18,
+  },
+  input: {
+    width: wp(231),
+    height: hp(48),
+    borderWidth: 1,
+    borderColor: AthensGray,
+    backgroundColor: '#F5F5F5', // White,
+    paddingLeft: wp(15),
+    marginTop: hp(21),
+  },
+  button: {
+    marginTop: hp(17),
+    width: wp(231),
+    height: hp(48),
+    borderRadius: 6,
+    alignSelf: 'center',
+  },
+});

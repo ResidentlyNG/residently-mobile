@@ -67,11 +67,12 @@ const UserIntro = () => {
               </View>
             </TouchableOpacity>
 
-            <View
+            <TouchableOpacity
               style={[
                 styles.roleCard,
                 { borderColor: AthensGray, marginTop: hp(20) },
-              ]}>
+              ]}
+              onPress={() => Actions.join()}>
               <View style={styles.cardRow}>
                 <Image source={roomie} style={styles.host} />
                 <View>
@@ -88,7 +89,7 @@ const UserIntro = () => {
                   <MiniForwardChevrolet />
                 </View>
               </View>
-            </View>
+            </TouchableOpacity>
           </View>
           <ParagraphText title="Please Note:" style={styles.noteLead} />
           <RegularText
