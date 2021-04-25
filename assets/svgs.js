@@ -1,5 +1,5 @@
 import React from 'react';
-import Svg, { Ellipse, G, Mask, Path, Rect } from 'react-native-svg';
+import Svg, { Circle, Ellipse, G, Mask, Path, Rect } from 'react-native-svg';
 
 export const MainIcon = (props) => (
   <Svg
@@ -248,6 +248,32 @@ export const MenuIcon = (props) => (
     {...props}>
     <Path
       d="M6.644 3.168h13.278c.497 0 .9-.547.9-1.22 0-.675-.403-1.221-.9-1.221H6.644c-.497 0-.9.546-.9 1.22 0 .674.403 1.22.9 1.22zM19.595 6.83H1.499c-.677 0-1.227.546-1.227 1.22 0 .673.55 1.22 1.227 1.22h18.096c.677 0 1.227-.547 1.227-1.22 0-.674-.55-1.22-1.227-1.22zM19.921 12.83H6.644c-.497 0-.9.547-.9 1.22 0 .674.403 1.221.9 1.221h13.278c.497 0 .9-.547.9-1.22 0-.674-.403-1.22-.9-1.22z"
+      fill="#00C995"
+    />
+  </Svg>
+);
+
+export const DottedPlus = (props) => (
+  <Svg
+    width={32}
+    height={32}
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Circle
+      cx={16}
+      cy={16}
+      r={15.5}
+      stroke="#00C995"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeDasharray="4 4"
+    />
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M18.875 14.375h-2.25v-2.25c0-.619-.506-1.125-1.125-1.125s-1.125.506-1.125 1.125v2.25h-2.25c-.619 0-1.125.506-1.125 1.125s.506 1.125 1.125 1.125h2.25v2.25c0 .619.506 1.125 1.125 1.125s1.125-.506 1.125-1.125v-2.25h2.25c.619 0 1.125-.506 1.125-1.125s-.506-1.125-1.125-1.125z"
       fill="#00C995"
     />
   </Svg>

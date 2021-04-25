@@ -1,5 +1,14 @@
 import { StyleSheet } from 'react-native';
-import { Green, White } from '../../../components';
+import {
+  Green,
+  MineShaft,
+  White,
+  GullGray,
+  AquaHaze,
+  DodgerBlue,
+  Midnight,
+  Monza,
+} from '../../../components';
 import { hp, wp } from '../../../components/utils';
 
 export const home = StyleSheet.create({
@@ -48,5 +57,207 @@ export const home = StyleSheet.create({
     alignSelf: 'flex-start',
     color: White,
     marginLeft: wp(32),
+  },
+  mainCard: {
+    width: wp(344),
+    height: hp(444),
+    borderRadius: 14,
+    backgroundColor: '#F2F2F2',
+    marginTop: hp(14),
+  },
+  cardRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  profileGroup: {
+    width: wp(79),
+    height: hp(35),
+    // marginTop: hp(13),
+  },
+  imageRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  profileView: {
+    width: wp(182),
+    height: hp(81),
+    borderRadius: 14,
+    backgroundColor: White,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  walletView: {
+    width: wp(155),
+    height: hp(81),
+    borderRadius: 14,
+    backgroundColor: White,
+    justifyContent: 'center',
+  },
+  title: {
+    lineHeight: 19,
+    fontSize: 11,
+    color: MineShaft,
+    marginLeft: wp(7),
+    // marginTop: hp(13),
+  },
+  walletTitle: {
+    lineHeight: 19,
+    fontSize: 11,
+    color: MineShaft,
+    marginLeft: wp(21),
+    // marginTop: hp(13),
+  },
+  amount: {
+    fontSize: 16,
+    color: Green,
+    // marginTop: hp(5),
+    marginLeft: wp(21),
+  },
+  availableText: {
+    fontSize: 10,
+    color: GullGray,
+    marginLeft: wp(21),
+  },
+
+  billsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: wp(278),
+    alignSelf: 'center',
+    marginTop: hp(35),
+  },
+  leadBills: {
+    fontSize: 16,
+    color: MineShaft,
+  },
+  seeAll: {
+    fontSize: 13,
+    color: Green,
+  },
+
+  rentCard: {
+    width: wp(286),
+    height: hp(55),
+    borderRadius: 9,
+    backgroundColor: Green,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    marginTop: hp(20),
+  },
+  cardBadge: {
+    width: wp(35.8),
+    height: wp(35.8),
+    borderRadius: wp(35.8) / 2,
+    backgroundColor: '#00b383',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  note: {
+    width: wp(14),
+    height: hp(18),
+  },
+  cardMainGrid: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: wp(266),
+    alignSelf: 'center',
+    // marginTop: hp(35),
+  },
+  cardGrid: {
+    // flexDirection: 'row',
+    // alignItems: 'center',
+    // justifyContent: 'space-between',
+    width: wp(218),
+    // alignSelf: 'center',
+    // marginTop: hp(35),
+  },
+  innerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  billTitle: {
+    fontSize: 11,
+    color: White,
+  },
+  billAmountTitle: {
+    fontSize: 11,
+    color: White,
+  },
+  billStatus: {
+    fontSize: 11,
+    color: White,
+  },
+  billAmount: {
+    fontSize: 12,
+    color: White,
+  },
+
+  electricityCard: {
+    width: wp(286),
+    height: hp(55),
+    borderRadius: 9,
+    backgroundColor: White,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    marginTop: hp(20),
+    borderWidth: 1,
+    borderColor: DodgerBlue,
+  },
+  flash: {
+    width: wp(14.7),
+    height: hp(20),
+  },
+  lightCardBadge: {
+    width: wp(35.8),
+    height: wp(35.8),
+    borderRadius: wp(35.8) / 2,
+    backgroundColor: AquaHaze,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  lightBillTitle: {
+    fontSize: 11,
+    color: Midnight,
+  },
+  lightBillAmountTitle: {
+    fontSize: 11,
+    color: GullGray,
+  },
+  lightBillStatus: {
+    fontSize: 11,
+    color: GullGray,
+  },
+  lightBillAmount: {
+    fontSize: 12,
+    color: Green,
+  },
+
+  netflixCard: {
+    width: wp(286),
+    height: hp(55),
+    borderRadius: 9,
+    backgroundColor: White,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    marginTop: hp(20),
+    borderWidth: 1,
+    borderColor: Monza,
+  },
+  button: {
+    marginTop: hp(15),
+    width: wp(204),
+    height: hp(48),
+    backgroundColor: '#ccfff1',
+    borderColor: Green,
+    borderWidth: 1,
+    borderRadius: 12,
+    alignSelf: 'center',
+  },
+  buttonTitle: {
+    color: Green,
   },
 });
