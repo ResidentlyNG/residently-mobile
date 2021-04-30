@@ -44,10 +44,10 @@ export { Button };
 
 const styles = StyleSheet.create({
   button: {
-    width: wp(298),
-    height: hp(48),
+    width: wp(319),
+    height: hp(64),
     backgroundColor: Green,
-    borderRadius: 6,
+    borderRadius: 16,
   },
   lightButton: {
     backgroundColor: 'rgba(0, 201, 149, 0.1)',
@@ -56,5 +56,9 @@ const styles = StyleSheet.create({
   },
   lightTitle: {
     color: Green,
+  },
+  title: {
+    fontSize: 18,
+    fontFamily: 'Graphik-Medium',
   },
 });

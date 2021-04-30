@@ -2,19 +2,18 @@ import React from 'react';
 import {
   ImageBackground,
   StatusBar,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import { BoxShadow } from 'react-native-shadow';
+// import { Actions } from 'react-native-router-flux';
 import {
+  facebook,
   getStartedBg,
   google,
+  thumbBg,
   twitter,
-  facebook,
 } from '../../../assets/images';
-import { Eye, MainIcon, User } from '../../../assets/svgs';
+import { EyeSvg, MailSvg, MainIcon } from '../../../assets/svgs';
 import {
   Button,
   Green,
@@ -22,23 +21,11 @@ import {
   RegularText,
   TextInput,
 } from '../../components';
-import { hp, wp } from '../../components/utils';
-import { MainView, Image } from '../../components/View';
+import { hp } from '../../components/utils';
+import { Image } from '../../components/View';
 import { loginStyles as styles } from './styles';
 
 const Login = () => {
-  const shadowOpt = {
-    width: wp(302),
-    height: hp(386),
-    color: '#000',
-    border: 2,
-    radius: 34,
-    opacity: 0.06,
-    x: 0,
-    y: 24,
-    style: { marginTop: hp(80) },
-  };
-
   return (
     <>
       <StatusBar backgroundColor={Green} barStyle="light-content" />
@@ -47,64 +34,55 @@ const Login = () => {
         source={getStartedBg}
         imageStyle={styles.imageBg}
         resizeMode="stretch">
-        <View style={styles.topRow}>
-          <MainIcon />
-          <ParagraphText title="Residently" style={styles.header} />
-        </View>
-        <MainView style={styles.mainView}>
-          <BoxShadow setting={shadowOpt}>
-            <View style={styles.loginCard}>
-              <ParagraphText title="Login" style={styles.login} />
-              <TextInput
-                icon={<User />}
-                value=""
-                placeholder="Username"
-                style={styles.usernameInput}
-              />
-              <TextInput
-                icon={<Eye />}
-                value=""
-                placeholder="Password"
-                style={styles.passwordInput}
-              />
-              <Button
-                title="Login"
-                style={styles.button}
-                onPress={() => Actions.create_account()}
-              />
-              <ParagraphText
-                title="Forgot Password?"
-                style={styles.forgotText}
-              />
+        <ImageBackground
+          style={styles.thumbBackground}
+          source={thumbBg}
+          imageStyle={styles.thumbBg}
+          resizeMode="contain">
+          <View style={styles.mainView}>
+            <View style={styles.iconView}>
+              <MainIcon fill={Green} />
             </View>
-          </BoxShadow>
-          <View style={styles.socialsCard}>
-            <RegularText
-              title="Use Socials to login"
-              style={styles.socialsText}
+            <ParagraphText title="Login" style={styles.header} />
+            <TextInput
+              value=""
+              label="Email"
+              placeholder="Your email address"
+              icon={<MailSvg />}
+              style={{ marginTop: hp(36) }}
             />
-            <View style={styles.socialsGroup}>
-              <TouchableOpacity style={styles.socialsCircle}>
-                <Image source={google} style={styles.google} />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.socialsCircle}>
-                <Image source={facebook} style={styles.facebook} />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.socialsCircle}>
-                <Image source={twitter} style={styles.twitter} />
-              </TouchableOpacity>
+            <TextInput
+              value=""
+              label="Password"
+              placeholder="Your password"
+              icon={<EyeSvg />}
+              style={{ marginTop: hp(20) }}
+            />
+            <Button
+              title="Login"
+              style={styles.button}
+              // onPress={() => Actions.c()}
+            />
+            <RegularText title="Forgot Password?" style={styles.forgotText} />
+            <View style={styles.socialsCard}>
+              <RegularText
+                title="Use Socials to login"
+                style={styles.socialsText}
+              />
+              <View style={styles.socialsGroup}>
+                <TouchableOpacity style={styles.socialsCircle}>
+                  <Image source={google} style={styles.google} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.socialsCircle}>
+                  <Image source={facebook} style={styles.facebook} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.socialsCircle}>
+                  <Image source={twitter} style={styles.twitter} />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-          <Text style={styles.bottomText}>
-            Have an account?{' '}
-            <Text
-              style={styles.signUpText}
-              onPress={() => Actions.create_account()}>
-              {' '}
-              Sign Up
-            </Text>
-          </Text>
-        </MainView>
+        </ImageBackground>
       </ImageBackground>
     </>
   );

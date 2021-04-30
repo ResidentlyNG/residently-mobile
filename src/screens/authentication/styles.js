@@ -26,20 +26,23 @@ export const getStartedStyles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
   },
-  topRow: {
-    flexDirection: 'row',
+  top: {
     alignItems: 'center',
-    justifyContent: 'space-between',
     marginTop: hp(40),
     // width: wp(311),
   },
   mainView: {
     marginTop: hp(35),
+    backgroundColor: White,
+    height: hp(464),
+    width: wp(355),
+    borderRadius: 20,
+    alignItems: 'center',
   },
   header: {
-    fontSize: 22,
-    color: White,
-    marginLeft: wp(5),
+    fontSize: 30,
+    color: MineShaft,
+    marginTop: hp(55),
   },
   rocket: {
     width: wp(134),
@@ -47,37 +50,113 @@ export const getStartedStyles = StyleSheet.create({
     marginTop: hp(73),
   },
   welcome: {
-    fontSize: 30,
-    color: MineShaft,
-    width: wp(175),
+    fontSize: 27,
+    color: White,
+    width: wp(268),
     marginTop: hp(26),
     textAlign: 'center',
     lineHeight: 37,
   },
   subText: {
-    width: wp(216),
+    width: wp(268),
     fontSize: 12,
     textAlign: 'center',
-    marginTop: hp(21),
+    marginTop: hp(10),
     lineHeight: 18,
-    color: MineShaft,
+    color: White,
+  },
+
+  thumbBackground: {
+    // flex: 1,
+    alignItems: 'center',
+    height: hp(255), // '100%', // hdp(758),
+    width: wp(163), // '100%', // wdp(375),
+    backgroundColor: Green,
+    marginTop: hp(24),
+  },
+  thumbBg: {
+    width: wp(163),
+    height: hp(255),
   },
   button: {
-    marginTop: hp(21),
+    marginTop: hp(20),
   },
   declineButton: {
     backgroundColor: Roman,
     marginTop: hp(20),
+  },
+
+  socialsCard: {
+    width: wp(302),
+    height: hp(110),
+    borderRadius: 16,
+    backgroundColor: WhiteLilac,
+    marginTop: hp(29),
+    alignItems: 'center',
+  },
+  socialsText: {
+    color: Green,
+    fontSize: 15,
+    marginTop: hp(8),
+  },
+  socialsGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: wp(196),
+    marginTop: hp(12),
+  },
+  socialsCircle: {
+    width: wp(46),
+    height: wp(46),
+    borderRadius: wp(46) / 2,
+    backgroundColor: White,
+    borderWidth: 1,
+    borderColor: AthensGray,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 2,
+  },
+  google: {
+    width: wp(22),
+    height: hp(22),
+  },
+  facebook: {
+    width: wp(24),
+    height: hp(24),
+  },
+  twitter: {
+    width: wp(25.4),
+    height: hp(25.4),
+  },
+  bottomText: {
+    marginTop: hp(22),
+    fontSize: 16,
+  },
+  signUpText: {
+    fontSize: 16,
+    color: Green,
+    fontFamily: 'Grahik-Medium',
   },
 });
 
 export const loginStyles = StyleSheet.create({
   ...getStartedStyles,
   mainView: {
-    // flex: 1,
     marginTop: hp(35),
+    backgroundColor: White,
+    height: hp(672),
+    width: wp(355),
+    borderRadius: 20,
     alignItems: 'center',
-    backgroundColor: WhiteLilac,
+  },
+  iconView: {
+    marginTop: hp(44),
+  },
+  header: {
+    fontSize: 27,
+    color: MineShaft,
+    marginTop: hp(46),
   },
   loginCard: {
     width: wp(302),
@@ -103,25 +182,25 @@ export const loginStyles = StyleSheet.create({
     marginTop: hp(14),
   },
   button: {
-    width: wp(264),
-    marginTop: hp(19),
+    // width: wp(264),
+    marginTop: hp(30),
   },
   forgotText: {
     color: Roman,
-    fontSize: 12,
-    marginTop: hp(29),
+    fontSize: 15,
+    marginTop: hp(20),
   },
 
   socialsCard: {
     width: wp(302),
-    height: hp(96),
+    height: hp(110),
     borderRadius: 16,
-    backgroundColor: White,
-    marginTop: hp(15),
+    backgroundColor: WhiteLilac,
+    marginTop: hp(29),
     alignItems: 'center',
   },
   socialsText: {
-    color: Green,
+    color: MineShaft,
     fontSize: 15,
     marginTop: hp(8),
   },
@@ -130,7 +209,7 @@ export const loginStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: wp(196),
-    marginTop: hp(6),
+    marginTop: hp(12),
   },
   socialsCircle: {
     width: wp(46),
@@ -155,6 +234,50 @@ export const loginStyles = StyleSheet.create({
     width: wp(25.4),
     height: hp(25.4),
   },
+
+  // socialsCard: {
+  //   width: wp(302),
+  //   height: hp(96),
+  //   borderRadius: 16,
+  //   backgroundColor: White,
+  //   marginTop: hp(15),
+  //   alignItems: 'center',
+  // },
+  // socialsText: {
+  //   color: Green,
+  //   fontSize: 15,
+  //   marginTop: hp(8),
+  // },
+  // socialsGroup: {
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   justifyContent: 'space-between',
+  //   width: wp(196),
+  //   marginTop: hp(6),
+  // },
+  // socialsCircle: {
+  //   width: wp(46),
+  //   height: wp(46),
+  //   borderRadius: wp(46) / 2,
+  //   backgroundColor: White,
+  //   borderWidth: 1,
+  //   borderColor: AthensGray,
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  //   elevation: 2,
+  // },
+  // google: {
+  //   width: wp(22),
+  //   height: hp(22),
+  // },
+  // facebook: {
+  //   width: wp(24),
+  //   height: hp(24),
+  // },
+  // twitter: {
+  //   width: wp(25.4),
+  //   height: hp(25.4),
+  // },
   bottomText: {
     marginTop: hp(22),
     fontSize: 16,

@@ -5,7 +5,7 @@ import {
   Text,
   View,
   Image,
-  // TouchableOpacity,
+  TouchableOpacity,
 } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { Actions } from 'react-native-router-flux';
@@ -21,7 +21,6 @@ import {
 } from '../../../assets/images';
 import { ForwardIcon, MainIcon } from '../../../assets/svgs';
 import { RegularText } from '../../components';
-import { TouchableOpacity } from 'react-native';
 // import { RightChevrolet } from '../../../assets/svgs';
 
 const slides = [

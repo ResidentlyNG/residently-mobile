@@ -14,3 +14,5 @@ export const Alto = '#E0E0E0';
 export const GullGray = '#9DA8B6';
 export const AquaHaze = '#EEF4F6';
 export const Monza = '#E50914';
+export const Heather = '#C0CCDA';
+export const CatskillWhite = '#EFF2F7';

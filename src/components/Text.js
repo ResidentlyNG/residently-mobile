@@ -13,6 +13,12 @@ export const ParagraphText = ({ onPress, style, title }) => (
   </Text>
 );
 
+export const SemiBoldText = ({ onPress, style, title }) => (
+  <Text style={[styles.semiboldTextStyle, style]} onPress={onPress}>
+    {title}
+  </Text>
+);
+
 export const RegularText = ({ onPress, style, title }) => (
   <Text style={[styles.regularTextStyle, style]} onPress={onPress}>
     {title}
@@ -46,6 +52,11 @@ const styles = StyleSheet.create({
   },
   paragraphTextStyle: {
     fontFamily: 'Graphik-Medium',
+    fontSize: hp(13),
+    color: '#628195',
+  },
+  semiboldTextStyle: {
+    fontFamily: 'Graphik-Semibold',
     fontSize: hp(13),
     color: '#628195',
   },

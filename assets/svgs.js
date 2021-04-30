@@ -278,3 +278,139 @@ export const DottedPlus = (props) => (
     />
   </Svg>
 );
+
+export const MailSvg = (props) => (
+  <Svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M19.006 6l-6.505 4.468a1 1 0 01-.99 0L5.006 6h14zm0-2h-14c-1.654 0-3 1.346-3 3v10c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V7c0-1.654-1.346-3-3-3z"
+      fill="#C0CCDA" // "#231F20"
+    />
+    <Mask
+      id="prefix__a"
+      maskUnits="userSpaceOnUse"
+      x={2}
+      y={4}
+      width={21}
+      height={16}>
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M19.006 6l-6.505 4.468a1 1 0 01-.99 0L5.006 6h14zm0-2h-14c-1.654 0-3 1.346-3 3v10c0 1.654 1.346 3 3 3h14c1.654 0 3-1.346 3-3V7c0-1.654-1.346-3-3-3z"
+        fill="#fff"
+      />
+    </Mask>
+    <G mask="url(#prefix__a)">
+      <Path fill="#C0CCDA" d="M0 0h24v24H0z" />
+    </G>
+  </Svg>
+);
+
+export const EyeSvg = (props) => (
+  <Svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M12 10.5c-.827 0-1.5.673-1.5 1.5s.673 1.5 1.5 1.5 1.5-.673 1.5-1.5-.673-1.5-1.5-1.5zm0 5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5zm9.868-3.998c-.639-1.112-4.162-6.686-10.139-6.499-5.527.141-8.743 5.011-9.597 6.5a1.005 1.005 0 000 .995C2.762 13.595 6.162 19 12.025 19c.081 0 .163 0 .246-.003 5.527-.14 8.743-5.01 9.597-6.499a1.005 1.005 0 000-.996z"
+      fill="#00C894" // "#231F20"
+    />
+    <Mask
+      id="prefix__a"
+      maskUnits="userSpaceOnUse"
+      x={2}
+      y={4}
+      width={20}
+      height={16}>
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 10.5c-.827 0-1.5.673-1.5 1.5s.673 1.5 1.5 1.5 1.5-.673 1.5-1.5-.673-1.5-1.5-1.5zm0 5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5zm9.868-3.998c-.639-1.112-4.162-6.686-10.139-6.499-5.527.141-8.743 5.011-9.597 6.5a1.005 1.005 0 000 .995C2.762 13.595 6.162 19 12.025 19c.081 0 .163 0 .246-.003 5.527-.14 8.743-5.01 9.597-6.499a1.005 1.005 0 000-.996z"
+        fill="#fff"
+      />
+    </Mask>
+    <G mask="url(#prefix__a)">
+      <Path fill="#00C894" d="M0 0h24v24H0z" />
+    </G>
+  </Svg>
+);
+
+export const UserSvg = (props) => (
+  <Svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M16 7c0 2.206-1.794 4-4 4S8 9.206 8 7s1.794-4 4-4 4 1.794 4 4zm3 13a1 1 0 01-1 1H6a1 1 0 01-1-1c0-3.86 3.141-7 7-7s7 3.14 7 7z"
+      fill="#231F20"
+    />
+    <Mask
+      id="prefix__a"
+      maskUnits="userSpaceOnUse"
+      x={5}
+      y={3}
+      width={14}
+      height={18}>
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M16 7c0 2.206-1.794 4-4 4S8 9.206 8 7s1.794-4 4-4 4 1.794 4 4zm3 13a1 1 0 01-1 1H6a1 1 0 01-1-1c0-3.86 3.141-7 7-7s7 3.14 7 7z"
+        fill="#fff"
+      />
+    </Mask>
+    <G mask="url(#prefix__a)">
+      <Path fill="#C0CCDA" d="M0 0h24v24H0z" />
+    </G>
+  </Svg>
+);
+
+export const CallSvg = (props) => (
+  <Svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M17.4 22C8.908 22 2 15.092 2 6.6a4.605 4.605 0 016.09-4.352 1 1 0 01.648.722l1.37 5.964c.075.328-.02.672-.253.916-.137.142-.14.145-1.38.794a9.947 9.947 0 004.88 4.883c.649-1.241.653-1.245.795-1.381.245-.234.59-.325.917-.253l5.964 1.369a1 1 0 01.72.646c.083.236.144.48.185.731A4.605 4.605 0 0117.4 22z"
+      fill="#231F20"
+    />
+    <Mask
+      id="prefix__a"
+      maskUnits="userSpaceOnUse"
+      x={1}
+      y={2}
+      width={21}
+      height={20}>
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M17.4 22C8.908 22 2 15.092 2 6.6a4.605 4.605 0 016.09-4.352 1 1 0 01.648.722l1.37 5.964c.075.328-.02.672-.253.916-.137.142-.14.145-1.38.794a9.947 9.947 0 004.88 4.883c.649-1.241.653-1.245.795-1.381.245-.234.59-.325.917-.253l5.964 1.369a1 1 0 01.72.646c.083.236.144.48.185.731A4.605 4.605 0 0117.4 22z"
+        fill="#fff"
+      />
+    </Mask>
+    <G mask="url(#prefix__a)">
+      <Path fill="#C0CCDA" d="M0 0h24v24H0z" />
+    </G>
+  </Svg>
+);
