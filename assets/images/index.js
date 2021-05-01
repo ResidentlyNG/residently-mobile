@@ -25,6 +25,11 @@ const user = require('./user.png');
 const thumbBg = require('./thumb-bg.png');
 const celebration = require('./celebration.png');
 const thumb = require('./thumb.png');
+const billsBg = require('./bills-bg.png');
+const apartmentBg = require('./apartment-bg.png');
+const apartment = require('./apartment.png');
+const handHeart = require('./hand-heart.png');
+const twoRoommates = require('./roommate.png');
 
 export {
   coliving,
@@ -54,4 +59,9 @@ export {
   thumbBg,
   celebration,
   thumb,
+  billsBg,
+  apartmentBg,
+  apartment,
+  handHeart,
+  twoRoommates,
 };

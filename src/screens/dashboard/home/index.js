@@ -1,165 +1,145 @@
 import React, { Component } from 'react';
-import { StatusBar, ImageBackground, View } from 'react-native';
+import { StatusBar, View } from 'react-native';
+import { BoxShadow } from 'react-native-shadow';
 import {
-  Button,
+  ActionButton,
+  ClearDay,
+  Coral,
   Green,
   Image,
   ParagraphText,
   RegularText,
+  White,
 } from '../../../components';
 import {
-  secondScreenBg,
   user,
-  profileGroup,
-  note,
-  flash,
-  netflix,
+  billsBg,
+  handHeart,
+  apartment,
+  twoRoommates,
 } from '../../../../assets/images';
 import { home as styles } from './styles';
-import { DottedPlus, MenuIcon } from '../../../../assets/svgs';
+import { ForwardArrow, NotificationBell } from '../../../../assets/svgs';
+import { hp, wp } from '../../../components/utils';
 
 export default class Home extends Component {
+  shadowOpt = {
+    width: wp(375),
+    height: hp(780),
+    color: '#000',
+    // border: 2,
+    radius: 34,
+    opacity: 0.02,
+    x: 0,
+    y: 54,
+    style: { zIndex: -33, position: 'absolute', bottom: 0 }, //  marginTop: hp(15) }
+  };
+
   render() {
     return (
       <>
-        <StatusBar backgroundColor={Green} barStyle="light-content" />
-        <ImageBackground
-          style={styles.background}
-          source={secondScreenBg}
-          imageStyle={styles.imageBg}
-          resizeMode="stretch">
-          <View style={styles.topRow}>
-            <Image source={user} style={styles.userImage} />
-            <View style={styles.menuView}>
-              <MenuIcon />
+        <StatusBar backgroundColor={White} barStyle="dark-content" />
+        <View style={styles.background}>
+          <View style={styles.headerGrid}>
+            <Image source={user} style={styles.profileImage} />
+            <View style={styles.usernameView}>
+              <ParagraphText title="Bisola Jabari" style={styles.fullname} />
+              <RegularText title="@Bisijabari" style={styles.username} />
+            </View>
+            <View style={styles.bell}>
+              <NotificationBell />
             </View>
           </View>
-          <RegularText title=" Welcome Back," style={styles.welcomeText} />
-          <ParagraphText title="Samuel." style={styles.username} />
-          <View style={styles.mainCard}>
-            <View style={styles.cardRow}>
-              <View style={styles.profileView}>
-                <View>
-                  <ParagraphText title="Roommates" style={styles.title} />
-                  <View style={styles.imageRow}>
-                    <Image source={profileGroup} style={styles.profileGroup} />
-                    <DottedPlus />
-                  </View>
-                </View>
-              </View>
-              <View style={styles.walletView}>
-                <ParagraphText
-                  title="Wallet Balance"
-                  style={styles.walletTitle}
-                />
-                <ParagraphText title="₦ 350,000.00" style={styles.amount} />
-                <RegularText
-                  title="Available balance"
-                  style={styles.availableText}
-                />
-              </View>
-            </View>
-            <View style={styles.billsRow}>
-              <ParagraphText title="Your Bills" style={styles.leadBills} />
-              <View>
-                <RegularText title="See All" style={styles.seeAll} />
-              </View>
-            </View>
 
-            <View style={styles.rentCard}>
-              <View style={styles.cardMainGrid}>
-                <View style={styles.cardBadge}>
-                  <Image source={note} style={styles.note} />
-                </View>
-                <View style={styles.cardGrid}>
-                  <View style={styles.innerRow}>
-                    <ParagraphText
-                      title="Yearly Rent"
-                      style={styles.billTitle}
-                    />
-                    <RegularText
-                      title="Amount"
-                      style={styles.billAmountTitle}
+          <BoxShadow setting={this.shadowOpt}>
+            <View style={styles.mainView}>
+              <View style={styles.billContainer}>
+                <View style={styles.billWrapper}>
+                  <View style={styles.billsBgContainer}>
+                    <Image
+                      source={billsBg}
+                      style={styles.billsBg}
+                      resizeMode="cover"
                     />
                   </View>
-                  <View style={styles.innerRow}>
-                    <RegularText
-                      title="Next payment : Not active"
-                      style={styles.billStatus}
-                    />
-                    <ParagraphText title="₦0.00" style={styles.billAmount} />
+                  <View style={styles.heartHandWrapper}>
+                    <View style={styles.heartHandContainer}>
+                      <Image source={handHeart} style={styles.handHeart} />
+                    </View>
                   </View>
+                  <ParagraphText
+                    title="Split & Pay Bills"
+                    style={styles.billsLeadText}
+                  />
+                  <RegularText
+                    title="To create your account we would need some information from you."
+                    style={styles.billsText}
+                  />
+                  <ActionButton
+                    title="Get Started"
+                    icon={<ForwardArrow />}
+                    style={styles.billsButton}
+                  />
                 </View>
               </View>
-            </View>
 
-            <View style={styles.electricityCard}>
-              <View style={styles.cardMainGrid}>
-                <View style={styles.lightCardBadge}>
-                  <Image source={flash} style={styles.flash} />
-                </View>
-                <View style={styles.cardGrid}>
-                  <View style={styles.innerRow}>
+              <View style={styles.bottomRow}>
+                <View style={styles.miniContainer}>
+                  <View style={styles.miniWrapper}>
+                    <View style={styles.minisBgContainer}>
+                      <Image
+                        source={billsBg}
+                        style={styles.minisBg}
+                        // resizeMode="cover"
+                      />
+                    </View>
+                    <View style={styles.miniImageWrapper}>
+                      <View style={styles.miniImageContainer}>
+                        <Image source={apartment} style={styles.miniImage} />
+                      </View>
+                    </View>
                     <ParagraphText
-                      title="Electricity Bill"
-                      style={styles.lightBillTitle}
+                      title="Find an apartment"
+                      style={styles.miniLeadText}
                     />
-                    <RegularText
-                      title="Amount"
-                      style={styles.lightBillAmountTitle}
-                    />
-                  </View>
-                  <View style={styles.innerRow}>
-                    <RegularText
-                      title="Next payment : 20/11/2020"
-                      style={styles.lightBillStatus}
-                    />
-                    <ParagraphText
-                      title="₦2,000.00"
-                      style={styles.lightBillAmount}
-                    />
+                    <View style={styles.arrowView}>
+                      <ForwardArrow fill={Coral} />
+                    </View>
                   </View>
                 </View>
-              </View>
-            </View>
 
-            <View style={styles.netflixCard}>
-              <View style={styles.cardMainGrid}>
-                <View style={styles.lightCardBadge}>
-                  <Image source={netflix} style={styles.flash} />
-                </View>
-                <View style={styles.cardGrid}>
-                  <View style={styles.innerRow}>
+                <View style={styles.miniContainer}>
+                  <View
+                    style={[styles.miniWrapper, { backgroundColor: ClearDay }]}>
+                    <View style={styles.minisBgContainer}>
+                      <Image
+                        source={billsBg}
+                        style={styles.minisBg}
+                        resizeMode="cover"
+                      />
+                    </View>
+                    <View style={styles.miniImageWrapper}>
+                      <View
+                        style={[
+                          styles.miniImageContainer,
+                          { backgroundColor: Green },
+                        ]}>
+                        <Image source={twoRoommates} style={styles.miniImage} />
+                      </View>
+                    </View>
                     <ParagraphText
-                      title="Electricity Bill"
-                      style={styles.lightBillTitle}
+                      title={'Find a \nRoomate'}
+                      style={styles.miniLeadText}
                     />
-                    <RegularText
-                      title="Amount"
-                      style={styles.lightBillAmountTitle}
-                    />
-                  </View>
-                  <View style={styles.innerRow}>
-                    <RegularText
-                      title="Next payment : 20/11/2020"
-                      style={styles.lightBillStatus}
-                    />
-                    <ParagraphText
-                      title="₦2,000.00"
-                      style={styles.lightBillAmount}
-                    />
+                    <View style={styles.arrowView}>
+                      <ForwardArrow fill={Green} />
+                    </View>
                   </View>
                 </View>
               </View>
             </View>
-            <Button
-              title="+   Add new bill"
-              style={styles.button}
-              titleStyle={styles.buttonTitle}
-              // onPress={() => Actions.dashboard()}
-            />
-          </View>
-        </ImageBackground>
+          </BoxShadow>
+        </View>
       </>
     );
   }
