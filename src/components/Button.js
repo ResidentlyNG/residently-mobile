@@ -1,7 +1,13 @@
 import React from 'react';
-import { TouchableNativeFeedback, StyleSheet } from 'react-native';
+import {
+  View,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import { Button as Btn } from 'react-native-elements';
 import { Green, White } from './Colors';
+import { ParagraphText } from './Text';
 import { hp, wp } from './utils';
 
 const Button = ({
@@ -36,11 +42,22 @@ const Button = ({
       onPress={onPress}
       iconRight={iconRight || true}
       background={TouchableNativeFeedback.Ripple(White, false)}
+      iconContainerStyle={styles.buttonIcon}
     />
   );
 };
 
-export { Button };
+const ActionButton = ({ icon, onPress, style, title }) => (
+  <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
+    <View style={styles.actionRow}>
+      <View />
+      <ParagraphText title={title} style={styles.actionButtonTitle} />
+      <View style={styles.buttonIcon}>{icon}</View>
+    </View>
+  </TouchableOpacity>
+);
+
+export { ActionButton, Button };
 
 const styles = StyleSheet.create({
   button: {
@@ -60,5 +77,19 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontFamily: 'Graphik-Medium',
+  },
+  buttonIcon: {
+    right: wp(25),
+    position: 'absolute',
+  },
+  actionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+  },
+  actionButtonTitle: {
+    fontSize: 16,
+    color: White,
   },
 });

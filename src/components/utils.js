@@ -40,3 +40,13 @@ export const validateEmail = (email) => {
   }
   return false;
 };
+
+export const circle = (size, color, props) => ({
+  width: wp(size),
+  height: wp(size),
+  borderRadius: wp(size) / 2,
+  backgroundColor: color || 'transparent',
+  justifyContent: 'center',
+  alignItems: 'center',
+  ...props,
+});

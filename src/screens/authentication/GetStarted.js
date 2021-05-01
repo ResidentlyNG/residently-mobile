@@ -22,6 +22,7 @@ import {
   RegularText,
   SemiBoldText,
 } from '../../components';
+import { hp } from '../../components/utils';
 import { Image } from '../../components/View';
 import { getStartedStyles as styles } from './styles';
 
@@ -42,47 +43,50 @@ const GetStarted = () => {
             style={styles.subText}
           />
         </View>
-        <ImageBackground
+        {/* <ImageBackground
           style={styles.thumbBackground}
           source={thumbBg}
           imageStyle={styles.thumbBg}
-          resizeMode="contain">
-          <View style={styles.mainView}>
-            <ParagraphText title="Already a user?" style={styles.header} />
-            <Button
-              title="Login to your account"
-              style={styles.button}
-              onPress={() => Actions.login()}
+          resizeMode="contain"> */}
+        <View style={{ position: 'absolute', marginTop: hp(253) }}>
+          <Image source={thumbBg} style={styles.thumbBg} />
+        </View>
+        <View style={styles.mainView}>
+          <ParagraphText title="Already a user?" style={styles.header} />
+          <Button
+            title="Login to your account"
+            style={styles.button}
+            onPress={() => Actions.login()}
+          />
+          <View style={styles.socialsCard}>
+            <RegularText
+              title="Use Socials to login"
+              style={styles.socialsText}
             />
-            <View style={styles.socialsCard}>
-              <RegularText
-                title="Use Socials to login"
-                style={styles.socialsText}
-              />
-              <View style={styles.socialsGroup}>
-                <TouchableOpacity style={styles.socialsCircle}>
-                  <Image source={google} style={styles.google} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.socialsCircle}>
-                  <Image source={facebook} style={styles.facebook} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.socialsCircle}>
-                  <Image source={twitter} style={styles.twitter} />
-                </TouchableOpacity>
-              </View>
+            <View style={styles.socialsGroup}>
+              <TouchableOpacity style={styles.socialsCircle}>
+                <Image source={google} style={styles.google} />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.socialsCircle}>
+                <Image source={facebook} style={styles.facebook} />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.socialsCircle}>
+                <Image source={twitter} style={styles.twitter} />
+              </TouchableOpacity>
             </View>
-            <Text style={styles.bottomText}>
-              Don't have an account?{' '}
-              <Text
-                style={styles.signUpText}
-                onPress={() => Actions.create_account()}>
-                {' '}
-                Sign Up
-              </Text>
-            </Text>
           </View>
-        </ImageBackground>
+          <Text style={styles.bottomText}>
+            Don't have an account?{' '}
+            <Text
+              style={styles.signUpText}
+              onPress={() => Actions.create_account()}>
+              {' '}
+              Sign Up
+            </Text>
+          </Text>
+        </View>
       </ImageBackground>
+      {/* </ImageBackground> */}
     </>
   );
 };

@@ -23,6 +23,8 @@ const netflix = require('./netflix.png');
 const note = require('./note.png');
 const user = require('./user.png');
 const thumbBg = require('./thumb-bg.png');
+const celebration = require('./celebration.png');
+const thumb = require('./thumb.png');
 
 export {
   coliving,
@@ -50,4 +52,6 @@ export {
   note,
   user,
   thumbBg,
+  celebration,
+  thumb,
 };

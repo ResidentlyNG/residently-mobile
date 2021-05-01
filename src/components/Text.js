@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   paragraphTextStyle: {
     fontFamily: 'Graphik-Medium',
-    fontSize: hp(13),
+    fontSize: hp(14),
     color: '#628195',
   },
   semiboldTextStyle: {

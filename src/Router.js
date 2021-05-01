@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Scene } from 'react-native-router-flux';
 import CreateAccount from './screens/authentication/CreateAccount';
+import CreatePassword from './screens/authentication/CreatePassword';
 import GetStarted from './screens/authentication/GetStarted';
 import Invite from './screens/authentication/Invite';
 import InviteSuccess from './screens/authentication/InviteSuccess';
@@ -28,6 +29,7 @@ export default class RouterComponent extends Component {
           <Scene key="get_started" component={GetStarted} />
           <Scene key="login" component={Login} />
           <Scene key="create_account" component={CreateAccount} />
+          <Scene key="create_password" component={CreatePassword} />
           <Scene key="user_intro" component={UserIntro} />
           <Scene key="invite" component={Invite} />
           <Scene key="invite_success" component={InviteSuccess} />

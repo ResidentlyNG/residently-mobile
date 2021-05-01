@@ -10,7 +10,7 @@ import {
   White,
   WhiteLilac,
 } from '../../components';
-import { hp, wp } from '../../components/utils';
+import { circle, hp, wp } from '../../components/utils';
 
 export const getStartedStyles = StyleSheet.create({
   background: {
@@ -32,7 +32,7 @@ export const getStartedStyles = StyleSheet.create({
     // width: wp(311),
   },
   mainView: {
-    marginTop: hp(35),
+    marginTop: hp(48),
     backgroundColor: White,
     height: hp(464),
     width: wp(355),
@@ -132,11 +132,13 @@ export const getStartedStyles = StyleSheet.create({
   bottomText: {
     marginTop: hp(22),
     fontSize: 16,
+    fontFamily: 'Graphik-Regular',
   },
   signUpText: {
     fontSize: 16,
     color: Green,
-    fontFamily: 'Grahik-Medium',
+    fontFamily: 'Graphik-Medium',
+    fontWeight: '600',
   },
 });
 
@@ -235,49 +237,6 @@ export const loginStyles = StyleSheet.create({
     height: hp(25.4),
   },
 
-  // socialsCard: {
-  //   width: wp(302),
-  //   height: hp(96),
-  //   borderRadius: 16,
-  //   backgroundColor: White,
-  //   marginTop: hp(15),
-  //   alignItems: 'center',
-  // },
-  // socialsText: {
-  //   color: Green,
-  //   fontSize: 15,
-  //   marginTop: hp(8),
-  // },
-  // socialsGroup: {
-  //   flexDirection: 'row',
-  //   alignItems: 'center',
-  //   justifyContent: 'space-between',
-  //   width: wp(196),
-  //   marginTop: hp(6),
-  // },
-  // socialsCircle: {
-  //   width: wp(46),
-  //   height: wp(46),
-  //   borderRadius: wp(46) / 2,
-  //   backgroundColor: White,
-  //   borderWidth: 1,
-  //   borderColor: AthensGray,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   elevation: 2,
-  // },
-  // google: {
-  //   width: wp(22),
-  //   height: hp(22),
-  // },
-  // facebook: {
-  //   width: wp(24),
-  //   height: hp(24),
-  // },
-  // twitter: {
-  //   width: wp(25.4),
-  //   height: hp(25.4),
-  // },
   bottomText: {
     marginTop: hp(22),
     fontSize: 16,
@@ -311,28 +270,104 @@ export const createAccountStyles = StyleSheet.create({
     shadowColor: 'rgba(0, 0, 0, 0.06)',
     // shadowOpacity: 1.0,
   },
+  mainView: {
+    marginTop: hp(33),
+    backgroundColor: White,
+    height: hp(485),
+    width: wp(355),
+    borderRadius: 20,
+    alignItems: 'center',
+  },
   createAccount: {
     fontSize: 25,
-    color: Midnight,
-    marginTop: hp(33),
+    color: White,
+    marginTop: hp(23),
+    textAlign: 'center',
+  },
+  header: {
+    fontSize: 15,
+    color: White,
+    lineHeight: 25,
+    marginTop: hp(24),
+    textAlign: 'center',
   },
   socialsCard: {
     width: wp(302),
-    height: hp(96),
+    height: hp(110),
     borderRadius: 16,
-    backgroundColor: White,
-    marginTop: hp(22),
+    backgroundColor: WhiteLilac,
+    marginTop: hp(20),
     alignItems: 'center',
   },
   bottomText: {
-    marginTop: hp(16),
+    marginTop: hp(25),
     textAlign: 'center',
     fontSize: 16,
+    color: White,
   },
   signUpText: {
     fontSize: 16,
     color: Green,
     fontFamily: 'Graphik-Semibold',
+  },
+});
+
+export const createPassword = StyleSheet.create({
+  ...createAccountStyles,
+  createAccount: {
+    ...createAccountStyles.createAccount,
+  },
+  mainView: {
+    marginTop: hp(46),
+    backgroundColor: White,
+    height: hp(296),
+    width: wp(355),
+    borderRadius: 20,
+    alignItems: 'center',
+  },
+
+  termsContainer: {
+    width: wp(335),
+    height: hp(582),
+    backgroundColor: White,
+    borderRadius: 20,
+    alignItems: 'center',
+    overflow: 'hidden',
+  },
+  celebrationContainer: {
+    position: 'absolute',
+    top: 0,
+  },
+  celebration: {
+    width: wp(365),
+    height: hp(412),
+  },
+
+  outerThumbCircle: circle(148, Green, {
+    marginTop: hp(83),
+  }),
+  thumbCircle: circle(126, White),
+  thumb: {
+    width: wp(91),
+    height: hp(85),
+  },
+  termsHeader: {
+    fontSize: 30,
+    color: MineShaft,
+    width: wp(160),
+    marginTop: hp(31),
+    lineHeight: 37,
+  },
+  termsText: {
+    fontSize: 13,
+    width: wp(261),
+    marginTop: hp(13),
+    color: MineShaft,
+    textAlign: 'center',
+  },
+  termsButton: {
+    width: wp(309),
+    marginTop: hp(26),
   },
 });
 

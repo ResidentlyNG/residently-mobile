@@ -9,8 +9,8 @@ export const MainView = (props) => {
   );
 };
 
-export const Image = ({ source, style }) => (
-  <Img source={source} style={style} resizeMode="contain" />
+export const Image = ({ source, style, resizeMode }) => (
+  <Img source={source} style={style} resizeMode={resizeMode || 'contain'} />
 );
 
 const styles = StyleSheet.create({

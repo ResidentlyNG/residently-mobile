@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { BoxShadow } from 'react-native-shadow';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Actions } from 'react-native-router-flux';
 import {
@@ -16,35 +15,28 @@ import {
   twitter,
   facebook,
 } from '../../../assets/images';
-import { Eye, Mail, MainIcon, User } from '../../../assets/svgs';
 import {
-  Button,
+  CallSvg,
+  ForwardArrow,
+  MailSvg,
+  MainIcon,
+  UserSvg,
+} from '../../../assets/svgs';
+import {
+  ActionButton,
+  HeaderText,
   MineShaft,
-  ParagraphText,
   RegularText,
   TextInput,
 } from '../../components';
-import { hp, wp } from '../../components/utils';
-import { MainView, Image } from '../../components/View';
+import { hp } from '../../components/utils';
+import { Image } from '../../components/View';
 import { createAccountStyles as styles } from './styles';
 
 const CreateAccount = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
-  const shadowOpt = {
-    width: wp(302),
-    height: hp(450),
-    color: '#000',
-    border: 2,
-    radius: 34,
-    opacity: 0.06,
-    x: 0,
-    y: 54,
-    style: { marginTop: hp(34) },
-  };
 
   return (
     <>
@@ -54,64 +46,58 @@ const CreateAccount = () => {
         source={getStartedBg}
         imageStyle={styles.imageBg}
         resizeMode="stretch">
-        <View style={styles.topRow}>
+        <View style={[styles.top, { marginTop: hp(20) }]}>
           <MainIcon />
-          <ParagraphText title="Residently" style={styles.header} />
+          <HeaderText
+            title="Create your Account"
+            style={styles.createAccount}
+          />
+          <RegularText
+            title="To create your account we would
+need few information from you."
+            style={styles.header}
+          />
         </View>
-        <MainView style={styles.mainView}>
+        <View style={styles.mainView}>
           <KeyboardAwareScrollView
             style={{ flex: 1 }}
+            contentContainerStyle={{ alignItems: 'center' }}
             enableOnAndroid={true}
             showsVerticalScrollIndicator={false}
             extraScrollHeight={hp(52)}>
-            <BoxShadow setting={shadowOpt}>
-              <View style={styles.loginCard}>
-                <ParagraphText
-                  title="Create Account"
-                  style={styles.createAccount}
-                />
-                <TextInput
-                  icon={<User />}
-                  value={username}
-                  onChangeText={(value) => setUsername(value)}
-                  placeholder="Username"
-                  style={styles.usernameInput}
-                />
-                <TextInput
-                  icon={<Mail />}
-                  value={email}
-                  onChangeText={(value) => setEmail(value)}
-                  placeholder="Email Address"
-                  style={styles.passwordInput}
-                />
-                <TextInput
-                  icon={<Eye />}
-                  value={password}
-                  onChangeText={(value) => setPassword(value)}
-                  placeholder="Password"
-                  style={styles.passwordInput}
-                />
-                <TextInput
-                  icon={<Eye />}
-                  value={confirmPassword}
-                  onChangeText={(value) => setConfirmPassword(value)}
-                  placeholder="Confirm Password"
-                  style={styles.passwordInput}
-                />
-                <Button
-                  title="Sign Up"
-                  style={styles.button}
-                  onPress={() => Actions.user_intro()}
-                />
-                {/* <ParagraphText
-                title="Forgot Password?"
-                style={styles.forgotText}
-              /> */}
-              </View>
-            </BoxShadow>
+            <TextInput
+              icon={<UserSvg />}
+              value={username}
+              label="Full name"
+              onChangeText={(value) => setUsername(value)}
+              placeholder="Your full name"
+              style={styles.usernameInput}
+            />
+            <TextInput
+              icon={<MailSvg />}
+              value={email}
+              label="Email Address"
+              onChangeText={(value) => setEmail(value)}
+              placeholder="Your email address"
+              style={styles.passwordInput}
+            />
+            <TextInput
+              icon={<CallSvg />}
+              label="Phone Number"
+              value={password}
+              onChangeText={(value) => setPassword(value)}
+              placeholder="Your phone number"
+              style={styles.passwordInput}
+            />
+            <ActionButton
+              title="Next"
+              icon={<ForwardArrow />}
+              style={styles.button}
+              onPress={() => Actions.create_password()}
+            />
             <View style={styles.socialsCard}>
               <RegularText
-                title="Use Socials to login"
+                title="Use Socials to sign up"
                 style={styles.socialsText}
               />
               <View style={styles.socialsGroup}>
@@ -126,11 +112,11 @@ const CreateAccount = () => {
                 </TouchableOpacity>
               </View>
             </View>
-            <Text style={styles.bottomText}>
-              Have an account? <Text style={styles.signUpText}> Login</Text>
-            </Text>
           </KeyboardAwareScrollView>
-        </MainView>
+        </View>
+        <Text style={styles.bottomText}>
+          Already have an account? <Text style={styles.signUpText}> Login</Text>
+        </Text>
       </ImageBackground>
     </>
   );

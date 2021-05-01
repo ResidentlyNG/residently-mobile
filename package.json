@@ -11,6 +11,7 @@
     "build-android": "cd android && ./gradlew clean && ./gradlew assembleRelease && ./gradlew bundleRelease && cd .."
   },
   "dependencies": {
+    "@react-native-community/blur": "^3.6.0",
     "native-base": "^2.15.2",
     "react": "16.13.1",
     "react-native": "0.63.4",
@@ -19,6 +20,7 @@
     "react-native-gesture-handler": "^1.9.0",
     "react-native-global-props": "^1.1.5",
     "react-native-keyboard-aware-scroll-view": "^0.9.3",
+    "react-native-modal": "^11.10.0",
     "react-native-reanimated": "^1.13.2",
     "react-native-responsive-screen": "^1.4.2",
     "react-native-router-flux": "^4.2.0",
