@@ -22,3 +22,7 @@ export const Tundora = '#414141';
 export const ForgetMeNot = '#FFF3EF';
 export const ClearDay = '#ECFFFA';
 export const Coral = '#FF7D51';
+export const WildSand = '#F6F6F6';
+export const RadicalRed = '#FF3E66';
+export const AzureRadiance = '#0A84FF';
+export const Sunglow = '#FFC82C';

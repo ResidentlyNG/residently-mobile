@@ -10,6 +10,8 @@ import Login from './screens/authentication/Login';
 import SetUp from './screens/authentication/SetUp';
 import UserIntro from './screens/authentication/UserIntro';
 import Dashboard from './screens/dashboard';
+import Bills from './screens/dashboard/bills';
+import BillList from './screens/dashboard/bills/BillList';
 import Onboarding from './screens/onboarding';
 
 export default class RouterComponent extends Component {
@@ -36,6 +38,8 @@ export default class RouterComponent extends Component {
           <Scene key="setup" component={SetUp} />
           <Scene key="join" component={Join} />
           <Scene key="dashboard" component={Dashboard} />
+          <Scene key="bills" component={Bills} />
+          <Scene key="bill_list" component={BillList} />
         </Scene>
       </Router>
     );

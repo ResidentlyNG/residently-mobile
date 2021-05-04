@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StatusBar, View } from 'react-native';
 import { BoxShadow } from 'react-native-shadow';
+import { Actions } from 'react-native-router-flux';
 import {
   ActionButton,
   ClearDay,
@@ -53,34 +54,33 @@ export default class Home extends Component {
 
           <BoxShadow setting={this.shadowOpt}>
             <View style={styles.mainView}>
-              <View style={styles.billContainer}>
-                <View style={styles.billWrapper}>
-                  <View style={styles.billsBgContainer}>
-                    <Image
-                      source={billsBg}
-                      style={styles.billsBg}
-                      resizeMode="cover"
-                    />
-                  </View>
-                  <View style={styles.heartHandWrapper}>
-                    <View style={styles.heartHandContainer}>
-                      <Image source={handHeart} style={styles.handHeart} />
-                    </View>
-                  </View>
-                  <ParagraphText
-                    title="Split & Pay Bills"
-                    style={styles.billsLeadText}
-                  />
-                  <RegularText
-                    title="To create your account we would need some information from you."
-                    style={styles.billsText}
-                  />
-                  <ActionButton
-                    title="Get Started"
-                    icon={<ForwardArrow />}
-                    style={styles.billsButton}
+              <View style={styles.billWrapper}>
+                <View style={styles.billsBgContainer}>
+                  <Image
+                    source={billsBg}
+                    style={styles.billsBg}
+                    resizeMode="cover"
                   />
                 </View>
+                <View style={styles.heartHandWrapper}>
+                  <View style={styles.heartHandContainer}>
+                    <Image source={handHeart} style={styles.handHeart} />
+                  </View>
+                </View>
+                <ParagraphText
+                  title="Split & Pay Bills"
+                  style={styles.billsLeadText}
+                />
+                <RegularText
+                  title="To create your account we would need some information from you."
+                  style={styles.billsText}
+                />
+                <ActionButton
+                  title="Get Started"
+                  icon={<ForwardArrow />}
+                  onPress={() => Actions.bills()}
+                  style={styles.billsButton}
+                />
               </View>
 
               <View style={styles.bottomRow}>

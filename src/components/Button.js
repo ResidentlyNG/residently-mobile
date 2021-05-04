@@ -47,11 +47,14 @@ const Button = ({
   );
 };
 
-const ActionButton = ({ icon, onPress, style, title }) => (
+const ActionButton = ({ icon, onPress, style, title, titleStyle }) => (
   <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
     <View style={styles.actionRow}>
       <View />
-      <ParagraphText title={title} style={styles.actionButtonTitle} />
+      <ParagraphText
+        title={title}
+        style={[styles.actionButtonTitle, titleStyle]}
+      />
       <View style={styles.buttonIcon}>{icon}</View>
     </View>
   </TouchableOpacity>
@@ -80,6 +83,10 @@ const styles = StyleSheet.create({
   },
   buttonIcon: {
     right: wp(25),
+    position: 'absolute',
+  },
+  buttonLeftIcon: {
+    left: wp(25),
     position: 'absolute',
   },
   actionRow: {

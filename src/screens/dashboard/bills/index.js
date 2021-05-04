@@ -1,0 +1,170 @@
+import React, { Component } from 'react';
+import {
+  ScrollView,
+  Image,
+  StatusBar,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { profileGroup, user } from '../../../../assets/images';
+import { Cross, Insight, NotificationBell } from '../../../../assets/svgs';
+import {
+  HeaderText,
+  ParagraphText,
+  RegularText,
+  Tab,
+  White,
+} from '../../../components';
+import { ModalBlur } from '../../../components/Overlay';
+import { hp, wp } from '../../../components/utils';
+import NewBill from '../../authentication/SetUp';
+import { bills as styles } from './styles';
+
+const BillItem = ({ last }) => (
+  <View style={styles.billItem}>
+    <View style={styles.billRow}>
+      <ParagraphText title="Electricity Bill" style={styles.billTitle} />
+      <Image source={profileGroup} style={styles.profileGroup} />
+    </View>
+    <View style={styles.amountRow}>
+      <HeaderText title="₦ 2,000.00" style={styles.billAmount} />
+      <RegularText title="Due: In 2 weeks" style={styles.billDate} />
+    </View>
+    {!last ? <View style={styles.billDivider} /> : null}
+  </View>
+);
+
+const ButtonPlus = () => (
+  <View style={styles.plusView}>
+    <Cross />
+  </View>
+);
+
+const Button = ({ icon, onPress, title, titleStyle }) => (
+  <TouchableOpacity style={styles.button} onPress={onPress}>
+    <View style={styles.actionRow}>
+      <View style={styles.buttonLeftIcon}>{icon}</View>
+      <ParagraphText
+        title={title}
+        style={[styles.actionButtonTitle, titleStyle]}
+      />
+      {/* <View style={styles.buttonIcon}>{icon}</View> */}
+    </View>
+  </TouchableOpacity>
+);
+
+// const NewBill = () => (
+
+// )
+
+export default class Bills extends Component {
+  state = {
+    selected: 'shortTerm',
+    modal: false,
+  };
+
+  handleChange = (prop, value) => this.setState({ [prop]: value });
+
+  render() {
+    const { modal, selected } = this.state;
+
+    return (
+      <>
+        <StatusBar backgroundColor={White} barStyle="dark-content" />
+        <View style={styles.background}>
+          <View style={styles.headerGrid}>
+            <Image source={user} style={styles.profileImage} />
+            <ParagraphText title="Bills" style={styles.headerText} />
+            <View style={styles.bell}>
+              <NotificationBell />
+            </View>
+          </View>
+          <View style={styles.insightContainer}>
+            <View style={styles.walletView}>
+              <RegularText title="Wallet balance" style={styles.walletText} />
+              <ParagraphText title="₦ 350,000.00" style={styles.amount} />
+              <View style={styles.divider} />
+              <View style={styles.statsGrid}>
+                {/* spent */}
+                <View style={styles.outerSpentCircle} />
+                <View style={styles.stats}>
+                  <RegularText title="You spent" style={styles.statTitle} />
+                  <ParagraphText
+                    title="₦ 350,000.00"
+                    style={styles.statAmount}
+                  />
+                </View>
+                <View style={styles.verticalDivider} />
+                {/* owing balance */}
+                <View style={styles.balanceCircle} />
+                <View style={[styles.stats, { marginLeft: wp(13) }]}>
+                  <RegularText title="You spent" style={styles.statTitle} />
+                  <ParagraphText
+                    title="₦ 350,000.00"
+                    style={styles.statAmount}
+                  />
+                </View>
+              </View>
+            </View>
+            <View style={styles.insightRow}>
+              <Insight />
+              <ParagraphText title="View Insight" style={styles.insight} />
+            </View>
+          </View>
+
+          <View style={styles.leadRow}>
+            <ParagraphText title="Your Bills" style={styles.yourBills} />
+            <TouchableOpacity
+              style={styles.seeAllButton}
+              onPress={() => Actions.bill_list()}>
+              <RegularText title="See All" style={styles.seeAll} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.billsCard}>
+            <Tab
+              containerStyle={styles.tabContainer}
+              leftTabSelect={() => this.handleChange('selected', 'shortTerm')}
+              rightTabSelect={() => this.handleChange('selected', 'longTerm')}
+              rightTabSelected={selected === 'longTerm'}
+              leftTabSelected={selected === 'shortTerm'}
+            />
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ paddingBottom: hp(30) }}>
+              <BillItem />
+              <BillItem />
+              <BillItem />
+              <BillItem last />
+            </ScrollView>
+          </View>
+          <Button
+            title="Add a new bill"
+            icon={<ButtonPlus />}
+            style={styles.button}
+            onPress={() => this.handleChange('modal', true)}
+            // titleStyle={styles.buttonTitle}
+            left
+            flex
+          />
+        </View>
+        <ModalBlur
+          visible={modal}
+          hasBackdrop
+          style={{
+            height: hp(678),
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+            width: wp(375),
+            backgroundColor: White,
+            alignSelf: 'center',
+            bottom: -hp(25),
+          }}
+          fixed
+          onBackdropPress={() => this.handleChange('modal', false)}
+          render={<NewBill />}
+        />
+      </>
+    );
+  }
+}

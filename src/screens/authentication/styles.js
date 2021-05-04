@@ -627,9 +627,9 @@ export const setUp = StyleSheet.create({
   background: {
     flex: 1,
     alignItems: 'center',
-    height: '100%', // hdp(758),
-    width: '100%', // wdp(375),
-    backgroundColor: ScienceBlue,
+    // height: '100%', // hdp(758),
+    // width: '100%', // wdp(375),
+    // backgroundColor: ScienceBlue,
   },
   imageBg: {
     width: '100%',
@@ -648,26 +648,31 @@ export const setUp = StyleSheet.create({
     color: White,
   },
   mainView: {
-    marginTop: hp(35),
-    height: hp(635),
+    // marginTop: hp(35),
+    // height: hp(635),
   },
   profileGroup: {
     width: wp(141.46),
     height: hp(63),
     marginTop: hp(24),
   },
+  headerText: {
+    fontSize: 32,
+    marginTop: hp(56),
+    color: MineShaft,
+  },
   subText: {
-    fontSize: 15,
-    width: wp(151),
+    fontSize: 18,
+    width: wp(292),
     marginTop: hp(21),
     textAlign: 'center',
     color: Midnight,
-    lineHeight: 18,
+    lineHeight: 24,
   },
   backgroundCard: {
-    width: wp(304),
-    height: hp(388),
-    backgroundColor: 'rgba(0, 0, 0, 0.0001)', // White,
+    // width: wp(304),
+    // height: hp(388),
+    // backgroundColor: 'rgba(0, 0, 0, 0.0001)', // White,
     alignItems: 'center',
     marginTop: hp(20),
   },
@@ -677,8 +682,8 @@ export const setUp = StyleSheet.create({
     width: wp(318),
     height: hp(81),
     borderRadius: 13,
-    backgroundColor: '#F1F1F1', // 'rgba(0, 0, 0, 0.04)', // White,
-    // elevation: 8,
+    backgroundColor: White, // '#F1F1F1', // 'rgba(0, 0, 0, 0.04)'
+    elevation: 8,
   },
   innerContainer: {
     flexDirection: 'row',
@@ -690,7 +695,7 @@ export const setUp = StyleSheet.create({
     height: hp(65),
     borderRadius: 13,
     backgroundColor: White,
-    elevation: 3,
+    elevation: 8,
   },
   billImage: {
     width: wp(46),

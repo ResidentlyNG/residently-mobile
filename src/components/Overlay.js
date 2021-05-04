@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { BlurView } from '@react-native-community/blur';
 import Modal from 'react-native-modal';
+import { hp } from './utils';
 // import { Overlay as Modal } from 'react-native-elements';
 
 const ModalBlur = ({
@@ -10,6 +11,7 @@ const ModalBlur = ({
   style,
   render,
   hasBackdrop,
+  fixed,
   // ...rest
 }) => {
   return (
@@ -29,7 +31,7 @@ const ModalBlur = ({
         backdropOpacity={0.6}
         animationInTiming={500}
         onBackdropPress={onBackdropPress}
-        style={style}>
+        style={[styles.overlay, fixed && styles.fixed, style]}>
         {render}
       </Modal>
     </>
@@ -42,8 +44,10 @@ const styles = StyleSheet.create({
   overlay: {
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
+  },
+  fixed: {
     position: 'absolute',
-    bottom: 0,
+    bottom: -hp(10),
   },
   absolute: {
     position: 'absolute',
