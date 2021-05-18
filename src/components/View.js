@@ -2,7 +2,7 @@ import React from 'react';
 import { Image as Img, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { BackIconRound } from '../../assets/svgs';
-import { MineShaft, White, WhiteLilac } from './Colors';
+import { MineShaft, White, WhiteLilac, WoodSmoke } from './Colors';
 import { ParagraphText } from './Text';
 import { hp, wp } from './utils';
 
@@ -115,6 +115,9 @@ const styles = StyleSheet.create({
   tabTitle: {
     color: MineShaft,
   },
+  // backButton: {
+  //   marginLeft: wp(10),
+  // },
 
   headerPane: {
     height: 55,
@@ -127,8 +130,8 @@ const styles = StyleSheet.create({
     paddingLeft: wp(16),
   },
   headerTitle: {
-    color: White,
-    fontSize: 18,
+    color: WoodSmoke,
+    fontSize: 20,
     fontWeight: 'bold',
     letterSpacing: 0.5,
   },

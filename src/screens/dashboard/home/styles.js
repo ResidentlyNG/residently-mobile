@@ -106,6 +106,7 @@ export const home = StyleSheet.create({
     alignSelf: 'center',
     overflow: 'hidden',
     marginTop: hp(20),
+    elevation: 12,
   },
   handHeart: {
     width: wp(203),

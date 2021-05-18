@@ -6,7 +6,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Button as Btn } from 'react-native-elements';
-import { Green, White } from './Colors';
+import { ForwardArrow } from '../../assets/svgs';
+import { Green, Polar, White } from './Colors';
 import { ParagraphText } from './Text';
 import { hp, wp } from './utils';
 
@@ -47,15 +48,31 @@ const Button = ({
   );
 };
 
-const ActionButton = ({ icon, onPress, style, title, titleStyle }) => (
-  <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
+const ActionButton = ({
+  icon,
+  iconFill,
+  light,
+  onPress,
+  style,
+  title,
+  titleStyle,
+}) => (
+  <TouchableOpacity
+    style={[styles.button, light && styles.lightButton, style]}
+    onPress={onPress}>
     <View style={styles.actionRow}>
       <View />
       <ParagraphText
         title={title}
-        style={[styles.actionButtonTitle, titleStyle]}
+        style={[
+          styles.actionButtonTitle,
+          light && styles.lightTitle,
+          titleStyle,
+        ]}
       />
-      <View style={styles.buttonIcon}>{icon}</View>
+      <View style={styles.buttonIcon}>
+        {icon || <ForwardArrow fill={iconFill} />}
+      </View>
     </View>
   </TouchableOpacity>
 );
@@ -70,7 +87,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   lightButton: {
-    backgroundColor: 'rgba(0, 201, 149, 0.1)',
+    backgroundColor: Polar,
     borderWidth: 1,
     borderColor: Green,
   },
@@ -79,7 +96,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontFamily: 'Graphik-Medium',
+    fontFamily: 'Inter-Medium',
   },
   buttonIcon: {
     right: wp(25),
@@ -98,5 +115,6 @@ const styles = StyleSheet.create({
   actionButtonTitle: {
     fontSize: 16,
     color: White,
+    fontFamily: 'Inter-Medium',
   },
 });

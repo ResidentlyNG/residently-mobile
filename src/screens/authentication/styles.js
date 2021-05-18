@@ -132,12 +132,12 @@ export const getStartedStyles = StyleSheet.create({
   bottomText: {
     marginTop: hp(22),
     fontSize: 16,
-    fontFamily: 'Graphik-Regular',
+    fontFamily: 'Inter-Regular',
   },
   signUpText: {
     fontSize: 16,
     color: Green,
-    fontFamily: 'Graphik-Medium',
+    fontFamily: 'Inter-Medium',
     fontWeight: '600',
   },
 });
@@ -308,7 +308,7 @@ export const createAccountStyles = StyleSheet.create({
   signUpText: {
     fontSize: 16,
     color: Green,
-    fontFamily: 'Graphik-Semibold',
+    fontFamily: 'Inter-Semibold',
   },
 });
 

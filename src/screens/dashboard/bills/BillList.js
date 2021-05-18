@@ -59,7 +59,7 @@ const BillList = () => {
     <>
       <StatusBar barStyle="light-content" backgroundColor={DodgerBlue} />
       <View style={styles.background}>
-        <Header title="Your Bills" />
+        <Header title="Your Bills" titleStyle={{ color: White }} />
         <View style={styles.billsCard}>
           <Tab
             containerStyle={styles.tabContainer}
@@ -109,7 +109,7 @@ const BillList = () => {
         }}
         fixed
         onBackdropPress={() => setModal(false)}
-        render={<NewBill />}
+        render={<NewBill closeModal={() => setModal(false)} />}
       />
     </>
   );

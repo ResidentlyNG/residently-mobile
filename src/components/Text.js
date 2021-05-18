@@ -45,23 +45,23 @@ export const ParagraphDouble = ({ title, subTitle, onPress }) => (
 
 const styles = StyleSheet.create({
   headerTextStyle: {
-    fontFamily: 'Graphik-Bold',
+    fontFamily: 'Inter-Bold',
     fontSize: hp(30),
 
     color: Colors.BostonBlue,
   },
   paragraphTextStyle: {
-    fontFamily: 'Graphik-Medium',
+    fontFamily: 'Inter-Medium',
     fontSize: hp(14),
     color: '#628195',
   },
   semiboldTextStyle: {
-    fontFamily: 'Graphik-Semibold',
+    fontFamily: 'Inter-SemiBold',
     fontSize: hp(13),
     color: '#628195',
   },
   regularTextStyle: {
-    fontFamily: 'Graphik-Regular',
+    fontFamily: 'Inter-Regular',
     fontSize: hp(12),
 
     color: Colors.Lynch,

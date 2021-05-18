@@ -162,7 +162,9 @@ export default class Bills extends Component {
           }}
           fixed
           onBackdropPress={() => this.handleChange('modal', false)}
-          render={<NewBill />}
+          render={
+            <NewBill closeModal={() => this.handleChange('modal', false)} />
+          }
         />
       </>
     );

@@ -2,7 +2,7 @@ import {
   widthPercentageToDP as wdp,
   heightPercentageToDP as hdp,
 } from 'react-native-responsive-screen';
-// import accounting from 'accounting';
+import accounting from 'accounting';
 // import { store } from '../store';
 
 const CustomHeight = 800; // 740;
@@ -50,3 +50,11 @@ export const circle = (size, color, props) => ({
   alignItems: 'center',
   ...props,
 });
+
+/**
+ * Naira formatter
+ * @param {Number} amount
+ */
+export const NairaFormat = (amount) => {
+  return accounting.formatMoney(amount, '₦ ', 2);
+};

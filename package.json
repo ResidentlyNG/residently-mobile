@@ -12,10 +12,12 @@
   },
   "dependencies": {
     "@react-native-community/blur": "^3.6.0",
+    "accounting": "^0.4.1",
     "native-base": "^2.15.2",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-app-intro-slider": "^4.0.4",
+    "react-native-datepicker": "^1.7.2",
     "react-native-elements": "^3.1.0",
     "react-native-gesture-handler": "^1.9.0",
     "react-native-global-props": "^1.1.5",

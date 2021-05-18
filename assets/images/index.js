@@ -30,6 +30,9 @@ const apartmentBg = require('./apartment-bg.png');
 const apartment = require('./apartment.png');
 const handHeart = require('./hand-heart.png');
 const twoRoommates = require('./roommate.png');
+const abeg = require('./abeg.png');
+const bank = require('./bank.png');
+const paystack = require('./paystack.png');
 
 export {
   coliving,
@@ -64,4 +67,7 @@ export {
   apartment,
   handHeart,
   twoRoommates,
+  abeg,
+  bank,
+  paystack,
 };

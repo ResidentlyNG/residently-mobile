@@ -1,5 +1,6 @@
 import React from 'react';
 import Svg, { Circle, Ellipse, G, Mask, Path, Rect } from 'react-native-svg';
+import { Midnight } from '../src/components';
 
 export const MainIcon = (props) => (
   <Svg
@@ -529,7 +530,58 @@ export const BackIconRound = (props) => (
       fillRule="evenodd"
       clipRule="evenodd"
       d="M10.445 17.57l-3.673-3.85c-.055-.059-.082-.13-.125-.195-.046-.069-.101-.13-.133-.207a1.292 1.292 0 01-.098-.484 1.298 1.298 0 01.378-.909l3.848-3.849a1.282 1.282 0 111.815 1.815l-1.66 1.66h7.17a1.282 1.282 0 110 2.566h-7.268l1.603 1.68a1.283 1.283 0 11-1.857 1.772zm15.222-4.737C25.667 5.756 19.91 0 12.833 0 5.757 0 0 5.756 0 12.833s5.757 12.834 12.833 12.834c7.077 0 12.834-5.757 12.834-12.834z"
-      fill="#fff"
+      fill={props.fill || Midnight}
+    />
+  </Svg>
+);
+
+export const Calendar = (props) => (
+  <Svg
+    width={24}
+    height={24}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M19 11H5V7c0-.551.449-1 1-1h1v1c0 .55.45 1 1 1s1-.45 1-1V6h6v1c0 .55.45 1 1 1s1-.45 1-1V6h1c.551 0 1 .449 1 1v4zm-3 6h-4c-.55 0-1-.45-1-1s.45-1 1-1h4c.55 0 1 .45 1 1s-.45 1-1 1zm-8 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM18 4h-1V3c0-.55-.45-1-1-1s-1 .45-1 1v1H9V3c0-.55-.45-1-1-1s-1 .45-1 1v1H6C4.346 4 3 5.346 3 7v12c0 1.654 1.346 3 3 3h12c1.654 0 3-1.346 3-3V7c0-1.654-1.346-3-3-3z"
+      fill="#C0CCDA"
+    />
+    <Mask
+      id="prefix__a"
+      maskUnits="userSpaceOnUse"
+      x={3}
+      y={2}
+      width={18}
+      height={20}>
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M19 11H5V7c0-.551.449-1 1-1h1v1c0 .55.45 1 1 1s1-.45 1-1V6h6v1c0 .55.45 1 1 1s1-.45 1-1V6h1c.551 0 1 .449 1 1v4zm-3 6h-4c-.55 0-1-.45-1-1s.45-1 1-1h4c.55 0 1 .45 1 1s-.45 1-1 1zm-8 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM18 4h-1V3c0-.55-.45-1-1-1s-1 .45-1 1v1H9V3c0-.55-.45-1-1-1s-1 .45-1 1v1H6C4.346 4 3 5.346 3 7v12c0 1.654 1.346 3 3 3h12c1.654 0 3-1.346 3-3V7c0-1.654-1.346-3-3-3z"
+        fill="#fff"
+      />
+    </Mask>
+    <G mask="url(#prefix__a)">
+      <Path fill="#C0CCDA" d="M0 0h24v24H0z" />
+    </G>
+  </Svg>
+);
+
+export const Chevrolet = (props) => (
+  <Svg
+    width={8}
+    height={13}
+    viewBox="0 0 8 13"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M.215 11.452L5.31 6.406.215 1.333C-.475.663.655-.48 1.345.218l5.812 5.714c.248.251.248.67 0 .892l-5.813 5.77c-.689.67-1.818-.473-1.13-1.142z"
+      fill="#000A2E"
     />
   </Svg>
 );

@@ -1,12 +1,25 @@
 import { StyleSheet } from 'react-native';
 import {
+  AthensGray,
   AzureRadiance,
+  CatskillWhite,
   DodgerBlue,
   Green,
+  Heather,
+  Midnight,
   MineShaft,
+  Mirage,
+  Polar,
   RadicalRed,
+  ScienceBlue,
+  Scorpion,
+  Shamrock,
+  StormGray,
+  Tundora,
   White,
+  WhiteLilac,
   WildSand,
+  WoodSmoke,
 } from '../../../components';
 import { circle, hp, wp } from '../../../components/utils';
 
@@ -205,7 +218,7 @@ export const bills = StyleSheet.create({
   },
   buttonTitle: {
     fontSize: 17,
-    fontFamily: 'Graphik-Regular',
+    fontFamily: 'Inter-Regular',
   },
 
   buttonLeftIcon: {
@@ -244,5 +257,368 @@ export const billList = StyleSheet.create({
   },
   tabContainer: {
     marginTop: hp(12),
+  },
+});
+
+export const newBill = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: White,
+  },
+  backArrow: {
+    alignSelf: 'flex-start',
+    marginLeft: wp(20),
+    width: wp(30),
+    height: wp(30),
+    marginTop: hp(15),
+    borderRadius: wp(30) / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerText: {
+    fontSize: 32,
+    color: MineShaft,
+    alignSelf: 'flex-start',
+    marginLeft: wp(26),
+    marginTop: hp(5),
+  },
+  subText: {
+    fontSize: 15,
+    color: Tundora,
+    width: wp(243),
+    lineHeight: 21,
+    alignSelf: 'flex-start',
+    marginLeft: wp(26),
+    marginTop: hp(10),
+  },
+  cardRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: wp(294),
+  },
+  roleCard: {
+    width: wp(324),
+    height: hp(97),
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: ScienceBlue,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: hp(37),
+  },
+  host: {
+    width: wp(70),
+    height: hp(70),
+  },
+  arrowBox: {
+    width: wp(18.1),
+    height: hp(17),
+    borderRadius: 5,
+    backgroundColor: ScienceBlue,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 15,
+    color: Scorpion,
+  },
+  detail: {
+    fontSize: 11,
+    width: wp(200),
+    color: 'rgba(0, 0, 0, 0.3)',
+  },
+
+  userHeaderText: {
+    fontSize: 25,
+    color: Mirage,
+    alignSelf: 'flex-start',
+    marginLeft: wp(30),
+    marginTop: hp(30),
+  },
+  userSubText: {
+    fontSize: 14,
+    color: Midnight,
+    alignSelf: 'flex-start',
+    marginLeft: wp(30),
+    marginTop: hp(20),
+  },
+  searchInput: {
+    width: wp(285),
+    marginLeft: wp(6),
+    height: hp(46),
+    borderWidth: 0,
+  },
+  searchView: {
+    width: wp(309),
+    height: hp(46),
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: AthensGray,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: wp(20),
+    marginTop: hp(8),
+  },
+  contactsTitle: {
+    fontSize: 14,
+    color: Midnight,
+    marginTop: hp(25),
+    alignSelf: 'flex-start',
+  },
+
+  contactCardRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: wp(285),
+  },
+
+  roleContactCard: {
+    width: wp(309),
+    height: hp(71),
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: AthensGray,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: hp(37),
+  },
+  contactHost: {
+    width: wp(52),
+    height: hp(52),
+  },
+  tickBox: {
+    width: wp(14),
+    height: wp(14),
+    borderRadius: wp(14) / 2,
+    backgroundColor: Green,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  box: {
+    width: wp(14),
+    height: wp(14),
+    borderRadius: wp(14) / 2,
+    borderColor: AthensGray,
+    borderWidth: 1,
+    // backgroundColor: AthensGray,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  sectionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  sectionProfile: {
+    marginLeft: wp(5),
+  },
+});
+
+export const customBill = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  mainView: {
+    width: wp(355),
+    height: hp(700),
+    elevation: 6,
+  },
+  leadText: {
+    fontSize: 25,
+    color: WoodSmoke,
+    width: wp(243),
+    alignSelf: 'flex-start',
+    marginLeft: wp(23),
+    marginTop: hp(23),
+  },
+  leadInput: {
+    marginTop: hp(26),
+  },
+  input: {
+    marginTop: hp(20),
+  },
+  splitButton: {
+    marginTop: hp(32),
+  },
+  individualButton: {
+    marginTop: hp(18),
+  },
+});
+
+export const processBill = StyleSheet.create({
+  ...customBill,
+  amountView: {
+    width: wp(325),
+    height: hp(64),
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: Heather,
+    backgroundColor: CatskillWhite,
+    marginTop: hp(27),
+  },
+  amountLabel: {
+    fontSize: 14,
+    color: StormGray,
+    marginTop: hp(6),
+    marginLeft: wp(31),
+  },
+  amount: {
+    fontSize: 21,
+    color: Mirage,
+    // marginTop: hp(6),
+    marginLeft: wp(31),
+  },
+  slider: {
+    width: wp(314),
+    height: hp(20),
+    marginTop: hp(20),
+    // backgroundColor: '#F0F0F0',
+  },
+  thumb: circle(16, Green, {
+    borderWidth: 1,
+    borderColor: '#FFF4F4',
+    elevation: 5,
+  }),
+
+  paymentRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: hp(44),
+    width: wp(314),
+  },
+  splitText: {
+    fontSize: 18,
+    color: Midnight,
+  },
+  evenSplit: {
+    color: Green,
+    fontSize: 12,
+  },
+
+  paymentView: {
+    width: wp(325),
+    height: hp(74),
+    borderRadius: 16,
+    backgroundColor: White,
+    elevation: 6,
+    justifyContent: 'center',
+    marginTop: hp(14),
+  },
+  cardGrid: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  host: {
+    width: wp(52),
+    height: hp(52),
+  },
+  hostName: {
+    fontSize: 12,
+    color: MineShaft,
+    marginLeft: wp(7),
+    width: wp(30),
+  },
+  amountInput: {
+    width: wp(165),
+    height: hp(33),
+    borderRadius: 6,
+    backgroundColor: 'rgba(209, 218, 227, 0.09)',
+    borderWidth: 1,
+    borderColor: 'rgba(184, 184, 185, 0.11)',
+    marginLeft: wp(7),
+  },
+  splitAmount: {
+    color: Mirage,
+    fontSize: 17,
+    lineHeight: 28,
+    marginLeft: wp(7),
+  },
+  quotaView: {
+    width: wp(40),
+    height: hp(33),
+    borderWidth: 1,
+    borderColor: Green,
+    backgroundColor: Polar,
+    borderRadius: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: wp(5),
+  },
+  quota: {
+    fontSize: 12,
+    color: Shamrock,
+  },
+
+  dateInput: {
+    width: wp(325),
+    height: hp(64),
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: Heather,
+    backgroundColor: CatskillWhite,
+    marginTop: hp(25),
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  calendar: {
+    marginLeft: wp(24),
+  },
+  dateView: {
+    marginLeft: wp(16),
+  },
+
+  view: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  modalLeadText: {
+    marginTop: hp(40),
+    color: Mirage,
+    fontSize: 25,
+    width: wp(302),
+  },
+  merchantView: {
+    width: wp(301),
+    height: hp(62),
+    borderRadius: 10,
+    backgroundColor: 'rgba(117, 63, 246, 0.14)',
+    marginTop: hp(20),
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  merchantLogoBox: {
+    width: wp(42),
+    height: hp(39),
+    backgroundColor: WhiteLilac,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 6,
+    marginLeft: wp(14),
+  },
+  abeg: {
+    width: wp(15),
+    height: hp(21),
+  },
+  merchant: {
+    fontSize: 14,
+    color: Midnight,
+    marginLeft: wp(18),
+  },
+  chevrolet: {
+    position: 'absolute',
+    right: wp(22),
+  },
+  paystack: {
+    width: wp(21),
+    height: hp(21),
+  },
+  account: {
+    width: wp(23),
+    height: hp(23),
   },
 });

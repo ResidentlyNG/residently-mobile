@@ -12,6 +12,9 @@ import UserIntro from './screens/authentication/UserIntro';
 import Dashboard from './screens/dashboard';
 import Bills from './screens/dashboard/bills';
 import BillList from './screens/dashboard/bills/BillList';
+import CustomBill from './screens/dashboard/bills/CustomBill';
+import NewBill from './screens/dashboard/bills/NewBill';
+import ProcessBill from './screens/dashboard/bills/ProcessBill';
 import Onboarding from './screens/onboarding';
 
 export default class RouterComponent extends Component {
@@ -40,6 +43,9 @@ export default class RouterComponent extends Component {
           <Scene key="dashboard" component={Dashboard} />
           <Scene key="bills" component={Bills} />
           <Scene key="bill_list" component={BillList} />
+          <Scene key="new_bill" component={NewBill} />
+          <Scene key="custom_bill" component={CustomBill} />
+          <Scene key="process_bill" component={ProcessBill} />
         </Scene>
       </Router>
     );

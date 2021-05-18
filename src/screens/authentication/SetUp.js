@@ -1,5 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 // import { Actions } from 'react-native-router-flux';
 // import { BoxShadow } from 'react-native-shadow';
 import { house, serviceGroup, moneyBag, bills } from '../../../assets/images';
@@ -17,8 +18,11 @@ import {
 import { Image } from '../../components/View';
 import { setUp as styles } from './styles';
 
-const BillCard = ({ image, color, title, style }) => (
-  <View style={[styles.billContainer, style]}>
+const BillCard = ({ image, onPress, color, title, style }) => (
+  <TouchableOpacity
+    onPress={onPress}
+    activeOpacity={0.8}
+    style={[styles.billContainer, style]}>
     {/* <BoxShadow setting={shadowOpt}> */}
     <View style={styles.innerContainer}>
       <View style={styles.sectionRow}>
@@ -36,10 +40,10 @@ const BillCard = ({ image, color, title, style }) => (
       </View>
     </View>
     {/* </BoxShadow> */}
-  </View>
+  </TouchableOpacity>
 );
 
-const SetUp = () => {
+const SetUp = (props) => {
   // const shadowOpt = {
   //   width: wp(304),
   //   height: hp(428),
@@ -51,6 +55,10 @@ const SetUp = () => {
   //   y: 54,
   //   // style: { marginTop: hp(15) },
   // };
+  const openNewBill = () => {
+    props.closeModal();
+    Actions.new_bill();
+  };
 
   return (
     <>
@@ -72,7 +80,12 @@ const SetUp = () => {
         />
         {/* <BoxShadow setting={shadowOpt}> */}
         <View style={styles.backgroundCard}>
-          <BillCard title="Rent" color={Green} image={house} />
+          <BillCard
+            title="Rent"
+            color={Green}
+            image={house}
+            onPress={() => openNewBill()}
+          />
           <BillCard
             title="Service Charge"
             color={DodgerBlue}
