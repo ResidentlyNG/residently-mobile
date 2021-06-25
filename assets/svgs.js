@@ -1,6 +1,6 @@
 import React from 'react';
 import Svg, { Circle, Ellipse, G, Mask, Path, Rect } from 'react-native-svg';
-import { Midnight } from '../src/components';
+import { Midnight } from '../src/components/Colors';
 
 export const MainIcon = (props) => (
   <Svg

@@ -19,9 +19,8 @@ import {
   secondScreenBg,
   thirdScreenBg,
 } from '../../../assets/images';
-import { ForwardIcon, MainIcon } from '../../../assets/svgs';
-import { RegularText } from '../../components';
-// import { RightChevrolet } from '../../../assets/svgs';
+import { MainIcon } from '../../../assets/svgs';
+import { ActionButton, RegularText } from '../../components';
 
 const slides = [
   {
@@ -87,15 +86,7 @@ export default class Onboarding extends Component {
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.text}>{item.text}</Text>
       </View>
-      {/* <View style={styles.bottomRow}>
-        <TouchableOpacity
-          style={styles.createAccountButton}
-          onPress={() => Actions.get_started({ type: 'reset' })}>
-          <ParagraphText title="Get Started" style={styles.createAccountText} />
-        </TouchableOpacity>
-      </View> */}
     </ImageBackground>
-    // </View>
   );
 
   handleStatusColor = (index) => {
@@ -108,9 +99,12 @@ export default class Onboarding extends Component {
   _renderNextButton = () => {
     return (
       <View style={styles.buttonContainer}>
-        <View style={styles.nextButton}>
-          <ForwardIcon />
-        </View>
+        <ActionButton
+          title="Next"
+          style={styles.actionButton}
+          titleStyle={styles.actionTitle}
+          iconFill={Colors.MineShaft}
+        />
       </View>
     );
   };
