@@ -115,7 +115,11 @@ need few information from you."
           </KeyboardAwareScrollView>
         </View>
         <Text style={styles.bottomText}>
-          Already have an account? <Text style={styles.signUpText}> Login</Text>
+          Already have an account?{' '}
+          <Text onPress={() => Actions.login()} style={styles.signUpText}>
+            {' '}
+            Login
+          </Text>
         </Text>
       </ImageBackground>
     </>

@@ -2,9 +2,17 @@ import React from 'react';
 import { Image as Img, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { BackIconRound } from '../../assets/svgs';
-import { MineShaft, White, WhiteLilac, WoodSmoke } from './Colors';
-import { ParagraphText } from './Text';
-import { hp, wp } from './utils';
+import {
+  EarlyDawn,
+  MineShaft,
+  SelectiveYellow,
+  Sunglow,
+  White,
+  WhiteLilac,
+  WoodSmoke,
+} from './Colors';
+import { ParagraphText, RegularText } from './Text';
+import { circle, hp, wp } from './utils';
 
 export const MainView = (props) => {
   return (
@@ -76,6 +84,20 @@ export const Header = ({
   );
 };
 
+export const BillIcon = ({ backgroundColor, icon }) => (
+  <View
+    style={[styles.billIcon, { backgroundColor: backgroundColor || Sunglow }]}>
+    {icon || <View />}
+  </View>
+);
+
+export const TimeBadge = () => (
+  <View style={styles.badge}>
+    <View style={styles.stump} />
+    <RegularText title="2 weeks" style={styles.duration} />
+  </View>
+);
+
 const styles = StyleSheet.create({
   mainBackground: {
     backgroundColor: White,
@@ -134,5 +156,24 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     letterSpacing: 0.5,
+  },
+
+  billIcon: {
+    ...circle(35.43),
+  },
+  badge: {
+    borderRadius: 7,
+    padding: 5,
+    backgroundColor: EarlyDawn,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  stump: {
+    ...circle(8, SelectiveYellow),
+  },
+  duration: {
+    color: SelectiveYellow,
+    fontSize: 11,
+    marginLeft: wp(3),
   },
 });

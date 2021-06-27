@@ -145,7 +145,7 @@ export const getStartedStyles = StyleSheet.create({
 export const loginStyles = StyleSheet.create({
   ...getStartedStyles,
   mainView: {
-    marginTop: hp(35),
+    marginTop: hp(75),
     backgroundColor: White,
     height: hp(672),
     width: wp(355),

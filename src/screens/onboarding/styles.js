@@ -87,13 +87,26 @@ export const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: wp(345),
-    alignSelf: 'center',
+    alignItems: 'center',
     bottom: hp(33),
+  },
+  actionRow: {
+    width: wp(319),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: White,
+    height: hp(64),
+    borderRadius: 16,
   },
   actionButton: { backgroundColor: White, alignSelf: 'center' },
   actionTitle: {
     color: MineShaft,
     fontSize: 17,
     fontWeight: 'bold',
+  },
+  buttonIcon: {
+    right: wp(25),
+    position: 'absolute',
   },
 });

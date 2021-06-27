@@ -19,8 +19,8 @@ import {
   secondScreenBg,
   thirdScreenBg,
 } from '../../../assets/images';
-import { MainIcon } from '../../../assets/svgs';
-import { ActionButton, RegularText } from '../../components';
+import { ForwardArrow, MainIcon } from '../../../assets/svgs';
+import { ParagraphText, RegularText } from '../../components';
 
 const slides = [
   {
@@ -99,12 +99,13 @@ export default class Onboarding extends Component {
   _renderNextButton = () => {
     return (
       <View style={styles.buttonContainer}>
-        <ActionButton
-          title="Next"
-          style={styles.actionButton}
-          titleStyle={styles.actionTitle}
-          iconFill={Colors.MineShaft}
-        />
+        <View style={styles.actionRow}>
+          <View />
+          <ParagraphText title="Next" style={[styles.actionTitle]} />
+          <View style={styles.buttonIcon}>
+            <ForwardArrow fill={Colors.MineShaft} />
+          </View>
+        </View>
       </View>
     );
   };
@@ -122,6 +123,7 @@ export default class Onboarding extends Component {
           showNextButton={true}
           showDoneButton={true}
           renderNextButton={this._renderNextButton}
+          // renderPagination={() => null}
           onSlideChange={(index) =>
             this.setState({
               page: index + 1,

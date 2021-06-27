@@ -15,6 +15,7 @@ import BillList from './screens/dashboard/bills/BillList';
 import CustomBill from './screens/dashboard/bills/CustomBill';
 import NewBill from './screens/dashboard/bills/NewBill';
 import ProcessBill from './screens/dashboard/bills/ProcessBill';
+import Intro from './screens/dashboard/Intro';
 import Onboarding from './screens/onboarding';
 
 export default class RouterComponent extends Component {
@@ -40,6 +41,7 @@ export default class RouterComponent extends Component {
           <Scene key="invite_success" component={InviteSuccess} />
           <Scene key="setup" component={SetUp} />
           <Scene key="join" component={Join} />
+          <Scene key="intro" component={Intro} />
           <Scene key="dashboard" component={Dashboard} />
           <Scene key="bills" component={Bills} />
           <Scene key="bill_list" component={BillList} />

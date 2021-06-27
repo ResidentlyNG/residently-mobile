@@ -31,3 +31,5 @@ export const StormGray = '#6E7191';
 export const Polar = '#E5F9F3';
 export const Whisper = '#ECE9F1';
 export const Shamrock = '#39D5AC';
+export const EarlyDawn = '#FFF9E8';
+export const SelectiveYellow = '#F0B200';
