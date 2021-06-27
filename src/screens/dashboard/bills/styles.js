@@ -151,12 +151,17 @@ export const bills = StyleSheet.create({
   },
   seeAllButton: {
     height: hp(30),
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: wp(65),
     alignItems: 'center',
   },
   seeAll: {
     fontSize: 14,
     color: Green,
+  },
+  arrow: {
+    marginLeft: wp(7),
   },
 
   billsCard: {

@@ -8,8 +8,9 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { profileGroup } from '../../../../assets/images';
-import { Cross, Insight } from '../../../../assets/svgs';
+import { Cross, ForwardArrow, Insight } from '../../../../assets/svgs';
 import {
+  Green,
   HeaderText,
   ParagraphText,
   RegularText,
@@ -116,6 +117,9 @@ export default class Bills extends Component {
               style={styles.seeAllButton}
               onPress={() => Actions.bill_list()}>
               <RegularText title="See All" style={styles.seeAll} />
+              <View style={styles.arrow}>
+                <ForwardArrow fill={Green} />
+              </View>
             </TouchableOpacity>
           </View>
           <View style={styles.billsCard}>

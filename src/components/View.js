@@ -56,9 +56,9 @@ export const Header = ({
   backPress,
   title,
   titleStyle,
-  // search,
-  // rightComponent,
-  // rightComponentPress,
+  iconFill,
+  rightComponent,
+  rightComponentPress,
 }) => {
   // const iconHandler = () => {
   //   if (rightComponent) return rightComponent;
@@ -71,15 +71,18 @@ export const Header = ({
       <TouchableOpacity
         onPress={() => backPress || Actions.pop()}
         style={styles.backButton}>
-        <BackIconRound />
+        <BackIconRound fill={iconFill} />
       </TouchableOpacity>
       <ParagraphText title={title} style={[styles.headerTitle, titleStyle]} />
-      <View />
-      {/* <TouchableOpacity
-        style={styles.search}
-        onPress={() => rightComponentPress()}>
-        {iconHandler()}
-      </TouchableOpacity> */}
+      {rightComponent ? (
+        <TouchableOpacity
+          style={styles.search}
+          onPress={() => (rightComponentPress ? rightComponentPress() : {})}>
+          {rightComponent}
+        </TouchableOpacity>
+      ) : (
+        <View />
+      )}
     </View>
   );
 };

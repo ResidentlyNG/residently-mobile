@@ -11,6 +11,7 @@ import {
   WalletMenu,
 } from '../../../assets/svgs';
 import Bills from './bills';
+import Wallet from './wallet';
 
 export default class Dashboard extends Component {
   state = {
@@ -39,6 +40,7 @@ export default class Dashboard extends Component {
 
   displayScreen = (screen) => {
     if (screen === 'Bills') return <Bills />;
+    if (screen === 'Wallet') return <Wallet />;
     return <Home />;
   };
 
