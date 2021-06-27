@@ -15,6 +15,7 @@ import {
   Scorpion,
   Shamrock,
   StormGray,
+  Thunder,
   Tundora,
   White,
   WhiteLilac,
@@ -620,5 +621,68 @@ export const processBill = StyleSheet.create({
   account: {
     width: wp(23),
     height: hp(23),
+  },
+});
+
+export const createBill = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  mainCard: {
+    width: wp(331),
+    height: hp(430),
+    borderRadius: 20,
+    backgroundColor: White,
+    elevation: 5,
+    marginTop: hp(45),
+    alignItems: 'center',
+  },
+  mainText: {
+    fontSize: 14,
+    color: MineShaft,
+    marginLeft: wp(26),
+    marginTop: hp(20),
+    alignSelf: 'flex-start',
+  },
+  button: {
+    marginTop: hp(45),
+  },
+  plusView: circle(31, White),
+
+  billContainer: {
+    width: wp(258),
+    marginTop: hp(18),
+  },
+  innerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  sectionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  divider: {
+    width: wp(286),
+    height: 1,
+    marginTop: hp(18),
+    backgroundColor: WildSand,
+  },
+  billImage: {
+    width: wp(46),
+    height: wp(46),
+  },
+  title: {
+    fontSize: 15,
+    color: Thunder,
+    marginLeft: wp(11),
+  },
+  arrowBox: {
+    width: wp(18),
+    height: hp(17),
+    borderRadius: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

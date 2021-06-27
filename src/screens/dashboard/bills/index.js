@@ -7,8 +7,8 @@ import {
   View,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { profileGroup, user } from '../../../../assets/images';
-import { Cross, Insight, NotificationBell } from '../../../../assets/svgs';
+import { profileGroup } from '../../../../assets/images';
+import { Cross, Insight } from '../../../../assets/svgs';
 import {
   HeaderText,
   ParagraphText,
@@ -41,22 +41,18 @@ const ButtonPlus = () => (
   </View>
 );
 
-const Button = ({ icon, onPress, title, titleStyle }) => (
-  <TouchableOpacity style={styles.button} onPress={onPress}>
-    <View style={styles.actionRow}>
-      <View style={styles.buttonLeftIcon}>{icon}</View>
-      <ParagraphText
-        title={title}
-        style={[styles.actionButtonTitle, titleStyle]}
-      />
-      {/* <View style={styles.buttonIcon}>{icon}</View> */}
-    </View>
-  </TouchableOpacity>
-);
-
-// const NewBill = () => (
-
-// )
+// const Button = ({ icon, onPress, title, titleStyle }) => (
+//   <TouchableOpacity style={styles.button} onPress={onPress}>
+//     <View style={styles.actionRow}>
+//       <View style={styles.buttonLeftIcon}>{icon}</View>
+//       <ParagraphText
+//         title={title}
+//         style={[styles.actionButtonTitle, titleStyle]}
+//       />
+//       {/* <View style={styles.buttonIcon}>{icon}</View> */}
+//     </View>
+//   </TouchableOpacity>
+// );
 
 export default class Bills extends Component {
   state = {
@@ -74,11 +70,12 @@ export default class Bills extends Component {
         <StatusBar backgroundColor={White} barStyle="dark-content" />
         <View style={styles.background}>
           <View style={styles.headerGrid}>
-            <Image source={user} style={styles.profileImage} />
+            <View />
             <ParagraphText title="Bills" style={styles.headerText} />
-            <View style={styles.bell}>
-              <NotificationBell />
-            </View>
+            <TouchableOpacity onPress={() => Actions.create_bill()}>
+              {/* this.handleChange('modal', true)}> */}
+              <ButtonPlus />
+            </TouchableOpacity>
           </View>
           <View style={styles.insightContainer}>
             <View style={styles.walletView}>
@@ -138,7 +135,7 @@ export default class Bills extends Component {
               <BillItem last />
             </ScrollView>
           </View>
-          <Button
+          {/* <Button
             title="Add a new bill"
             icon={<ButtonPlus />}
             style={styles.button}
@@ -146,7 +143,7 @@ export default class Bills extends Component {
             // titleStyle={styles.buttonTitle}
             left
             flex
-          />
+          /> */}
         </View>
         <ModalBlur
           visible={modal}

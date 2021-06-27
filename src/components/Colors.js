@@ -33,3 +33,4 @@ export const Whisper = '#ECE9F1';
 export const Shamrock = '#39D5AC';
 export const EarlyDawn = '#FFF9E8';
 export const SelectiveYellow = '#F0B200';
+export const Thunder = '#231F20';
