@@ -126,7 +126,7 @@ export default class Home extends Component {
                     />
                     <TouchableOpacity
                       style={styles.seeAllButton}
-                      onPress={() => Actions.bills()}>
+                      onPress={() => Actions.bill_list()}>
                       <RegularText title="See All" style={styles.seeAll} />
                     </TouchableOpacity>
                   </View>

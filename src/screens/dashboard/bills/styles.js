@@ -243,7 +243,7 @@ export const billList = StyleSheet.create({
   ...bills,
   background: {
     flex: 1,
-    backgroundColor: DodgerBlue,
+    backgroundColor: White,
     alignItems: 'center',
   },
   billsCard: {

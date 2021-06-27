@@ -1,10 +1,10 @@
 import { Platform, StyleSheet } from 'react-native';
 import { heightPercentageToDP as hdp } from 'react-native-responsive-screen';
 import {
-  Alto,
   DodgerBlue,
   ForgetMeNot,
   Green,
+  GullGray,
   MineShaft,
   PattensBlue,
   Scorpion,
@@ -29,16 +29,19 @@ export const dashboard = StyleSheet.create({
   },
   footer: {
     height: footerHeight(),
+    width: '100%',
     position: 'absolute',
     bottom: 0,
     zIndex: 80,
   },
   footerTab: {
+    flexDirection: 'row',
     backgroundColor: White,
     alignItems: 'center',
+    justifyContent: 'space-between',
     borderColor: 'rgba(155, 132, 135, 0.142097)',
-    paddingLeft: wp(30),
-    paddingRight: wp(30),
+    paddingLeft: wp(10),
+    paddingRight: wp(10),
     borderTopWidth: 2,
     // paddingBottom: Platform.OS === 'ios' && isIPhoneX() ? hp(18) : null,
   },
@@ -46,12 +49,11 @@ export const dashboard = StyleSheet.create({
     padding: 15,
   },
   activeButton: {
-    // height: hp(44),
-    // width: wp(115),
+    width: wp(48),
     alignItems: 'center',
   },
   menuTitle: {
-    color: Alto,
+    color: GullGray,
     marginTop: hp(6),
   },
 });
