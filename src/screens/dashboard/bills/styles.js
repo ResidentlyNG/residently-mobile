@@ -3,9 +3,12 @@ import {
   AthensGray,
   AzureRadiance,
   CatskillWhite,
+  CodGray,
+  Deyser,
   DodgerBlue,
   Green,
   Heather,
+  MidGray,
   Midnight,
   MineShaft,
   Mirage,
@@ -689,5 +692,148 @@ export const createBill = StyleSheet.create({
     borderRadius: 6,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+});
+
+export const bill = StyleSheet.create({
+  background: {
+    flex: 1,
+    backgroundColor: White,
+    alignItems: 'center',
+  },
+  mainView: {
+    width: wp(341),
+    height: hp(647),
+    borderRadius: 20,
+    backgroundColor: White,
+    elevation: 5,
+    alignItems: 'center',
+    marginTop: hp(20),
+  },
+  amountView: {
+    width: wp(341),
+    height: hp(360),
+    borderRadius: 20,
+    backgroundColor: White,
+    elevation: 7,
+    borderColor: 'rgba(0, 0, 0, 0.06)',
+    borderWidth: 0.2,
+    alignItems: 'center',
+  },
+  amountTitle: {
+    marginTop: hp(36),
+    color: MineShaft,
+    fontSize: 18,
+  },
+  amount: {
+    fontSize: 30,
+    // marginTop: hp(14),
+    color: Green,
+  },
+  profileGroup: {
+    width: wp(76),
+    height: hp(34),
+  },
+
+  shareView: {
+    width: wp(269),
+    height: hp(132),
+    borderRadius: 20,
+    backgroundColor: White,
+    elevation: 3,
+    marginTop: hp(23),
+    alignItems: 'center',
+  },
+  shareText: {
+    marginTop: hp(10),
+    color: MineShaft,
+    fontSize: 14,
+  },
+  personalAmount: {
+    marginTop: hp(5),
+    color: MineShaft,
+    fontSize: 18,
+  },
+  rateView: {
+    marginTop: hp(19),
+    borderWidth: 1,
+    backgroundColor: Polar,
+    borderColor: Green,
+    width: wp(40.6),
+    height: hp(33),
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 6,
+  },
+  rate: {
+    fontSize: 12,
+    color: Shamrock,
+  },
+  insightRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: hp(16),
+  },
+  insight: {
+    fontSize: 14,
+    color: Green,
+    marginLeft: wp(14.7),
+  },
+
+  paymentTitle: {
+    marginTop: hp(37),
+    color: MineShaft,
+    fontSize: 11,
+  },
+  bankView: {
+    width: wp(276),
+    height: hp(56),
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: Deyser,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    marginTop: hp(9),
+    marginBottom: hp(15),
+  },
+  gtbank: {
+    width: wp(29.6),
+    height: hp(30),
+  },
+  account: {
+    fontSize: 12,
+    color: MidGray,
+  },
+  accountName: {
+    fontSize: 12,
+    color: MidGray,
+  },
+  editRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-end',
+    marginBottom: hp(8),
+  },
+  change: {
+    fontSize: 12,
+    color: Green,
+    marginLeft: wp(4),
+  },
+
+  dateRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: hp(10),
+  },
+  dateTitle: {
+    fontSize: 12,
+    color: CodGray,
+    marginLeft: wp(17),
+  },
+  date: {
+    fontSize: 12,
+    color: MineShaft,
+    marginLeft: wp(17),
   },
 });

@@ -23,7 +23,7 @@ import NewBill from '../../authentication/SetUp';
 import { bills as styles } from './styles';
 
 const BillItem = ({ last }) => (
-  <View style={styles.billItem}>
+  <TouchableOpacity style={styles.billItem} onPress={() => Actions.bill()}>
     <View style={styles.billRow}>
       <ParagraphText title="Electricity Bill" style={styles.billTitle} />
       <Image source={profileGroup} style={styles.profileGroup} />
@@ -33,7 +33,7 @@ const BillItem = ({ last }) => (
       <RegularText title="Due: In 2 weeks" style={styles.billDate} />
     </View>
     {!last ? <View style={styles.billDivider} /> : null}
-  </View>
+  </TouchableOpacity>
 );
 
 const ButtonPlus = () => (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StatusBar, View, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import {
   cable,
   houseBill,
@@ -28,7 +29,7 @@ const ButtonPlus = () => (
   </View>
 );
 
-const TransactionItem = ({ icon, title, amount, amountColor }) => (
+export const TransactionItem = ({ icon, title, amount, amountColor }) => (
   <>
     <View style={styles.billRow}>
       <BillIcon icon={<Image source={icon} style={styles.billIcon} />} />
@@ -103,8 +104,9 @@ const Wallet = () => {
 
       <View style={styles.leadRow}>
         <ParagraphText title="Transaction History" style={styles.yourBills} />
-        <TouchableOpacity style={styles.seeAllButton}>
-          {/* onPress={() => Actions.bill_list()}> */}
+        <TouchableOpacity
+          style={styles.seeAllButton}
+          onPress={() => Actions.transactions()}>
           <RegularText title="See All" style={styles.seeAll} />
           <View style={styles.arrow}>
             <ForwardArrow fill={Green} />

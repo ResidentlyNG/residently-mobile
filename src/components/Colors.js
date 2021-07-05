@@ -35,3 +35,6 @@ export const EarlyDawn = '#FFF9E8';
 export const SelectiveYellow = '#F0B200';
 export const Thunder = '#231F20';
 export const Alabaster = '#FBFBFB';
+export const Deyser = '#D3DCE6';
+export const MidGray = '#575A65';
+export const CodGray = '#171717';

@@ -187,3 +187,42 @@ export const wallet = StyleSheet.create({
     justifyContent: 'space-between',
   },
 });
+
+export const transactions = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  buttonGroupContainer: {
+    marginTop: hp(13),
+    borderRadius: 3,
+    width: wp(325),
+    height: hp(30),
+    alignSelf: 'center',
+    borderWidth: 0.5,
+    marginBottom: hp(11),
+  },
+  selectedButtonGroup: {
+    backgroundColor: Green,
+  },
+  selectedButtonGroupText: {
+    fontFamily: 'Inter-Medium',
+    fontSize: 12,
+    color: White,
+  },
+  disabledButtonGroup: {
+    backgroundColor: '#F3F3F3',
+  },
+  buttonGroupText: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 12,
+    color: MineShaft,
+  },
+  buttonGroup: {
+    backgroundColor: '#F3F3F3',
+  },
+  innerBorderStyle: {
+    width: 0.5,
+    backgroundColor: '#EFF2F7',
+  },
+});

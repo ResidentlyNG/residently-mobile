@@ -43,6 +43,7 @@ const roomieZoomed = require('./roomie-zoomed.png');
 const cashBill = require('./cash-bill.png');
 const walletBg = require('./wallet-bg.png');
 const fundBill = require('./fund-bill.png');
+const gtbank = require('./gtbank.png');
 
 export {
   coliving,
@@ -90,4 +91,5 @@ export {
   cashBill,
   walletBg,
   fundBill,
+  gtbank,
 };
