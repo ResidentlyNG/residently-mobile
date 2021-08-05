@@ -61,6 +61,17 @@
 		<string>Graphik-Regular.ttf</string>
 		<string>Graphik-Semibold.ttf</string>
 		<string>Graphik-Thin.ttf</string>
+		<string>Inter-Black.otf</string>
+		<string>Inter-Bold.otf</string>
+		<string>Inter-ExtraBold.otf</string>
+		<string>Inter-Italic.otf</string>
+		<string>Inter-Light.otf</string>
+		<string>Inter-Medium.otf</string>
+		<string>Inter-Regular.otf</string>
+		<string>Inter-SemiBold.otf</string>
+		<string>Roboto_medium.ttf</string>
+		<string>Roboto.ttf</string>
+		<string>rubicon-icon-font.ttf</string>
 	</array>
 </dict>
 </plist>

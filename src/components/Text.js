@@ -13,6 +13,12 @@ export const ParagraphText = ({ onPress, style, title }) => (
   </Text>
 );
 
+export const SemiBoldText = ({ onPress, style, title }) => (
+  <Text style={[styles.semiboldTextStyle, style]} onPress={onPress}>
+    {title}
+  </Text>
+);
+
 export const RegularText = ({ onPress, style, title }) => (
   <Text style={[styles.regularTextStyle, style]} onPress={onPress}>
     {title}
@@ -39,18 +45,23 @@ export const ParagraphDouble = ({ title, subTitle, onPress }) => (
 
 const styles = StyleSheet.create({
   headerTextStyle: {
-    fontFamily: 'GothamRounded-Bold',
+    fontFamily: 'Inter-Bold',
     fontSize: hp(30),
 
     color: Colors.BostonBlue,
   },
   paragraphTextStyle: {
-    fontFamily: 'GothamRounded-Medium',
+    fontFamily: 'Inter-Medium',
+    fontSize: hp(14),
+    color: '#628195',
+  },
+  semiboldTextStyle: {
+    fontFamily: 'Inter-SemiBold',
     fontSize: hp(13),
     color: '#628195',
   },
   regularTextStyle: {
-    fontFamily: 'GothamRounded-Book',
+    fontFamily: 'Inter-Regular',
     fontSize: hp(12),
 
     color: Colors.Lynch,

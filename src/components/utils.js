@@ -2,7 +2,7 @@ import {
   widthPercentageToDP as wdp,
   heightPercentageToDP as hdp,
 } from 'react-native-responsive-screen';
-// import accounting from 'accounting';
+import accounting from 'accounting';
 // import { store } from '../store';
 
 const CustomHeight = 800; // 740;
@@ -39,4 +39,22 @@ export const validateEmail = (email) => {
     return true;
   }
   return false;
+};
+
+export const circle = (size, color, props) => ({
+  width: wp(size),
+  height: wp(size),
+  borderRadius: wp(size) / 2,
+  backgroundColor: color || 'transparent',
+  justifyContent: 'center',
+  alignItems: 'center',
+  ...props,
+});
+
+/**
+ * Naira formatter
+ * @param {Number} amount
+ */
+export const NairaFormat = (amount) => {
+  return accounting.formatMoney(amount, '₦ ', 2);
 };
