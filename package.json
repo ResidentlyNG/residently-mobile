@@ -8,7 +8,9 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "build-android": "cd android && ./gradlew clean && ./gradlew assembleRelease && ./gradlew bundleRelease && cd .."
+    "build-apk": "cd android && ./gradlew clean && ./gradlew assembleRelease && cd ..",
+    "build-android": "cd android && ./gradlew clean && ./gradlew assembleRelease && ./gradlew bundleRelease && cd ..",
+    "pod-update": "npm install && cd ios && pod install && cd .."
   },
   "dependencies": {
     "@react-native-community/blur": "^3.6.0",

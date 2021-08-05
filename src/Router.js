@@ -18,8 +18,11 @@ import CustomBill from './screens/dashboard/bills/CustomBill';
 import NewBill from './screens/dashboard/bills/NewBill';
 import ProcessBill from './screens/dashboard/bills/ProcessBill';
 import Intro from './screens/dashboard/Intro';
+import Settings from './screens/dashboard/settings';
 import Transactions from './screens/dashboard/wallet/Transactions';
 import Onboarding from './screens/onboarding';
+import Personal from './screens/dashboard/settings/Personal';
+import MyHome from './screens/dashboard/settings/MyHome';
 
 export default class RouterComponent extends Component {
   render() {
@@ -54,6 +57,10 @@ export default class RouterComponent extends Component {
           <Scene key="create_bill" component={CreateBill} />
           <Scene key="bill" component={Bill} />
           <Scene key="transactions" component={Transactions} />
+
+          <Scene key="settings" component={Settings} />
+          <Scene key="personal" component={Personal} />
+          <Scene key="my_home" component={MyHome} />
         </Scene>
       </Router>
     );

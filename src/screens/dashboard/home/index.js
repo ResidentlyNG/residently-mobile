@@ -68,7 +68,11 @@ export default class Home extends Component {
         <StatusBar backgroundColor={White} barStyle="dark-content" />
         <View style={styles.background}>
           <View style={styles.headerGrid}>
-            <Image source={user} style={styles.profileImage} />
+            <TouchableOpacity
+              onPress={() => Actions.settings()}
+              activeOpacity={0.2}>
+              <Image source={user} style={styles.profileImage} />
+            </TouchableOpacity>
             <View style={styles.usernameView}>
               <ParagraphText title="Bisola Jabari" style={styles.fullname} />
               <RegularText title="@Bisijabari" style={styles.username} />

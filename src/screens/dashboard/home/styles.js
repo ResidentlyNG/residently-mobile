@@ -48,7 +48,7 @@ export const home = StyleSheet.create({
     backgroundColor: Green,
     alignItems: 'center',
     justifyContent: 'center',
-    right: wp(18),
+    right: 0,
     position: 'absolute',
   },
 
