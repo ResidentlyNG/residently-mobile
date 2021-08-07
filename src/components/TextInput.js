@@ -12,6 +12,7 @@ const TextInput = ({
   value,
   style,
   label,
+  keyboardType,
 }) => {
   return (
     <View style={[styles.view, style]}>
@@ -23,6 +24,7 @@ const TextInput = ({
           onChangeText={onChangeText}
           placeholder={placeholder}
           style={[styles.input, inputStyle]}
+          keyboardType={keyboardType}
         />
       </View>
     </View>

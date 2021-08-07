@@ -4,11 +4,33 @@ import { Actions } from 'react-native-router-flux';
 import { secondScreenBg, rocket } from '../../../assets/images';
 import { MainIcon } from '../../../assets/svgs';
 import { Button, Green, ParagraphText } from '../../components';
+import showToast from '../../components/Toast';
 import { Image } from '../../components/View';
+import { verifyEmail } from '../../utils';
 import { join as styles } from './styles';
 
-const Join = () => {
+const Join = (props) => {
+  const { verification } = props;
   const [code, setCode] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const leadText = verification
+    ? 'Verify your Account'
+    : 'Join as a \n roommate';
+  const subText = `Please enter the ${
+    verification ? 'verification' : 'invite'
+  } \n code you received`;
+
+  const submit = () => {
+    setLoading(true);
+    verifyEmail({ code })
+      .then((res) => {
+        showToast(res.message);
+        Actions.login({ type: 'reset' });
+      })
+      .catch((error) => showToast(error.message, 'error'))
+      .finally(() => setLoading(false));
+  };
 
   return (
     <>
@@ -20,17 +42,11 @@ const Join = () => {
         resizeMode="stretch">
         <View style={styles.topRow}>
           <MainIcon />
-          <ParagraphText
-            title={'Join as a \n roommate'}
-            style={styles.header}
-          />
+          <ParagraphText title={leadText} style={styles.header} />
         </View>
         <View style={styles.mainView}>
           <Image source={rocket} style={styles.rocket} />
-          <ParagraphText
-            title={'Please enter the invite \n code you received'}
-            style={styles.subText}
-          />
+          <ParagraphText title={subText} style={styles.subText} />
           <TextInput
             style={styles.input}
             value={code}
@@ -39,8 +55,10 @@ const Join = () => {
           />
           <Button
             title="Proceed"
+            disabled={!code || code.length !== 6}
+            loading={loading}
             style={styles.button}
-            onPress={() => Actions.login()}
+            onPress={() => submit()}
           />
         </View>
       </ImageBackground>

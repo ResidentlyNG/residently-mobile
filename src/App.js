@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { setCustomText } from 'react-native-global-props';
+import { RootSiblingParent } from 'react-native-root-siblings';
 import { Midnight } from './components';
 import Router from './Router';
 
@@ -13,6 +14,10 @@ setCustomText(customTextProps);
 
 export default class App extends Component {
   render() {
-    return <Router />;
+    return (
+      <RootSiblingParent>
+        <Router />
+      </RootSiblingParent>
+    );
   }
 }

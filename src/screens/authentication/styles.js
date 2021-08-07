@@ -320,7 +320,7 @@ export const createPassword = StyleSheet.create({
   mainView: {
     marginTop: hp(46),
     backgroundColor: White,
-    height: hp(296),
+    height: hp(380),
     width: wp(355),
     borderRadius: 20,
     alignItems: 'center',
