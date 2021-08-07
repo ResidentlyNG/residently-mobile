@@ -24,9 +24,15 @@ import {
 } from '../../components';
 import { hp } from '../../components/utils';
 import { Image } from '../../components/View';
+// import api from '../../utils/api';
 import { loginStyles as styles } from './styles';
 
 const Login = () => {
+  // const submit = () =>
+  //   api('/login', 'POST', {
+  //     email: 'eazzylee@yopmail.com',
+  //     password: 'Password',
+  //   }).then((res) => console.log('rss', res));
   return (
     <>
       <StatusBar backgroundColor={Green} barStyle="light-content" />
