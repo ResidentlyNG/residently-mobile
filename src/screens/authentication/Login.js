@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ImageBackground,
   StatusBar,
@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useDispatch, useSelector } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 // import { Actions } from 'react-native-router-flux';
 import {
@@ -23,19 +24,42 @@ import {
   RegularText,
   TextInput,
 } from '../../components';
-import { hp } from '../../components/utils';
+import showToast from '../../components/Toast';
+import { hp, validateEmail } from '../../components/utils';
 import { Image } from '../../components/View';
 // import api from '../../utils/api';
 import { loginStyles as styles } from './styles';
+import { login } from '../../store/actions/auth';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const submit = () =>
-  //   api('/login', 'POST', {
-  //     email: 'eazzylee@yopmail.com',
-  //     password: 'Password',
-  //   }).then((res) => console.log('rss', res));
+
+  const dispatch = useDispatch();
+  const {
+    auth: { error, loading, message },
+    profile: { profile },
+  } = useSelector((state) => state);
+
+  useEffect(() => {
+    if (error) showToast(error, 'error');
+    if (message === 'Login successful') {
+      if (profile.email_verified !== 'false') {
+        if (profile.home_id) Actions.dashboard({ type: 'reset' });
+        else Actions.intro({ type: 'reset' });
+      } else Actions.join({ verification: true });
+    }
+  }, [error, message]);
+
+  const submit = () => {
+    const data = { email, password };
+    if (!email) showToast('Your email address is required', 'error');
+    else if (!validateEmail(email))
+      showToast('Your email address is not valid', 'error');
+    else if (!password) showToast('Your password is required', 'error');
+    else dispatch(login(data));
+  };
+
   return (
     <>
       <StatusBar backgroundColor={Green} barStyle="light-content" />
@@ -76,8 +100,9 @@ const Login = () => {
             />
             <Button
               title="Login"
+              loading={loading}
               style={styles.button}
-              onPress={() => Actions.intro({ type: 'reset' })}
+              onPress={() => submit()}
             />
             <RegularText title="Forgot Password?" style={styles.forgotText} />
             <View style={styles.socialsCard}>

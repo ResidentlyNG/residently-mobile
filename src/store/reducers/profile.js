@@ -1,36 +1,34 @@
 import {
   CANCEL_REQUEST,
-  LOGIN,
-  LOGIN_ERROR,
-  LOGIN_SUCCESS,
+  GET_PROFILE,
+  GET_PROFILE_SUCCESS,
+  GET_PROFILE_ERROR,
 } from '../actions/types';
 
 const initialState = {
+  profile: {},
   loading: false,
-  message: '',
   error: '',
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN:
+    case GET_PROFILE:
       return {
         ...state,
         loading: true,
-        message: '',
       };
-    case LOGIN_SUCCESS:
+    case GET_PROFILE_SUCCESS:
       return {
         ...state,
         loading: false,
-        message: 'Login successful',
-        user: action.payload,
+        profile: action.payload,
       };
-    case LOGIN_ERROR:
+    case GET_PROFILE_ERROR:
       return {
         ...state,
         loading: false,
-        error: action.payload.message,
+        error: action.payload,
       };
 
     case CANCEL_REQUEST:

@@ -1,36 +1,34 @@
 import {
   CANCEL_REQUEST,
-  LOGIN,
-  LOGIN_ERROR,
-  LOGIN_SUCCESS,
+  GET_WALLET,
+  GET_WALLET_SUCCESS,
+  GET_WALLET_ERROR,
 } from '../actions/types';
 
 const initialState = {
+  wallet: {},
   loading: false,
-  message: '',
   error: '',
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN:
+    case GET_WALLET:
       return {
         ...state,
         loading: true,
-        message: '',
       };
-    case LOGIN_SUCCESS:
+    case GET_WALLET_SUCCESS:
       return {
         ...state,
         loading: false,
-        message: 'Login successful',
-        user: action.payload,
+        wallet: action.payload,
       };
-    case LOGIN_ERROR:
+    case GET_WALLET_ERROR:
       return {
         ...state,
         loading: false,
-        error: action.payload.message,
+        error: action.payload,
       };
 
     case CANCEL_REQUEST:

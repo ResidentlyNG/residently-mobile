@@ -1,17 +1,14 @@
 import api from './api';
 
 // TODO:: Abstract utility
-
-export const createAccount = (data) => {
-  const result = api('/register', 'POST', data)
+const http = (route, method, data) => {
+  const result = api(route, method, data)
     .then((res) => res)
     .catch((err) => err);
   return result;
 };
 
-export const verifyEmail = (data) => {
-  const result = api('/mail/verify', 'POST', data)
-    .then((res) => res)
-    .catch((err) => err);
-  return result;
-};
+export const createAccount = (data) => http('/register', 'POST', data);
+export const verifyEmail = (data) => http('/mail/verify', 'POST', data);
+export const resendEmailOtp = (data) =>
+  http('/mail/verify/resend', 'POST', data);
