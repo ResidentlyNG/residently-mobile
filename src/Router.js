@@ -24,20 +24,22 @@ import Onboarding from './screens/onboarding';
 import Personal from './screens/dashboard/settings/Personal';
 import MyHome from './screens/dashboard/settings/MyHome';
 import HomeSetup from './screens/dashboard/home/setup';
+import Launch from './screens/onboarding/Launch';
+import { checkAuth } from './utils';
 
 export default class RouterComponent extends Component {
   render() {
     return (
       <Router>
         <Scene key="root" hideNavBar>
-          {/* <Scene
+          <Scene
             key="launch"
             component={Launch}
             on={() => checkAuth()}
-            success="sign_in"
+            success="login"
             failure="onboarding"
             initial
-          /> */}
+          />
           <Scene key="onboarding" component={Onboarding} />
           <Scene key="get_started" component={GetStarted} />
           <Scene key="login" component={Login} />

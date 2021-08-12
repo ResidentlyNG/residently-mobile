@@ -5,7 +5,8 @@ import { CANCEL_REQUEST } from '../store/actions/types';
 import { store } from '../store';
 
 // const { BASE_URL } = Config;
-const BASE_URL = 'https://residently-server-e6ann.ondigitalocean.app/api/v1';
+export const BASE_URL =
+  'https://residently-server-e6ann.ondigitalocean.app/api/v1';
 
 /**
  * Utility that calls the backend api service

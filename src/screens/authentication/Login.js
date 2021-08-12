@@ -32,15 +32,15 @@ import { loginStyles as styles } from './styles';
 import { login } from '../../store/actions/auth';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const dispatch = useDispatch();
   const {
     auth: { error, loading, message },
     profile: { profile },
   } = useSelector((state) => state, shallowEqual);
 
+  const [email, setEmail] = useState(profile.email || '');
+  const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
   useEffect(() => {
     if (error) showToast(error, 'error');
     if (message === 'Login successful') {
