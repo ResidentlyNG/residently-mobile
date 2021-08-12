@@ -23,6 +23,7 @@ import Transactions from './screens/dashboard/wallet/Transactions';
 import Onboarding from './screens/onboarding';
 import Personal from './screens/dashboard/settings/Personal';
 import MyHome from './screens/dashboard/settings/MyHome';
+import HomeSetup from './screens/dashboard/home/setup';
 
 export default class RouterComponent extends Component {
   render() {
@@ -61,6 +62,7 @@ export default class RouterComponent extends Component {
           <Scene key="settings" component={Settings} />
           <Scene key="personal" component={Personal} />
           <Scene key="my_home" component={MyHome} />
+          <Scene key="home_setup" component={HomeSetup} />
         </Scene>
       </Router>
     );

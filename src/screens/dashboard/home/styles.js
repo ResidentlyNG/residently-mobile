@@ -289,6 +289,26 @@ export const home = StyleSheet.create({
     lineHeight: 20.5,
     width: wp(170),
   },
+
+  noHomeView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noHome: {
+    color: Midnight,
+    textAlign: 'center',
+    fontSize: 15,
+  },
+  noHomeSub: {
+    color: Midnight,
+    textAlign: 'center',
+    marginTop: hp(7),
+  },
+  button: {
+    width: wp(230),
+    marginTop: hp(15),
+  },
 });
 
 export const homeEX = StyleSheet.create({

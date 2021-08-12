@@ -246,6 +246,26 @@ export const bills = StyleSheet.create({
     color: White,
     fontFamily: 'Grpahik-Medium',
   },
+
+  noHomeView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noHome: {
+    color: Midnight,
+    textAlign: 'center',
+    fontSize: 15,
+  },
+  noHomeSub: {
+    color: Midnight,
+    textAlign: 'center',
+    marginTop: hp(7),
+  },
+  noHomeButton: {
+    width: wp(230),
+    marginTop: hp(15),
+  },
 });
 
 export const billList = StyleSheet.create({

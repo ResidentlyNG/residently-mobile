@@ -3,9 +3,12 @@ import {
   LOGIN,
   LOGIN_ERROR,
   LOGIN_SUCCESS,
+  RESET_LOADER,
 } from '../actions/types';
 
 const initialState = {
+  user: {},
+  isAuthenticated: false,
   loading: false,
   message: '',
   error: '',
@@ -25,6 +28,7 @@ export default (state = initialState, action) => {
         loading: false,
         message: 'Login successful',
         user: action.payload,
+        isAuthenticated: true,
       };
     case LOGIN_ERROR:
       return {
@@ -36,6 +40,13 @@ export default (state = initialState, action) => {
     case CANCEL_REQUEST:
       return {
         ...state,
+      };
+    case RESET_LOADER:
+      return {
+        ...state,
+        loading: false,
+        message: '',
+        error: '',
       };
     default:
       return state;

@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 // import { Actions } from 'react-native-router-flux';
 import {
@@ -39,7 +39,7 @@ const Login = () => {
   const {
     auth: { error, loading, message },
     profile: { profile },
-  } = useSelector((state) => state);
+  } = useSelector((state) => state, shallowEqual);
 
   useEffect(() => {
     if (error) showToast(error, 'error');

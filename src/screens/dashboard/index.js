@@ -15,7 +15,7 @@ import Wallet from './wallet';
 
 export default class Dashboard extends Component {
   state = {
-    screen: 'Home',
+    screen: this.props.bill ? 'Bills' : 'Home',
   };
 
   footerButton(svg, activeSvg, title) {
