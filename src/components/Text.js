@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   paragraphTextStyle: {
     fontFamily: 'Inter-Medium',
     fontSize: hp(14),
-    color: '#628195',
+    color: Colors.WoodSmoke,
   },
   semiboldTextStyle: {
     fontFamily: 'Inter-SemiBold',
@@ -64,12 +64,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Regular',
     fontSize: hp(12),
 
-    color: Colors.Lynch,
+    color: Colors.WoodSmoke,
   },
   regularDouble: {
-    color: Colors.RoyalBlue,
+    color: Colors.WoodSmoke,
   },
   paragraphDouble: {
-    color: Colors.RoyalBlue,
+    color: Colors.WoodSmoke,
   },
 });

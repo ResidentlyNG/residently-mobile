@@ -3,9 +3,10 @@ import { Provider } from 'react-redux';
 import { setCustomText } from 'react-native-global-props';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import axios from 'axios';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Midnight } from './components';
 import Router from './Router';
-import { store } from './store';
+import { persistor, store } from './store';
 import { BASE_URL } from './utils/api';
 
 const customTextProps = {
@@ -33,9 +34,11 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <RootSiblingParent>
-          <Router />
-        </RootSiblingParent>
+        <PersistGate persistor={persistor}>
+          <RootSiblingParent>
+            <Router />
+          </RootSiblingParent>
+        </PersistGate>
       </Provider>
     );
   }

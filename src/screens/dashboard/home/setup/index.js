@@ -48,7 +48,7 @@ const HomeSetup = () => {
           <View style={styles.userCard}>
             <TouchableOpacity
               style={styles.roleCard}
-              onPress={() => Actions.invite()}>
+              onPress={() => Actions.host()}>
               <View style={styles.cardRow}>
                 <Image source={host} style={styles.host} />
                 <View>

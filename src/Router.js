@@ -26,6 +26,8 @@ import MyHome from './screens/dashboard/settings/MyHome';
 import HomeSetup from './screens/dashboard/home/setup';
 import Launch from './screens/onboarding/Launch';
 import { checkAuth } from './utils';
+import Host from './screens/dashboard/home/setup/Host';
+import Success from './screens/dashboard/home/setup/Success';
 
 export default class RouterComponent extends Component {
   render() {
@@ -65,6 +67,8 @@ export default class RouterComponent extends Component {
           <Scene key="personal" component={Personal} />
           <Scene key="my_home" component={MyHome} />
           <Scene key="home_setup" component={HomeSetup} />
+          <Scene key="host" component={Host} />
+          <Scene key="setup_success" component={Success} />
         </Scene>
       </Router>
     );
