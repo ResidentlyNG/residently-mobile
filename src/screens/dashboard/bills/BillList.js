@@ -4,7 +4,6 @@ import { Actions } from 'react-native-router-flux';
 import { profileGroup } from '../../../../assets/images';
 import { Cross } from '../../../../assets/svgs';
 import {
-  DodgerBlue,
   Header,
   HeaderText,
   Image,
@@ -12,6 +11,7 @@ import {
   RegularText,
   Tab,
   White,
+  WoodSmoke,
 } from '../../../components';
 import { ModalBlur } from '../../../components/Overlay';
 import NewBill from '../../authentication/SetUp';
@@ -57,9 +57,9 @@ const BillList = () => {
 
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor={DodgerBlue} />
+      <StatusBar barStyle="dark-content" backgroundColor={White} />
       <View style={styles.background}>
-        <Header title="Your Bills" titleStyle={{ color: White }} />
+        <Header title="All Bills" titleStyle={{ color: WoodSmoke }} />
         <View style={styles.billsCard}>
           <Tab
             containerStyle={styles.tabContainer}

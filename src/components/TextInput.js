@@ -12,17 +12,20 @@ const TextInput = ({
   value,
   style,
   label,
+  keyboardType,
+  noIcon,
 }) => {
   return (
     <View style={[styles.view, style]}>
-      <View style={styles.iconContainer}>{icon}</View>
-      <View>
+      {!noIcon && <View style={styles.iconContainer}>{icon}</View>}
+      <View style={noIcon ? styles.textView : {}}>
         <ParagraphText title={label} style={styles.label} />
         <Input
           value={value}
           onChangeText={onChangeText}
           placeholder={placeholder}
           style={[styles.input, inputStyle]}
+          keyboardType={keyboardType}
         />
       </View>
     </View>
@@ -57,5 +60,8 @@ const styles = StyleSheet.create({
   label: {
     marginLeft: wp(10),
     marginTop: hp(4),
+  },
+  textView: {
+    marginLeft: wp(10),
   },
 });

@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { Footer, FooterTab } from 'native-base';
+// import { Footer, FooterTab } from 'native-base';
 import Home from './home';
 import { Green, RegularText } from '../../components';
 import { dashboard as styles } from './styles';
 import {
+  BillsMenu,
+  ExploreMenu,
   HomeSvg,
-  NotificationsSvg,
-  ProfileSvg,
-  WalletSvg,
+  WalletMenu,
 } from '../../../assets/svgs';
+import Bills from './bills';
+import Wallet from './wallet';
 
 export default class Dashboard extends Component {
-  footerButton(svg, activeSvg, title, active) {
-    if (active) {
+  state = {
+    screen: this.props.bill ? 'Bills' : 'Home',
+  };
+
+  footerButton(svg, activeSvg, title) {
+    if (this.state.screen === title) {
       return (
         <View style={styles.activeButton}>
           {activeSvg}
@@ -32,39 +38,64 @@ export default class Dashboard extends Component {
     );
   }
 
-  onPress = () => {};
+  displayScreen = (screen) => {
+    if (screen === 'Bills') return <Bills />;
+    if (screen === 'Wallet') return <Wallet />;
+    return <Home />;
+  };
+
+  onPress = (screen) => {
+    this.setState({ screen });
+  };
 
   render() {
+    const { screen } = this.state;
+
     return (
-      <>
-        <Home />
-        <Footer style={styles.footer}>
-          <FooterTab style={[styles.footerTab]}>
+      <View style={styles.background}>
+        <View style={{ flex: 1 }}>{this.displayScreen(screen)}</View>
+        <View style={styles.footer}>
+          <View style={[styles.footerTab]}>
             <TouchableOpacity
               onPress={() => this.onPress('Home')}
               style={styles.homeButtons}>
-              {this.footerButton(<HomeSvg />, <HomeSvg />, 'Home', true)}
+              {this.footerButton(
+                <HomeSvg />,
+                <HomeSvg fill={Green} />,
+                'Home',
+                true,
+              )}
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.onPress('Bills')}
+              style={styles.homeButtons}>
+              {this.footerButton(
+                <BillsMenu />,
+                <BillsMenu fill={Green} />,
+                'Bills',
+              )}
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => this.onPress('Wallet')}
               style={styles.homeButtons}>
-              {this.footerButton(<NotificationsSvg />, null, 'Wallet')}
+              {this.footerButton(
+                <WalletMenu />,
+                <WalletMenu fill={Green} />,
+                'Wallet',
+              )}
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.onPress('History')}
+              onPress={() => this.onPress('Explore')}
               style={styles.homeButtons}>
-              {this.footerButton(<WalletSvg />, null, 'History')}
-              {/* <History /> */}
+              {this.footerButton(
+                <ExploreMenu />,
+                <ExploreMenu fill={Green} />,
+                'Explore',
+              )}
             </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.onPress('History')}
-              style={styles.homeButtons}>
-              {this.footerButton(<ProfileSvg />, null, 'Profile')}
-              {/* <History /> */}
-            </TouchableOpacity>
-          </FooterTab>
-        </Footer>
-      </>
+          </View>
+        </View>
+      </View>
     );
   }
 }

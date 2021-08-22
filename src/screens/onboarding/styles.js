@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { White } from '../../components';
+import { MineShaft, White } from '../../components';
 import { hp, wp } from '../../components/utils';
 
 export const styles = StyleSheet.create({
@@ -86,12 +86,27 @@ export const styles = StyleSheet.create({
     fontSize: 14,
   },
   buttonContainer: {
-    width: wp(70),
-    height: wp(70),
-    borderRadius: wp(70) / 2,
-    backgroundColor: White,
+    width: wp(345),
+    alignItems: 'center',
+    bottom: hp(33),
+  },
+  actionRow: {
+    width: wp(319),
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    bottom: hp(33),
+    backgroundColor: White,
+    height: hp(64),
+    borderRadius: 16,
+  },
+  actionButton: { backgroundColor: White, alignSelf: 'center' },
+  actionTitle: {
+    color: MineShaft,
+    fontSize: 17,
+    fontWeight: 'bold',
+  },
+  buttonIcon: {
+    right: wp(25),
+    position: 'absolute',
   },
 });

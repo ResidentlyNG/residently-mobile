@@ -33,6 +33,17 @@ const twoRoommates = require('./roommate.png');
 const abeg = require('./abeg.png');
 const bank = require('./bank.png');
 const paystack = require('./paystack.png');
+const doMore = require('./do-more.png');
+const homeOwner = require('./home-owner.png');
+const cable = require('./cable.png');
+const houseBill = require('./house-bill.png');
+const flashBill = require('./flash-bill.png');
+const liveAnywhere = require('./live-anywhere-bg.png');
+const roomieZoomed = require('./roomie-zoomed.png');
+const cashBill = require('./cash-bill.png');
+const walletBg = require('./wallet-bg.png');
+const fundBill = require('./fund-bill.png');
+const gtbank = require('./gtbank.png');
 
 export {
   coliving,
@@ -70,4 +81,15 @@ export {
   abeg,
   bank,
   paystack,
+  doMore,
+  homeOwner,
+  cable,
+  flashBill,
+  houseBill,
+  liveAnywhere,
+  roomieZoomed,
+  cashBill,
+  walletBg,
+  fundBill,
+  gtbank,
 };

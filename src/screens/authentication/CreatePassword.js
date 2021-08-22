@@ -3,7 +3,7 @@ import { ImageBackground, StatusBar, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Actions } from 'react-native-router-flux';
 import { celebration, getStartedBg, thumb } from '../../../assets/images';
-import { EyeSvg, MainIcon } from '../../../assets/svgs';
+import { EyeSvg, MainIcon, UserSvg } from '../../../assets/svgs';
 import {
   Button,
   HeaderText,
@@ -13,41 +13,78 @@ import {
   RegularText,
   TextInput,
 } from '../../components';
-import { ModalBlur } from '../../components/Overlay';
+import { ModalBlur, TransactionLoader } from '../../components/Overlay';
+import showToast from '../../components/Toast';
 import { hp } from '../../components/utils';
+import { createAccount } from '../../utils';
 import { createPassword as styles } from './styles';
 
-const TermsModal = () => (
-  <View style={styles.termsContainer}>
-    <View style={styles.celebrationContainer}>
-      <Image
-        source={celebration}
-        style={styles.celebration}
-        resizeMode="cover"
-      />
-    </View>
-    <View style={styles.outerThumbCircle}>
-      <View style={styles.thumbCircle}>
-        <Image source={thumb} style={styles.thumb} />
-      </View>
-    </View>
-    <ParagraphText title="Terms and Conditions" style={styles.termsHeader} />
-    <RegularText
-      title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. Mauris vitae gravida erat, in vehicula augue. Sed vitae rhoncus odio. "
-      style={styles.termsText}
-    />
-    <Button
-      title="Accept"
-      style={styles.termsButton}
-      onPress={() => Actions.dashboard({ type: 'reset' })}
-    />
-  </View>
-);
+const TermsModal = ({ data }) => {
+  const [loading, setLoading] = useState(false);
 
-const CreatePassword = () => {
+  const register = () => {
+    setLoading(true);
+    createAccount(data)
+      .then(() => {
+        Actions.join();
+      })
+      .catch((error) => showToast(error.message))
+      .finally(() => setLoading(false));
+  };
+
+  return (
+    <View style={styles.termsContainer}>
+      <View style={styles.celebrationContainer}>
+        <Image
+          source={celebration}
+          style={styles.celebration}
+          resizeMode="cover"
+        />
+      </View>
+      <View style={styles.outerThumbCircle}>
+        <View style={styles.thumbCircle}>
+          <Image source={thumb} style={styles.thumb} />
+        </View>
+      </View>
+      {loading ? (
+        <View style={{ alignItems: 'center', flex: 1 }}>
+          <TransactionLoader />
+        </View>
+      ) : (
+        <>
+          <ParagraphText
+            title="Terms and Conditions"
+            style={styles.termsHeader}
+          />
+          <RegularText
+            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. Mauris vitae gravida erat, in vehicula augue. Sed vitae rhoncus odio. "
+            style={styles.termsText}
+          />
+          <Button
+            title="Accept"
+            style={styles.termsButton}
+            onPress={() => register()}
+          />
+        </>
+      )}
+    </View>
+  );
+};
+
+const CreatePassword = (props) => {
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [modal, setModal] = useState(false);
+
+  const data = { ...props.data, username, password };
+  const submit = () => {
+    if (!username) showToast('Your username is required', 'error');
+    else if (!password) showToast('Your password is required', 'error');
+    else if (password !== confirmPassword)
+      showToast('Your password does not match', 'error');
+    else setModal(true);
+  };
 
   return (
     <>
@@ -78,25 +115,33 @@ const CreatePassword = () => {
             showsVerticalScrollIndicator={false}
             extraScrollHeight={hp(52)}>
             <TextInput
-              icon={<EyeSvg />}
+              icon={<UserSvg />}
               value={username}
-              label="Create Password"
+              label="Username"
               onChangeText={(value) => setUsername(value)}
+              placeholder="Your Username"
+              style={styles.usernameInput}
+            />
+            <TextInput
+              icon={<EyeSvg />}
+              value={password}
+              label="Create Password"
+              onChangeText={(value) => setPassword(value)}
               placeholder="Your Password"
               style={styles.usernameInput}
             />
             <TextInput
               icon={<EyeSvg />}
-              value={email}
+              value={confirmPassword}
               label="Confirm Password"
-              onChangeText={(value) => setEmail(value)}
+              onChangeText={(value) => setConfirmPassword(value)}
               placeholder="Your password again"
               style={styles.passwordInput}
             />
             <Button
               title="Create Account"
               style={styles.button}
-              onPress={() => setModal(true)}
+              onPress={() => submit()}
             />
           </KeyboardAwareScrollView>
         </View>
@@ -110,7 +155,7 @@ const CreatePassword = () => {
           borderRadius: 20,
         }}
         onBackdropPress={() => setModal(false)}
-        render={<TermsModal />}
+        render={<TermsModal data={data} />}
       />
     </>
   );

@@ -2,9 +2,17 @@ import React from 'react';
 import { Image as Img, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { BackIconRound } from '../../assets/svgs';
-import { MineShaft, White, WhiteLilac, WoodSmoke } from './Colors';
-import { ParagraphText } from './Text';
-import { hp, wp } from './utils';
+import {
+  EarlyDawn,
+  MineShaft,
+  SelectiveYellow,
+  Sunglow,
+  White,
+  WhiteLilac,
+  WoodSmoke,
+} from './Colors';
+import { ParagraphText, RegularText } from './Text';
+import { circle, hp, wp } from './utils';
 
 export const MainView = (props) => {
   return (
@@ -48,9 +56,9 @@ export const Header = ({
   backPress,
   title,
   titleStyle,
-  // search,
-  // rightComponent,
-  // rightComponentPress,
+  iconFill,
+  rightComponent,
+  rightComponentPress,
 }) => {
   // const iconHandler = () => {
   //   if (rightComponent) return rightComponent;
@@ -63,18 +71,35 @@ export const Header = ({
       <TouchableOpacity
         onPress={() => backPress || Actions.pop()}
         style={styles.backButton}>
-        <BackIconRound />
+        <BackIconRound fill={iconFill} />
       </TouchableOpacity>
       <ParagraphText title={title} style={[styles.headerTitle, titleStyle]} />
-      <View />
-      {/* <TouchableOpacity
-        style={styles.search}
-        onPress={() => rightComponentPress()}>
-        {iconHandler()}
-      </TouchableOpacity> */}
+      {rightComponent ? (
+        <TouchableOpacity
+          style={styles.search}
+          onPress={() => (rightComponentPress ? rightComponentPress() : {})}>
+          {rightComponent}
+        </TouchableOpacity>
+      ) : (
+        <View style={{ width: 40 }} />
+      )}
     </View>
   );
 };
+
+export const BillIcon = ({ backgroundColor, icon }) => (
+  <View
+    style={[styles.billIcon, { backgroundColor: backgroundColor || Sunglow }]}>
+    {icon || <View />}
+  </View>
+);
+
+export const TimeBadge = () => (
+  <View style={styles.badge}>
+    <View style={styles.stump} />
+    <RegularText title="2 weeks" style={styles.duration} />
+  </View>
+);
 
 const styles = StyleSheet.create({
   mainBackground: {
@@ -134,5 +159,25 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     letterSpacing: 0.5,
+    fontFamily: 'Inter-Bold',
+  },
+
+  billIcon: {
+    ...circle(35.43),
+  },
+  badge: {
+    borderRadius: 7,
+    padding: 5,
+    backgroundColor: EarlyDawn,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  stump: {
+    ...circle(8, SelectiveYellow),
+  },
+  duration: {
+    color: SelectiveYellow,
+    fontSize: 11,
+    marginLeft: wp(3),
   },
 });

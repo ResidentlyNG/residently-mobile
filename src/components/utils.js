@@ -21,8 +21,8 @@ export const wp = (value) => {
 export const validatePhone = (number) => {
   if (number.length !== 11) return false;
   if (
-    !number.startsWith('07') ||
-    !number.startsWith('08') ||
+    !number.startsWith('07') &&
+    !number.startsWith('08') &&
     !number.startsWith('09')
   )
     return false;
@@ -39,6 +39,11 @@ export const validateEmail = (email) => {
     return true;
   }
   return false;
+};
+
+export const validateFullname = (name) => {
+  if (name.split(' ').length < 2) return false;
+  return true;
 };
 
 export const circle = (size, color, props) => ({

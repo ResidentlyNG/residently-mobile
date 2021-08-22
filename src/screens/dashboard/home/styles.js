@@ -9,10 +9,11 @@ import {
   Midnight,
   Monza,
   Scorpion,
-  PattensBlue,
   WoodSmoke,
-  Tundora,
+  ClearDay,
+  WildSand,
   ForgetMeNot,
+  WhiteLilac,
 } from '../../../components';
 import { circle, hp, wp } from '../../../components/utils';
 
@@ -20,6 +21,7 @@ export const home = StyleSheet.create({
   background: {
     flex: 1,
     alignItems: 'center',
+    // paddingBottom: hp(50),
   },
   headerGrid: {
     flexDirection: 'row',
@@ -46,131 +48,186 @@ export const home = StyleSheet.create({
     backgroundColor: Green,
     alignItems: 'center',
     justifyContent: 'center',
-    right: wp(18),
+    right: 0,
     position: 'absolute',
   },
 
-  mainView: {
-    // flex: 1,
-    marginTop: hp(87),
-    height: hp(680),
-    position: 'relative',
-    // bottom: 0,
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
-    elevation: 5,
-    backgroundColor: White,
-    width: '100%',
-    zIndex: 40,
-    alignItems: 'center',
+  coliving: {
+    width: wp(331),
+    height: hp(346),
+    borderRadius: 10,
+    backgroundColor: ClearDay,
+    marginTop: hp(30),
   },
-  billWrapper: {
-    width: wp(332),
-    height: hp(364),
-    backgroundColor: PattensBlue,
-    borderRadius: 25,
-    position: 'relative',
-    borderWidth: 6,
-    borderColor: White,
-    overflow: 'hidden',
-    elevation: 5,
-    marginTop: hp(15),
-  },
-  billsBgContainer: {
-    position: 'absolute',
+  doMore: {
+    width: wp(319),
+    height: hp(195),
     bottom: 0,
+    position: 'absolute',
   },
-  billsBg: {
-    width: wp(353),
-    height: hp(478),
+  welcome: {
+    fontSize: 14,
+    marginLeft: wp(26),
+    color: WoodSmoke,
+    marginTop: hp(10),
   },
-  // heartHandWrapper: {
-  //   width: wp(292),
-  //   height: hp(127),
-  //   borderRadius: 20,
-  //   backgroundColor: White,
-  //   alignSelf: 'center',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   marginTop: hp(20),
-  // },
-  heartHandContainer: {
-    width: wp(276),
-    height: hp(113),
-    borderRadius: 20,
-    borderWidth: 5,
-    borderColor: White,
-    backgroundColor: DodgerBlue,
+  colivingText: {
+    fontSize: 20,
+    marginLeft: wp(26),
+    lineHeight: 25,
+    color: WoodSmoke,
+    marginTop: hp(10),
+  },
+  readMore: {
+    width: wp(91),
+    height: hp(20),
+    backgroundColor: Green,
+    borderRadius: 6,
     alignItems: 'center',
     justifyContent: 'center',
-    alignSelf: 'center',
-    overflow: 'hidden',
-    marginTop: hp(20),
-    elevation: 12,
+    marginLeft: wp(26),
+    marginTop: hp(14),
   },
-  handHeart: {
-    width: wp(203),
-    height: hp(128),
-    marginTop: hp(16),
+  readMoreText: {
+    fontSize: 10,
+    color: White,
+  },
+  scrollContainer: {
+    alignItems: 'center',
+  },
+  scroll: {
+    height: '80%',
+    paddingBottom: hp(50),
   },
 
-  billsLeadText: {
+  houseExpenses: {
     fontSize: 20,
+    alignSelf: 'flex-start',
     color: WoodSmoke,
-    marginLeft: wp(51),
-    marginTop: hp(25),
+    marginTop: hp(30),
+    marginLeft: wp(22),
   },
-  billsText: {
-    fontSize: 15,
-    color: Tundora,
-    marginLeft: wp(51),
-    width: wp(243),
-    lineHeight: 21,
+  expenseBlock: {
+    width: wp(331),
+    height: hp(430),
+    backgroundColor: White,
+    marginTop: hp(59),
+    alignItems: 'center',
+    borderRadius: 20,
+    // paddingLeft: wp(14),
+    // paddingRight: wp(14),
   },
-  billsButton: {
-    backgroundColor: DodgerBlue,
-    width: wp(201),
-    marginTop: hp(29),
-    marginLeft: wp(51),
-  },
-
-  bottomRow: {
+  blockView: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: wp(339),
+    width: wp(297),
+    marginTop: hp(29),
   },
-  miniContainer: {
-    height: hp(192),
-    width: wp(162),
-    backgroundColor: White,
+  blockRoom: {
+    fontSize: 14,
+    color: WoodSmoke,
+  },
+  billsCount: {
+    fontSize: 12,
+    color: WoodSmoke,
+  },
+  profileGroup: {
+    width: wp(95),
+    height: hp(42),
+  },
+
+  leadRow: {
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 5,
-    borderRadius: 25,
-    marginTop: hp(15),
+    justifyContent: 'space-between',
+    marginTop: hp(42),
+    width: wp(297),
   },
+  yourBills: {
+    fontSize: 16,
+    color: MineShaft,
+  },
+  seeAllButton: {
+    height: hp(30),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  seeAll: {
+    fontSize: 14,
+    color: Green,
+  },
+
+  billItem: {
+    width: wp(297),
+    height: hp(71),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: White,
+    borderRadius: 10,
+    elevation: 2,
+    marginTop: hp(16),
+    paddingLeft: wp(12),
+    paddingRight: wp(12),
+  },
+  billAmount: {
+    fontSize: 15,
+    color: MineShaft,
+  },
+  billTitle: {
+    fontSize: 13,
+    color: MineShaft,
+  },
+  billDate: {
+    fontSize: 13,
+    color: MineShaft,
+  },
+  billRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  amountRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: hp(7),
+  },
+  billDivider: {
+    width: wp(286),
+    height: 1,
+    backgroundColor: WildSand,
+    marginTop: hp(11),
+  },
+  billIcon: {
+    width: wp(40),
+    height: wp(40),
+  },
+  billBlock: {
+    marginLeft: wp(13),
+  },
+
   miniWrapper: {
-    width: wp(156),
-    height: hp(182),
+    width: wp(331),
+    height: hp(314),
     backgroundColor: ForgetMeNot,
-    borderRadius: 25,
+    borderRadius: 10,
     position: 'relative',
+    marginTop: hp(30),
   },
   minisBgContainer: {
     position: 'absolute',
     bottom: 0,
   },
   minisBg: {
-    // width: wp(313), // wp(127),
-    // height: hp(252), // hp(56),
-    width: wp(156),
-    height: hp(181),
+    width: wp(330),
+    height: hp(271),
   },
   miniImageWrapper: {
-    width: wp(131),
-    height: hp(64),
-    borderRadius: 10,
+    width: wp(292),
+    height: hp(150),
+    borderRadius: 20,
     backgroundColor: White,
     alignSelf: 'center',
     alignItems: 'center',
@@ -178,11 +235,19 @@ export const home = StyleSheet.create({
     marginTop: hp(20),
   },
   miniImageContainer: {
-    borderRadius: 10,
+    borderRadius: 20,
+    width: wp(272),
+    borderWidth: 15,
+    borderColor: White,
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: hp(20),
+    height: hp(150),
   },
   miniImage: {
-    width: wp(127),
-    height: hp(56),
+    // width: wp(272),
+    height: hp(128),
   },
 
   miniLeadText: {
@@ -193,9 +258,56 @@ export const home = StyleSheet.create({
     lineHeight: 17,
   },
 
-  arrowView: {
-    marginLeft: wp(32),
-    marginTop: hp(21),
+  moreToComeView: {
+    marginLeft: wp(22),
+    marginTop: hp(30),
+    marginBottom: hp(50),
+  },
+  viewCard: {
+    width: wp(175),
+    height: hp(182),
+    borderRadius: 20,
+    marginRight: wp(17),
+    backgroundColor: WhiteLilac,
+  },
+  roomie: {
+    width: wp(175),
+    height: hp(182),
+  },
+  homeOwner: {
+    width: wp(126),
+    height: hp(137),
+  },
+  roomieText: {
+    fontSize: 14,
+    color: WoodSmoke,
+    marginTop: hp(16),
+  },
+  roomieSubText: {
+    marginTop: hp(7),
+    color: GullGray,
+    lineHeight: 20.5,
+    width: wp(170),
+  },
+
+  noHomeView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noHome: {
+    color: Midnight,
+    textAlign: 'center',
+    fontSize: 15,
+  },
+  noHomeSub: {
+    color: Midnight,
+    textAlign: 'center',
+    marginTop: hp(7),
+  },
+  button: {
+    width: wp(230),
+    marginTop: hp(15),
   },
 });
 
