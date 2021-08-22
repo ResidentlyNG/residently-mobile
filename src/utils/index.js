@@ -21,3 +21,5 @@ export const checkAuth = async () => {
 
   return isAuth;
 };
+
+export const createHome = (data) => http('/home/create', 'POST', data);

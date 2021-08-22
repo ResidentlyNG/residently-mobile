@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Actions } from 'react-native-router-flux';
 import {
   Button,
@@ -8,37 +9,70 @@ import {
   RegularText,
   TextInput,
 } from '../../../../components';
+import showToast from '../../../../components/Toast';
+import { hp } from '../../../../components/utils';
+import { createHome } from '../../../../utils';
 // import { wp } from '../../../../components/utils';
 import { hostStyles as styles } from './styles';
 
 const Host = () => {
+  const [home, setHome] = useState('');
+  const [address, setAddress] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = () => {
+    setLoading(true);
+    createHome({ name: home, address })
+      .then(() => Actions.setup_success({ home }))
+      .catch((error) => showToast(error.message || 'Something went wrong'))
+      .finally(() => setLoading(false));
+  };
+
   return (
     <View style={styles.background}>
       <Header title="Become a host" />
 
       <View style={styles.mainCard}>
-        <View style={styles.outerCircle}>
-          <View style={styles.innerCircle}>
-            <HeaderText title="1" style={styles.one} />
+        <KeyboardAwareScrollView
+          style={{ flex: 1 }}
+          contentContainerStyle={{ alignItems: 'center' }}
+          enableOnAndroid={true}
+          showsVerticalScrollIndicator={false}
+          extraScrollHeight={hp(52)}>
+          <View style={styles.outerCircle}>
+            <View style={styles.innerCircle}>
+              <HeaderText title="1" style={styles.one} />
+            </View>
           </View>
-        </View>
-        <HeaderText title="Set up your room" style={styles.leadText} />
-        <RegularText
-          title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. "
-          style={styles.subText}
-        />
-        <TextInput
-          value=""
-          label="Room name"
-          placeholder="Enter your room name"
-          noIcon
-          style={styles.input}
-        />
-        <Button
-          title="Next"
-          style={styles.button}
-          onPress={() => Actions.setup_success()}
-        />
+          <HeaderText title="Set up your room" style={styles.leadText} />
+          <RegularText
+            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. "
+            style={styles.subText}
+          />
+          <TextInput
+            value={home}
+            onChangeText={(value) => setHome(value)}
+            label="Home name"
+            placeholder="Give your 'home' a name"
+            noIcon
+            style={styles.input}
+          />
+          <TextInput
+            value={address}
+            onChangeText={(value) => setAddress(value)}
+            label="Address"
+            placeholder="Enter your home address"
+            noIcon
+            style={styles.input}
+          />
+          <Button
+            title="Next"
+            loading={loading}
+            style={styles.button}
+            disabled={!home || !address}
+            onPress={() => onSubmit()} // Actions.setup_success()}
+          />
+        </KeyboardAwareScrollView>
       </View>
     </View>
   );

@@ -31,6 +31,7 @@ import {
 import { home as styles } from './styles';
 import { NotificationBell } from '../../../../assets/svgs';
 import { hp, wp } from '../../../components/utils';
+import { getHome } from '../../../store/actions/profile';
 
 const BillItem = ({ icon }) => (
   <View style={styles.billItem}>
@@ -48,6 +49,10 @@ const BillItem = ({ icon }) => (
 );
 
 class Home extends Component {
+  componentDidMount() {
+    this.props.getHome();
+  }
+
   shadowOpt = {
     width: wp(339),
     height: hp(440),
@@ -243,4 +248,8 @@ const mapStateToProps = (state) => ({
   profile: state.profile.profile,
 });
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = {
+  getHome,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

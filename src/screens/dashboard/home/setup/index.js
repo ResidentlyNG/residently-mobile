@@ -96,7 +96,7 @@ const HomeSetup = () => {
                 styles.roleCard,
                 { borderColor: WoodSmoke, marginTop: hp(20) },
               ]}
-              onPress={() => Actions.join()}>
+              onPress={() => Actions.host()}>
               <View style={styles.cardRow}>
                 <Image source={roomie} style={styles.host} />
                 <View>
