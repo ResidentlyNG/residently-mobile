@@ -81,7 +81,7 @@ export const Header = ({
           {rightComponent}
         </TouchableOpacity>
       ) : (
-        <View />
+        <View style={{ width: 40 }} />
       )}
     </View>
   );

@@ -28,6 +28,8 @@ import Launch from './screens/onboarding/Launch';
 import { checkAuth } from './utils';
 import Host from './screens/dashboard/home/setup/Host';
 import Success from './screens/dashboard/home/setup/Success';
+import Roommate from './screens/dashboard/home/setup/Roommate';
+import JoinRoom from './screens/dashboard/home/setup/JoinRoom';
 
 export default class RouterComponent extends Component {
   render() {
@@ -69,6 +71,8 @@ export default class RouterComponent extends Component {
           <Scene key="home_setup" component={HomeSetup} />
           <Scene key="host" component={Host} />
           <Scene key="setup_success" component={Success} />
+          <Scene key="roommate" component={Roommate} />
+          <Scene key="join_room" component={JoinRoom} />
         </Scene>
       </Router>
     );

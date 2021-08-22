@@ -19,8 +19,9 @@ export const login = (data) => (dispatch) => {
       console.log(res);
     })
     .catch((error) => {
+      console.log('errt', error);
       dispatch({ type: LOGIN_ERROR, payload: error });
 
-      showToast(error.message, 'error');
+      showToast(error?.message || 'Something went wrong', 'error');
     });
 };

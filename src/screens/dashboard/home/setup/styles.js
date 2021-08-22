@@ -203,3 +203,111 @@ export const success = StyleSheet.create({
     marginTop: hp(47),
   },
 });
+
+export const roommateStyles = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: Colors.White,
+  },
+  mainCard: {
+    backgroundColor: Colors.White,
+    flex: 1,
+    marginTop: hp(70),
+    width: wp(343),
+    height: hp(503),
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    alignItems: 'center',
+    elevation: 4,
+  },
+  profileGroup: {
+    width: wp(141.5),
+    height: hp(63),
+    marginTop: hp(114.6),
+  },
+  leadText: {
+    color: Colors.WoodSmoke,
+    fontSize: 20,
+    marginTop: hp(10),
+  },
+  subText: {
+    width: wp(274),
+    fontSize: 14,
+    textAlign: 'center',
+    color: Colors.WoodSmoke,
+    marginTop: hp(27),
+  },
+  button: {
+    width: wp(287),
+    marginTop: hp(38),
+  },
+});
+
+export const joinRoom = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+    height: '100%', // hdp(758),
+    width: '100%', // wdp(375),
+    backgroundColor: Colors.Green,
+  },
+  headerTitle: {
+    color: Colors.White,
+  },
+  imageBg: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    bottom: 0,
+  },
+  mainView: {
+    marginTop: hp(71),
+    width: wp(343),
+    height: hp(503),
+    borderRadius: 20,
+    backgroundColor: Colors.White,
+    alignItems: 'center',
+  },
+
+  leadText: {
+    fontSize: 20,
+    alignSelf: 'flex-start',
+    color: Colors.WoodSmoke,
+    width: wp(231),
+    marginTop: hp(65),
+    marginLeft: wp(28),
+  },
+  subText: {
+    width: wp(274),
+    lineHeight: 18,
+    marginTop: hp(27),
+    alignSelf: 'flex-start',
+    marginLeft: wp(28),
+  },
+  input: {
+    width: wp(287),
+    height: hp(64),
+    borderWidth: 1,
+    borderColor: Colors.AthensGray,
+    backgroundColor: '#F5F5F5', // White,
+    paddingLeft: wp(15),
+    marginTop: hp(21),
+  },
+  button: {
+    marginTop: hp(20),
+    width: wp(287),
+    // height: hp(48),
+    // borderRadius: 6,
+    alignSelf: 'center',
+  },
+  resendText: {
+    fontSize: 12,
+    fontFamily: 'Inter-Regular',
+    marginTop: 15,
+  },
+  resend: {
+    color: Colors.Green,
+    textDecorationLine: 'underline',
+  },
+});
