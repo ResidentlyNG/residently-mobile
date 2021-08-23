@@ -17,3 +17,7 @@ export const GET_WALLET_ERROR = 'get_wallet_error';
 export const GET_HOME = 'get_home';
 export const GET_HOME_SUCCESS = 'get_home_success';
 export const GET_HOME_ERROR = 'get_home_error';
+
+export const GET_BILLS = 'get_bills';
+export const GET_BILLS_SUCCESS = 'get_bills_success';
+export const GET_BILLS_ERROR = 'get_bills_error';

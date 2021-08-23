@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { Button as Btn } from 'react-native-elements';
 import { ForwardArrow } from '../../assets/svgs';
-import { Green, Polar, White } from './Colors';
+import { AzureRadiance, Green, Polar, White } from './Colors';
 import { ParagraphText } from './Text';
 import { hp, wp } from './utils';
 
@@ -60,12 +60,12 @@ const ActionButton = ({
   <TouchableOpacity
     style={[styles.button, light && styles.lightButton, style]}
     onPress={onPress}>
-    <View style={styles.actionRow}>
+    <View style={styles.largeActionRow}>
       <View />
       <ParagraphText
         title={title}
         style={[
-          styles.actionButtonTitle,
+          styles.largeActionButtonTitle,
           light && styles.lightTitle,
           titleStyle,
         ]}
@@ -73,6 +73,19 @@ const ActionButton = ({
       <View style={styles.buttonIcon}>
         {icon || <ForwardArrow fill={iconFill} />}
       </View>
+    </View>
+  </TouchableOpacity>
+);
+
+export const ButtonWithIcon = ({ icon, onPress, title, titleStyle, style }) => (
+  <TouchableOpacity style={[styles.iconButton, style]} onPress={onPress}>
+    <View style={styles.actionRow}>
+      <View style={styles.buttonLeftIcon}>{icon}</View>
+      <ParagraphText
+        title={title}
+        style={[styles.actionButtonTitle, titleStyle]}
+      />
+      {/* <View style={styles.buttonIcon}>{icon}</View> */}
     </View>
   </TouchableOpacity>
 );
@@ -102,15 +115,39 @@ const styles = StyleSheet.create({
     right: wp(25),
     position: 'absolute',
   },
-  buttonLeftIcon: {
+  largeButtonLeftIcon: {
     left: wp(25),
     position: 'absolute',
   },
-  actionRow: {
+  largeActionRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
+  },
+  largeActionButtonTitle: {
+    fontSize: 16,
+    color: White,
+    fontFamily: 'Inter-Medium',
+  },
+
+  iconButton: {
+    width: wp(204),
+    height: hp(47),
+    backgroundColor: AzureRadiance,
+    marginTop: hp(27),
+    borderRadius: 16,
+  },
+  buttonLeftIcon: {
+    left: wp(13),
+    // position: 'absolute',
+  },
+  actionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: '100%',
+    width: wp(158),
   },
   actionButtonTitle: {
     fontSize: 16,
