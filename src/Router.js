@@ -13,7 +13,7 @@ import Dashboard from './screens/dashboard';
 import Bills from './screens/dashboard/bills';
 import Bill from './screens/dashboard/bills/Bill';
 import BillList from './screens/dashboard/bills/BillList';
-import CreateBill from './screens/dashboard/bills/CreateBill';
+import CreateBill from './screens/dashboard/bills/create';
 import CustomBill from './screens/dashboard/bills/CustomBill';
 import NewBill from './screens/dashboard/bills/NewBill';
 import ProcessBill from './screens/dashboard/bills/ProcessBill';
@@ -30,6 +30,8 @@ import Host from './screens/dashboard/home/setup/Host';
 import Success from './screens/dashboard/home/setup/Success';
 import Roommate from './screens/dashboard/home/setup/Roommate';
 import JoinRoom from './screens/dashboard/home/setup/JoinRoom';
+import NameBill from './screens/dashboard/bills/create/NameBill';
+import SelectPlan from './screens/dashboard/bills/create/SelectPlan';
 
 export default class RouterComponent extends Component {
   render() {
@@ -73,6 +75,8 @@ export default class RouterComponent extends Component {
           <Scene key="setup_success" component={Success} />
           <Scene key="roommate" component={Roommate} />
           <Scene key="join_room" component={JoinRoom} />
+          <Scene key="name_bill" component={NameBill} />
+          <Scene key="select_plan" component={SelectPlan} />
         </Scene>
       </Router>
     );

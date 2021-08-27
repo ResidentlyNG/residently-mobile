@@ -6,9 +6,9 @@ import {
   cashBill,
   flashBill,
   houseBill,
-} from '../../../../assets/images';
+} from '../../../../../assets/images';
 // import { Actions } from 'react-native-router-flux';
-import { BoldCross, MiniForwardChevrolet } from '../../../../assets/svgs';
+import { BoldCross, MiniForwardChevrolet } from '../../../../../assets/svgs';
 import {
   ActionButton,
   Coral,
@@ -17,9 +17,9 @@ import {
   Header,
   Image,
   ParagraphText,
-} from '../../../components';
-import { hp } from '../../../components/utils';
-import { createBill as styles } from './styles';
+} from '../../../../components';
+import { hp } from '../../../../components/utils';
+import { createBill as styles } from '../styles';
 
 const BillCard = ({ image, onPress, color, title, style }) => (
   <>
@@ -63,7 +63,7 @@ const CreateBill = () => {
         title="Create a Custom Bill"
         style={styles.button}
         icon={<BoldCross />}
-        onPress={() => Actions.process_bill()}
+        onPress={() => Actions.name_bill()}
       />
     </View>
   );

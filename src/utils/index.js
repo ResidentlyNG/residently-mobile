@@ -3,10 +3,10 @@ import { RESET_LOADER } from '../store/actions/types';
 import api from './api';
 
 // TODO:: Abstract utility
-const http = (route, method, data) => {
-  const result = api(route, method, data)
-    .then((res) => res)
-    .catch((err) => err);
+const http = async (route, method, data) => {
+  const result = await api(route, method, data);
+  // .then((res) => res)
+  // .catch((err) => err);
   return result;
 };
 
