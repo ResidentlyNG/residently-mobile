@@ -102,3 +102,21 @@ export const planStyles = StyleSheet.create({
     marginTop: hp(62),
   },
 });
+
+export const duration = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  tabContainer: {
+    marginTop: hp(44),
+    marginBottom: hp(45),
+  },
+  input: {
+    marginTop: hp(20),
+  },
+  buttonView: {
+    position: 'absolute',
+    bottom: 220,
+  },
+});

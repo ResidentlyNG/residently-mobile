@@ -32,6 +32,7 @@ import Roommate from './screens/dashboard/home/setup/Roommate';
 import JoinRoom from './screens/dashboard/home/setup/JoinRoom';
 import NameBill from './screens/dashboard/bills/create/NameBill';
 import SelectPlan from './screens/dashboard/bills/create/SelectPlan';
+import Duration from './screens/dashboard/bills/create/Duration';
 
 export default class RouterComponent extends Component {
   render() {
@@ -77,6 +78,7 @@ export default class RouterComponent extends Component {
           <Scene key="join_room" component={JoinRoom} />
           <Scene key="name_bill" component={NameBill} />
           <Scene key="select_plan" component={SelectPlan} />
+          <Scene key="duration" component={Duration} />
         </Scene>
       </Router>
     );

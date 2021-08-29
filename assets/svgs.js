@@ -953,3 +953,37 @@ export const MenuChevrolet = (props) => (
     />
   </Svg>
 );
+
+export const Dropdown = (props) => (
+  <Svg
+    width={12}
+    height={9}
+    viewBox="0 0 12 9"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M5.501 8.625a1.55 1.55 0 01-1.215-.615L.424 3.124C-.038 2.54-.131 1.708.187 1.005.467.385 1.023 0 1.639 0h7.724c.617 0 1.174.385 1.453 1.005.317.703.225 1.534-.236 2.118L6.717 8.01a1.55 1.55 0 01-1.216.615z"
+      fill="#231F20"
+    />
+  </Svg>
+);
+
+export const Clock = (props) => (
+  <Svg
+    width={19}
+    height={20}
+    viewBox="0 0 19 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M12.833 10.917H9.167A.916.916 0 018.25 10V6.333a.916.916 0 111.833 0v2.75h2.75a.916.916 0 110 1.834zM9.167.833C4.112.833 0 4.946 0 10c0 5.055 4.112 9.167 9.167 9.167 5.054 0 9.166-4.112 9.166-9.167 0-5.054-4.112-9.167-9.166-9.167z"
+      fill="#C0CCDA"
+    />
+  </Svg>
+);

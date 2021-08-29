@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { useSelector } from 'react-redux';
 import { profileGroup } from '../../../../../assets/images';
 import { ForwardArrow } from '../../../../../assets/svgs';
@@ -55,7 +56,7 @@ const SelectPlan = ({ title, bill }) => {
         icon={<ForwardArrow />}
         disabled={true}
         style={styles.button}
-        // onPress={() => submit()}
+        onPress={() => Actions.duration()}
       />
     </View>
   );
