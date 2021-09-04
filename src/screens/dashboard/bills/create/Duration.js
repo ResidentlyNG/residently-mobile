@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { Button, DateInput, Header, Tab } from '../../../../components';
 import { duration as styles } from './styles';
 
@@ -35,7 +36,7 @@ const Duration = () => {
       )}
       {/* <DateInput dueDate="" label="Time of the day" /> */}
       <View style={styles.buttonView}>
-        <Button title="Proceed" />
+        <Button title="Proceed" onPress={() => Actions.select_recipient()} />
       </View>
     </View>
   );

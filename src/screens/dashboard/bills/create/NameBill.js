@@ -36,7 +36,7 @@ const NameBill = () => {
     } else if (!bill) {
       showToast('Bill amount is required', 'error');
       setError({ bill: true });
-    } else Actions.select_plan({ title, bill });
+    } else Actions.select_plan({ title, bill: currentAmount });
   };
 
   return (

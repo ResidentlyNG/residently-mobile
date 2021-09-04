@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { useSelector } from 'react-redux';
-import { profileGroup } from '../../../../../assets/images';
+import { host, profileGroup } from '../../../../../assets/images';
 import { ForwardArrow } from '../../../../../assets/svgs';
 import {
   ActionButton,
@@ -47,7 +47,7 @@ const SelectPlan = ({ title, bill }) => {
           onPress={() => setPlan('personal')}>
           <View style={styles.planRow}>
             <RegularText title="Personal Bill" style={styles.billType} />
-            <Image source={profileGroup} style={styles.profileGroup} />
+            <Image source={host} style={styles.host} />
           </View>
         </TouchableOpacity>
       </View>

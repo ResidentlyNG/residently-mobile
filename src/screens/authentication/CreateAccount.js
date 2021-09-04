@@ -99,6 +99,7 @@ need some information from you."
               onChangeText={(value) => setEmail(value)}
               placeholder="Your email address"
               style={styles.passwordInput}
+              keyboardType="email-address"
             />
             <TextInput
               icon={<CallSvg />}

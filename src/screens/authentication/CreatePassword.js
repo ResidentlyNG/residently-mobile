@@ -19,16 +19,21 @@ import { hp } from '../../components/utils';
 import { createAccount } from '../../utils';
 import { createPassword as styles } from './styles';
 
-const TermsModal = ({ data }) => {
+const TermsModal = ({ data, setModal }) => {
   const [loading, setLoading] = useState(false);
 
   const register = () => {
     setLoading(true);
     createAccount(data)
-      .then(() => {
-        Actions.join();
+      .then((response) => {
+        console.log('rr', response);
+        setModal(false);
+        Actions.join_room({ verification: true });
       })
-      .catch((error) => showToast(error.message))
+      .catch((error) => {
+        console.log('err', error, data);
+        showToast(error?.message || 'Something went wrong');
+      })
       .finally(() => setLoading(false));
   };
 
@@ -155,7 +160,9 @@ const CreatePassword = (props) => {
           borderRadius: 20,
         }}
         onBackdropPress={() => setModal(false)}
-        render={<TermsModal data={data} />}
+        render={
+          <TermsModal data={data} setModal={(value) => setModal(value)} />
+        }
       />
     </>
   );

@@ -2,9 +2,11 @@ import { StyleSheet } from 'react-native';
 import {
   Green,
   Heather,
+  Midnight,
   MineShaft,
   Roman,
   White,
+  WhiteLilac,
   WoodSmoke,
 } from '../../../../components';
 import { hp, wp } from '../../../../components/utils';
@@ -66,6 +68,10 @@ export const planStyles = StyleSheet.create({
     width: wp(95),
     height: hp(42),
   },
+  host: {
+    width: wp(42),
+    height: hp(42),
+  },
   leadText: {
     fontSize: 14,
     marginTop: hp(25),
@@ -118,5 +124,98 @@ export const duration = StyleSheet.create({
   buttonView: {
     position: 'absolute',
     bottom: 220,
+  },
+});
+
+export const recipient = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  mainView: {
+    width: wp(331),
+    height: hp(381),
+    borderRadius: 20,
+    backgroundColor: White,
+    elevation: 4,
+    marginTop: hp(54.3),
+    paddingLeft: 29,
+  },
+  leadText: {
+    width: wp(215),
+    color: WoodSmoke,
+    fontSize: 20,
+    marginTop: hp(40),
+  },
+  subText: {
+    width: wp(274),
+    fontSize: 14,
+    marginTop: hp(18),
+  },
+
+  menuView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: WhiteLilac,
+    width: wp(271),
+    height: hp(62),
+    borderRadius: 10,
+    marginTop: hp(18),
+  },
+  iconView: {
+    width: 42,
+    height: 39,
+    borderRadius: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: wp(14),
+    backgroundColor: White,
+  },
+  menuTitle: {
+    fontSize: 14,
+    color: Midnight,
+    marginLeft: wp(18),
+  },
+  chevrolet: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    right: wp(14),
+    position: 'absolute',
+  },
+});
+
+export const settlement = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  mainView: {
+    width: wp(331),
+    height: hp(453),
+    borderRadius: 20,
+    backgroundColor: White,
+    elevation: 4,
+    marginTop: hp(54.3),
+    paddingLeft: 22,
+  },
+  leadRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: hp(40),
+  },
+  leadText: {
+    width: wp(215),
+    color: WoodSmoke,
+    fontSize: 20,
+    marginLeft: 12,
+  },
+  subText: {
+    width: wp(274),
+    fontSize: 14,
+    marginTop: hp(18),
+  },
+  input: {
+    width: wp(287),
+    marginTop: hp(15),
   },
 });

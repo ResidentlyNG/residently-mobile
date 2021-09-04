@@ -21,7 +21,7 @@ export const login = (data) => (dispatch) => {
       if (profile.email_verified !== 'false') {
         if (profile.home_id) Actions.dashboard({ type: 'reset' });
         else Actions.intro({ type: 'reset' });
-      } else Actions.join({ verification: true });
+      } else Actions.join_room({ verification: true });
       console.log(res);
     })
     .catch((error) => {

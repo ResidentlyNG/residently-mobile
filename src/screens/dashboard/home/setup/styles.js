@@ -290,7 +290,7 @@ export const joinRoom = StyleSheet.create({
     height: hp(64),
     borderWidth: 1,
     borderColor: Colors.AthensGray,
-    backgroundColor: '#F5F5F5', // White,
+    // backgroundColor: '#F5F5F5', // White,
     paddingLeft: wp(15),
     marginTop: hp(21),
   },
