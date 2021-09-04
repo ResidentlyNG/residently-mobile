@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   ImageBackground,
   StatusBar,
@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 // import { Actions } from 'react-native-router-flux';
 import {
   facebook,
@@ -33,7 +32,7 @@ import { login } from '../../store/actions/auth';
 
 const Login = () => {
   const {
-    auth: { error, loading, message },
+    auth: { loading },
     profile: { profile },
   } = useSelector((state) => state, shallowEqual);
 
@@ -41,15 +40,15 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (error) showToast(error, 'error');
-    if (message === 'Login successful') {
-      if (profile.email_verified !== 'false') {
-        if (profile.home_id) Actions.dashboard({ type: 'reset' });
-        else Actions.intro({ type: 'reset' });
-      } else Actions.join({ verification: true });
-    }
-  }, [error, message]);
+  // useEffect(() => {
+  //   if (error) showToast(error, 'error');
+  //   if (message === 'Login successful') {
+  //     if (profile.email_verified !== 'false') {
+  //       if (profile.home_id) Actions.dashboard({ type: 'reset' });
+  //       else Actions.intro({ type: 'reset' });
+  //     } else Actions.join({ verification: true });
+  //   }
+  // }, [error, message]);
 
   const submit = () => {
     const data = { email, password };

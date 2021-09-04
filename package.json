@@ -33,6 +33,7 @@
     "react-native-root-siblings": "^4.1.1",
     "react-native-root-toast": "^3.2.1",
     "react-native-router-flux": "^4.2.0",
+    "react-native-safe-area-context": "^3.3.0",
     "react-native-screens": "^2.16.1",
     "react-native-shadow": "^1.2.2",
     "react-native-svg": "^12.1.0",

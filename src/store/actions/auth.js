@@ -1,3 +1,4 @@
+import { Actions } from 'react-native-router-flux';
 import showToast from '../../components/Toast';
 import api from '../../utils/api';
 import {
@@ -13,9 +14,14 @@ export const login = (data) => (dispatch) => {
   api('/login', 'POST', data)
     .then((res) => {
       const auth = { token: res.token.token, email: res.data.email };
+      const profile = res.data;
       dispatch({ type: LOGIN_SUCCESS, payload: auth });
       dispatch({ type: GET_PROFILE_SUCCESS, payload: res.data });
       dispatch({ type: GET_WALLET_SUCCESS, payload: res.wallet });
+      if (profile.email_verified !== 'false') {
+        if (profile.home_id) Actions.dashboard({ type: 'reset' });
+        else Actions.intro({ type: 'reset' });
+      } else Actions.join_room({ verification: true });
       console.log(res);
     })
     .catch((error) => {

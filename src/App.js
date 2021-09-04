@@ -4,6 +4,7 @@ import { setCustomText } from 'react-native-global-props';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import axios from 'axios';
 import { PersistGate } from 'redux-persist/integration/react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Midnight } from './components';
 import Router from './Router';
 import { persistor, store } from './store';
@@ -36,7 +37,9 @@ export default class App extends Component {
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <RootSiblingParent>
-            <Router />
+            <SafeAreaProvider>
+              <Router />
+            </SafeAreaProvider>
           </RootSiblingParent>
         </PersistGate>
       </Provider>

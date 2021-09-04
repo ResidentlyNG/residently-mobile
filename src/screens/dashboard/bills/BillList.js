@@ -67,6 +67,8 @@ const BillList = () => {
             rightTabSelect={() => select('longTerm')}
             rightTabSelected={selected === 'longTerm'}
             leftTabSelected={selected === 'shortTerm'}
+            leftTitle="Short Term"
+            rightTitle="Long Term"
           />
           <View style={{ height: hp(515) }}>
             <ScrollView

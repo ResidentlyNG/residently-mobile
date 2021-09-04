@@ -309,6 +309,35 @@ export const home = StyleSheet.create({
     width: wp(230),
     marginTop: hp(15),
   },
+
+  noBillCard: {
+    width: wp(331),
+    height: hp(342),
+    backgroundColor: White,
+    elevation: 3,
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 0,
+    borderRadius: 20,
+  },
+  noBillLeadText: {
+    fontSize: 20,
+    marginTop: hp(30),
+  },
+  noBillText: {
+    width: wp(261),
+    marginTop: hp(26),
+    lineHeight: 18,
+    textAlign: 'center',
+  },
+  newBillButton: {
+    marginTop: hp(42),
+    // width: wp(204),
+    // height: hp(47),
+    // backgroundColor: AzureRadiance,
+    // borderRadius: 16,
+  },
+  plusView: circle(31, White),
 });
 
 export const homeEX = StyleSheet.create({

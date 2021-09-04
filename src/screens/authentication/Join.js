@@ -40,10 +40,14 @@ const Join = (props) => {
     setLoading(true);
     verifyEmail({ code })
       .then((res) => {
+        console.log('res', res);
         showToast(res.message || 'Account verification successful');
         Actions.login({ type: 'reset' });
       })
-      .catch((error) => showToast(error.message, 'error'))
+      .catch((error) => {
+        console.log('err', error);
+        showToast(error.message, 'error');
+      })
       .finally(() => setLoading(false));
   };
 
@@ -79,6 +83,7 @@ const Join = (props) => {
             value={code}
             placeholder="Code"
             onChangeText={(value) => setCode(value)}
+            keyboardType="number-pad"
           />
           <Button
             title="Proceed"

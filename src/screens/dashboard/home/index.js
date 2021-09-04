@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 import {
   BillIcon,
   Button,
+  ButtonWithIcon,
   Coral,
+  DodgerBlue,
   HeaderText,
   Image,
   ParagraphText,
@@ -29,9 +31,15 @@ import {
   // bills,
 } from '../../../../assets/images';
 import { home as styles } from './styles';
-import { NotificationBell } from '../../../../assets/svgs';
+import { Cross, NotificationBell } from '../../../../assets/svgs';
 import { hp, wp } from '../../../components/utils';
 import { getHome } from '../../../store/actions/profile';
+
+const ButtonPlus = () => (
+  <View style={styles.plusView}>
+    <Cross fill={DodgerBlue} />
+  </View>
+);
 
 const BillItem = ({ icon }) => (
   <View style={styles.billItem}>
@@ -45,6 +53,25 @@ const BillItem = ({ icon }) => (
     <View style={styles.amountRow}>
       <TimeBadge />
     </View>
+  </View>
+);
+
+const NoBills = () => (
+  <View style={styles.noBillCard}>
+    <ParagraphText title="You have no bill" style={styles.noBillLeadText} />
+    <RegularText
+      title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. "
+      style={styles.noBillText}
+    />
+    <ButtonWithIcon
+      title="Add a new bill"
+      icon={<ButtonPlus />}
+      style={styles.newBillButton}
+      onPress={() => Actions.create_bill()}
+      // titleStyle={styles.buttonTitle}
+      left
+      flex
+    />
   </View>
 );
 
@@ -71,7 +98,10 @@ class Home extends Component {
   };
 
   render() {
-    const { profile } = this.props;
+    const { profile, home, bills } = this.props;
+    const hasHome = profile.home_id;
+    const billCount = bills.length === 1 ? '1 bill' : `${bills.length} bills`;
+
     return (
       <>
         <StatusBar backgroundColor={White} barStyle="dark-content" />
@@ -142,11 +172,11 @@ class Home extends Component {
                       <View style={styles.blockView}>
                         <View>
                           <ParagraphText
-                            title="BLOCK 5A Room"
+                            title={hasHome ? home.name : ''}
                             style={styles.blockRoom}
                           />
                           <RegularText
-                            title="💵 12 Bills created"
+                            title={`💵 ${billCount} created`}
                             style={styles.billsCount}
                           />
                         </View>
@@ -156,20 +186,29 @@ class Home extends Component {
                         />
                       </View>
 
-                      <View style={styles.leadRow}>
-                        <ParagraphText
-                          title="Your Bills"
-                          style={styles.yourBills}
-                        />
-                        <TouchableOpacity
-                          style={styles.seeAllButton}
-                          onPress={() => Actions.bill_list()}>
-                          <RegularText title="See All" style={styles.seeAll} />
-                        </TouchableOpacity>
-                      </View>
-                      <BillItem icon={flashBill} />
-                      <BillItem icon={houseBill} />
-                      <BillItem icon={cable} />
+                      {bills.length ? (
+                        <>
+                          <View style={styles.leadRow}>
+                            <ParagraphText
+                              title="Your Bills"
+                              style={styles.yourBills}
+                            />
+                            <TouchableOpacity
+                              style={styles.seeAllButton}
+                              onPress={() => Actions.bill_list()}>
+                              <RegularText
+                                title="See All"
+                                style={styles.seeAll}
+                              />
+                            </TouchableOpacity>
+                          </View>
+                          <BillItem icon={flashBill} />
+                          <BillItem icon={houseBill} />
+                          <BillItem icon={cable} />
+                        </>
+                      ) : (
+                        <NoBills />
+                      )}
                     </>
                   )}
                 </View>
@@ -246,6 +285,8 @@ class Home extends Component {
 
 const mapStateToProps = (state) => ({
   profile: state.profile.profile,
+  home: state.profile.home,
+  bills: state.bills.bills,
 });
 
 const mapDispatchToProps = {
