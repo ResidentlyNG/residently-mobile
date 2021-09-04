@@ -42,7 +42,7 @@ const DatePicker = ({
           dateText: {
             alignSelf: 'flex-start',
             fontSize: 16,
-            fontFamily: 'Inter-Regular',
+            fontFamily: 'Oxygen-Regular',
           },
           datePicker: {
             backgroundColor: 'rgba(0, 0, 0, 0.8)', // '#d1d3d8',

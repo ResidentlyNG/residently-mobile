@@ -75,7 +75,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: hp(26),
     lineHeight: 36,
-    fontFamily: 'Inter-Medium',
+    fontFamily: 'Oxygen-Regular',
   },
   text: {
     color: White,
