@@ -57,7 +57,7 @@ export default class Intro extends Component {
               </View>
             </View>
             <TouchableOpacity
-              onPress={() => Actions.dashboard({ type: 'reset' })}
+              onPress={() => Actions.home_setup({ type: 'reset' })}
               style={styles.billsView}>
               <ParagraphText
                 title="Pay household bills"
@@ -126,7 +126,9 @@ export default class Intro extends Component {
             </View>
             {/* </View> */}
           </View>
-          <TouchableOpacity style={styles.vibes}>
+          <TouchableOpacity
+            style={styles.vibes}
+            onPress={() => Actions.dashboard({ type: 'reset' })}>
             <ParagraphText title="Just Vibes  💛" style={styles.vibesText} />
           </TouchableOpacity>
         </View>

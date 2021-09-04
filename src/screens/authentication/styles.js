@@ -320,7 +320,7 @@ export const createPassword = StyleSheet.create({
   mainView: {
     marginTop: hp(46),
     backgroundColor: White,
-    height: hp(296),
+    height: hp(380),
     width: wp(355),
     borderRadius: 20,
     alignItems: 'center',
@@ -765,7 +765,7 @@ export const join = StyleSheet.create({
   mainView: {
     marginTop: hp(35),
     width: wp(338),
-    height: hp(310),
+    height: hp(345),
     borderRadius: 10,
     backgroundColor: '#F1F1F1',
     alignItems: 'center',
@@ -807,5 +807,14 @@ export const join = StyleSheet.create({
     height: hp(48),
     borderRadius: 6,
     alignSelf: 'center',
+  },
+  resendText: {
+    fontSize: 12,
+    fontFamily: 'Inter-Regular',
+    marginTop: 15,
+  },
+  resend: {
+    color: Green,
+    textDecorationLine: 'underline',
   },
 });

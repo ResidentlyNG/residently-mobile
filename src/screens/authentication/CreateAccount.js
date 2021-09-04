@@ -29,14 +29,33 @@ import {
   RegularText,
   TextInput,
 } from '../../components';
-import { hp } from '../../components/utils';
+import showToast from '../../components/Toast';
+import {
+  hp,
+  validateEmail,
+  validateFullname,
+  validatePhone,
+} from '../../components/utils';
 import { Image } from '../../components/View';
 import { createAccountStyles as styles } from './styles';
 
 const CreateAccount = () => {
-  const [username, setUsername] = useState('');
+  const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const submit = () => {
+    const data = { fullname, email, phone };
+    if (!fullname || !validateFullname(fullname))
+      showToast('Your Full name is required', 'error');
+    else if (!email) showToast('Your email address is required', 'error');
+    else if (!validateEmail(email))
+      showToast('Your email address is not valid', 'error');
+    else if (!phone) showToast('Your phone number is required', 'error');
+    else if (!validatePhone(phone))
+      showToast('Your phone number is not valid', 'error');
+    else Actions.create_password({ data });
+  };
 
   return (
     <>
@@ -54,7 +73,7 @@ const CreateAccount = () => {
           />
           <RegularText
             title="To create your account we would
-need few information from you."
+need some information from you."
             style={styles.header}
           />
         </View>
@@ -67,9 +86,9 @@ need few information from you."
             extraScrollHeight={hp(52)}>
             <TextInput
               icon={<UserSvg />}
-              value={username}
+              value={fullname}
               label="Full name"
-              onChangeText={(value) => setUsername(value)}
+              onChangeText={(value) => setFullname(value)}
               placeholder="Your full name"
               style={styles.usernameInput}
             />
@@ -80,20 +99,23 @@ need few information from you."
               onChangeText={(value) => setEmail(value)}
               placeholder="Your email address"
               style={styles.passwordInput}
+              keyboardType="email-address"
             />
             <TextInput
               icon={<CallSvg />}
               label="Phone Number"
-              value={password}
-              onChangeText={(value) => setPassword(value)}
-              placeholder="Your phone number"
+              value={phone}
+              onChangeText={(value) => setPhone(value)}
+              placeholder="07004562341"
               style={styles.passwordInput}
+              keyboardType="phone-pad"
             />
             <ActionButton
               title="Next"
               icon={<ForwardArrow />}
+              disabled={true}
               style={styles.button}
-              onPress={() => Actions.create_password()}
+              onPress={() => submit()}
             />
             <View style={styles.socialsCard}>
               <RegularText

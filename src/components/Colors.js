@@ -38,3 +38,4 @@ export const Alabaster = '#FBFBFB';
 export const Deyser = '#D3DCE6';
 export const MidGray = '#575A65';
 export const CodGray = '#171717';
+export const TransparentWhite = '#FFFC';

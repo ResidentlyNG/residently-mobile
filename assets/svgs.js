@@ -953,3 +953,69 @@ export const MenuChevrolet = (props) => (
     />
   </Svg>
 );
+
+export const Dropdown = (props) => (
+  <Svg
+    width={12}
+    height={9}
+    viewBox="0 0 12 9"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M5.501 8.625a1.55 1.55 0 01-1.215-.615L.424 3.124C-.038 2.54-.131 1.708.187 1.005.467.385 1.023 0 1.639 0h7.724c.617 0 1.174.385 1.453 1.005.317.703.225 1.534-.236 2.118L6.717 8.01a1.55 1.55 0 01-1.216.615z"
+      fill="#231F20"
+    />
+  </Svg>
+);
+
+export const Clock = (props) => (
+  <Svg
+    width={19}
+    height={20}
+    viewBox="0 0 19 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M12.833 10.917H9.167A.916.916 0 018.25 10V6.333a.916.916 0 111.833 0v2.75h2.75a.916.916 0 110 1.834zM9.167.833C4.112.833 0 4.946 0 10c0 5.055 4.112 9.167 9.167 9.167 5.054 0 9.166-4.112 9.166-9.167 0-5.054-4.112-9.167-9.166-9.167z"
+      fill="#C0CCDA"
+    />
+  </Svg>
+);
+
+export const Residently = (props) => (
+  <Svg
+    width={21}
+    height={23}
+    viewBox="0 0 21 23"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M19.886 7.09l-6.125-5.805c-1.81-1.713-4.713-1.713-6.522 0L1.114 7.089A3.633 3.633 0 000 9.716v9.687C0 21.383 1.571 23 3.52 23h13.96C19.43 23 21 21.401 21 19.403V9.716c0-.99-.418-1.941-1.114-2.627zM9.744 19.345H5.39c-1.332 0-2.406-1.104-2.406-2.455v-6.604c0-.685.278-1.333.776-1.79l4.196-3.996a3.262 3.262 0 011.79-.856v15.7zm8.253-2.436c0 1.351-1.074 2.455-2.406 2.455h-4.455V3.625a3.348 3.348 0 011.91.857L17.24 8.46c.478.456.776 1.104.776 1.789v6.66h-.02z"
+      fill="#00C995"
+    />
+  </Svg>
+);
+
+export const Bank = (props) => (
+  <Svg
+    width={23}
+    height={23}
+    viewBox="0 0 23 23"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}>
+    <Path
+      d="M0 5.73v3.787h2.03v9.438H0V23h23v-4.045h-2.03V9.517H23V5.73L11.5 0 0 5.73zm9.47 13.225H6.089V9.517h3.383v9.438zm4.06-9.438h3.382v9.438h-3.383V9.517z"
+      fill="#FFC82C"
+    />
+  </Svg>
+);

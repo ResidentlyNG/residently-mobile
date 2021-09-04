@@ -3,12 +3,12 @@ import { Image as Img, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { BackIconRound } from '../../assets/svgs';
 import {
+  CatskillWhite,
   EarlyDawn,
   MineShaft,
   SelectiveYellow,
   Sunglow,
   White,
-  WhiteLilac,
   WoodSmoke,
 } from './Colors';
 import { ParagraphText, RegularText } from './Text';
@@ -30,6 +30,8 @@ export const Tab = ({
   leftTabSelected,
   rightTabSelected,
   containerStyle,
+  leftTitle,
+  rightTitle,
 }) => {
   const selectedStyle = (selected) =>
     selected ? styles.selectedTab : styles.tab;
@@ -41,12 +43,12 @@ export const Tab = ({
           noTabSelected ? styles.selectedTab : selectedStyle(leftTabSelected)
         }
         onPress={leftTabSelect}>
-        <ParagraphText title="Short Term" style={styles.tabTitle} />
+        <ParagraphText title={leftTitle} style={styles.tabTitle} />
       </TouchableOpacity>
       <TouchableOpacity
         style={selectedStyle(rightTabSelected)}
         onPress={rightTabSelect}>
-        <ParagraphText title="Long Term" style={styles.tabTitle} />
+        <ParagraphText title={rightTitle} style={styles.tabTitle} />
       </TouchableOpacity>
     </View>
   );
@@ -81,7 +83,7 @@ export const Header = ({
           {rightComponent}
         </TouchableOpacity>
       ) : (
-        <View />
+        <View style={{ width: 40 }} />
       )}
     </View>
   );
@@ -113,10 +115,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tabContainer: {
-    width: wp(313),
+    width: wp(315),
     height: hp(42),
     borderRadius: 10,
-    backgroundColor: WhiteLilac,
+    backgroundColor: CatskillWhite,
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',

@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { StatusBar, ScrollView, TouchableOpacity, View } from 'react-native';
 import { BoxShadow } from 'react-native-shadow';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 import {
   BillIcon,
+  Button,
+  ButtonWithIcon,
   Coral,
+  DodgerBlue,
   HeaderText,
   Image,
   ParagraphText,
@@ -24,10 +28,18 @@ import {
   liveAnywhere,
   homeOwner,
   roomieZoomed,
+  // bills,
 } from '../../../../assets/images';
 import { home as styles } from './styles';
-import { NotificationBell } from '../../../../assets/svgs';
+import { Cross, NotificationBell } from '../../../../assets/svgs';
 import { hp, wp } from '../../../components/utils';
+import { getHome } from '../../../store/actions/profile';
+
+const ButtonPlus = () => (
+  <View style={styles.plusView}>
+    <Cross fill={DodgerBlue} />
+  </View>
+);
 
 const BillItem = ({ icon }) => (
   <View style={styles.billItem}>
@@ -44,7 +56,30 @@ const BillItem = ({ icon }) => (
   </View>
 );
 
-export default class Home extends Component {
+const NoBills = () => (
+  <View style={styles.noBillCard}>
+    <ParagraphText title="You have no bill" style={styles.noBillLeadText} />
+    <RegularText
+      title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. "
+      style={styles.noBillText}
+    />
+    <ButtonWithIcon
+      title="Add a new bill"
+      icon={<ButtonPlus />}
+      style={styles.newBillButton}
+      onPress={() => Actions.create_bill()}
+      // titleStyle={styles.buttonTitle}
+      left
+      flex
+    />
+  </View>
+);
+
+class Home extends Component {
+  componentDidMount() {
+    this.props.getHome();
+  }
+
   shadowOpt = {
     width: wp(339),
     height: hp(440),
@@ -63,6 +98,10 @@ export default class Home extends Component {
   };
 
   render() {
+    const { profile, home, bills } = this.props;
+    const hasHome = profile.home_id;
+    const billCount = bills.length === 1 ? '1 bill' : `${bills.length} bills`;
+
     return (
       <>
         <StatusBar backgroundColor={White} barStyle="dark-content" />
@@ -74,8 +113,11 @@ export default class Home extends Component {
               <Image source={user} style={styles.profileImage} />
             </TouchableOpacity>
             <View style={styles.usernameView}>
-              <ParagraphText title="Bisola Jabari" style={styles.fullname} />
-              <RegularText title="@Bisijabari" style={styles.username} />
+              <ParagraphText title={profile.fullname} style={styles.fullname} />
+              <RegularText
+                title={`@${profile.username}`}
+                style={styles.username}
+              />
             </View>
             <View style={styles.bell}>
               <NotificationBell />
@@ -109,34 +151,66 @@ export default class Home extends Component {
 
               <BoxShadow setting={this.shadowOpt}>
                 <View style={styles.expenseBlock}>
-                  <View style={styles.blockView}>
-                    <View>
-                      <ParagraphText
-                        title="BLOCK 5A Room"
-                        style={styles.blockRoom}
+                  {!profile.home_id ? (
+                    <View style={styles.noHomeView}>
+                      <RegularText
+                        title="You have not setup a home yet."
+                        style={styles.noHome}
                       />
                       <RegularText
-                        title="💵 12 Bills created"
-                        style={styles.billsCount}
+                        title="you need to setup a home before you can create a bill."
+                        style={styles.noHomeSub}
+                      />
+                      <Button
+                        title="Setup your home"
+                        style={styles.button}
+                        onPress={() => Actions.home_setup()}
                       />
                     </View>
-                    <Image source={profileGroup} style={styles.profileGroup} />
-                  </View>
+                  ) : (
+                    <>
+                      <View style={styles.blockView}>
+                        <View>
+                          <ParagraphText
+                            title={hasHome ? home.name : ''}
+                            style={styles.blockRoom}
+                          />
+                          <RegularText
+                            title={`💵 ${billCount} created`}
+                            style={styles.billsCount}
+                          />
+                        </View>
+                        <Image
+                          source={profileGroup}
+                          style={styles.profileGroup}
+                        />
+                      </View>
 
-                  <View style={styles.leadRow}>
-                    <ParagraphText
-                      title="Your Bills"
-                      style={styles.yourBills}
-                    />
-                    <TouchableOpacity
-                      style={styles.seeAllButton}
-                      onPress={() => Actions.bill_list()}>
-                      <RegularText title="See All" style={styles.seeAll} />
-                    </TouchableOpacity>
-                  </View>
-                  <BillItem icon={flashBill} />
-                  <BillItem icon={houseBill} />
-                  <BillItem icon={cable} />
+                      {bills.length ? (
+                        <>
+                          <View style={styles.leadRow}>
+                            <ParagraphText
+                              title="Your Bills"
+                              style={styles.yourBills}
+                            />
+                            <TouchableOpacity
+                              style={styles.seeAllButton}
+                              onPress={() => Actions.bill_list()}>
+                              <RegularText
+                                title="See All"
+                                style={styles.seeAll}
+                              />
+                            </TouchableOpacity>
+                          </View>
+                          <BillItem icon={flashBill} />
+                          <BillItem icon={houseBill} />
+                          <BillItem icon={cable} />
+                        </>
+                      ) : (
+                        <NoBills />
+                      )}
+                    </>
+                  )}
                 </View>
               </BoxShadow>
               <ParagraphText
@@ -208,3 +282,15 @@ export default class Home extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  profile: state.profile.profile,
+  home: state.profile.home,
+  bills: state.bills.bills,
+});
+
+const mapDispatchToProps = {
+  getHome,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

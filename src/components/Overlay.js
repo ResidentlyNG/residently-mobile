@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { BlurView } from '@react-native-community/blur';
 import Modal from 'react-native-modal';
 import { hp } from './utils';
+import * as Colors from './Colors';
 // import { Overlay as Modal } from 'react-native-elements';
 
 const ModalBlur = ({
@@ -38,7 +39,28 @@ const ModalBlur = ({
   );
 };
 
-export { ModalBlur };
+const Spinner = ({ size, style }) => {
+  return (
+    <View style={[style, styles.spinnerStyle]}>
+      <ActivityIndicator size={size || 'large'} color={Colors.Green} />
+    </View>
+  );
+};
+
+export const TransactionLoader = ({ backgroundGradient, style }) => {
+  return (
+    <View
+      style={[
+        styles.loader,
+        backgroundGradient && { backgroundColor: backgroundGradient },
+        style,
+      ]}>
+      <Spinner />
+    </View>
+  );
+};
+
+export { ModalBlur, Spinner };
 
 const styles = StyleSheet.create({
   overlay: {
@@ -60,5 +82,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  loader: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: Colors.TransparentWhite,
+    position: 'absolute',
+    zIndex: 4,
   },
 });
