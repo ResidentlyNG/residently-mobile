@@ -15,7 +15,7 @@ export const BASE_URL = 'https://residently.herokuapp.com/api/v1';
  * @param {Object} headers: { 'Content-Type': '' }
  * @returns {Promise<data>}
  */
-const api = (url, type, data, headers) => {
+const api = (url, type = 'GET', data, headers) => {
   if (!url || typeof url !== 'string') {
     store.dispatch({ type: CANCEL_REQUEST });
     throw new Error('Please pass a string url to this function: /path/to/api');
