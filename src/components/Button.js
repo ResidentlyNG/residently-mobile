@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { Button as Btn } from 'react-native-elements';
 import { ForwardArrow } from '../../assets/svgs';
-import { AzureRadiance, Green, Polar, White } from './Colors';
+import { AzureRadiance, CodGray, Green, PersianGreen, White } from './Colors';
 import { ParagraphText } from './Text';
 import { hp, wp } from './utils';
 
@@ -23,6 +23,8 @@ const Button = ({
   titleStyle,
   icon,
   iconRight,
+  green,
+  alternate,
 }) => {
   return (
     <Btn
@@ -31,12 +33,20 @@ const Button = ({
       title={title}
       buttonStyle={[
         styles.button,
+        green && styles.greenButton,
         light && styles.lightButton,
+        light && green && styles.lightGreenButton,
+        alternate && styles.alternate,
         style,
         buttonStyle,
       ]}
       loading={loading}
-      titleStyle={[light ? styles.lightTitle : styles.title, titleStyle]}
+      titleStyle={[
+        styles.title,
+        alternate && styles.blackTitle,
+        light && green && styles.lightTitle,
+        titleStyle,
+      ]}
       disabled={disabled}
       disabledStyle={disabledStyle || styles.disabledStyle}
       disabledTitleStyle={styles.disabledTitleStyle}
@@ -96,20 +106,35 @@ const styles = StyleSheet.create({
   button: {
     width: wp(319),
     height: hp(64),
-    backgroundColor: Green,
+    backgroundColor: CodGray,
     borderRadius: 16,
   },
-  lightButton: {
-    backgroundColor: Polar,
+  lightGreenButton: {
+    backgroundColor: 'transparent',
     borderWidth: 1,
     borderColor: Green,
+  },
+  lightButton: {
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: White,
+  },
+  alternate: {
+    backgroundColor: White,
+  },
+  greenButton: {
+    backgroundColor: PersianGreen,
   },
   lightTitle: {
     color: Green,
   },
+  blackTitle: {
+    color: CodGray,
+  },
   title: {
     fontSize: 18,
     fontFamily: 'Oxygen-Regular',
+    color: White,
   },
   buttonIcon: {
     right: wp(25),
