@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { BottomSheet } from 'react-native-elements';
-import { Bank } from '../../../../../assets/svgs';
+import { useSelector } from 'react-redux';
+import { bank } from '../../../../../assets/images';
+import { Bank, Chevrolet } from '../../../../../assets/svgs';
 import {
   Header,
   HeaderText,
+  Image,
+  ModalBlur,
   RegularText,
   TextInput,
+  White,
 } from '../../../../components';
+import { hp, wp } from '../../../../components/utils';
 import { settlement as styles } from './styles';
 
 const list = [
@@ -21,8 +26,33 @@ const list = [
   },
 ];
 
+const Merchant = ({ source, imageStyle, merchant, bgColor }) => (
+  <View style={[styles.merchantView, bgColor && { backgroundColor: bgColor }]}>
+    <View style={styles.merchantLogoBox}>
+      <Image source={source} style={imageStyle} />
+    </View>
+    <RegularText title={merchant} style={styles.merchant} />
+    <View style={styles.chevrolet}>
+      <Chevrolet />
+    </View>
+  </View>
+);
+
+const BanksModal = ({ data }) => (
+  <View style={styles.view}>
+    <HeaderText title="Select Bank?" style={styles.modalLeadText} />
+    <Merchant
+      source={bank}
+      imageStyle={styles.account}
+      merchant="Account Number"
+      bgColor="#FBEEEA"
+    />
+  </View>
+);
+
 const SettlementAccount = () => {
-  // const [isVisible, setIsVisible] = useState(true);
+  const [modal, setModal] = useState(true);
+  const { banks } = useSelector((state) => state.wallet);
   return (
     <>
       {/* <BottomSheet
@@ -54,6 +84,22 @@ const SettlementAccount = () => {
           />
           <TextInput value="" placeholder="Account name" style={styles.input} />
         </View>
+        <ModalBlur
+          visible={modal}
+          hasBackdrop
+          modalStyle={{ position: 'relative' }}
+          style={{
+            height: hp(482),
+            width: wp(340),
+            borderRadius: 20,
+            backgroundColor: White,
+          }}
+          fixed
+          onBackdropPress={() => setModal(false)}
+          render={
+            <BanksModal data={banks} setModal={(value) => setModal(value)} />
+          }
+        />
       </View>
     </>
   );

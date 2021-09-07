@@ -4,6 +4,7 @@ import {
   Heather,
   Midnight,
   MineShaft,
+  Mirage,
   Roman,
   White,
   WhiteLilac,
@@ -217,5 +218,51 @@ export const settlement = StyleSheet.create({
   input: {
     width: wp(287),
     marginTop: hp(15),
+  },
+
+  view: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  modalLeadText: {
+    marginTop: hp(40),
+    color: Mirage,
+    fontSize: 25,
+    width: wp(302),
+  },
+  chevrolet: {
+    position: 'absolute',
+    right: wp(22),
+  },
+  paystack: {
+    width: wp(21),
+    height: hp(21),
+  },
+  account: {
+    width: wp(23),
+    height: hp(23),
+  },
+  merchantView: {
+    width: wp(301),
+    height: hp(62),
+    borderRadius: 10,
+    backgroundColor: 'rgba(117, 63, 246, 0.14)',
+    marginTop: hp(20),
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  merchantLogoBox: {
+    width: wp(42),
+    height: hp(39),
+    backgroundColor: WhiteLilac,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 6,
+    marginLeft: wp(14),
+  },
+  merchant: {
+    fontSize: 14,
+    color: Midnight,
+    marginLeft: wp(18),
   },
 });

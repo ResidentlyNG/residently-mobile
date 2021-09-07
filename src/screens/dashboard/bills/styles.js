@@ -227,7 +227,7 @@ export const bills = StyleSheet.create({
   },
   buttonTitle: {
     fontSize: 17,
-    fontFamily: 'Inter-Regular',
+    fontFamily: 'Oxygen-Regular',
   },
 
   buttonLeftIcon: {

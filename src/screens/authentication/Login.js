@@ -102,6 +102,7 @@ const Login = () => {
               loading={loading}
               style={styles.button}
               onPress={() => submit()}
+              green
             />
             <RegularText title="Forgot Password?" style={styles.forgotText} />
             <View style={styles.socialsCard}>

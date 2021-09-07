@@ -184,7 +184,7 @@ export const success = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     color: Colors.WoodSmoke,
-    fontFamily: 'Inter-Bold',
+    fontFamily: 'Oxygen-Bold',
   },
   subText: {
     width: wp(274),
@@ -196,7 +196,7 @@ export const success = StyleSheet.create({
   home: {
     fontSize: 20,
     color: Colors.Green,
-    fontFamily: 'Inter-Bold',
+    fontFamily: 'Oxygen-Bold',
   },
   button: {
     width: wp(287),
@@ -303,7 +303,7 @@ export const joinRoom = StyleSheet.create({
   },
   resendText: {
     fontSize: 12,
-    fontFamily: 'Inter-Regular',
+    fontFamily: 'Oxygen-Regular',
     marginTop: 15,
   },
   resend: {

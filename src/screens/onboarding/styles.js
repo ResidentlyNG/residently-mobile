@@ -32,11 +32,7 @@ export const styles = StyleSheet.create({
     // marginLeft: wp(31),
   },
   topRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
     marginTop: hp(30),
-    width: wp(311),
   },
   skipButton: {
     height: hp(40),
@@ -64,6 +60,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: hp(45),
   },
   titleBlock: {
     alignItems: 'center',
@@ -71,18 +68,19 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     color: White,
-    width: wp(160),
+    width: wp(200),
     textAlign: 'center',
     marginTop: hp(26),
     lineHeight: 36,
-    fontFamily: 'Inter-Medium',
+    fontFamily: 'Oxygen-Regular',
   },
   text: {
     color: White,
     textAlign: 'center',
     alignSelf: 'center',
-    width: wp(238),
-    marginTop: hp(15),
+    width: wp(240),
+    lineHeight: 21,
+    marginTop: hp(10),
     fontSize: 14,
   },
   buttonContainer: {
@@ -108,5 +106,21 @@ export const styles = StyleSheet.create({
   buttonIcon: {
     right: wp(25),
     position: 'absolute',
+  },
+
+  buttonView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: hp(50),
+    width: wp(350),
+    justifyContent: 'space-between',
+  },
+  loginButton: {
+    width: wp(160),
+    backgroundColor: White,
+  },
+  button: {
+    width: wp(160),
+    // backgroundColor: Bla,
   },
 });

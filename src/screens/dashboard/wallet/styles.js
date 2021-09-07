@@ -206,7 +206,7 @@ export const transactions = StyleSheet.create({
     backgroundColor: Green,
   },
   selectedButtonGroupText: {
-    fontFamily: 'Inter-Medium',
+    fontFamily: 'Oxygen-Regular',
     fontSize: 12,
     color: White,
   },
@@ -214,7 +214,7 @@ export const transactions = StyleSheet.create({
     backgroundColor: '#F3F3F3',
   },
   buttonGroupText: {
-    fontFamily: 'Inter-Regular',
+    fontFamily: 'Oxygen-Regular',
     fontSize: 12,
     color: MineShaft,
   },

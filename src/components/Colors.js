@@ -39,3 +39,4 @@ export const Deyser = '#D3DCE6';
 export const MidGray = '#575A65';
 export const CodGray = '#171717';
 export const TransparentWhite = '#FFFC';
+export const PersianGreen = '#00A698';
