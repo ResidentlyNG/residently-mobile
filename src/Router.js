@@ -35,6 +35,9 @@ import SelectPlan from './screens/dashboard/bills/create/SelectPlan';
 import Duration from './screens/dashboard/bills/create/Duration';
 import SelectRecipient from './screens/dashboard/bills/create/SelectRecipient';
 import SettlementAccount from './screens/dashboard/bills/create/SettlementAccount';
+import SelectWallet from './screens/dashboard/wallet/fund';
+import FundWallet from './screens/dashboard/wallet/fund/FundWallet';
+import Web from './components/Webview';
 
 export default class RouterComponent extends Component {
   render() {
@@ -83,6 +86,10 @@ export default class RouterComponent extends Component {
           <Scene key="duration" component={Duration} />
           <Scene key="select_recipient" component={SelectRecipient} />
           <Scene key="settlement" component={SettlementAccount} />
+
+          <Scene key="select_wallet" component={SelectWallet} />
+          <Scene key="fund_wallet" component={FundWallet} />
+          <Scene key="webview" component={Web} />
         </Scene>
       </Router>
     );

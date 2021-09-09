@@ -8,7 +8,7 @@ import {
   LOGIN_ERROR,
   LOGIN_SUCCESS,
 } from './types';
-import { getBanks } from './wallet';
+import { getBanks, getCard } from './wallet';
 
 export const login = (data) => (dispatch) => {
   dispatch({ type: LOGIN });
@@ -20,6 +20,7 @@ export const login = (data) => (dispatch) => {
       dispatch({ type: GET_PROFILE_SUCCESS, payload: res.data });
       dispatch({ type: GET_WALLET_SUCCESS, payload: res.wallet });
       dispatch(getBanks());
+      dispatch(getCard());
       if (profile.email_verified !== 'false') {
         if (profile.home_id) Actions.dashboard({ type: 'reset' });
         else Actions.intro({ type: 'reset' });

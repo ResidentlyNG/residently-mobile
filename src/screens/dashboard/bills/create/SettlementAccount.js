@@ -15,16 +15,16 @@ import {
 import { hp, wp } from '../../../../components/utils';
 import { settlement as styles } from './styles';
 
-const list = [
-  { title: 'List Item 1' },
-  { title: 'List Item 2' },
-  {
-    title: 'Cancel',
-    containerStyle: { backgroundColor: 'red' },
-    titleStyle: { color: 'white' },
-    // onPress: () => setIsVisible(false),
-  },
-];
+// const list = [
+//   { title: 'List Item 1' },
+//   { title: 'List Item 2' },
+//   {
+//     title: 'Cancel',
+//     containerStyle: { backgroundColor: 'red' },
+//     titleStyle: { color: 'white' },
+//     // onPress: () => setIsVisible(false),
+//   },
+// ];
 
 const Merchant = ({ source, imageStyle, merchant, bgColor }) => (
   <View style={[styles.merchantView, bgColor && { backgroundColor: bgColor }]}>
@@ -38,7 +38,7 @@ const Merchant = ({ source, imageStyle, merchant, bgColor }) => (
   </View>
 );
 
-const BanksModal = ({ data }) => (
+const BanksModal = () => (
   <View style={styles.view}>
     <HeaderText title="Select Bank?" style={styles.modalLeadText} />
     <Merchant

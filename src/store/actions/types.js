@@ -25,3 +25,7 @@ export const GET_BILLS_ERROR = 'get_bills_error';
 export const GET_BANKS = 'get_banks';
 export const GET_BANKS_SUCCESS = 'get_banks_success';
 export const GET_BANKS_ERROR = 'get_banks_error';
+
+export const GET_CARD = 'get_card';
+export const GET_CARD_SUCCESS = 'get_card_success';
+export const GET_CARD_ERROR = 'get_card_error';

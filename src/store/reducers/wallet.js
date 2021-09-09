@@ -6,11 +6,15 @@ import {
   GET_BANKS,
   GET_BANKS_SUCCESS,
   GET_BANKS_ERROR,
+  GET_CARD,
+  GET_CARD_SUCCESS,
+  GET_CARD_ERROR,
 } from '../actions/types';
 
 const initialState = {
   wallet: {},
   banks: [],
+  card: {},
   loading: false,
   error: '',
 };
@@ -47,6 +51,24 @@ export default (state = initialState, action) => {
         banks: action.payload,
       };
     case GET_BANKS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    case GET_CARD:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_CARD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        card: action.payload,
+      };
+    case GET_CARD_ERROR:
       return {
         ...state,
         loading: false,

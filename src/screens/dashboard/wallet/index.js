@@ -73,7 +73,9 @@ const Wallet = () => {
               <BalanceEye />
             </View>
           </View>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => Actions.select_wallet()}>
             <RegularText title="Fund Wallet" style={styles.buttonTitle} />
           </TouchableOpacity>
         </View>
