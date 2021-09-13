@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: WoodSmoke,
     fontSize: 20,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     letterSpacing: 0.5,
     fontFamily: 'Oxygen-Bold',
   },

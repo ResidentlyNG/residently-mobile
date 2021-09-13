@@ -77,7 +77,12 @@ const Settings = () => (
       </View>
 
       <View style={styles.menuContainer}>
-        <MenuView title="Payment" backgroundColor={Green} icon={<Card />} />
+        <MenuView
+          title="Payment"
+          backgroundColor={Green}
+          icon={<Card />}
+          onPress={() => Actions.card()}
+        />
         <View style={styles.divider} />
         <MenuView
           title="Settings"

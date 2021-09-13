@@ -38,6 +38,7 @@ import SettlementAccount from './screens/dashboard/bills/create/SettlementAccoun
 import SelectWallet from './screens/dashboard/wallet/fund';
 import FundWallet from './screens/dashboard/wallet/fund/FundWallet';
 import Web from './components/Webview';
+import Card from './screens/dashboard/settings/payments/Card';
 
 export default class RouterComponent extends Component {
   render() {
@@ -90,6 +91,8 @@ export default class RouterComponent extends Component {
           <Scene key="select_wallet" component={SelectWallet} />
           <Scene key="fund_wallet" component={FundWallet} />
           <Scene key="webview" component={Web} />
+
+          <Scene key="card" component={Card} />
         </Scene>
       </Router>
     );

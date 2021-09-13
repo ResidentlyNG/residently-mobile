@@ -44,6 +44,9 @@ const cashBill = require('./cash-bill.png');
 const walletBg = require('./wallet-bg.png');
 const fundBill = require('./fund-bill.png');
 const gtbank = require('./gtbank.png');
+const cardBg = require('./card-bg.png');
+const cardMask = require('./card-mask.png');
+const mastercard = require('./mastercard.png');
 
 export {
   coliving,
@@ -92,4 +95,7 @@ export {
   walletBg,
   fundBill,
   gtbank,
+  cardBg,
+  cardMask,
+  mastercard,
 };
