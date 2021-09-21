@@ -1,71 +1,74 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { bank } from '../../../../../assets/images';
-import { Bank, Chevrolet } from '../../../../../assets/svgs';
+import { Bank } from '../../../../../assets/svgs';
 import {
+  Button,
   Header,
   HeaderText,
-  Image,
   ModalBlur,
   RegularText,
   TextInput,
+  TransactionLoader,
   White,
 } from '../../../../components';
 import { hp, wp } from '../../../../components/utils';
+import { validateAccount } from '../../../../utils';
 import { settlement as styles } from './styles';
 
-// const list = [
-//   { title: 'List Item 1' },
-//   { title: 'List Item 2' },
-//   {
-//     title: 'Cancel',
-//     containerStyle: { backgroundColor: 'red' },
-//     titleStyle: { color: 'white' },
-//     // onPress: () => setIsVisible(false),
-//   },
-// ];
-
-const Merchant = ({ source, imageStyle, merchant, bgColor }) => (
-  <View style={[styles.merchantView, bgColor && { backgroundColor: bgColor }]}>
-    <View style={styles.merchantLogoBox}>
-      <Image source={source} style={imageStyle} />
-    </View>
-    <RegularText title={merchant} style={styles.merchant} />
-    <View style={styles.chevrolet}>
-      <Chevrolet />
-    </View>
-  </View>
-);
-
-const BanksModal = () => (
+const BanksModal = ({ data, select }) => (
   <View style={styles.view}>
-    <HeaderText title="Select Bank?" style={styles.modalLeadText} />
-    <Merchant
-      source={bank}
-      imageStyle={styles.account}
-      merchant="Account Number"
-      bgColor="#FBEEEA"
-    />
+    <HeaderText title="Select Bank" style={styles.modalLeadText} />
+    <ScrollView style={{ width: '100%' }}>
+      {data.map((item) => (
+        <TouchableOpacity
+          key={item.id}
+          style={styles.bank}
+          onPress={() => select(item.id)}>
+          <RegularText title={item.name} />
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
   </View>
 );
 
 const SettlementAccount = () => {
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
+  const [bank, setBank] = useState({});
+  const [accountNumber, setAccountNumber] = useState({});
+  const [accountName, setAccountName] = useState('');
+  const [loading, setLoading] = useState(false);
   const { banks } = useSelector((state) => state.wallet);
+
+  const selectBank = (id) => {
+    const result = banks.find((item) => item.id === id);
+    console.log('re', result);
+    setBank(result);
+    setModal(false);
+  };
+  const disabled = !accountName.length;
+
+  const getAccount = () => {
+    const data = {
+      bank_code: bank.code,
+      account_number: accountNumber,
+    };
+    setLoading(true);
+    validateAccount(data)
+      .then((response) => setAccountName(response?.data?.account_name))
+      .catch((error) => console.log('er', error))
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    if (bank && accountNumber.length === 10) {
+      getAccount();
+    }
+  }, [accountNumber]);
+  console.log('bb', bank);
+
   return (
     <>
-      {/* <BottomSheet
-        isVisible={isVisible}
-        containerStyle={{ backgroundColor: 'rgba(0.5, 0.25, 0, 0.2)' }}>
-        <View style={{ backgroundColor: '#FFF', height: 230 }}>
-          {list.map((item, index) => (
-            <View key={index}>
-              <RegularText title={item.title} />
-            </View>
-          ))}
-        </View>
-      </BottomSheet> */}
       <View style={styles.background}>
         <Header title="Settlement Account" />
         <View style={styles.mainView}>
@@ -77,12 +80,49 @@ const SettlementAccount = () => {
             title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
             style={styles.subText}
           />
+          <TouchableOpacity onPress={() => setModal(true)}>
+            <TextInput
+              value={bank?.name || ''}
+              label="Bank"
+              placeholder="Bank Name"
+              style={styles.input}
+              noIcon
+              editable={false}
+            />
+          </TouchableOpacity>
           <TextInput
-            value=""
+            value={accountNumber}
+            label="Account number"
             placeholder="Account number"
             style={styles.input}
+            onChangeText={(value) => setAccountNumber(value)}
+            keyboardType="number-pad"
+            noIcon
           />
-          <TextInput value="" placeholder="Account name" style={styles.input} />
+          <View style={styles.nameInput}>
+            {loading ? (
+              <View style={styles.loader}>
+                <TransactionLoader size="small" />
+              </View>
+            ) : null}
+            {accountName.length && !loading ? (
+              <TextInput
+                value={accountName}
+                label="Account name"
+                placeholder="Account number"
+                style={[styles.input, { marginTop: 0 }]}
+                editable
+                // onChangeText={(value) => setAccountNumber(value)}
+                keyboardType="number-pad"
+                noIcon
+              />
+            ) : (
+              <View />
+            )}
+          </View>
+          <View style={styles.buttonView}>
+            <Button title="Continue" green disabled={disabled} />
+          </View>
         </View>
         <ModalBlur
           visible={modal}
@@ -97,7 +137,11 @@ const SettlementAccount = () => {
           fixed
           onBackdropPress={() => setModal(false)}
           render={
-            <BanksModal data={banks} setModal={(value) => setModal(value)} />
+            <BanksModal
+              data={banks}
+              setModal={(value) => setModal(value)}
+              select={(id) => selectBank(id)}
+            />
           }
         />
       </View>

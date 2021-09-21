@@ -21,15 +21,17 @@ export const cardStyles = StyleSheet.create({
     width: wp(310),
     height: hp(488),
     backgroundColor: White,
+    alignItems: 'center',
     borderRadius: 20,
     elevation: 2,
     marginTop: hp(23),
-    paddingLeft: 18,
   },
   headerText: {
     fontSize: 20,
     color: WoodSmoke,
     marginTop: hp(34),
+    alignSelf: 'flex-start',
+    marginLeft: wp(22),
   },
   cardBackground: {
     // alignItems: 'center',

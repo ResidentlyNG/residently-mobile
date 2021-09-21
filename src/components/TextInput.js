@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TextInput as Input, View } from 'react-native';
 import { Calendar, Dropdown } from '../../assets/svgs';
-import { Heather } from './Colors';
+import { Heather, MineShaft, StormGray } from './Colors';
 import { DatePicker } from './DatePicker';
 import { ParagraphText } from './Text';
 import { hp, wp } from './utils';
@@ -16,6 +16,7 @@ const TextInput = ({
   label,
   keyboardType,
   noIcon,
+  editable,
 }) => {
   return (
     <View style={[styles.view, style]}>
@@ -28,6 +29,7 @@ const TextInput = ({
           placeholder={placeholder}
           style={[styles.input, inputStyle]}
           keyboardType={keyboardType}
+          editable={editable}
         />
       </View>
     </View>
@@ -81,10 +83,12 @@ const styles = StyleSheet.create({
     width: wp(223),
     height: hp(42),
     paddingLeft: wp(10),
+    color: MineShaft,
   },
   label: {
     marginLeft: wp(10),
     marginTop: hp(4),
+    color: StormGray,
   },
   textView: {
     marginLeft: wp(10),

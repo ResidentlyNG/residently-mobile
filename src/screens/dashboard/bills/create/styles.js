@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import {
+  CatskillWhite,
   Green,
   Heather,
   Midnight,
@@ -191,18 +192,20 @@ export const settlement = StyleSheet.create({
     alignItems: 'center',
   },
   mainView: {
-    width: wp(331),
-    height: hp(453),
+    width: wp(355),
+    flex: 1,
     borderRadius: 20,
     backgroundColor: White,
     elevation: 4,
     marginTop: hp(54.3),
-    paddingLeft: 22,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
   },
   leadRow: {
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: hp(40),
+    marginLeft: wp(22),
   },
   leadText: {
     width: wp(215),
@@ -211,18 +214,28 @@ export const settlement = StyleSheet.create({
     marginLeft: 12,
   },
   subText: {
-    width: wp(274),
+    width: wp(300),
     fontSize: 14,
     marginTop: hp(18),
+    marginLeft: wp(22),
   },
   input: {
-    width: wp(287),
+    width: wp(325),
     marginTop: hp(15),
+    alignSelf: 'center',
   },
 
   view: {
     flex: 1,
     alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingBottom: 20,
+  },
+  nameInput: {
+    marginTop: hp(15),
+  },
+  loader: {
+    marginTop: hp(30),
   },
   modalLeadText: {
     marginTop: hp(40),
@@ -264,5 +277,16 @@ export const settlement = StyleSheet.create({
     fontSize: 14,
     color: Midnight,
     marginLeft: wp(18),
+  },
+
+  bank: {
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: CatskillWhite,
+  },
+  buttonView: {
+    position: 'absolute',
+    bottom: 50,
+    alignSelf: 'center',
   },
 });
