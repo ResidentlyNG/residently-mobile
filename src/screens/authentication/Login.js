@@ -2,19 +2,13 @@ import React, { useState } from 'react';
 import {
   ImageBackground,
   StatusBar,
-  TouchableOpacity,
+  // TouchableOpacity,
   View,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 // import { Actions } from 'react-native-router-flux';
-import {
-  facebook,
-  getStartedBg,
-  google,
-  thumbBg,
-  twitter,
-} from '../../../assets/images';
+import { getStartedBg, thumbBg } from '../../../assets/images';
 import { EyeSvg, MailSvg, MainIcon } from '../../../assets/svgs';
 import {
   Button,
@@ -105,7 +99,7 @@ const Login = () => {
               green
             />
             <RegularText title="Forgot Password?" style={styles.forgotText} />
-            <View style={styles.socialsCard}>
+            {/* <View style={styles.socialsCard}>
               <RegularText
                 title="Use Socials to login"
                 style={styles.socialsText}
@@ -121,7 +115,7 @@ const Login = () => {
                   <Image source={twitter} style={styles.twitter} />
                 </TouchableOpacity>
               </View>
-            </View>
+            </View> */}
           </KeyboardAwareScrollView>
         </View>
         {/* </ImageBackground> */}

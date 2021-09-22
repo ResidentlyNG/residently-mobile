@@ -22,6 +22,11 @@ const SelectPlan = ({ title, bill }) => {
   const {
     home: { name },
   } = useSelector((state) => state.profile);
+  const propsData = {
+    title,
+    bill,
+    plan,
+  };
 
   return (
     <View style={styles.background}>
@@ -56,7 +61,7 @@ const SelectPlan = ({ title, bill }) => {
         icon={<ForwardArrow />}
         disabled={true}
         style={styles.button}
-        onPress={() => Actions.duration()}
+        onPress={() => Actions.duration({ data: propsData })}
       />
     </View>
   );

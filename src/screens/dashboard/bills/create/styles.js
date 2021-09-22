@@ -233,6 +233,7 @@ export const settlement = StyleSheet.create({
   },
   nameInput: {
     marginTop: hp(15),
+    minHeight: hp(55),
   },
   loader: {
     marginTop: hp(30),

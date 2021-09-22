@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { Actions } from 'react-native-router-flux';
 import { useSelector } from 'react-redux';
 import { Bank } from '../../../../../assets/svgs';
 import {
@@ -12,8 +14,9 @@ import {
   TransactionLoader,
   White,
 } from '../../../../components';
+import showToast from '../../../../components/Toast';
 import { hp, wp } from '../../../../components/utils';
-import { validateAccount } from '../../../../utils';
+import { createBill, validateAccount } from '../../../../utils';
 import { settlement as styles } from './styles';
 
 const BanksModal = ({ data, select }) => (
@@ -32,17 +35,20 @@ const BanksModal = ({ data, select }) => (
   </View>
 );
 
-const SettlementAccount = () => {
+const SettlementAccount = (props) => {
   const [modal, setModal] = useState(false);
   const [bank, setBank] = useState({});
-  const [accountNumber, setAccountNumber] = useState({});
+  const [accountNumber, setAccountNumber] = useState('');
   const [accountName, setAccountName] = useState('');
   const [loading, setLoading] = useState(false);
-  const { banks } = useSelector((state) => state.wallet);
+  const [activity, setActivity] = useState(false);
+  const {
+    wallet: { banks },
+    profile: { profile },
+  } = useSelector((state) => state);
 
   const selectBank = (id) => {
     const result = banks.find((item) => item.id === id);
-    console.log('re', result);
     setBank(result);
     setModal(false);
   };
@@ -56,7 +62,9 @@ const SettlementAccount = () => {
     setLoading(true);
     validateAccount(data)
       .then((response) => setAccountName(response?.data?.account_name))
-      .catch((error) => console.log('er', error))
+      .catch((error) =>
+        showToast(error?.data?.message || 'Something went wrong', 'error'),
+      )
       .finally(() => setLoading(false));
   };
 
@@ -65,63 +73,99 @@ const SettlementAccount = () => {
       getAccount();
     }
   }, [accountNumber]);
-  console.log('bb', bank);
+
+  const onSubmit = () => {
+    setActivity(true);
+    const { title, bill, repeat, frequency, paymentDate } = props.data;
+    const payload = {
+      title,
+      amount: String(bill),
+      date: paymentDate.split('/').reverse().join('-'),
+      repeat,
+      frequency,
+      users: [
+        {
+          id: String(profile.id),
+          amount: String(bill),
+        },
+      ],
+      account_number: accountNumber,
+      bank_code: bank.code,
+    };
+
+    createBill(payload)
+      .then((response) => {
+        Actions.bill({ data: response, payload });
+      })
+      .catch((error) => {
+        showToast(error?.message || 'Something went wrong', 'error');
+      })
+      .finally(() => setActivity(false));
+  };
 
   return (
     <>
       <View style={styles.background}>
         <Header title="Settlement Account" />
         <View style={styles.mainView}>
-          <View style={styles.leadRow}>
-            <Bank />
-            <HeaderText title="Bank account" style={styles.leadText} />
-          </View>
-          <RegularText
-            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-            style={styles.subText}
-          />
-          <TouchableOpacity onPress={() => setModal(true)}>
-            <TextInput
-              value={bank?.name || ''}
-              label="Bank"
-              placeholder="Bank Name"
-              style={styles.input}
-              noIcon
-              editable={false}
+          <KeyboardAwareScrollView style={{ flex: 1, height: '100%' }}>
+            <View style={styles.leadRow}>
+              <Bank />
+              <HeaderText title="Bank account" style={styles.leadText} />
+            </View>
+            <RegularText
+              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+              style={styles.subText}
             />
-          </TouchableOpacity>
-          <TextInput
-            value={accountNumber}
-            label="Account number"
-            placeholder="Account number"
-            style={styles.input}
-            onChangeText={(value) => setAccountNumber(value)}
-            keyboardType="number-pad"
-            noIcon
-          />
-          <View style={styles.nameInput}>
-            {loading ? (
-              <View style={styles.loader}>
-                <TransactionLoader size="small" />
-              </View>
-            ) : null}
-            {accountName.length && !loading ? (
+            <TouchableOpacity onPress={() => setModal(true)}>
               <TextInput
-                value={accountName}
-                label="Account name"
-                placeholder="Account number"
-                style={[styles.input, { marginTop: 0 }]}
-                editable
-                // onChangeText={(value) => setAccountNumber(value)}
-                keyboardType="number-pad"
+                value={bank?.name || ''}
+                label="Bank"
+                placeholder="Bank Name"
+                style={styles.input}
                 noIcon
+                editable={false}
               />
-            ) : (
-              <View />
-            )}
-          </View>
+            </TouchableOpacity>
+            <TextInput
+              value={accountNumber}
+              label="Account number"
+              placeholder="Account number"
+              style={styles.input}
+              onChangeText={(value) => setAccountNumber(value)}
+              keyboardType="number-pad"
+              noIcon
+            />
+            <View style={styles.nameInput}>
+              {loading ? (
+                <View style={styles.loader}>
+                  <TransactionLoader size="small" />
+                </View>
+              ) : null}
+              {accountName.length && !loading ? (
+                <TextInput
+                  value={accountName}
+                  label="Account name"
+                  placeholder="Account number"
+                  style={[styles.input, { marginTop: 0 }]}
+                  editable
+                  // onChangeText={(value) => setAccountNumber(value)}
+                  keyboardType="number-pad"
+                  noIcon
+                />
+              ) : (
+                <View />
+              )}
+            </View>
+          </KeyboardAwareScrollView>
           <View style={styles.buttonView}>
-            <Button title="Continue" green disabled={disabled} />
+            <Button
+              title="Continue"
+              green
+              disabled={disabled}
+              loading={activity}
+              onPress={onSubmit}
+            />
           </View>
         </View>
         <ModalBlur

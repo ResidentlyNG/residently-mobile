@@ -4,11 +4,19 @@ import { Actions } from 'react-native-router-flux';
 import { Button, DateInput, Header, Tab } from '../../../../components';
 import { duration as styles } from './styles';
 
-const Duration = () => {
+const Duration = (props) => {
   const [selected, select] = useState('oneoff');
   const [paymentDate, setPaymentDate] = useState('');
   const [recurringDate, setRecurringDate] = useState('');
   const oneoff = selected === 'oneoff';
+  const propsData = {
+    ...props.data,
+    frequency: oneoff ? '0' : '30',
+    repeat: !oneoff,
+    paymentDate,
+  };
+  const disabled = oneoff ? !paymentDate : !paymentDate || !recurringDate;
+  console.log('PD', disabled);
 
   return (
     <View style={styles.background}>
@@ -36,7 +44,11 @@ const Duration = () => {
       )}
       {/* <DateInput dueDate="" label="Time of the day" /> */}
       <View style={styles.buttonView}>
-        <Button title="Proceed" onPress={() => Actions.select_recipient()} />
+        <Button
+          title="Proceed"
+          disabled={disabled}
+          onPress={() => Actions.select_recipient({ data: propsData })}
+        />
       </View>
     </View>
   );

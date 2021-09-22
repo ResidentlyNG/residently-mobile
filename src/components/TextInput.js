@@ -46,6 +46,7 @@ export const DateInput = ({ label, dueDate, setDuedate }) => (
       <DatePicker
         placeholder="DD/MM/YYYY"
         date={dueDate}
+        minDate={new Date()}
         dateStyle={{
           height: hp(28),
         }}
