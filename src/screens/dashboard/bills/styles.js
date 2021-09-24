@@ -718,8 +718,17 @@ export const createBill = StyleSheet.create({
 export const bill = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: White,
+    backgroundColor: MineShaft,
     alignItems: 'center',
+  },
+  imageBg: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    bottom: 0,
+  },
+  header: {
+    color: White,
   },
   mainView: {
     width: wp(341),

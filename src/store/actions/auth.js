@@ -1,6 +1,7 @@
 import { Actions } from 'react-native-router-flux';
 import showToast from '../../components/Toast';
 import api from '../../utils/api';
+import { getBills } from './bills';
 import {
   GET_PROFILE_SUCCESS,
   GET_WALLET_SUCCESS,
@@ -21,6 +22,7 @@ export const login = (data) => (dispatch) => {
       dispatch({ type: GET_WALLET_SUCCESS, payload: res.wallet });
       dispatch(getBanks());
       dispatch(getCard());
+      dispatch(getBills());
       if (profile.email_verified !== 'false') {
         if (profile.home_id) Actions.dashboard({ type: 'reset' });
         else Actions.intro({ type: 'reset' });
