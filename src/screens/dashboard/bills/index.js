@@ -1,61 +1,29 @@
 import React, { Component } from 'react';
-import {
-  ScrollView,
-  Image,
-  StatusBar,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Image, StatusBar, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { profileGroup } from '../../../../assets/images';
-import { Cross, ForwardArrow, Insight } from '../../../../assets/svgs';
+import { BoldCross } from '../../../../assets/svgs';
 import {
   Button,
-  Green,
   HeaderText,
   ParagraphText,
+  PersianGreen,
   RegularText,
-  Tab,
   White,
+  ScrollView,
 } from '../../../components';
 import { ModalBlur } from '../../../components/Overlay';
 import { hp, wp } from '../../../components/utils';
 import NewBill from '../../authentication/SetUp';
 import { bills as styles } from './styles';
+import { BillGroup } from './utils';
 
-const BillItem = ({ last }) => (
-  <TouchableOpacity style={styles.billItem} onPress={() => Actions.bill()}>
-    <View style={styles.billRow}>
-      <ParagraphText title="Electricity Bill" style={styles.billTitle} />
-      <Image source={profileGroup} style={styles.profileGroup} />
-    </View>
-    <View style={styles.amountRow}>
-      <HeaderText title="₦ 2,000.00" style={styles.billAmount} />
-      <RegularText title="Due: In 2 weeks" style={styles.billDate} />
-    </View>
-    {!last ? <View style={styles.billDivider} /> : null}
-  </TouchableOpacity>
-);
-
-const ButtonPlus = () => (
+const ButtonPlus = ({ fill }) => (
   <View style={styles.plusView}>
-    <Cross />
+    <BoldCross fill={fill} />
   </View>
 );
-
-// const Button = ({ icon, onPress, title, titleStyle }) => (
-//   <TouchableOpacity style={styles.button} onPress={onPress}>
-//     <View style={styles.actionRow}>
-//       <View style={styles.buttonLeftIcon}>{icon}</View>
-//       <ParagraphText
-//         title={title}
-//         style={[styles.actionButtonTitle, titleStyle]}
-//       />
-//       {/* <View style={styles.buttonIcon}>{icon}</View> */}
-//     </View>
-//   </TouchableOpacity>
-// );
 
 class Bills extends Component {
   state = {
@@ -67,23 +35,26 @@ class Bills extends Component {
 
   render() {
     const { modal, selected } = this.state;
-    const { profile } = this.props;
+    const { home, profile } = this.props;
+    console.log('pr', profile);
 
     return (
       <>
         <StatusBar backgroundColor={White} barStyle="dark-content" />
         <View style={styles.background}>
           <View style={styles.headerGrid}>
-            <View />
-            <ParagraphText title="Bills" style={styles.headerText} />
-            {profile.home_id ? (
+            <HeaderText
+              title={`${home?.name} Bills`}
+              style={styles.headerText}
+            />
+            {/* {profile.home_id ? (
               <TouchableOpacity onPress={() => Actions.create_bill()}>
-                {/* this.handleChange('modal', true)}> */}
                 <ButtonPlus />
               </TouchableOpacity>
             ) : (
               <View />
-            )}
+            )} */}
+            <View />
           </View>
 
           {!profile.home_id ? (
@@ -104,83 +75,58 @@ class Bills extends Component {
             </View>
           ) : (
             <>
-              <View style={styles.insightContainer}>
-                <View style={styles.walletView}>
-                  <RegularText
-                    title="Wallet balance"
-                    style={styles.walletText}
-                  />
-                  <ParagraphText title="₦ 350,000.00" style={styles.amount} />
-                  <View style={styles.divider} />
-                  <View style={styles.statsGrid}>
-                    {/* spent */}
+              <View style={styles.insightContainer} />
+              <View style={styles.walletView}>
+                <Image source={profileGroup} style={styles.profileGroup} />
+                <RegularText title="Wallet balance" style={styles.walletText} />
+                <HeaderText title="₦ 350,000.00" style={styles.amount} />
+                <View style={styles.divider} />
+                <View style={styles.statsGrid}>
+                  {/* spent */}
+                  <View style={styles.leftGrid}>
                     <View style={styles.outerSpentCircle} />
                     <View style={styles.stats}>
-                      <RegularText title="You spent" style={styles.statTitle} />
-                      <ParagraphText
-                        title="₦ 350,000.00"
-                        style={styles.statAmount}
+                      <RegularText
+                        title="Your share"
+                        style={styles.statTitle}
                       />
-                    </View>
-                    <View style={styles.verticalDivider} />
-                    {/* owing balance */}
-                    <View style={styles.balanceCircle} />
-                    <View style={[styles.stats, { marginLeft: wp(13) }]}>
-                      <RegularText title="You spent" style={styles.statTitle} />
                       <ParagraphText
                         title="₦ 350,000.00"
                         style={styles.statAmount}
                       />
                     </View>
                   </View>
-                </View>
-                <View style={styles.insightRow}>
-                  <Insight />
-                  <ParagraphText title="View Insight" style={styles.insight} />
+
+                  <View style={styles.verticalDivider} />
+
+                  {/* owing balance */}
+                  <View style={styles.leftGrid}>
+                    <View style={styles.balanceCircle} />
+                    <View style={[styles.stats, { marginLeft: wp(13) }]}>
+                      <RegularText title="You owe" style={styles.statTitle} />
+                      <ParagraphText
+                        title="₦ 350,000.00"
+                        style={styles.statAmount}
+                      />
+                    </View>
+                  </View>
                 </View>
               </View>
 
+              <View style={styles.billsView} />
               <View style={styles.leadRow}>
-                <ParagraphText title="Your Bills" style={styles.yourBills} />
+                <HeaderText title="Your Bills" style={styles.yourBills} />
                 <TouchableOpacity
                   style={styles.seeAllButton}
                   onPress={() => Actions.bill_list()}>
-                  <RegularText title="See All" style={styles.seeAll} />
-                  <View style={styles.arrow}>
-                    <ForwardArrow fill={Green} />
-                  </View>
+                  <ButtonPlus fill={PersianGreen} />
                 </TouchableOpacity>
               </View>
-              <View style={styles.billsCard}>
-                <Tab
-                  containerStyle={styles.tabContainer}
-                  leftTabSelect={() =>
-                    this.handleChange('selected', 'shortTerm')
-                  }
-                  rightTabSelect={() =>
-                    this.handleChange('selected', 'longTerm')
-                  }
-                  rightTabSelected={selected === 'longTerm'}
-                  leftTabSelected={selected === 'shortTerm'}
-                />
-                <ScrollView
-                  showsVerticalScrollIndicator={false}
-                  contentContainerStyle={{ paddingBottom: hp(30) }}>
-                  <BillItem />
-                  <BillItem />
-                  <BillItem />
-                  <BillItem last />
-                </ScrollView>
-              </View>
-              {/* <Button
-                title="Add a new bill"
-                icon={<ButtonPlus />}
-                style={styles.button}
-                onPress={() => this.handleChange('modal', true)}
-                // titleStyle={styles.buttonTitle}
-                left
-                flex
-              /> */}
+
+              <ScrollView contentContainerStyle={styles.scrollContainer}>
+                <BillGroup type="Personal" />
+                <BillGroup type="Joint" />
+              </ScrollView>
             </>
           )}
         </View>
@@ -209,6 +155,7 @@ class Bills extends Component {
 
 const mapStateToProps = (state) => ({
   profile: state.profile.profile,
+  home: state.profile.home,
 });
 
 export default connect(mapStateToProps)(Bills);

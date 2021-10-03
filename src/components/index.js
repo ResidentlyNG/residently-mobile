@@ -5,3 +5,4 @@ export * from './Button';
 export * from './TextInput';
 export * from './Toast';
 export * from './Overlay';
+export * from './ScrollView';

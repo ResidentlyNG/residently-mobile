@@ -12,6 +12,7 @@ import {
 } from '../../../assets/svgs';
 import Bills from './bills';
 import Wallet from './wallet';
+import Settings from './settings';
 
 export default class Dashboard extends Component {
   state = {
@@ -41,6 +42,7 @@ export default class Dashboard extends Component {
   displayScreen = (screen) => {
     if (screen === 'Bills') return <Bills />;
     if (screen === 'Wallet') return <Wallet />;
+    if (screen === 'Profile') return <Settings />;
     return <Home />;
   };
 
@@ -85,12 +87,12 @@ export default class Dashboard extends Component {
               )}
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.onPress('Explore')}
+              onPress={() => this.onPress('Profile')}
               style={styles.homeButtons}>
               {this.footerButton(
                 <ExploreMenu />,
                 <ExploreMenu fill={Green} />,
-                'Explore',
+                'Profile',
               )}
             </TouchableOpacity>
           </View>

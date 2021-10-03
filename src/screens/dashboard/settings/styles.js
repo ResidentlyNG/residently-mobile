@@ -2,8 +2,6 @@ import { StyleSheet } from 'react-native';
 import {
   AthensGray,
   Midnight,
-  MineShaft,
-  Scorpion,
   White,
   WhiteLilac,
   WoodSmoke,
@@ -16,23 +14,42 @@ export const settings = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: White,
   },
+  darkHeaderBg: {
+    // flex: 1,
+    alignItems: 'center',
+    backgroundColor: WoodSmoke,
+    height: hp(252),
+    width: '100%',
+    position: 'absolute',
+    top: 0,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+  },
+  imageBg: {
+    width: '100%',
+    height: '100%',
+    // position: 'absolute',
+    // bottom: 0,
+  },
+
   headerGrid: {
     flexDirection: 'row',
     alignItems: 'center',
     width: wp(331),
     marginTop: hp(13),
   },
+  profileImageView: circle(49, White),
   profileImage: circle(46),
   usernameView: {
     marginLeft: wp(11),
   },
   fullname: {
     fontSize: 20,
-    color: MineShaft,
+    color: White,
   },
   username: {
     fontSize: 14,
-    color: Scorpion,
+    color: WhiteLilac,
   },
   bell: {
     width: wp(42),

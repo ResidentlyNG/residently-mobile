@@ -1,9 +1,15 @@
 import React from 'react';
-import { ScrollView, StatusBar, TouchableOpacity, View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import { user } from '../../../../assets/images';
 import {
-  CloseProfile,
+  ImageBackground,
+  ScrollView,
+  StatusBar,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { useSelector } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
+import { bestSpace, billsBg } from '../../../../assets/images';
+import {
   Personal,
   MenuChevrolet,
   Persons,
@@ -25,6 +31,7 @@ import {
   Green,
   Coral,
   Sunglow,
+  WoodSmoke,
 } from '../../../components';
 import { hp } from '../../../components/utils';
 import { settings as styles } from './styles';
@@ -42,72 +49,83 @@ const MenuView = ({ backgroundColor, icon, title, onPress }) => (
   </TouchableOpacity>
 );
 
-const Settings = () => (
-  <View style={styles.background}>
-    <StatusBar backgroundColor={White} barStyle="dark-content" />
-    <View style={styles.headerGrid}>
-      <Image source={user} style={styles.profileImage} />
-      <View style={styles.usernameView}>
-        <ParagraphText title="Bisola Jabari" style={styles.fullname} />
-        <RegularText title="@Bisijabari" style={styles.username} />
+const Settings = () => {
+  const { profile } = useSelector((state) => state.profile);
+
+  return (
+    <View style={styles.background}>
+      <StatusBar backgroundColor={WoodSmoke} barStyle="light-content" />
+      <ImageBackground
+        source={billsBg}
+        style={styles.darkHeaderBg}
+        imageStyle={styles.imageBg}
+      />
+      <View style={styles.headerGrid}>
+        <View style={styles.profileImageView}>
+          <Image source={bestSpace} style={styles.profileImage} />
+        </View>
+        <View style={styles.usernameView}>
+          <ParagraphText title={profile?.fullname} style={styles.fullname} />
+          <RegularText
+            title={`@${profile?.username}`}
+            style={styles.username}
+          />
+        </View>
       </View>
-      <View style={styles.bell}>
-        <CloseProfile />
-      </View>
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: hp(90) }}>
+        <View style={styles.menuContainer}>
+          <MenuView
+            title="Personal"
+            backgroundColor={DodgerBlue}
+            icon={<Personal />}
+            onPress={() => Actions.personal()}
+          />
+        </View>
+        <View style={styles.menuContainer}>
+          <MenuView
+            title="My Home"
+            backgroundColor={ScienceBlue}
+            icon={<Persons />}
+            onPress={() => Actions.my_home()}
+          />
+        </View>
+
+        <View style={styles.menuContainer}>
+          <MenuView
+            title="Payment"
+            backgroundColor={Green}
+            icon={<Card />}
+            onPress={() => Actions.card()}
+          />
+          <View style={styles.divider} />
+          <MenuView
+            title="Settings"
+            backgroundColor={Sunglow}
+            icon={<SettingsSvg />}
+          />
+          <View style={styles.divider} />
+          <MenuView
+            title="Privacy Policy"
+            backgroundColor={Coral}
+            icon={<Privacy />}
+          />
+        </View>
+
+        <View style={styles.menuContainer}>
+          <MenuView title="Refer and earn" icon={<StarRadii />} />
+          <View style={styles.divider} />
+          <MenuView title="Notifications" icon={<NotificationSetting />} />
+          <View style={styles.divider} />
+          <MenuView title="Terms and Conditions" icon={<Terms />} />
+          <View style={styles.divider} />
+          <MenuView title="Support" icon={<Help />} />
+        </View>
+      </ScrollView>
     </View>
-
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ paddingBottom: hp(30) }}>
-      <View style={styles.menuContainer}>
-        <MenuView
-          title="Personal"
-          backgroundColor={DodgerBlue}
-          icon={<Personal />}
-          onPress={() => Actions.personal()}
-        />
-      </View>
-      <View style={styles.menuContainer}>
-        <MenuView
-          title="My Home"
-          backgroundColor={ScienceBlue}
-          icon={<Persons />}
-          onPress={() => Actions.my_home()}
-        />
-      </View>
-
-      <View style={styles.menuContainer}>
-        <MenuView
-          title="Payment"
-          backgroundColor={Green}
-          icon={<Card />}
-          onPress={() => Actions.card()}
-        />
-        <View style={styles.divider} />
-        <MenuView
-          title="Settings"
-          backgroundColor={Sunglow}
-          icon={<SettingsSvg />}
-        />
-        <View style={styles.divider} />
-        <MenuView
-          title="Privacy Policy"
-          backgroundColor={Coral}
-          icon={<Privacy />}
-        />
-      </View>
-
-      <View style={styles.menuContainer}>
-        <MenuView title="Refer and earn" icon={<StarRadii />} />
-        <View style={styles.divider} />
-        <MenuView title="Notifications" icon={<NotificationSetting />} />
-        <View style={styles.divider} />
-        <MenuView title="Terms and Conditions" icon={<Terms />} />
-        <View style={styles.divider} />
-        <MenuView title="Support" icon={<Help />} />
-      </View>
-    </ScrollView>
-  </View>
-);
+  );
+};
 
 export default Settings;
