@@ -14,7 +14,7 @@ import {
   ScrollView,
 } from '../../../components';
 import { ModalBlur } from '../../../components/Overlay';
-import { hp, wp } from '../../../components/utils';
+import { hp, NairaFormat, wp } from '../../../components/utils';
 import NewBill from '../../authentication/SetUp';
 import { bills as styles } from './styles';
 import { BillGroup } from './utils';
@@ -25,18 +25,42 @@ const ButtonPlus = ({ fill }) => (
   </View>
 );
 
+const getBillSet = (personal, joint) => {
+  const set = [];
+  const jointBillsFirst = joint.length && joint.length > personal.length;
+  const noJointView = !joint.length;
+
+  if (jointBillsFirst) {
+    set.push('Joint', 'Personal');
+  } else if (noJointView) {
+    set.push('Personal');
+  } else {
+    set.push('Personal', 'Joint');
+  }
+  return set;
+};
+
 class Bills extends Component {
   state = {
-    selected: 'shortTerm',
     modal: false,
   };
 
   handleChange = (prop, value) => this.setState({ [prop]: value });
 
   render() {
-    const { modal, selected } = this.state;
-    const { home, profile } = this.props;
-    console.log('pr', profile);
+    const { modal } = this.state;
+    const { home, profile, bills } = this.props;
+
+    const walletBalance = NairaFormat(home?.account?.balance || 0);
+    const userShare = NairaFormat(home?.user_account?.balance || 0);
+    const debtSum = profile.debts.length
+      ? profile.debts.reduce((total, value) => total + Number(value?.amount))
+      : 0;
+
+    const debt = NairaFormat(debtSum);
+    const personalBills = bills.filter((bill) => bill?.account_id === null);
+    const jointBills = bills.filter((bill) => bill?.account_id !== null);
+    const set = getBillSet(personalBills, jointBills);
 
     return (
       <>
@@ -79,7 +103,7 @@ class Bills extends Component {
               <View style={styles.walletView}>
                 <Image source={profileGroup} style={styles.profileGroup} />
                 <RegularText title="Wallet balance" style={styles.walletText} />
-                <HeaderText title="₦ 350,000.00" style={styles.amount} />
+                <HeaderText title={walletBalance} style={styles.amount} />
                 <View style={styles.divider} />
                 <View style={styles.statsGrid}>
                   {/* spent */}
@@ -91,7 +115,7 @@ class Bills extends Component {
                         style={styles.statTitle}
                       />
                       <ParagraphText
-                        title="₦ 350,000.00"
+                        title={userShare}
                         style={styles.statAmount}
                       />
                     </View>
@@ -104,10 +128,7 @@ class Bills extends Component {
                     <View style={styles.balanceCircle} />
                     <View style={[styles.stats, { marginLeft: wp(13) }]}>
                       <RegularText title="You owe" style={styles.statTitle} />
-                      <ParagraphText
-                        title="₦ 350,000.00"
-                        style={styles.statAmount}
-                      />
+                      <ParagraphText title={debt} style={styles.statAmount} />
                     </View>
                   </View>
                 </View>
@@ -124,8 +145,13 @@ class Bills extends Component {
               </View>
 
               <ScrollView contentContainerStyle={styles.scrollContainer}>
-                <BillGroup type="Personal" />
-                <BillGroup type="Joint" />
+                {set.map((type, index) => (
+                  <BillGroup
+                    key={index}
+                    type={type}
+                    data={type === 'Personal' ? personalBills : jointBills}
+                  />
+                ))}
               </ScrollView>
             </>
           )}
@@ -156,6 +182,7 @@ class Bills extends Component {
 const mapStateToProps = (state) => ({
   profile: state.profile.profile,
   home: state.profile.home,
+  bills: state.bills.bills,
 });
 
 export default connect(mapStateToProps)(Bills);

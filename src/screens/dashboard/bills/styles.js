@@ -938,4 +938,9 @@ export const utils = StyleSheet.create({
     alignItems: 'center',
     marginTop: 6,
   },
+
+  noBillView: {
+    height: 86,
+    justifyContent: 'center',
+  },
 });
