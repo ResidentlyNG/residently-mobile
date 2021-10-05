@@ -1,5 +1,6 @@
 import React from 'react';
 import { StatusBar, View, TouchableOpacity } from 'react-native';
+import { useSelector } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import {
   cable,
@@ -22,6 +23,7 @@ import {
   White,
 } from '../../../components';
 import { wallet as styles } from './styles';
+import { NairaFormat } from '../../../components/utils';
 
 const ButtonPlus = () => (
   <View style={styles.plusView}>
@@ -52,6 +54,12 @@ export const TransactionItem = ({ icon, title, amount, amountColor }) => (
 );
 
 const Wallet = () => {
+  const {
+    wallet: { wallet },
+    profile: { home },
+  } = useSelector((state) => state);
+
+  const balance = NairaFormat(wallet?.balance || 0);
   return (
     <View style={styles.background}>
       <StatusBar backgroundColor={DodgerBlue} barStyle="light-content" />
@@ -63,12 +71,16 @@ const Wallet = () => {
           title="Wallet"
           titleStyle={{ color: White }}
           iconFill={White}
-          rightComponent={<ButtonPlus />}
+          // rightComponent={<ButtonPlus />}
+          noBackIcon
         />
         <View style={styles.balanceCard}>
           <RegularText title="Your Balance" style={styles.balanceTitle} />
           <View style={styles.balanceView}>
-            <ParagraphText title="₦ 40,000.83" style={styles.balance} />
+            <ParagraphText
+              title={NairaFormat(balance)}
+              style={styles.balance}
+            />
             <View style={styles.eyeView}>
               <BalanceEye />
             </View>
@@ -92,7 +104,7 @@ const Wallet = () => {
               />
               <View style={styles.balanceView}>
                 <ParagraphText
-                  title="₦ 350,000.00"
+                  title={NairaFormat(home?.account?.balance || 0)}
                   style={styles.jointBalance}
                 />
                 <View style={styles.eyeView}>

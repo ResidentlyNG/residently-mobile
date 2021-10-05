@@ -61,6 +61,7 @@ export const Header = ({
   iconFill,
   rightComponent,
   rightComponentPress,
+  noBackIcon,
 }) => {
   // const iconHandler = () => {
   //   if (rightComponent) return rightComponent;
@@ -70,11 +71,15 @@ export const Header = ({
 
   return (
     <View style={styles.headerPane}>
-      <TouchableOpacity
-        onPress={() => backPress || Actions.pop()}
-        style={styles.backButton}>
-        <BackIconRound fill={iconFill} />
-      </TouchableOpacity>
+      {!noBackIcon ? (
+        <TouchableOpacity
+          onPress={() => backPress || Actions.pop()}
+          style={styles.backButton}>
+          <BackIconRound fill={iconFill} />
+        </TouchableOpacity>
+      ) : (
+        <View style={{ width: 40 }} />
+      )}
       <ParagraphText title={title} style={[styles.headerTitle, titleStyle]} />
       {rightComponent ? (
         <TouchableOpacity
