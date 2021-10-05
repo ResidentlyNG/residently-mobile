@@ -26,7 +26,7 @@ const BillCard = ({ image, onPress, color, title, style }) => (
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.8}
-      style={[styles.billContainer, style]}>
+      style={[styles.billCardContainer, style]}>
       <View style={styles.innerContainer}>
         <View style={styles.sectionRow}>
           <Image source={image} style={styles.billImage} />

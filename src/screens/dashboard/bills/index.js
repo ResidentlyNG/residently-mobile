@@ -139,7 +139,7 @@ class Bills extends Component {
                 <HeaderText title="Your Bills" style={styles.yourBills} />
                 <TouchableOpacity
                   style={styles.seeAllButton}
-                  onPress={() => Actions.bill_list()}>
+                  onPress={() => Actions.create_bill()}>
                   <ButtonPlus fill={PersianGreen} />
                 </TouchableOpacity>
               </View>

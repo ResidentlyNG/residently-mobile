@@ -656,6 +656,10 @@ export const createBill = StyleSheet.create({
     marginTop: hp(45),
   },
   plusView: circle(31, White),
+  billCardContainer: {
+    width: wp(258),
+    marginTop: hp(18),
+  },
 
   innerContainer: {
     flexDirection: 'row',
@@ -893,10 +897,6 @@ export const utils = StyleSheet.create({
     marginTop: hp(11),
   },
 
-  // billContainer: {
-  //   width: wp(258),
-  //   marginTop: hp(18),
-  // },
   billContainer: {
     width: wp(331),
     marginTop: 29,
