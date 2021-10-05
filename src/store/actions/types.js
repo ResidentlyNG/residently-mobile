@@ -29,3 +29,7 @@ export const GET_BANKS_ERROR = 'get_banks_error';
 export const GET_CARD = 'get_card';
 export const GET_CARD_SUCCESS = 'get_card_success';
 export const GET_CARD_ERROR = 'get_card_error';
+
+export const GET_TRANSACTIONS = 'get_transactions';
+export const GET_TRANSACTIONS_SUCCESS = 'get_transactions_success';
+export const GET_TRANSACTIONS_ERROR = 'get_transactions_error';

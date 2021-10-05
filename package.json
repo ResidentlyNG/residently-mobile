@@ -17,6 +17,7 @@
     "@react-native-community/blur": "^3.6.0",
     "accounting": "^0.4.1",
     "axios": "^0.21.1",
+    "moment": "^2.29.1",
     "native-base": "^2.15.2",
     "prop-types": "^15.7.2",
     "react": "16.13.1",

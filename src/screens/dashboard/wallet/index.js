@@ -2,14 +2,15 @@ import React from 'react';
 import { StatusBar, View, TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import moment from 'moment';
 import {
-  cable,
-  houseBill,
+  // cable,
+  // houseBill,
   profileGroup,
   walletBg,
   fundBill,
 } from '../../../../assets/images';
-import { BalanceEye, Cross, ForwardArrow } from '../../../../assets/svgs';
+import { BalanceEye, ForwardArrow } from '../../../../assets/svgs';
 import {
   BillIcon,
   DodgerBlue,
@@ -25,13 +26,20 @@ import {
 import { wallet as styles } from './styles';
 import { NairaFormat } from '../../../components/utils';
 
-const ButtonPlus = () => (
-  <View style={styles.plusView}>
-    <Cross fill={DodgerBlue} />
-  </View>
-);
+// const ButtonPlus = () => (
+//   <View style={styles.plusView}>
+//     <Cross fill={DodgerBlue} />
+//   </View>
+// );
 
-export const TransactionItem = ({ icon, title, amount, amountColor }) => (
+export const TransactionItem = ({
+  icon,
+  title,
+  amount,
+  amountColor,
+  date,
+  time,
+}) => (
   <>
     <View style={styles.billRow}>
       <BillIcon icon={<Image source={icon} style={styles.billIcon} />} />
@@ -44,8 +52,8 @@ export const TransactionItem = ({ icon, title, amount, amountColor }) => (
           />
         </View>
         <View style={styles.detailTime}>
-          <RegularText title="23/05/2021" style={styles.billDate} />
-          <RegularText title="06:00 pm" style={styles.billDate} />
+          <RegularText title={date} style={styles.billDate} />
+          <RegularText title={time} style={styles.billDate} />
         </View>
       </View>
     </View>
@@ -57,9 +65,11 @@ const Wallet = () => {
   const {
     wallet: { wallet },
     profile: { home },
+    transactions: { transactions },
   } = useSelector((state) => state);
 
   const balance = NairaFormat(wallet?.balance || 0);
+  const seeAll = transactions.length > 4;
   return (
     <View style={styles.background}>
       <StatusBar backgroundColor={DodgerBlue} barStyle="light-content" />
@@ -118,16 +128,20 @@ const Wallet = () => {
 
       <View style={styles.leadRow}>
         <ParagraphText title="Transaction History" style={styles.yourBills} />
-        <TouchableOpacity
-          style={styles.seeAllButton}
-          onPress={() => Actions.transactions()}>
-          <RegularText title="See All" style={styles.seeAll} />
-          <View style={styles.arrow}>
-            <ForwardArrow fill={Green} />
-          </View>
-        </TouchableOpacity>
+        {seeAll ? (
+          <TouchableOpacity
+            style={styles.seeAllButton}
+            onPress={() => Actions.transactions()}>
+            <RegularText title="See All" style={styles.seeAll} />
+            <View style={styles.arrow}>
+              <ForwardArrow fill={Green} />
+            </View>
+          </TouchableOpacity>
+        ) : (
+          <View />
+        )}
       </View>
-      <TransactionItem
+      {/* <TransactionItem
         title="House Rent"
         amount="-₦ 2,000.00"
         icon={houseBill}
@@ -138,12 +152,24 @@ const Wallet = () => {
         amount="-₦ 2,000.00"
         icon={cable}
         amountColor={Monza}
-      />
-      <TransactionItem
-        title="Fund Wallet"
-        amount="₦ 2,000.00"
-        icon={fundBill}
-      />
+      /> */}
+      {transactions.slice(0, 4).map((item) => {
+        const title =
+          item?.narration || (item.type === 'credit' ? 'Topup' : item.type);
+        const date = moment(item.created_at).format('DD/MM/YYYY');
+        const time = moment(item.created_at).format('LT');
+        return (
+          <TransactionItem
+            key={item.id}
+            title={title}
+            amount={NairaFormat(item.amount)}
+            icon={fundBill}
+            date={date}
+            time={time}
+            amountColor={item.type === 'credit' ? Green : Monza}
+          />
+        );
+      })}
     </View>
   );
 };

@@ -2,6 +2,7 @@ import { Actions } from 'react-native-router-flux';
 import showToast from '../../components/Toast';
 import api from '../../utils/api';
 import { getBills } from './bills';
+import { getTransactions } from './transactions';
 import {
   GET_PROFILE_SUCCESS,
   GET_WALLET_SUCCESS,
@@ -20,6 +21,7 @@ export const login = (data) => (dispatch) => {
       dispatch({ type: LOGIN_SUCCESS, payload: auth });
       dispatch({ type: GET_PROFILE_SUCCESS, payload: res.data });
       dispatch({ type: GET_WALLET_SUCCESS, payload: res.wallet });
+      dispatch(getTransactions());
       dispatch(getBanks());
       dispatch(getCard());
       dispatch(getBills());
