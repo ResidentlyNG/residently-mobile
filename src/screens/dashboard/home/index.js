@@ -9,6 +9,7 @@ import {
 import { BoxShadow } from 'react-native-shadow';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import Sentry from '@sentry/react-native';
 import {
   BillIcon,
   Button,
@@ -95,6 +96,7 @@ class Home extends Component {
     this.props.getWallet();
     this.props.getBills();
     this.props.getTransactions();
+    Sentry.setUser(this.props.profile?.fullname || this.props.profile?.email);
   }
 
   shadowOpt = {

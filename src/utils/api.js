@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import PropTypes from 'prop-types';
+import Sentry from '@sentry/react-native';
 import showToast from '../components/Toast';
 import { CANCEL_REQUEST } from '../store/actions/types';
 import { store } from '../store';
@@ -55,7 +56,7 @@ const api = (url, type = 'GET', data, headers) => {
       })
       // eslint-disable-next-line consistent-return
       .catch((error) => {
-        // Sentry.captureException(error);
+        Sentry.captureException(error);
         // console.log(error, error.config);
         if (error && !error.response) {
           showToast(

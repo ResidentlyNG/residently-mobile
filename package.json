@@ -15,6 +15,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/blur": "^3.6.0",
+    "@sentry/react-native": "^3.1.1",
     "accounting": "^0.4.1",
     "axios": "^0.21.1",
     "moment": "^2.29.1",
@@ -24,6 +25,7 @@
     "react-native": "0.63.4",
     "react-native-app-intro-slider": "^4.0.4",
     "react-native-datepicker": "^1.7.2",
+    "react-native-device-info": "^8.4.0",
     "react-native-elements": "^3.1.0",
     "react-native-gesture-handler": "^1.9.0",
     "react-native-global-props": "^1.1.5",
