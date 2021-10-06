@@ -20,7 +20,7 @@ const Web = ({ uri, reference }) => {
       verifyTransaction(reference)
         .then((response) => {
           console.log('reer', response);
-          Actions.home({ type: 'reset' });
+          Actions.dashboard({ type: 'reset', wallet: true });
         })
         .catch((error) => console.log('ERR', error));
     }

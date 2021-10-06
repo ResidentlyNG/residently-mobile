@@ -28,3 +28,4 @@ export const verifyTransaction = (reference) =>
   http(`/transaction/verify/${reference}`);
 export const validateAccount = (data) => http('/bank/validate', 'POST', data);
 export const createBill = (data) => http('/bill/create', 'POST', data);
+export const fundWallet = (data) => http('/wallet/fund', 'POST', data);

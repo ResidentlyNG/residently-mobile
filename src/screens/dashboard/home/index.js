@@ -37,6 +37,9 @@ import { home as styles } from './styles';
 import { Cross, ForwardArrow, NotificationBell } from '../../../../assets/svgs';
 import { hp, NairaFormat, wp } from '../../../components/utils';
 import { getHome } from '../../../store/actions/profile';
+import { getTransactions } from '../../../store/actions/transactions';
+import { getWallet } from '../../../store/actions/wallet';
+import { getBills } from '../../../store/actions/bills';
 
 const ButtonPlus = () => (
   <View style={styles.plusView}>
@@ -89,6 +92,9 @@ const NoBills = () => (
 class Home extends Component {
   componentDidMount() {
     this.props.getHome();
+    this.props.getWallet();
+    this.props.getBills();
+    this.props.getTransactions();
   }
 
   shadowOpt = {
@@ -239,19 +245,26 @@ class Home extends Component {
                   </View>
                 </BoxShadow>
 
-                <View style={styles.topupView}>
-                  <View>
-                    <SemiBoldText
-                      title="Top up your wallet"
-                      style={styles.topupText}
-                    />
-                    <RegularText
-                      title="Pay your bills in a splash"
-                      style={styles.topupSubText}
-                    />
-                  </View>
-                  <Image source={moneyBagBig} style={styles.moneyBagBig} />
-                </View>
+                {profile.home_id ? (
+                  <TouchableOpacity
+                    style={styles.topupView}
+                    activeOpacity={0.4}
+                    onPress={() => Actions.select_wallet()}>
+                    <View>
+                      <SemiBoldText
+                        title="Top up your wallet"
+                        style={styles.topupText}
+                      />
+                      <RegularText
+                        title="Pay your bills in a splash"
+                        style={styles.topupSubText}
+                      />
+                    </View>
+                    <Image source={moneyBagBig} style={styles.moneyBagBig} />
+                  </TouchableOpacity>
+                ) : (
+                  <View />
+                )}
                 {/* <ParagraphText
                 title="Live anywhere"
                 style={styles.houseExpenses}
@@ -328,6 +341,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getHome,
+  getTransactions,
+  getWallet,
+  getBills,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

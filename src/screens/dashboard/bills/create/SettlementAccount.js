@@ -95,7 +95,7 @@ const SettlementAccount = (props) => {
 
     createBill(payload)
       .then((response) => {
-        Actions.bill({ data: response, payload });
+        Actions.bill({ data: response, payload, type: 'reset' });
       })
       .catch((error) => {
         showToast(error?.message || 'Something went wrong', 'error');

@@ -60,7 +60,7 @@ const SelectWallet = () => {
         icon={<ForwardArrow />}
         disabled={true}
         style={styles.button}
-        onPress={() => Actions.fund_wallet()}
+        onPress={() => Actions.fund_wallet({ plan })}
       />
     </View>
   );

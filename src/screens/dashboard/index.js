@@ -19,6 +19,12 @@ export default class Dashboard extends Component {
     screen: this.props.bill ? 'Bills' : 'Home',
   };
 
+  componentDidMount() {
+    if (this.props.wallet) {
+      this.setState({ screen: 'Wallet' });
+    }
+  }
+
   footerButton(svg, activeSvg, title) {
     if (this.state.screen === title) {
       return (

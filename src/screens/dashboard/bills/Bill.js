@@ -1,5 +1,6 @@
 import React from 'react';
 import { ImageBackground, StatusBar, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import {
   gtbank,
   profileGroup,
@@ -20,7 +21,6 @@ import { NairaFormat } from '../../../components/utils';
 import { bill as styles } from './styles';
 
 const Bill = (props) => {
-  console.log('PRD', props.data, props.payload);
   const { title, amount } = props.data;
   const totalAmount = NairaFormat(amount);
 
@@ -31,7 +31,13 @@ const Bill = (props) => {
       imageStyle={styles.imageBg}
       resizeMode="stretch">
       <StatusBar barStyle="light-content" backgroundColor={MineShaft} />
-      <Header title={title} titleStyle={styles.header} iconFill={White} />
+      <Header
+        title={title}
+        titleStyle={styles.header}
+        iconFill={White}
+        backPress={() => Actions.dashboard({ type: 'reset', bills: true })}
+        // noBackIcon={props.type === 'reset'}
+      />
       <View style={styles.mainView}>
         <View style={styles.amountView}>
           <ParagraphText title="Total amount" style={styles.amountTitle} />

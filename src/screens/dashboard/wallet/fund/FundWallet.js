@@ -8,15 +8,17 @@ import {
   Header,
   HeaderText,
   TextInput,
+  TransactionLoader,
   White,
 } from '../../../../components';
 import showToast from '../../../../components/Toast';
-import { addCard } from '../../../../utils';
+import { fundWallet } from '../../../../utils';
 import { fund as styles } from './styles';
 
-const FundWallet = () => {
+const FundWallet = (props) => {
   const [bill, setBill] = useState('');
   const [errors, setError] = useState({ title: false, bill: false });
+  const [loading, setLoading] = useState(false);
   const billError = errors.bill;
 
   useEffect(() => {
@@ -32,13 +34,30 @@ const FundWallet = () => {
       showToast('Bill amount is required', 'error');
       setError({ bill: true });
     } else {
-      addCard({ amount: bill })
+      setLoading(true);
+      const source = props.plan === 'room' ? 'wallet' : 'card';
+      fundWallet({ amount: bill, source })
         .then((response) => {
-          const { authorization_url: uri, reference } = response.data.data;
-          console.log('RX', response);
-          Actions.webview({ uri, reference });
+          console.log('ROP', response);
+          if (response.message.includes('initialized')) {
+            const { authorization_url: uri, reference } = response.data.data;
+            Actions.webview({ uri, reference });
+          } else {
+            Actions.dashboard({ wallet: true, type: 'reset' });
+          }
         })
-        .catch((error) => console.log('err', error));
+        .catch((error) => {
+          console.log('ert', error);
+          showToast(error.message || 'Something went wrong', 'error');
+        })
+        .finally(() => setLoading(false));
+      // addCard({ amount: bill })
+      //   .then((response) => {
+      //     const { authorization_url: uri, reference } = response.data.data;
+      //     console.log('RX', response);
+      //     Actions.webview({ uri, reference });
+      //   })
+      //   .catch((error) => console.log('err', error));
     }
   };
 
@@ -51,13 +70,13 @@ const FundWallet = () => {
       <KeyboardAwareScrollView contentContainerStyle={{ alignItems: 'center' }}>
         <Header title="Fund Wallet" />
         <HeaderText
-          title="What would you like to call this bill?"
+          title="Enter the amount you would like to fund"
           style={styles.leadText}
         />
         <TextInput
           value={bill}
           onChangeText={(value) => setBill(value)}
-          placeholder="Enter bill amount"
+          placeholder="Enter amount"
           label="Amount"
           style={[styles.input, billError && styles.errorBorder]}
           noIcon
@@ -71,6 +90,7 @@ const FundWallet = () => {
           onPress={submit}
         />
       </KeyboardAwareScrollView>
+      {loading ? <TransactionLoader /> : null}
     </ImageBackground>
   );
 };
