@@ -43,6 +43,7 @@ const CreateAccount = () => {
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  console.log('THis is a setup/fork test');
 
   const submit = () => {
     const data = { fullname, email, phone };
