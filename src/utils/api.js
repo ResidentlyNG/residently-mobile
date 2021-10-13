@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import PropTypes from 'prop-types';
-import Sentry from '@sentry/react-native';
+import * as Sentry from '@sentry/react-native';
 import showToast from '../components/Toast';
 import { CANCEL_REQUEST } from '../store/actions/types';
 import { store } from '../store';

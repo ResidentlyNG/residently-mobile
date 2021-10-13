@@ -9,7 +9,7 @@ import {
 import { BoxShadow } from 'react-native-shadow';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import Sentry from '@sentry/react-native';
+import * as Sentry from '@sentry/react-native';
 import {
   BillIcon,
   Button,

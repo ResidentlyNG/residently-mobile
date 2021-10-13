@@ -68,19 +68,19 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     color: White,
-    width: wp(200),
+    marginHorizontal: 85,
     textAlign: 'center',
     marginTop: hp(26),
     lineHeight: 36,
-    fontFamily: 'Oxygen-Regular',
+    fontFamily: 'Oxygen-Bold',
   },
   text: {
     color: White,
     textAlign: 'center',
     alignSelf: 'center',
-    width: wp(240),
+    marginHorizontal: 65,
+    marginTop: 10,
     lineHeight: 21,
-    marginTop: hp(10),
     fontSize: 14,
   },
   buttonContainer: {
