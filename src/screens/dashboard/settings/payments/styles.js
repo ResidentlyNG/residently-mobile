@@ -68,4 +68,25 @@ export const cardStyles = StyleSheet.create({
     width: wp(29.1),
     height: hp(18),
   },
+
+  noCard: {
+    width: wp(167),
+    height: hp(78),
+    marginTop: hp(100),
+  },
+  noCardHeader: {
+    fontSize: 20,
+    color: WoodSmoke,
+    marginTop: hp(34),
+  },
+  noCardText: {
+    paddingHorizontal: 18,
+    lineHeight: 18,
+    textAlign: 'center',
+    marginTop: 18,
+  },
+  addCardButton: {
+    width: wp(250),
+    marginTop: 50,
+  },
 });

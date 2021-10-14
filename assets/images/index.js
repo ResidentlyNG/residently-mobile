@@ -51,6 +51,7 @@ const homeBg = require('./home-bg.png');
 const moneyBagBig = require('./money-bag-big.png');
 const houseExpensesBg = require('./house-expenses-bg.png');
 const profile = require('./user-plain.png');
+const noCard = require('./no-card.png');
 
 export {
   coliving,
@@ -106,4 +107,5 @@ export {
   moneyBagBig,
   houseExpensesBg,
   profile,
+  noCard,
 };
