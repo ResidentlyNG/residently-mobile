@@ -24,6 +24,7 @@ import Onboarding from './screens/onboarding';
 import Personal from './screens/dashboard/settings/Personal';
 import MyHome from './screens/dashboard/settings/MyHome';
 import HomeSetup from './screens/dashboard/home/setup';
+import CribInvite from './screens/dashboard/home/setup/Invite';
 import Launch from './screens/onboarding/Launch';
 import { checkAuth } from './utils';
 import Host from './screens/dashboard/home/setup/Host';
@@ -35,6 +36,10 @@ import SelectPlan from './screens/dashboard/bills/create/SelectPlan';
 import Duration from './screens/dashboard/bills/create/Duration';
 import SelectRecipient from './screens/dashboard/bills/create/SelectRecipient';
 import SettlementAccount from './screens/dashboard/bills/create/SettlementAccount';
+import SelectWallet from './screens/dashboard/wallet/fund';
+import FundWallet from './screens/dashboard/wallet/fund/FundWallet';
+import Web from './components/Webview';
+import Card from './screens/dashboard/settings/payments/Card';
 
 export default class RouterComponent extends Component {
   render() {
@@ -75,6 +80,7 @@ export default class RouterComponent extends Component {
           <Scene key="my_home" component={MyHome} />
           <Scene key="home_setup" component={HomeSetup} />
           <Scene key="host" component={Host} />
+          <Scene key="crib_invite" component={CribInvite} />
           <Scene key="setup_success" component={Success} />
           <Scene key="roommate" component={Roommate} />
           <Scene key="join_room" component={JoinRoom} />
@@ -83,6 +89,12 @@ export default class RouterComponent extends Component {
           <Scene key="duration" component={Duration} />
           <Scene key="select_recipient" component={SelectRecipient} />
           <Scene key="settlement" component={SettlementAccount} />
+
+          <Scene key="select_wallet" component={SelectWallet} />
+          <Scene key="fund_wallet" component={FundWallet} />
+          <Scene key="webview" component={Web} />
+
+          <Scene key="card" component={Card} />
         </Scene>
       </Router>
     );

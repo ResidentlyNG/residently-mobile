@@ -51,8 +51,9 @@ const styles = StyleSheet.create({
     color: Colors.BostonBlue,
   },
   paragraphTextStyle: {
-    fontFamily: 'Oxygen-Medium',
+    fontFamily: 'Oxygen-Regular',
     fontSize: hp(14),
+    fontWeight: '600',
     color: Colors.WoodSmoke,
   },
   semiboldTextStyle: {

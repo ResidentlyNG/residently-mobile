@@ -15,7 +15,12 @@ import {
 } from '../../../../components';
 import showToast from '../../../../components/Toast';
 import { Header } from '../../../../components/View';
-import { resendEmailOtp, verifyEmail } from '../../../../utils';
+import {
+  resendEmailOtp,
+  resendInvite,
+  verifyEmail,
+  verifyInvite,
+} from '../../../../utils';
 import { joinRoom as styles } from './styles';
 
 const JoinRoom = (props) => {
@@ -24,7 +29,7 @@ const JoinRoom = (props) => {
   const [loading, setLoading] = useState(false);
   const [activity, setActivity] = useState(false);
 
-  const { email } = useSelector((state) => state.profile.profile);
+  const { email, phone } = useSelector((state) => state.profile.profile);
 
   const label = verification ? 'Verification code' : 'Invite code';
   const leadText = verification ? 'Verify your Account' : 'Become a roommate';
@@ -32,12 +37,21 @@ const JoinRoom = (props) => {
     verification ? 'verification' : 'invite'
   } code you received`;
 
+  const submitFn = (data) =>
+    verification ? verifyEmail(data) : verifyInvite(data);
+  const resendFn = (data) =>
+    verification ? resendEmailOtp(data) : resendInvite();
+
   const submit = () => {
     setLoading(true);
-    verifyEmail({ code })
+    submitFn({ code, otp: code, phone })
       .then((res) => {
         showToast(res.message || 'Account verification successful');
-        Actions.login({ type: 'reset' });
+        if (verification) {
+          Actions.login({ type: 'reset' });
+        } else {
+          Actions.my_home({ type: 'reset' });
+        }
       })
       .catch((error) => showToast(error.message, 'error'))
       .finally(() => setLoading(false));
@@ -45,9 +59,9 @@ const JoinRoom = (props) => {
 
   const resend = () => {
     setActivity(true);
-    resendEmailOtp({ email })
+    resendFn({ email })
       .then((res) => {
-        showToast(res.message || 'Verification email sent');
+        showToast(res.message || 'Verification code sent');
       })
       .catch((error) => {
         showToast(error.message || 'Something went wrong', 'error');

@@ -10,10 +10,11 @@ import {
   Monza,
   Scorpion,
   WoodSmoke,
-  ClearDay,
   WildSand,
   ForgetMeNot,
   WhiteLilac,
+  PersianGreen,
+  RoyalBlue,
 } from '../../../components';
 import { circle, hp, wp } from '../../../components/utils';
 
@@ -21,13 +22,20 @@ export const home = StyleSheet.create({
   background: {
     flex: 1,
     alignItems: 'center',
-    // paddingBottom: hp(50),
+    backgroundColor: WhiteLilac,
+  },
+  imageBg: {
+    width: wp(375), // '100%',
+    height: hp(1469), // '100%',
+    // position: 'absolute',
+    // bottom: 0,
   },
   headerGrid: {
     flexDirection: 'row',
     alignItems: 'center',
     width: wp(331),
-    marginTop: hp(13),
+    marginTop: hp(5),
+    height: 50,
   },
   profileImage: circle(46),
   usernameView: {
@@ -45,35 +53,49 @@ export const home = StyleSheet.create({
     width: wp(42),
     height: hp(41),
     borderRadius: 10,
-    backgroundColor: Green,
+    backgroundColor: PersianGreen,
     alignItems: 'center',
     justifyContent: 'center',
     right: 0,
     position: 'absolute',
   },
 
+  expensesBackground: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    backgroundColor: White,
+    marginTop: hp(14),
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+  },
+  expensesImageBg: {
+    width: wp(375), // '100%',
+    height: hp(1107), // '100%',
+    position: 'absolute',
+    bottom: 0,
+  },
+
   coliving: {
     width: wp(331),
     height: hp(346),
     borderRadius: 10,
-    backgroundColor: ClearDay,
-    marginTop: hp(30),
+    marginTop: hp(5),
   },
   doMore: {
     width: wp(319),
-    height: hp(195),
+    height: hp(215),
     bottom: 0,
     position: 'absolute',
   },
   welcome: {
     fontSize: 14,
-    marginLeft: wp(26),
     color: WoodSmoke,
     marginTop: hp(10),
   },
   colivingText: {
     fontSize: 20,
-    marginLeft: wp(26),
     lineHeight: 25,
     color: WoodSmoke,
     marginTop: hp(10),
@@ -94,10 +116,42 @@ export const home = StyleSheet.create({
   },
   scrollContainer: {
     alignItems: 'center',
+    width: '100%',
+    paddingBottom: 45,
   },
-  scroll: {
-    height: '80%',
-    paddingBottom: hp(50),
+  // scroll: {
+  //   height: '80%',
+  //   paddingBottom: hp(50),
+  // },
+
+  topupView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: wp(328),
+    height: hp(121),
+    backgroundColor: RoyalBlue,
+    borderWidth: 3,
+    borderRadius: 20,
+    borderColor: White,
+    marginTop: hp(32),
+    paddingLeft: wp(35),
+    paddingRight: wp(45),
+    elevation: 6,
+  },
+  moneyBagBig: {
+    width: wp(61),
+    height: hp(95),
+  },
+  topupText: {
+    fontSize: 20,
+    color: White,
+    width: wp(127),
+  },
+  topupSubText: {
+    fontSize: 13,
+    color: White,
+    marginTop: 8,
   },
 
   houseExpenses: {
@@ -149,13 +203,14 @@ export const home = StyleSheet.create({
     color: MineShaft,
   },
   seeAllButton: {
-    height: hp(30),
-    justifyContent: 'center',
+    flexDirection: 'row',
     alignItems: 'center',
+    height: hp(30),
   },
   seeAll: {
     fontSize: 14,
     color: Green,
+    marginRight: 7,
   },
 
   billItem: {

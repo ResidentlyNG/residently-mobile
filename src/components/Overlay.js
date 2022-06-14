@@ -47,7 +47,7 @@ const Spinner = ({ size, style }) => {
   );
 };
 
-export const TransactionLoader = ({ backgroundGradient, style }) => {
+export const TransactionLoader = ({ backgroundGradient, size, style }) => {
   return (
     <View
       style={[
@@ -55,7 +55,7 @@ export const TransactionLoader = ({ backgroundGradient, style }) => {
         backgroundGradient && { backgroundColor: backgroundGradient },
         style,
       ]}>
-      <Spinner />
+      <Spinner size={size} />
     </View>
   );
 };

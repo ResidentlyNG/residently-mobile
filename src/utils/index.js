@@ -23,3 +23,13 @@ export const checkAuth = async () => {
 };
 
 export const createHome = (data) => http('/home/create', 'POST', data);
+export const addCard = (data) => http('/card/add', 'POST', data);
+export const verifyTransaction = (reference) =>
+  http(`/transaction/verify/${reference}`);
+export const validateAccount = (data) => http('/bank/validate', 'POST', data);
+export const createBill = (data) => http('/bill/create', 'POST', data);
+export const fundWallet = (data) => http('/wallet/fund', 'POST', data);
+export const inviteUsers = (data) => http('/users/invite', 'POST', data);
+export const verifyInvite = (data) =>
+  http('/users/invite/verify', 'POST', data);
+export const resendInvite = () => http('/users/invite/resend', 'POST');

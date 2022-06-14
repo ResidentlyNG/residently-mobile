@@ -311,3 +311,45 @@ export const joinRoom = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 });
+
+export const invite = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  header: {
+    color: Colors.WoodSmoke,
+    fontSize: 17,
+    marginLeft: 25,
+    marginRight: 25,
+  },
+  scrollView: {
+    alignItems: 'center',
+  },
+  inputView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: 20,
+  },
+  input: {
+    marginTop: 39,
+  },
+  buttonView: {
+    marginTop: 28,
+    paddingVertical: 5,
+  },
+  addButton: {
+    color: Colors.Green,
+  },
+  button: {
+    marginTop: hp(100),
+  },
+
+  error: {
+    color: Colors.BrickRed,
+  },
+  errorInput: {
+    borderColor: Colors.BrickRed,
+  },
+});

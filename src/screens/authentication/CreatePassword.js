@@ -58,11 +58,11 @@ const TermsModal = ({ data, setModal }) => {
       ) : (
         <>
           <ParagraphText
-            title="Terms and Conditions"
+            title="Together is where the magic happens"
             style={styles.termsHeader}
           />
           <RegularText
-            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. Mauris vitae gravida erat, in vehicula augue. Sed vitae rhoncus odio. "
+            title="By creating an account, you agree to and accept Residently’s Terms of Service and Privacy Policy  "
             style={styles.termsText}
           />
           <Button

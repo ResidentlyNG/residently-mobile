@@ -4,6 +4,7 @@ import {
   ClearDay,
   DodgerBlue,
   Green,
+  Midnight,
   MineShaft,
   White,
   WildSand,
@@ -185,6 +186,26 @@ export const wallet = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+
+  noHomeView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noHome: {
+    color: Midnight,
+    textAlign: 'center',
+    fontSize: 15,
+  },
+  noHomeSub: {
+    color: Midnight,
+    textAlign: 'center',
+    marginTop: hp(7),
+  },
+  noHomeButton: {
+    width: wp(230),
+    marginTop: hp(15),
   },
 });
 
