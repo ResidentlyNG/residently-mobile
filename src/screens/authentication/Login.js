@@ -1,20 +1,10 @@
 import React, { useState } from 'react';
-import {
-  ImageBackground,
-  StatusBar,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { ImageBackground, StatusBar, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 // import { Actions } from 'react-native-router-flux';
-import {
-  facebook,
-  getStartedBg,
-  google,
-  thumbBg,
-  twitter,
-} from '../../../assets/images';
+import { Actions } from 'react-native-router-flux';
+import { getStartedBg, thumbBg } from '../../../assets/images';
 import { EyeSvg, MailSvg, MainIcon } from '../../../assets/svgs';
 import {
   Button,
@@ -76,7 +66,8 @@ const Login = () => {
             contentContainerStyle={{ alignItems: 'center' }}
             enableOnAndroid={true}
             showsVerticalScrollIndicator={false}
-            extraScrollHeight={hp(52)}>
+            extraScrollHeight={hp(52)}
+            keyboardShouldPersistTaps="handled">
             <View style={styles.iconView}>
               <MainIcon fill={Green} />
             </View>
@@ -102,9 +93,19 @@ const Login = () => {
               loading={loading}
               style={styles.button}
               onPress={() => submit()}
+              green
             />
             <RegularText title="Forgot Password?" style={styles.forgotText} />
-            <View style={styles.socialsCard}>
+            <Text style={styles.bottomText}>
+              Don't have an account?{' '}
+              <Text
+                onPress={() => Actions.create_account()}
+                style={styles.signUpText}>
+                {' '}
+                Sign up
+              </Text>
+            </Text>
+            {/* <View style={styles.socialsCard}>
               <RegularText
                 title="Use Socials to login"
                 style={styles.socialsText}
@@ -120,7 +121,7 @@ const Login = () => {
                   <Image source={twitter} style={styles.twitter} />
                 </TouchableOpacity>
               </View>
-            </View>
+            </View> */}
           </KeyboardAwareScrollView>
         </View>
         {/* </ImageBackground> */}

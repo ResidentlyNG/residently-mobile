@@ -3,6 +3,7 @@ import {
   LOGIN,
   LOGIN_ERROR,
   LOGIN_SUCCESS,
+  LOGOUT,
   RESET_LOADER,
 } from '../actions/types';
 
@@ -35,6 +36,13 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload.message,
+      };
+
+    case LOGOUT:
+      return {
+        ...initialState,
+        isAuthenticated: true,
+        user: state.user,
       };
 
     case CANCEL_REQUEST:

@@ -1,32 +1,58 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Header, ParagraphText } from '../../../components';
+import { ImageBackground, StatusBar, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import {
+  Header,
+  HeaderText,
+  Image,
+  ParagraphText,
+  White,
+  WoodSmoke,
+} from '../../../components';
+import { billsBg, profile } from '../../../../assets/images';
 import { personal as styles } from './styles';
 
 const Personal = () => {
+  const { profile: user } = useSelector((state) => state.profile);
+  const phone = user?.phone.slice(1);
+
   return (
     <View style={styles.background}>
-      <Header title="Personal" />
+      <StatusBar backgroundColor={WoodSmoke} barStyle="light-content" />
+      <ImageBackground
+        source={billsBg}
+        style={styles.darkHeaderBg}
+        imageStyle={styles.imageBg}
+      />
+
+      <Header
+        title="Personal Info"
+        iconFill={White}
+        titleStyle={styles.headerTitle}
+      />
+
       <View style={styles.mainView}>
-        <View style={styles.titleBox}>
-          <ParagraphText title="Full Name" style={styles.title} />
+        <View style={styles.profileArc}>
+          <View style={styles.profileView}>
+            <Image source={profile} style={styles.profile} />
+          </View>
         </View>
-        <ParagraphText title="Bisola Jabari" style={styles.detail} />
         <View style={styles.titleBox}>
-          <ParagraphText
-            title="Your Residently Username"
-            style={styles.title}
-          />
+          <HeaderText title="Full Name" style={styles.title} />
         </View>
-        <ParagraphText title="@BisJabari" style={styles.detail} />
+        <ParagraphText title={user?.fullname} style={styles.detail} />
         <View style={styles.titleBox}>
-          <ParagraphText title="Personal" style={styles.title} />
+          <HeaderText title="Username" style={styles.title} />
         </View>
-        <ParagraphText title="(+234) 000 000 0000" style={styles.detail} />
-        <View style={styles.divider} />
-        <ParagraphText title="Bis@gmail.com" style={styles.detail} />
-        <View style={styles.divider} />
-        <ParagraphText title="Add Phone or Email" style={styles.detail} />
+        <ParagraphText title={`@${user?.username}`} style={styles.detail} />
+        <View style={styles.titleBox}>
+          <HeaderText title="Email address" style={styles.title} />
+        </View>
+        <ParagraphText title={user?.email} style={styles.detail} />
+        <View style={styles.titleBox}>
+          <HeaderText title="Phone number" style={styles.title} />
+        </View>
+        <ParagraphText title={`(+234) ${phone}`} style={styles.detail} />
       </View>
     </View>
   );

@@ -6,6 +6,7 @@ import {
   GET_HOME,
   GET_HOME_SUCCESS,
   GET_HOME_ERROR,
+  LOGOUT,
 } from '../actions/types';
 
 const initialState = {
@@ -55,6 +56,11 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload,
+      };
+
+    case LOGOUT:
+      return {
+        ...initialState,
       };
 
     case CANCEL_REQUEST:

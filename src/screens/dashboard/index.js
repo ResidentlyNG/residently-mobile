@@ -2,21 +2,23 @@ import React, { Component } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 // import { Footer, FooterTab } from 'native-base';
 import Home from './home';
-import { Green, RegularText } from '../../components';
+import { Green, GullGray, RegularText } from '../../components';
 import { dashboard as styles } from './styles';
-import {
-  BillsMenu,
-  ExploreMenu,
-  HomeSvg,
-  WalletMenu,
-} from '../../../assets/svgs';
+import { BillsMenu, HomeSvg, Personal, WalletMenu } from '../../../assets/svgs';
 import Bills from './bills';
 import Wallet from './wallet';
+import Settings from './settings';
 
 export default class Dashboard extends Component {
   state = {
     screen: this.props.bill ? 'Bills' : 'Home',
   };
+
+  componentDidMount() {
+    if (this.props.wallet) {
+      this.setState({ screen: 'Wallet' });
+    }
+  }
 
   footerButton(svg, activeSvg, title) {
     if (this.state.screen === title) {
@@ -41,6 +43,7 @@ export default class Dashboard extends Component {
   displayScreen = (screen) => {
     if (screen === 'Bills') return <Bills />;
     if (screen === 'Wallet') return <Wallet />;
+    if (screen === 'Profile') return <Settings />;
     return <Home />;
   };
 
@@ -85,12 +88,12 @@ export default class Dashboard extends Component {
               )}
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.onPress('Explore')}
+              onPress={() => this.onPress('Profile')}
               style={styles.homeButtons}>
               {this.footerButton(
-                <ExploreMenu />,
-                <ExploreMenu fill={Green} />,
-                'Explore',
+                <Personal fill={GullGray} />,
+                <Personal fill={Green} />,
+                'Profile',
               )}
             </TouchableOpacity>
           </View>

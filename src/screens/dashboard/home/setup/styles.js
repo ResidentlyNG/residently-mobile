@@ -184,7 +184,7 @@ export const success = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     color: Colors.WoodSmoke,
-    fontFamily: 'Inter-Bold',
+    fontFamily: 'Oxygen-Bold',
   },
   subText: {
     width: wp(274),
@@ -196,7 +196,7 @@ export const success = StyleSheet.create({
   home: {
     fontSize: 20,
     color: Colors.Green,
-    fontFamily: 'Inter-Bold',
+    fontFamily: 'Oxygen-Bold',
   },
   button: {
     width: wp(287),
@@ -303,11 +303,53 @@ export const joinRoom = StyleSheet.create({
   },
   resendText: {
     fontSize: 12,
-    fontFamily: 'Inter-Regular',
+    fontFamily: 'Oxygen-Regular',
     marginTop: 15,
   },
   resend: {
     color: Colors.Green,
     textDecorationLine: 'underline',
+  },
+});
+
+export const invite = StyleSheet.create({
+  background: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  header: {
+    color: Colors.WoodSmoke,
+    fontSize: 17,
+    marginLeft: 25,
+    marginRight: 25,
+  },
+  scrollView: {
+    alignItems: 'center',
+  },
+  inputView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: 20,
+  },
+  input: {
+    marginTop: 39,
+  },
+  buttonView: {
+    marginTop: 28,
+    paddingVertical: 5,
+  },
+  addButton: {
+    color: Colors.Green,
+  },
+  button: {
+    marginTop: hp(100),
+  },
+
+  error: {
+    color: Colors.BrickRed,
+  },
+  errorInput: {
+    borderColor: Colors.BrickRed,
   },
 });

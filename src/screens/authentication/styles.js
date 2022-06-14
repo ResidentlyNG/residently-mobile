@@ -132,12 +132,12 @@ export const getStartedStyles = StyleSheet.create({
   bottomText: {
     marginTop: hp(22),
     fontSize: 16,
-    fontFamily: 'Inter-Regular',
+    fontFamily: 'Oxygen-Regular',
   },
   signUpText: {
     fontSize: 16,
     color: Green,
-    fontFamily: 'Inter-Medium',
+    fontFamily: 'Oxygen-Regular',
     fontWeight: '600',
   },
 });
@@ -308,7 +308,7 @@ export const createAccountStyles = StyleSheet.create({
   signUpText: {
     fontSize: 16,
     color: Green,
-    fontFamily: 'Inter-Semibold',
+    fontFamily: 'Oxygen-Semibold',
   },
 });
 
@@ -352,11 +352,12 @@ export const createPassword = StyleSheet.create({
     height: hp(85),
   },
   termsHeader: {
-    fontSize: 30,
+    fontSize: 20,
     color: MineShaft,
-    width: wp(160),
+    marginHorizontal: 28,
+    textAlign: 'center',
     marginTop: hp(31),
-    lineHeight: 37,
+    lineHeight: 27,
   },
   termsText: {
     fontSize: 13,
@@ -367,7 +368,7 @@ export const createPassword = StyleSheet.create({
   },
   termsButton: {
     width: wp(309),
-    marginTop: hp(26),
+    marginTop: hp(29),
   },
 });
 
@@ -810,7 +811,7 @@ export const join = StyleSheet.create({
   },
   resendText: {
     fontSize: 12,
-    fontFamily: 'Inter-Regular',
+    fontFamily: 'Oxygen-Regular',
     marginTop: 15,
   },
   resend: {

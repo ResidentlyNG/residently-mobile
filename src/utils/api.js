@@ -1,11 +1,12 @@
 import Axios from 'axios';
 import PropTypes from 'prop-types';
+import * as Sentry from '@sentry/react-native';
 import showToast from '../components/Toast';
 import { CANCEL_REQUEST } from '../store/actions/types';
 import { store } from '../store';
 
 // const { BASE_URL } = Config;
-export const BASE_URL = 'https://residently.herokuapp.com/api/v1';
+export const BASE_URL = 'https://residently.herokuapp.com/api/v1'; // 'https://residently.herokuapp.com/api/v1';
 
 /**
  * Utility that calls the backend api service
@@ -15,7 +16,7 @@ export const BASE_URL = 'https://residently.herokuapp.com/api/v1';
  * @param {Object} headers: { 'Content-Type': '' }
  * @returns {Promise<data>}
  */
-const api = (url, type, data, headers) => {
+const api = (url, type = 'GET', data, headers) => {
   if (!url || typeof url !== 'string') {
     store.dispatch({ type: CANCEL_REQUEST });
     throw new Error('Please pass a string url to this function: /path/to/api');
@@ -43,7 +44,6 @@ const api = (url, type, data, headers) => {
   };
 
   return new Promise((resolve, reject) => {
-    console.log('url', `${BASE_URL}${url}`);
     Axios({
       method: type,
       url: `${BASE_URL}${url}`,
@@ -55,7 +55,7 @@ const api = (url, type, data, headers) => {
       })
       // eslint-disable-next-line consistent-return
       .catch((error) => {
-        // Sentry.captureException(error);
+        Sentry.captureException(error);
         // console.log(error, error.config);
         if (error && !error.response) {
           showToast(

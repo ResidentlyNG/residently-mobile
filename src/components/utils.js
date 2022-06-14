@@ -63,3 +63,9 @@ export const circle = (size, color, props) => ({
 export const NairaFormat = (amount) => {
   return accounting.formatMoney(amount, '₦ ', 2);
 };
+
+export const wait = (timeout) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, timeout);
+  });
+};

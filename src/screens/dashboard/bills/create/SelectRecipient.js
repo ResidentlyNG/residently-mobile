@@ -18,26 +18,28 @@ const MenuView = ({ icon, title, onPress }) => (
   </TouchableOpacity>
 );
 
-const SelectRecipient = () => (
-  <View style={styles.background}>
-    <Header title="Select Account" />
-    <View style={styles.mainView}>
-      <HeaderText
-        title="Where would you like your bill to be paid?"
-        style={styles.leadText}
-      />
-      <RegularText
-        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-        style={styles.subText}
-      />
-      <MenuView
-        icon={<Bank />}
-        title="Bank account"
-        onPress={() => Actions.settlement()}
-      />
-      <MenuView icon={<Residently />} title="Residently wallet" />
+const SelectRecipient = (props) => {
+  return (
+    <View style={styles.background}>
+      <Header title="Select Account" />
+      <View style={styles.mainView}>
+        <HeaderText
+          title="Where would you like your bill to be paid?"
+          style={styles.leadText}
+        />
+        <RegularText
+          title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+          style={styles.subText}
+        />
+        <MenuView
+          icon={<Bank />}
+          title="Bank account"
+          onPress={() => Actions.settlement({ data: props.data })}
+        />
+        <MenuView icon={<Residently />} title="Residently wallet" />
+      </View>
     </View>
-  </View>
-);
+  );
+};
 
 export default SelectRecipient;

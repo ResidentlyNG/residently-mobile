@@ -5,7 +5,6 @@ import {
   CatskillWhite,
   CodGray,
   Deyser,
-  DodgerBlue,
   Green,
   Heather,
   MidGray,
@@ -30,6 +29,7 @@ import { circle, hp, wp } from '../../../components/utils';
 export const bills = StyleSheet.create({
   background: {
     flex: 1,
+    height: '100%',
     alignItems: 'center',
   },
   headerGrid: {
@@ -47,14 +47,6 @@ export const bills = StyleSheet.create({
     fontSize: 20,
     color: MineShaft,
   },
-  // fullname: {
-  //   fontSize: 20,
-  //   color: MineShaft,
-  // },
-  // username: {
-  //   fontSize: 14,
-  //   color: Scorpion,
-  // },
   bell: {
     width: wp(42),
     height: hp(41),
@@ -64,37 +56,43 @@ export const bills = StyleSheet.create({
     justifyContent: 'center',
   },
   insightContainer: {
-    width: wp(331),
-    height: hp(218),
-    backgroundColor: Green,
-    borderRadius: 20,
-    // borderBottomLeftRadius: 20,
-    borderWidth: 4,
+    // flex: 1,
+    width: '100%',
+    height: 1,
+
+    // height: '100%',
+    // height: hp(218),
+    backgroundColor: White,
+    // borderTopLeftRadius: 20,
+    // borderTopRightRadius: 20,
+    // borderWidth: 4,
     borderTopWidth: 0,
     borderColor: White,
     marginTop: hp(24),
-    elevation: 5,
+    // elevation: 5,
     alignItems: 'center',
   },
   walletView: {
     width: wp(331),
     height: hp(173),
     backgroundColor: White,
-    borderRadius: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    marginLeft: wp(30),
     // borderBottomLeftRadius: 20,
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   walletText: {
     fontSize: 14,
     color: MineShaft,
-    marginTop: hp(28),
+    marginTop: hp(10),
   },
   amount: {
     fontSize: 26,
     color: MineShaft,
   },
   divider: {
-    width: wp(264.5),
+    width: wp(290),
     height: 1,
     backgroundColor: WildSand,
     marginTop: hp(14),
@@ -102,7 +100,13 @@ export const bills = StyleSheet.create({
   statsGrid: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    width: wp(290),
     marginTop: hp(13),
+  },
+  leftGrid: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   outerSpentCircle: circle(28, White, {
     borderWidth: 3,
@@ -141,30 +145,28 @@ export const bills = StyleSheet.create({
     marginLeft: wp(15),
   },
 
+  billsView: {
+    // flex: 1,
+    backgroundColor: WhiteLilac,
+    alignItems: 'center',
+    width: '100%',
+    height: 1.5,
+    // bottom: 0,
+    marginTop: hp(35),
+    // elevation: 2,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
   leadRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: hp(42),
+    marginTop: hp(30),
     width: wp(330),
   },
   yourBills: {
-    fontSize: 16,
+    fontSize: 20,
     color: MineShaft,
-  },
-  seeAllButton: {
-    height: hp(30),
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: wp(65),
-    alignItems: 'center',
-  },
-  seeAll: {
-    fontSize: 14,
-    color: Green,
-  },
-  arrow: {
-    marginLeft: wp(7),
   },
 
   billsCard: {
@@ -179,45 +181,19 @@ export const bills = StyleSheet.create({
   tabContainer: {
     marginTop: hp(12),
   },
-  billItem: {
-    width: wp(286),
-    marginTop: hp(22),
-  },
   profileGroup: {
     width: wp(55),
     height: hp(24),
-    // marginTop: hp(13),
+    marginTop: hp(17),
   },
-  billAmount: {
-    fontSize: 15,
-    color: MineShaft,
-  },
-  billTitle: {
-    fontSize: 13,
-    color: MineShaft,
-  },
-  billDate: {
-    fontSize: 13,
-    color: MineShaft,
-  },
-  billRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
+
   amountRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginTop: hp(7),
   },
-  billDivider: {
-    width: wp(286),
-    height: 1,
-    backgroundColor: WildSand,
-    marginTop: hp(11),
-  },
-  plusView: circle(31, DodgerBlue),
+  plusView: circle(31),
   button: {
     width: wp(204),
     height: hp(47),
@@ -227,7 +203,7 @@ export const bills = StyleSheet.create({
   },
   buttonTitle: {
     fontSize: 17,
-    fontFamily: 'Inter-Regular',
+    fontFamily: 'Oxygen-Regular',
   },
 
   buttonLeftIcon: {
@@ -245,6 +221,9 @@ export const bills = StyleSheet.create({
     fontSize: 16,
     color: White,
     fontFamily: 'Grpahik-Medium',
+  },
+  scrollContainer: {
+    paddingBottom: 80,
   },
 
   noHomeView: {
@@ -677,11 +656,11 @@ export const createBill = StyleSheet.create({
     marginTop: hp(45),
   },
   plusView: circle(31, White),
-
-  billContainer: {
+  billCardContainer: {
     width: wp(258),
     marginTop: hp(18),
   },
+
   innerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -718,8 +697,17 @@ export const createBill = StyleSheet.create({
 export const bill = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: White,
+    backgroundColor: MineShaft,
     alignItems: 'center',
+  },
+  imageBg: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    bottom: 0,
+  },
+  header: {
+    color: White,
   },
   mainView: {
     width: wp(341),
@@ -855,5 +843,104 @@ export const bill = StyleSheet.create({
     fontSize: 12,
     color: MineShaft,
     marginLeft: wp(17),
+  },
+});
+
+export const utils = StyleSheet.create({
+  billItem: {
+    width: wp(286),
+    marginTop: hp(18),
+  },
+  itemRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: hp(60),
+  },
+  billIcon: {
+    width: wp(35.43),
+    height: wp(35.43),
+  },
+  billRow: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginLeft: wp(13),
+  },
+  billTitle: {
+    fontSize: 14,
+    color: MineShaft,
+  },
+  billAmount: {
+    fontSize: 15,
+    color: MineShaft,
+  },
+  timeFrame: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: wp(71),
+    height: hp(31),
+    borderRadius: 7,
+    backgroundColor: WildSand,
+    paddingLeft: 5,
+  },
+  timeDot: circle(8, Midnight),
+  billDate: {
+    fontSize: 12,
+    color: MineShaft,
+    marginLeft: 3,
+  },
+  billDivider: {
+    width: wp(286),
+    height: 1,
+    backgroundColor: WildSand,
+    marginTop: hp(11),
+  },
+
+  billContainer: {
+    width: wp(331),
+    marginTop: 29,
+    minHeight: hp(100),
+    paddingBottom: 4,
+    backgroundColor: WhiteLilac,
+    borderWidth: 1,
+    borderRadius: 20,
+    borderColor: Heather,
+    alignItems: 'center',
+  },
+  billHeader: {
+    fontSize: 14,
+    color: Midnight,
+  },
+  topRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '90%',
+    marginTop: 10,
+  },
+  seeAllButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: hp(30),
+  },
+  seeAll: {
+    fontSize: 14,
+    color: Green,
+  },
+  arrow: {
+    marginLeft: wp(7),
+  },
+  billContent: {
+    width: '100%',
+    borderRadius: 20,
+    backgroundColor: White,
+    alignItems: 'center',
+    marginTop: 6,
+  },
+
+  noBillView: {
+    height: 86,
+    justifyContent: 'center',
   },
 });

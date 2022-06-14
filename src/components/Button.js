@@ -4,10 +4,18 @@ import {
   TouchableNativeFeedback,
   TouchableOpacity,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 import { Button as Btn } from 'react-native-elements';
 import { ForwardArrow } from '../../assets/svgs';
-import { AzureRadiance, Green, Polar, White } from './Colors';
+import {
+  AzureRadiance,
+  CodGray,
+  Green,
+  PersianGreen,
+  White,
+  WoodSmoke,
+} from './Colors';
 import { ParagraphText } from './Text';
 import { hp, wp } from './utils';
 
@@ -23,6 +31,8 @@ const Button = ({
   titleStyle,
   icon,
   iconRight,
+  green,
+  alternate,
 }) => {
   return (
     <Btn
@@ -31,12 +41,20 @@ const Button = ({
       title={title}
       buttonStyle={[
         styles.button,
+        green && styles.greenButton,
         light && styles.lightButton,
+        light && green && styles.lightGreenButton,
+        alternate && styles.alternate,
         style,
         buttonStyle,
       ]}
       loading={loading}
-      titleStyle={[light ? styles.lightTitle : styles.title, titleStyle]}
+      titleStyle={[
+        styles.title,
+        alternate && styles.blackTitle,
+        light && green && styles.lightTitle,
+        titleStyle,
+      ]}
       disabled={disabled}
       disabledStyle={disabledStyle || styles.disabledStyle}
       disabledTitleStyle={styles.disabledTitleStyle}
@@ -56,24 +74,34 @@ const ActionButton = ({
   style,
   title,
   titleStyle,
+  loading,
+  indicatorColor,
 }) => (
   <TouchableOpacity
     style={[styles.button, light && styles.lightButton, style]}
     onPress={onPress}>
-    <View style={styles.largeActionRow}>
-      <View />
-      <ParagraphText
-        title={title}
-        style={[
-          styles.largeActionButtonTitle,
-          light && styles.lightTitle,
-          titleStyle,
-        ]}
-      />
-      <View style={styles.buttonIcon}>
-        {icon || <ForwardArrow fill={iconFill} />}
+    {loading ? (
+      <View style={styles.center}>
+        <ActivityIndicator
+          color={indicatorColor || (light ? WoodSmoke : White)}
+        />
       </View>
-    </View>
+    ) : (
+      <View style={styles.largeActionRow}>
+        <View />
+        <ParagraphText
+          title={title}
+          style={[
+            styles.largeActionButtonTitle,
+            light && styles.lightTitle,
+            titleStyle,
+          ]}
+        />
+        <View style={styles.buttonIcon}>
+          {icon || <ForwardArrow fill={iconFill} />}
+        </View>
+      </View>
+    )}
   </TouchableOpacity>
 );
 
@@ -96,20 +124,35 @@ const styles = StyleSheet.create({
   button: {
     width: wp(319),
     height: hp(64),
-    backgroundColor: Green,
+    backgroundColor: CodGray,
     borderRadius: 16,
   },
-  lightButton: {
-    backgroundColor: Polar,
+  lightGreenButton: {
+    backgroundColor: 'transparent',
     borderWidth: 1,
     borderColor: Green,
+  },
+  lightButton: {
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: White,
+  },
+  alternate: {
+    backgroundColor: White,
+  },
+  greenButton: {
+    backgroundColor: PersianGreen,
   },
   lightTitle: {
     color: Green,
   },
+  blackTitle: {
+    color: CodGray,
+  },
   title: {
     fontSize: 18,
-    fontFamily: 'Inter-Medium',
+    fontFamily: 'Oxygen-Regular',
+    color: White,
   },
   buttonIcon: {
     right: wp(25),
@@ -128,7 +171,11 @@ const styles = StyleSheet.create({
   largeActionButtonTitle: {
     fontSize: 16,
     color: White,
-    fontFamily: 'Inter-Medium',
+    fontFamily: 'Oxygen-Regular',
+  },
+  center: {
+    justifyContent: 'center',
+    height: '100%',
   },
 
   iconButton: {
@@ -152,6 +199,6 @@ const styles = StyleSheet.create({
   actionButtonTitle: {
     fontSize: 16,
     color: White,
-    fontFamily: 'Inter-Medium',
+    fontFamily: 'Oxygen-Regular',
   },
 });

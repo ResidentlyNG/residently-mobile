@@ -4,7 +4,6 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { Actions } from 'react-native-router-flux';
 import {
   ActionButton,
-  Green,
   Header,
   HeaderText,
   TextInput,
@@ -74,7 +73,7 @@ const NameBill = () => {
         <ActionButton
           title="Next"
           style={styles.individualButton}
-          iconFill={Green}
+          // iconFill={Green}
           onPress={() => submit()}
         />
       </KeyboardAwareScrollView>

@@ -4,6 +4,7 @@ import {
   ClearDay,
   DodgerBlue,
   Green,
+  Midnight,
   MineShaft,
   White,
   WildSand,
@@ -186,6 +187,26 @@ export const wallet = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+
+  noHomeView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noHome: {
+    color: Midnight,
+    textAlign: 'center',
+    fontSize: 15,
+  },
+  noHomeSub: {
+    color: Midnight,
+    textAlign: 'center',
+    marginTop: hp(7),
+  },
+  noHomeButton: {
+    width: wp(230),
+    marginTop: hp(15),
+  },
 });
 
 export const transactions = StyleSheet.create({
@@ -206,7 +227,7 @@ export const transactions = StyleSheet.create({
     backgroundColor: Green,
   },
   selectedButtonGroupText: {
-    fontFamily: 'Inter-Medium',
+    fontFamily: 'Oxygen-Regular',
     fontSize: 12,
     color: White,
   },
@@ -214,7 +235,7 @@ export const transactions = StyleSheet.create({
     backgroundColor: '#F3F3F3',
   },
   buttonGroupText: {
-    fontFamily: 'Inter-Regular',
+    fontFamily: 'Oxygen-Regular',
     fontSize: 12,
     color: MineShaft,
   },

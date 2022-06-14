@@ -5,6 +5,8 @@ import { RootSiblingParent } from 'react-native-root-siblings';
 import axios from 'axios';
 import { PersistGate } from 'redux-persist/integration/react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import * as Sentry from '@sentry/react-native';
+import DeviceInfo from 'react-native-device-info';
 import { Midnight } from './components';
 import Router from './Router';
 import { persistor, store } from './store';
@@ -17,6 +19,22 @@ const customTextProps = {
   },
 };
 setCustomText(customTextProps);
+const SENTRY_DSN =
+  'https://af1ef8aaa1894351b1a3271ea71f8e9d@o293131.ingest.sentry.io/5994375';
+
+Sentry.init({
+  dsn: SENTRY_DSN,
+});
+
+const addBuildContext = () => {
+  Sentry.setTags({
+    appVersion: DeviceInfo.getVersion(),
+    buildNumber: DeviceInfo.getBuildNumber(),
+    systemName: DeviceInfo.getSystemName(),
+    systemVersion: DeviceInfo.getSystemVersion(),
+  });
+};
+addBuildContext();
 
 axios.interceptors.request.use((config) => {
   if (config.url !== `${BASE_URL}/login`) {
