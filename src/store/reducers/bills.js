@@ -2,6 +2,7 @@ import {
   GET_BILLS,
   GET_BILLS_ERROR,
   GET_BILLS_SUCCESS,
+  LOGOUT,
 } from '../actions/types';
 
 const initialState = {
@@ -28,6 +29,11 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload,
+      };
+
+    case LOGOUT:
+      return {
+        ...initialState,
       };
     default:
       return state;

@@ -41,3 +41,4 @@ export const CodGray = '#171717';
 export const TransparentWhite = '#FFFC';
 export const PersianGreen = '#00A698';
 export const RoyalBlue = '#6357DB';
+export const BrickRed = '#D6344C';

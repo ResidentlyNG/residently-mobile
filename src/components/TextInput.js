@@ -17,6 +17,8 @@ const TextInput = ({
   keyboardType,
   noIcon,
   editable,
+  rightIcon,
+  maxLength,
 }) => {
   return (
     <View style={[styles.view, style]}>
@@ -30,8 +32,10 @@ const TextInput = ({
           style={[styles.input, inputStyle]}
           keyboardType={keyboardType}
           editable={editable}
+          maxLength={maxLength}
         />
       </View>
+      {rightIcon && <View style={styles.rightIconContainer}>{rightIcon}</View>}
     </View>
   );
 };
@@ -115,5 +119,13 @@ const styles = StyleSheet.create({
   dropdown: {
     position: 'absolute',
     right: 19,
+  },
+  rightIconContainer: {
+    height: hp(64),
+    width: wp(40.9),
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    right: 10,
   },
 });

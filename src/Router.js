@@ -24,6 +24,7 @@ import Onboarding from './screens/onboarding';
 import Personal from './screens/dashboard/settings/Personal';
 import MyHome from './screens/dashboard/settings/MyHome';
 import HomeSetup from './screens/dashboard/home/setup';
+import CribInvite from './screens/dashboard/home/setup/Invite';
 import Launch from './screens/onboarding/Launch';
 import { checkAuth } from './utils';
 import Host from './screens/dashboard/home/setup/Host';
@@ -79,6 +80,7 @@ export default class RouterComponent extends Component {
           <Scene key="my_home" component={MyHome} />
           <Scene key="home_setup" component={HomeSetup} />
           <Scene key="host" component={Host} />
+          <Scene key="crib_invite" component={CribInvite} />
           <Scene key="setup_success" component={Success} />
           <Scene key="roommate" component={Roommate} />
           <Scene key="join_room" component={JoinRoom} />

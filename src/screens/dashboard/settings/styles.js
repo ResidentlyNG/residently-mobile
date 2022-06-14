@@ -1,7 +1,13 @@
 import { StyleSheet } from 'react-native';
 import {
+  Alabaster,
   AthensGray,
+  Green,
+  Heather,
   Midnight,
+  Monza,
+  ScienceBlue,
+  Scorpion,
   White,
   WhiteLilac,
   WoodSmoke,
@@ -104,6 +110,17 @@ export const settings = StyleSheet.create({
     marginBottom: hp(15),
     alignSelf: 'center',
   },
+
+  logoutView: {
+    marginTop: hp(21),
+    paddingLeft: wp(24),
+    backgroundColor: '#F9FAFC',
+    paddingVertical: 15,
+    borderRadius: 10,
+  },
+  logout: {
+    color: Monza,
+  },
 });
 
 export const personal = StyleSheet.create({
@@ -194,10 +211,46 @@ export const personal = StyleSheet.create({
 });
 
 export const myHome = StyleSheet.create({
+  // background: {
+  //   flex: 1,
+  //   backgroundColor: '#FAFAFA',
+  //   alignItems: 'center',
+  // },
+
   background: {
     flex: 1,
-    backgroundColor: '#FAFAFA',
     alignItems: 'center',
+    height: '100%', // hdp(758),
+    width: '100%', // wdp(375),
+    backgroundColor: Alabaster,
+  },
+  mainImageBg: {
+    width: '100%',
+    height: '122%',
+    position: 'absolute',
+    bottom: 0,
+  },
+  plusView: circle(31, ScienceBlue),
+
+  darkHeaderBg: {
+    // flex: 1,
+    alignItems: 'center',
+    backgroundColor: ScienceBlue,
+    height: hp(252),
+    width: '100%',
+    position: 'absolute',
+    top: 0,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+  },
+  imageBg: {
+    width: '100%',
+    height: '100%',
+    // position: 'absolute',
+    // bottom: 0,
+  },
+  headerTitle: {
+    color: White,
   },
 
   blockView: {
@@ -208,16 +261,20 @@ export const myHome = StyleSheet.create({
     marginTop: hp(29),
   },
   blockRoom: {
-    fontSize: 14,
-    color: WoodSmoke,
+    fontSize: 26,
+    color: White,
+    // lineHeight: 19,
+    marginTop: 13,
   },
   billsCount: {
-    fontSize: 12,
-    color: WoodSmoke,
+    fontSize: 13,
+    color: White,
+    marginTop: 12,
   },
   profileGroup: {
     width: wp(95),
     height: hp(42),
+    marginTop: 22,
   },
   mainView: {
     width: wp(355),
@@ -227,5 +284,115 @@ export const myHome = StyleSheet.create({
     marginTop: hp(28),
     flex: 1,
     elevation: 4,
+  },
+
+  headerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 58,
+    paddingHorizontal: 13,
+    width: '100%',
+    marginBottom: 10,
+  },
+  mainTitle: {
+    fontSize: 20,
+    color: WoodSmoke,
+  },
+
+  roleCard: {
+    width: wp(340),
+    backgroundColor: White,
+    height: hp(82),
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: AthensGray,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: hp(20),
+    paddingHorizontal: 18,
+    elevation: 1,
+  },
+  cardRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  host: {
+    width: wp(52),
+    height: hp(52),
+  },
+  tickBox: {
+    width: wp(14),
+    height: wp(14),
+    borderRadius: wp(14) / 2,
+    backgroundColor: Green,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  box: {
+    width: wp(14),
+    height: wp(14),
+    borderRadius: wp(14) / 2,
+    borderColor: AthensGray,
+    borderWidth: 1,
+    backgroundColor: Heather,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  sectionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  sectionProfile: {
+    marginLeft: 15,
+  },
+  title: {
+    fontSize: 15,
+    color: Scorpion,
+  },
+  detail: {
+    fontSize: 10,
+    width: wp(165),
+    color: 'rgba(0, 0, 0, 0.3)',
+  },
+  profileBorder: circle(48, '#dfe5ec', {
+    justifyContent: 'center',
+    alignItems: 'center',
+  }),
+  profile: circle(43, Heather, {
+    justifyContent: 'center',
+    alignItems: 'center',
+  }),
+
+  noFlatmatesView: {
+    height: hp(400),
+    width: wp(308),
+    backgroundColor: White,
+    borderRadius: 25,
+    elevation: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noRoommatesHeader: {
+    color: WoodSmoke,
+    marginHorizontal: wp(65),
+    fontSize: 20,
+    lineHeight: 25,
+    textAlign: 'center',
+  },
+  noRoommatesText: {
+    color: WoodSmoke,
+    marginHorizontal: wp(23),
+    marginTop: 22,
+    lineHeight: 18,
+    textAlign: 'center',
+  },
+  noRoommatesButton: {
+    width: wp(250),
+    height: 47,
+    backgroundColor: ScienceBlue,
+    marginTop: 29,
   },
 });

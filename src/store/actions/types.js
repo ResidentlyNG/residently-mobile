@@ -1,6 +1,7 @@
 export const CANCEL_REQUEST = 'cancel_request';
 export const LOADING = 'loading';
 export const RESET_LOADER = 'reset_loader';
+export const LOGOUT = 'LOGOUT';
 
 export const LOGIN = 'login';
 export const LOGIN_SUCCESS = 'login_success';

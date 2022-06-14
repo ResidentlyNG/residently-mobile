@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 import { ImageBackground, StatusBar, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
@@ -21,8 +22,17 @@ import { NairaFormat } from '../../../components/utils';
 import { bill as styles } from './styles';
 
 const Bill = (props) => {
-  const { title, amount } = props.data;
+  const { title } = props.data;
+  const { account_number: accountNumber, amount, date } = props.data;
   const totalAmount = NairaFormat(amount);
+  const dueDate = date.split('-').join('/');
+  // ).format('MMMM Do, YYYY');
+  const paymentDate = moment().format('MMMM Do, YYYY');
+
+  const reset = props.type === 'reset';
+  const goBack = () =>
+    reset ? Actions.dashboard({ type: 'reset', bills: true }) : Actions.pop();
+  console.log('p', props.data, dueDate);
 
   return (
     <ImageBackground
@@ -35,7 +45,7 @@ const Bill = (props) => {
         title={title}
         titleStyle={styles.header}
         iconFill={White}
-        backPress={() => Actions.dashboard({ type: 'reset', bills: true })}
+        backPress={goBack}
         // noBackIcon={props.type === 'reset'}
       />
       <View style={styles.mainView}>
@@ -62,7 +72,10 @@ const Bill = (props) => {
         <View style={styles.bankView}>
           <Image source={gtbank} style={styles.gtbank} />
           <View>
-            <ParagraphText title="0928735625 - GTB" style={styles.account} />
+            <ParagraphText
+              title={`${accountNumber} - GTB`}
+              style={styles.account}
+            />
             <RegularText title="John Snow" style={styles.accountName} />
           </View>
           <View style={styles.editRow}>
@@ -73,11 +86,11 @@ const Bill = (props) => {
 
         <View style={styles.dateRow}>
           <RegularText title="Due Date:" style={styles.dateTitle} />
-          <ParagraphText title="December 27th, 2020" style={styles.date} />
+          {/* <ParagraphText title={dueDate} style={styles.date} /> */}
         </View>
         <View style={styles.dateRow}>
           <RegularText title="Payment Date:" style={styles.dateTitle} />
-          <ParagraphText title="December 27th, 2020" style={styles.date} />
+          <ParagraphText title={paymentDate} style={styles.date} />
         </View>
         <View style={styles.dateRow}>
           <RegularText title="Time:" style={styles.dateTitle} />

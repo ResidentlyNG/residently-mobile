@@ -6,7 +6,7 @@ import { CANCEL_REQUEST } from '../store/actions/types';
 import { store } from '../store';
 
 // const { BASE_URL } = Config;
-export const BASE_URL = 'https://residently.herokuapp.com/api/v1';
+export const BASE_URL = 'https://residently.herokuapp.com/api/v1'; // 'https://residently.herokuapp.com/api/v1';
 
 /**
  * Utility that calls the backend api service
@@ -44,7 +44,6 @@ const api = (url, type = 'GET', data, headers) => {
   };
 
   return new Promise((resolve, reject) => {
-    console.log('url', `${BASE_URL}${url}`);
     Axios({
       method: type,
       url: `${BASE_URL}${url}`,

@@ -4,10 +4,18 @@ import {
   TouchableNativeFeedback,
   TouchableOpacity,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 import { Button as Btn } from 'react-native-elements';
 import { ForwardArrow } from '../../assets/svgs';
-import { AzureRadiance, CodGray, Green, PersianGreen, White } from './Colors';
+import {
+  AzureRadiance,
+  CodGray,
+  Green,
+  PersianGreen,
+  White,
+  WoodSmoke,
+} from './Colors';
 import { ParagraphText } from './Text';
 import { hp, wp } from './utils';
 
@@ -66,24 +74,34 @@ const ActionButton = ({
   style,
   title,
   titleStyle,
+  loading,
+  indicatorColor,
 }) => (
   <TouchableOpacity
     style={[styles.button, light && styles.lightButton, style]}
     onPress={onPress}>
-    <View style={styles.largeActionRow}>
-      <View />
-      <ParagraphText
-        title={title}
-        style={[
-          styles.largeActionButtonTitle,
-          light && styles.lightTitle,
-          titleStyle,
-        ]}
-      />
-      <View style={styles.buttonIcon}>
-        {icon || <ForwardArrow fill={iconFill} />}
+    {loading ? (
+      <View style={styles.center}>
+        <ActivityIndicator
+          color={indicatorColor || (light ? WoodSmoke : White)}
+        />
       </View>
-    </View>
+    ) : (
+      <View style={styles.largeActionRow}>
+        <View />
+        <ParagraphText
+          title={title}
+          style={[
+            styles.largeActionButtonTitle,
+            light && styles.lightTitle,
+            titleStyle,
+          ]}
+        />
+        <View style={styles.buttonIcon}>
+          {icon || <ForwardArrow fill={iconFill} />}
+        </View>
+      </View>
+    )}
   </TouchableOpacity>
 );
 
@@ -154,6 +172,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: White,
     fontFamily: 'Oxygen-Regular',
+  },
+  center: {
+    justifyContent: 'center',
+    height: '100%',
   },
 
   iconButton: {

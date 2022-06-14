@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { Component } from 'react';
 import { Image, StatusBar, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
@@ -51,6 +52,7 @@ class Bills extends Component {
     const { modal } = this.state;
     const { home, profile, bills } = this.props;
 
+    const homeExists = Object.entries(home).length > 0;
     const walletBalance = NairaFormat(home?.account?.balance || 0);
     const userShare = NairaFormat(home?.user_account?.balance || 0);
     const debtSum = profile.debts.length
@@ -68,7 +70,7 @@ class Bills extends Component {
         <View style={styles.background}>
           <View style={styles.headerGrid}>
             <HeaderText
-              title={`${home?.name} Bills`}
+              title={homeExists ? `${home?.name} Bills` : ''}
               style={styles.headerText}
             />
             {/* {profile.home_id ? (

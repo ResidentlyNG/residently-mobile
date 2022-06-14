@@ -9,6 +9,7 @@ import {
   LOGIN,
   LOGIN_ERROR,
   LOGIN_SUCCESS,
+  LOGOUT,
 } from './types';
 import { getBanks, getCard } from './wallet';
 
@@ -38,3 +39,5 @@ export const login = (data) => (dispatch) => {
       showToast(error?.message || 'Something went wrong', 'error');
     });
 };
+
+export const logout = () => (dispatch) => dispatch({ type: LOGOUT });

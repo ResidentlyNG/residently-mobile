@@ -71,25 +71,31 @@ export const Header = ({
 
   return (
     <View style={styles.headerPane}>
-      {!noBackIcon ? (
-        <TouchableOpacity
-          onPress={() => backPress || Actions.pop()}
-          style={styles.backButton}>
-          <BackIconRound fill={iconFill} />
-        </TouchableOpacity>
-      ) : (
-        <View style={{ width: 40 }} />
-      )}
-      <ParagraphText title={title} style={[styles.headerTitle, titleStyle]} />
-      {rightComponent ? (
-        <TouchableOpacity
-          style={styles.search}
-          onPress={() => (rightComponentPress ? rightComponentPress() : {})}>
-          {rightComponent}
-        </TouchableOpacity>
-      ) : (
-        <View style={{ width: 40 }} />
-      )}
+      <View style={styles.flex}>
+        {!noBackIcon ? (
+          <TouchableOpacity
+            onPress={backPress || (() => Actions.pop())}
+            style={styles.backButton}>
+            <BackIconRound fill={iconFill} />
+          </TouchableOpacity>
+        ) : (
+          <View style={{ width: 40 }} />
+        )}
+      </View>
+      <View style={styles.midFlex}>
+        <ParagraphText title={title} style={[styles.headerTitle, titleStyle]} />
+      </View>
+      <View style={styles.flex}>
+        {rightComponent ? (
+          <TouchableOpacity
+            style={styles.search}
+            onPress={() => (rightComponentPress ? rightComponentPress() : {})}>
+            {rightComponent}
+          </TouchableOpacity>
+        ) : (
+          <View style={{ width: 40 }} />
+        )}
+      </View>
     </View>
   );
 };
@@ -118,6 +124,14 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 34,
     borderTopRightRadius: 34,
     alignItems: 'center',
+  },
+  flex: {
+    flex: 1,
+  },
+  midFlex: {
+    flexGrow: 3,
+    alignItems: 'center',
+    // flex: 3,
   },
   tabContainer: {
     width: wp(315),

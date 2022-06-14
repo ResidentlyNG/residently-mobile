@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ImageBackground, StatusBar, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -18,21 +18,29 @@ import {
 } from '../../../../components';
 import { addCard as addCardFn } from '../../../../utils';
 import { cardStyles as styles } from './styles';
+import showToast from '../../../../components/Toast';
 
 const Card = () => {
   const { card } = useSelector((state) => state.wallet);
-  const cardExpiry = card
+  const [loading, setLoading] = useState(false);
+  const cardExists = Object.entries(card).length > 0;
+  const cardExpiry = cardExists
     ? `${card?.exp_month}/${card?.exp_year.slice(2)}`
     : '';
 
   const addCard = () => {
-    addCardFn({ amount: 100 })
+    setLoading(true);
+    addCardFn({ amount: '100' })
       .then((response) => {
         const { authorization_url: uri, reference } = response.data.data;
         console.log('RX', response);
         Actions.webview({ uri, reference });
       })
-      .catch((error) => console.log('err', error));
+      .catch((error) => {
+        console.log('err', error);
+        showToast(error?.message || 'Something went wrong', 'error');
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -44,7 +52,7 @@ const Card = () => {
       <StatusBar barStyle="dark-content" backgroundColor={White} />
       <Header title="Payments" />
       <View style={styles.mainView}>
-        {!card ? (
+        {!cardExists ? (
           <>
             <Image source={noCard} style={styles.noCard} />
             <HeaderText title="No Card" style={styles.noCardHeader} />
@@ -56,6 +64,7 @@ const Card = () => {
               title="Add a new card"
               style={styles.addCardButton}
               onPress={addCard}
+              loading={loading}
             />
           </>
         ) : (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ImageBackground,
   ScrollView,
@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { bestSpace, billsBg } from '../../../../assets/images';
 import {
@@ -32,9 +32,11 @@ import {
   Coral,
   Sunglow,
   WoodSmoke,
+  TransactionLoader,
 } from '../../../components';
-import { hp } from '../../../components/utils';
+import { hp, wait } from '../../../components/utils';
 import { settings as styles } from './styles';
+import { logout } from '../../../store/actions/auth';
 
 const MenuView = ({ backgroundColor, icon, title, onPress }) => (
   <TouchableOpacity style={styles.menuView} onPress={onPress}>
@@ -50,7 +52,20 @@ const MenuView = ({ backgroundColor, icon, title, onPress }) => (
 );
 
 const Settings = () => {
+  const [activity, setActivity] = useState(false);
   const { profile } = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
+  const homeRoute = () =>
+    profile?.home_id ? Actions.my_home() : Actions.home_setup();
+
+  const logOut = () => {
+    setActivity(true);
+    wait(1000).then(() => {
+      setActivity(false);
+      Actions.login({ type: 'reset' });
+      dispatch(logout());
+    });
+  };
 
   return (
     <View style={styles.background}>
@@ -86,10 +101,10 @@ const Settings = () => {
         </View>
         <View style={styles.menuContainer}>
           <MenuView
-            title="My Home"
+            title="My Crib"
             backgroundColor={ScienceBlue}
             icon={<Persons />}
-            onPress={() => Actions.my_home()}
+            onPress={homeRoute}
           />
         </View>
 
@@ -102,7 +117,7 @@ const Settings = () => {
           />
           <View style={styles.divider} />
           <MenuView
-            title="Settings"
+            title="Update Password"
             backgroundColor={Sunglow}
             icon={<SettingsSvg />}
           />
@@ -123,7 +138,12 @@ const Settings = () => {
           <View style={styles.divider} />
           <MenuView title="Support" icon={<Help />} />
         </View>
+
+        <TouchableOpacity style={styles.logoutView} onPress={logOut}>
+          <ParagraphText title="Log Out" style={styles.logout} />
+        </TouchableOpacity>
       </ScrollView>
+      {activity && <TransactionLoader />}
     </View>
   );
 };

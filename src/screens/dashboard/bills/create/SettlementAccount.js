@@ -134,6 +134,7 @@ const SettlementAccount = (props) => {
               style={styles.input}
               onChangeText={(value) => setAccountNumber(value)}
               keyboardType="number-pad"
+              maxLength={10}
               noIcon
             />
             <View style={styles.nameInput}>
@@ -148,7 +149,7 @@ const SettlementAccount = (props) => {
                   label="Account name"
                   placeholder="Account number"
                   style={[styles.input, { marginTop: 0 }]}
-                  editable
+                  editable={false}
                   // onChangeText={(value) => setAccountNumber(value)}
                   keyboardType="number-pad"
                   noIcon

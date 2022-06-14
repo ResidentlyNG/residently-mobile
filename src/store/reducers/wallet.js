@@ -9,6 +9,7 @@ import {
   GET_CARD,
   GET_CARD_SUCCESS,
   GET_CARD_ERROR,
+  LOGOUT,
 } from '../actions/types';
 
 const initialState = {
@@ -73,6 +74,11 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload,
+      };
+
+    case LOGOUT:
+      return {
+        ...initialState,
       };
 
     case CANCEL_REQUEST:

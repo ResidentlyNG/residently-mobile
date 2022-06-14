@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 // import { Footer, FooterTab } from 'native-base';
 import Home from './home';
-import { Green, RegularText } from '../../components';
+import { Green, GullGray, RegularText } from '../../components';
 import { dashboard as styles } from './styles';
-import {
-  BillsMenu,
-  ExploreMenu,
-  HomeSvg,
-  WalletMenu,
-} from '../../../assets/svgs';
+import { BillsMenu, HomeSvg, Personal, WalletMenu } from '../../../assets/svgs';
 import Bills from './bills';
 import Wallet from './wallet';
 import Settings from './settings';
@@ -96,8 +91,8 @@ export default class Dashboard extends Component {
               onPress={() => this.onPress('Profile')}
               style={styles.homeButtons}>
               {this.footerButton(
-                <ExploreMenu />,
-                <ExploreMenu fill={Green} />,
+                <Personal fill={GullGray} />,
+                <Personal fill={Green} />,
                 'Profile',
               )}
             </TouchableOpacity>
