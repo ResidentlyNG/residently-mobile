@@ -146,6 +146,8 @@ export const wallet = StyleSheet.create({
   billTitle: {
     fontSize: 14,
     color: MineShaft,
+    width: wp(150),
+    fontWeight: '700',
   },
   billDate: {
     fontSize: 12,
@@ -227,7 +229,7 @@ export const transactions = StyleSheet.create({
     backgroundColor: Green,
   },
   selectedButtonGroupText: {
-    fontFamily: 'Oxygen-Regular',
+    fontFamily: 'Inter-Regular',
     fontSize: 12,
     color: White,
   },
@@ -235,7 +237,7 @@ export const transactions = StyleSheet.create({
     backgroundColor: '#F3F3F3',
   },
   buttonGroupText: {
-    fontFamily: 'Oxygen-Regular',
+    fontFamily: 'Inter-Regular',
     fontSize: 12,
     color: MineShaft,
   },

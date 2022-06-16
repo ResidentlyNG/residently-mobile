@@ -203,7 +203,7 @@ export const bills = StyleSheet.create({
   },
   buttonTitle: {
     fontSize: 17,
-    fontFamily: 'Oxygen-Regular',
+    fontFamily: 'Inter-Regular',
   },
 
   buttonLeftIcon: {
@@ -220,7 +220,7 @@ export const bills = StyleSheet.create({
   actionButtonTitle: {
     fontSize: 16,
     color: White,
-    fontFamily: 'Grpahik-Medium',
+    fontFamily: 'Inter-Medium',
   },
   scrollContainer: {
     paddingBottom: 80,

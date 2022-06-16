@@ -8,12 +8,14 @@ import {
 import { HeaderText, RegularText } from './Text';
 import * as Colors from './Colors';
 import { wp, hp } from './utils';
+import { Spinner } from './Overlay';
 
 export const FlatList = ({
   data,
   emptyComponent,
   handlePullToRefresh,
   isRefreshing,
+  isFetchingMore,
   keyExtractorId,
   renderItem,
   style,
@@ -77,10 +79,14 @@ export const FlatList = ({
       //         )
       //     : () => <View />
       // }
-      // ListFooterComponent={() =>
-      //   isFetchingMore && <Spinner size="small" color={Colors.DarkBlue} />
-      // }
-      // ListFooterComponentStyle={{ marginTop: hp(20) }}
+      ListFooterComponent={() =>
+        isFetchingMore ? (
+          <Spinner size="small" color={Colors.DarkBlue} />
+        ) : (
+          <View />
+        )
+      }
+      ListFooterComponentStyle={{ marginTop: hp(20) }}
     />
   );
 };

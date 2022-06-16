@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     // fontWeight: 'bold',
     letterSpacing: 0.5,
-    fontFamily: 'Oxygen-Bold',
+    fontFamily: 'Inter-Bold',
   },
 
   billIcon: {

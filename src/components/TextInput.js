@@ -33,6 +33,7 @@ const TextInput = ({
           keyboardType={keyboardType}
           editable={editable}
           maxLength={maxLength}
+          placeholderTextColor={MineShaft}
         />
       </View>
       {rightIcon && <View style={styles.rightIconContainer}>{rightIcon}</View>}

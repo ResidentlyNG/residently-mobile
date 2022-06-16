@@ -27,7 +27,7 @@ const Bill = (props) => {
   const totalAmount = NairaFormat(amount);
   const dueDate = date.split('-').join('/');
   // ).format('MMMM Do, YYYY');
-  const paymentDate = moment().format('MMMM Do, YYYY');
+  const paymentDate = moment(date).format('MMMM Do, YYYY');
 
   const reset = props.type === 'reset';
   const goBack = () =>
