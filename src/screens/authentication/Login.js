@@ -78,6 +78,7 @@ const Login = () => {
               placeholder="Your email address"
               icon={<MailSvg />}
               onChangeText={(value) => setEmail(value)}
+              keyboardType="email-address"
               style={{ marginTop: hp(36) }}
             />
             <TextInput

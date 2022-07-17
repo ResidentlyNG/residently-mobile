@@ -34,3 +34,7 @@ export const GET_CARD_ERROR = 'get_card_error';
 export const GET_TRANSACTIONS = 'get_transactions';
 export const GET_TRANSACTIONS_SUCCESS = 'get_transactions_success';
 export const GET_TRANSACTIONS_ERROR = 'get_transactions_error';
+export const REFRESH_TRANSACTIONS = 'refresh_transactions';
+export const FETCH_MORE_TRANSACTIONS = 'fetch_more_transactions';
+export const FETCH_MORE_TRANSACTIONS_SUCCESS =
+  'fetch_more_transactions_success';

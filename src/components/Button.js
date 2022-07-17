@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontFamily: 'Oxygen-Regular',
+    fontFamily: 'Inter-Regular',
     color: White,
   },
   buttonIcon: {
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   largeActionButtonTitle: {
     fontSize: 16,
     color: White,
-    fontFamily: 'Oxygen-Regular',
+    fontFamily: 'Inter-Regular',
   },
   center: {
     justifyContent: 'center',
@@ -199,6 +199,6 @@ const styles = StyleSheet.create({
   actionButtonTitle: {
     fontSize: 16,
     color: White,
-    fontFamily: 'Oxygen-Regular',
+    fontFamily: 'Inter-Regular',
   },
 });

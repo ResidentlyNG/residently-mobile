@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: hp(26),
     lineHeight: 36,
-    fontFamily: 'Oxygen-Bold',
+    fontFamily: 'Inter-Bold',
   },
   text: {
     color: White,
@@ -117,7 +117,6 @@ export const styles = StyleSheet.create({
   },
   loginButton: {
     width: wp(160),
-    backgroundColor: White,
   },
   button: {
     width: wp(160),

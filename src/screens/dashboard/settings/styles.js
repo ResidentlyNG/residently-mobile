@@ -197,7 +197,7 @@ export const personal = StyleSheet.create({
   detail: {
     fontSize: hp(14),
     color: WoodSmoke,
-    fontFamily: 'Oxygen-Regular',
+    fontFamily: 'Inter-Regular',
     marginLeft: wp(30),
     marginTop: wp(12),
   },

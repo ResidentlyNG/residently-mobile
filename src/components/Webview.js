@@ -15,7 +15,7 @@ const Web = ({ uri, reference }) => {
   const onNavigationStateChange = (event) => {
     const { url } = event;
     console.log('navURL', url);
-    if (url.includes('wrenzo')) {
+    if (url.includes('tripplex')) {
       setHasRedirected(true);
       verifyTransaction(reference)
         .then((response) => {
