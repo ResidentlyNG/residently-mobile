@@ -2,6 +2,7 @@ import moment from 'moment';
 import React from 'react';
 import { ImageBackground, StatusBar, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { useSelector } from 'react-redux';
 import {
   gtbank,
   profileGroup,
@@ -18,21 +19,29 @@ import {
   RegularText,
   White,
 } from '../../../components';
-import { NairaFormat } from '../../../components/utils';
+import { NairaFormat, truncate } from '../../../components/utils';
 import { bill as styles } from './styles';
 
 const Bill = (props) => {
-  const { title } = props.data;
-  const { account_number: accountNumber, amount, date } = props.data;
+  const { profile } = useSelector((state) => state.profile);
+  const { title, vendor } = props.data;
+  const { amount, date } = props.data;
   const totalAmount = NairaFormat(amount);
-  const dueDate = date.split('-').join('/');
+  // const dueDate = date.split('-').join('/');
   // ).format('MMMM Do, YYYY');
   const paymentDate = moment(date).format('MMMM Do, YYYY');
 
   const reset = props.type === 'reset';
   const goBack = () =>
     reset ? Actions.dashboard({ type: 'reset', bills: true }) : Actions.pop();
-  console.log('p', props.data, dueDate);
+  const userShare = props?.data?.users?.find(
+    (user) => user.user_id === profile.id,
+  );
+  const userAmount = NairaFormat(userShare?.amount);
+  const userSharePercent = Math.ceil((userShare?.amount / amount) * 100);
+  const accountNumber = vendor?.account_number;
+  const vendorBank = truncate(vendor?.bank_name, 12);
+  const vendorName = truncate(vendor?.name, 22);
 
   return (
     <ImageBackground
@@ -55,9 +64,9 @@ const Bill = (props) => {
           <Image source={profileGroup} style={styles.profileGroup} />
           <View style={styles.shareView}>
             <ParagraphText title="Your Share" style={styles.shareText} />
-            <HeaderText title="₦ 76,000.00" style={styles.personalAmount} />
+            <HeaderText title={userAmount} style={styles.personalAmount} />
             <View style={styles.rateView}>
-              <RegularText title="35%" style={styles.rate} />
+              <RegularText title={`${userSharePercent}%`} style={styles.rate} />
             </View>
           </View>
           <View style={styles.insightRow}>
@@ -73,10 +82,10 @@ const Bill = (props) => {
           <Image source={gtbank} style={styles.gtbank} />
           <View>
             <ParagraphText
-              title={`${accountNumber} - GTB`}
+              title={`${accountNumber} - ${vendorBank}`}
               style={styles.account}
             />
-            <RegularText title="John Snow" style={styles.accountName} />
+            <RegularText title={vendorName} style={styles.accountName} />
           </View>
           <View style={styles.editRow}>
             <Edit />

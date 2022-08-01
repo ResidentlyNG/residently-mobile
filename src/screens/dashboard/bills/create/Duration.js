@@ -16,7 +16,7 @@ const Duration = (props) => {
     paymentDate,
   };
   const disabled = oneoff ? !paymentDate : !paymentDate || !recurringDate;
-  console.log('PD', disabled);
+  const min = new Date();
 
   return (
     <View style={styles.background}>
@@ -34,6 +34,7 @@ const Duration = (props) => {
         dueDate={paymentDate}
         label="Payment Date"
         setDuedate={(date) => setPaymentDate(date)}
+        minDate={min}
       />
       {!oneoff && (
         <DateInput

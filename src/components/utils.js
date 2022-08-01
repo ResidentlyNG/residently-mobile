@@ -3,6 +3,7 @@ import {
   heightPercentageToDP as hdp,
 } from 'react-native-responsive-screen';
 import accounting from 'accounting';
+import truncateString from 'lodash.truncate';
 // import { store } from '../store';
 
 const CustomHeight = 800; // 740;
@@ -30,7 +31,8 @@ export const validatePhone = (number) => {
 };
 
 const emailValidator = (email) => {
-  const re = /^(([^<>()[\]\\.,;:\s@\\"]+(\.[^<>()[\]\\.,;:\s@\\"]+)*)|(\\".+\\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re =
+    /^(([^<>()[\]\\.,;:\s@\\"]+(\.[^<>()[\]\\.,;:\s@\\"]+)*)|(\\".+\\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 };
 
@@ -69,3 +71,14 @@ export const wait = (timeout) => {
     setTimeout(resolve, timeout);
   });
 };
+
+/**
+ *
+ * @param {String} value value to be trimmed
+ * @param {Number} stringLength length of string or value from which truncation should begin
+ */
+export const truncate = (value, stringLength) =>
+  truncateString(value, {
+    length: stringLength || 20,
+    separator: '/,?.* +/',
+  });

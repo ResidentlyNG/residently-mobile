@@ -107,10 +107,10 @@ export const BillIcon = ({ backgroundColor, icon }) => (
   </View>
 );
 
-export const TimeBadge = () => (
+export const TimeBadge = ({ length }) => (
   <View style={styles.badge}>
     <View style={styles.stump} />
-    <RegularText title="2 weeks" style={styles.duration} />
+    <RegularText title={`${length || '0'} days`} style={styles.duration} />
   </View>
 );
 

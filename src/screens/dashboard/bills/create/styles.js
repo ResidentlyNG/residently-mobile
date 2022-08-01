@@ -115,6 +115,7 @@ export const duration = StyleSheet.create({
   background: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: White,
   },
   tabContainer: {
     marginTop: hp(44),

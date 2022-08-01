@@ -26,7 +26,9 @@ const SelectPlan = ({ title, bill }) => {
     title,
     bill,
     plan,
+    personal,
   };
+  const routeName = roomPlan ? 'process_bill' : 'duration';
 
   return (
     <View style={styles.background}>
@@ -61,7 +63,7 @@ const SelectPlan = ({ title, bill }) => {
         icon={<ForwardArrow />}
         disabled={true}
         style={styles.button}
-        onPress={() => Actions.duration({ data: propsData })}
+        onPress={() => Actions[routeName]({ data: propsData })}
       />
     </View>
   );

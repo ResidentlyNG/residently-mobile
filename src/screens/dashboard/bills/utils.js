@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
@@ -9,13 +10,19 @@ import {
   HeaderText,
   Image,
   ParagraphText,
+  Polar,
   RegularText,
 } from '../../../components';
 import { NairaFormat } from '../../../components/utils';
 import { utils as styles } from './styles';
 
-const BillItem = ({ bill, last }) => {
+export const BillItem = ({ bill, last }) => {
   const amount = NairaFormat(bill.amount);
+  const today = moment();
+  const billDate = moment(bill?.date);
+  const length = billDate.diff(today, 'days');
+  const upcomingBill = moment().valueOf() < moment(bill.date).valueOf();
+
   return (
     <TouchableOpacity
       style={styles.billItem}
@@ -27,12 +34,37 @@ const BillItem = ({ bill, last }) => {
         />
         <View style={styles.billRow}>
           <View>
-            <ParagraphText title={bill.title} style={styles.billTitle} />
+            <ParagraphText
+              title={bill.title}
+              style={[
+                styles.billTitle,
+                !upcomingBill && { textDecorationLine: 'line-through' },
+              ]}
+            />
             <HeaderText title={amount} style={styles.billAmount} />
           </View>
-          <View style={styles.timeFrame}>
-            <View style={styles.timeDot} />
-            <RegularText title="2 weeks" style={styles.billDate} />
+          <View
+            style={[
+              styles.timeFrame,
+              !upcomingBill && {
+                justifyContent: 'center',
+                backgroundColor: Polar,
+              },
+            ]}>
+            {upcomingBill ? (
+              <>
+                <View style={styles.timeDot} />
+                <RegularText
+                  title={`${length || '0'} days`}
+                  style={styles.billDate}
+                />
+              </>
+            ) : (
+              <ParagraphText
+                title="DONE"
+                style={{ fontWeight: 'bold', color: Green }}
+              />
+            )}
           </View>
         </View>
       </View>

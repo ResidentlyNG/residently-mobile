@@ -215,6 +215,7 @@ export const transactions = StyleSheet.create({
   background: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: White,
   },
   buttonGroupContainer: {
     marginTop: hp(13),
