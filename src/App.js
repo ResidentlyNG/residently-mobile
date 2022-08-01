@@ -7,6 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as Sentry from '@sentry/react-native';
 import DeviceInfo from 'react-native-device-info';
+import SplashScreen from 'react-native-splash-screen';
 import { Midnight } from './components';
 import Router from './Router';
 import { persistor, store } from './store';
@@ -50,6 +51,10 @@ axios.interceptors.request.use((config) => {
 });
 
 export default class App extends Component {
+  componentDidMount() {
+    SplashScreen.hide();
+  }
+
   render() {
     return (
       <Provider store={store}>
