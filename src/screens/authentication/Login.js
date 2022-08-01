@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageBackground, StatusBar, Text, View } from 'react-native';
+import { ImageBackground, Keyboard, StatusBar, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 // import { Actions } from 'react-native-router-flux';
@@ -41,6 +41,7 @@ const Login = () => {
   // }, [error, message]);
 
   const submit = () => {
+    Keyboard.dismiss();
     const data = { email, password };
     if (!email) showToast('Your email address is required', 'error');
     else if (!validateEmail(email))

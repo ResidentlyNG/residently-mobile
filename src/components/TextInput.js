@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TextInput as Input, View } from 'react-native';
 import { Calendar, Dropdown } from '../../assets/svgs';
-import { Heather, MineShaft, StormGray } from './Colors';
+import { GullGray, Heather, MineShaft, StormGray } from './Colors';
 import { DatePicker } from './DatePicker';
 import { ParagraphText } from './Text';
 import { hp, wp } from './utils';
@@ -24,7 +24,7 @@ const TextInput = ({
     <View style={[styles.view, style]}>
       {!noIcon && <View style={styles.iconContainer}>{icon}</View>}
       <View style={noIcon ? styles.textView : {}}>
-        <ParagraphText title={label} style={styles.label} />
+        {label && <ParagraphText title={label} style={styles.label} />}
         <Input
           value={value}
           onChangeText={onChangeText}
@@ -33,7 +33,7 @@ const TextInput = ({
           keyboardType={keyboardType}
           editable={editable}
           maxLength={maxLength}
-          placeholderTextColor={MineShaft}
+          placeholderTextColor={GullGray}
         />
       </View>
       {rightIcon && <View style={styles.rightIconContainer}>{rightIcon}</View>}
@@ -41,7 +41,7 @@ const TextInput = ({
   );
 };
 
-export const DateInput = ({ label, dueDate, setDuedate }) => (
+export const DateInput = ({ label, dueDate, setDuedate, minDate }) => (
   <View style={styles.dateInput}>
     <View style={styles.calendar}>
       <Calendar />
@@ -51,7 +51,7 @@ export const DateInput = ({ label, dueDate, setDuedate }) => (
       <DatePicker
         placeholder="DD/MM/YYYY"
         date={dueDate}
-        minDate={new Date()}
+        minDate={minDate || new Date()}
         dateStyle={{
           height: hp(28),
         }}

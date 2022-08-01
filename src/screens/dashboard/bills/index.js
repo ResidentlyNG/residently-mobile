@@ -1,4 +1,4 @@
-import moment from 'moment';
+// import moment from 'moment';
 import React, { Component } from 'react';
 import { Image, StatusBar, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
@@ -141,7 +141,7 @@ class Bills extends Component {
                 <HeaderText title="Your Bills" style={styles.yourBills} />
                 <TouchableOpacity
                   style={styles.seeAllButton}
-                  onPress={() => Actions.create_bill()}>
+                  onPress={() => Actions.name_bill()}>
                   <ButtonPlus fill={PersianGreen} />
                 </TouchableOpacity>
               </View>

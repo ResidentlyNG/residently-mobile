@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { ScrollView, StatusBar, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { profileGroup } from '../../../../assets/images';
+import { useSelector } from 'react-redux';
+import moment from 'moment';
 import { Cross } from '../../../../assets/svgs';
 import {
   Header,
-  HeaderText,
-  Image,
   ParagraphText,
   RegularText,
   Tab,
@@ -17,20 +16,7 @@ import { ModalBlur } from '../../../components/Overlay';
 import NewBill from '../../authentication/SetUp';
 import { hp, wp } from '../../../components/utils';
 import { billList as styles } from './styles';
-
-const BillItem = ({ last }) => (
-  <View style={styles.billItem}>
-    <View style={styles.billRow}>
-      <ParagraphText title="Electricity Bill" style={styles.billTitle} />
-      <Image source={profileGroup} style={styles.profileGroup} />
-    </View>
-    <View style={styles.amountRow}>
-      <HeaderText title="₦ 2,000.00" style={styles.billAmount} />
-      <RegularText title="Due: In 2 weeks" style={styles.billDate} />
-    </View>
-    {!last ? <View style={styles.billDivider} /> : null}
-  </View>
-);
+import { BillItem } from './utils';
 
 const ButtonPlus = () => (
   <View style={styles.plusView}>
@@ -52,8 +38,18 @@ const Button = ({ icon, onPress, title, titleStyle }) => (
 );
 
 const BillList = () => {
-  const [selected, select] = useState('shortTerm');
+  const [selected, select] = useState('personal');
   const [modal, setModal] = useState(false);
+
+  const { bills } = useSelector((state) => state.bills);
+
+  const personalBills = bills.filter((bill) => bill?.account_id === null);
+  const jointBills = bills.filter((bill) => bill?.account_id !== null);
+
+  const displayedBills = (
+    selected === 'personal' ? personalBills : jointBills
+  ).sort((a, b) => moment(b?.date).valueOf() - moment(a?.date).valueOf());
+  const noBills = displayedBills.length === 0;
 
   return (
     <>
@@ -63,27 +59,26 @@ const BillList = () => {
         <View style={styles.billsCard}>
           <Tab
             containerStyle={styles.tabContainer}
-            leftTabSelect={() => select('shortTerm')}
-            rightTabSelect={() => select('longTerm')}
-            rightTabSelected={selected === 'longTerm'}
-            leftTabSelected={selected === 'shortTerm'}
-            leftTitle="Short Term"
-            rightTitle="Long Term"
+            leftTabSelect={() => select('personal')}
+            rightTabSelect={() => select('joint')}
+            rightTabSelected={selected === 'joint'}
+            leftTabSelected={selected === 'personal'}
+            leftTitle="Personal"
+            rightTitle="Joint"
           />
           <View style={{ height: hp(515) }}>
             <ScrollView
               showsVerticalScrollIndicator={false}
               contentContainerStyle={{ paddingBottom: hp(30) }}>
-              <BillItem />
-              <BillItem />
-              <BillItem />
-              <BillItem />
-              <BillItem />
-              <BillItem />
-              <BillItem />
-              <BillItem />
-              <BillItem />
-              <BillItem last />
+              {!noBills ? (
+                displayedBills.map((item) => (
+                  <BillItem key={item.id} bill={item} />
+                ))
+              ) : (
+                <View style={styles.noBillView}>
+                  <RegularText title={`You do not have a ${selected} bill`} />
+                </View>
+              )}
             </ScrollView>
           </View>
           <Button

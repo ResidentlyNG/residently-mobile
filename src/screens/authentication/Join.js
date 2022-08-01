@@ -6,8 +6,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { secondScreenBg, rocket } from '../../../assets/images';
 import { MainIcon } from '../../../assets/svgs';
 import {
@@ -18,6 +17,7 @@ import {
 } from '../../components';
 import showToast from '../../components/Toast';
 import { Image } from '../../components/View';
+import { handleEmailVerification } from '../../store/actions/auth';
 import { resendEmailOtp, verifyEmail } from '../../utils';
 import { join as styles } from './styles';
 
@@ -28,6 +28,7 @@ const Join = (props) => {
   const [activity, setActivity] = useState(false);
 
   const { email } = useSelector((state) => state.profile.profile);
+  const dispatch = useDispatch();
 
   const leadText = verification
     ? 'Verify your Account'
@@ -41,8 +42,9 @@ const Join = (props) => {
     verifyEmail({ code })
       .then((res) => {
         console.log('res', res);
+        dispatch(handleEmailVerification(res));
         showToast(res.message || 'Account verification successful');
-        Actions.login({ type: 'reset' });
+        // Actions.login({ type: 'reset' });
       })
       .catch((error) => {
         console.log('err', error);

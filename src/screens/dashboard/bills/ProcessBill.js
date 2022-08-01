@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 // import Slider from 'react-native-smooth-slider';
 import { Slider } from 'react-native-elements';
+import { useSelector } from 'react-redux';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { Actions } from 'react-native-router-flux';
 import {
   ActionButton,
   Green,
@@ -12,34 +15,42 @@ import {
   ParagraphText,
   RegularText,
   SemiBoldText,
+  TextInput,
   // TextInput,
   Whisper,
   White,
 } from '../../../components';
 import { ModalBlur } from '../../../components/Overlay';
 import { processBill as styles } from './styles';
-import { hp, NairaFormat, wp } from '../../../components/utils';
-import { abeg, bank, host, paystack } from '../../../../assets/images';
-import { DatePicker } from '../../../components/DatePicker';
-import { Calendar, Chevrolet } from '../../../../assets/svgs';
+import { hp, NairaFormat, truncate, wp } from '../../../components/utils';
+import { abeg, bank, paystack } from '../../../../assets/images';
+import { Chevrolet } from '../../../../assets/svgs';
+import showToast from '../../../components/Toast';
 
-const PaymentCard = ({ amount }) => (
-  <View style={styles.paymentView}>
-    <View style={styles.cardGrid}>
-      <Image source={host} style={styles.host} />
-      <RegularText title="You" style={styles.hostName} />
-      <View style={styles.amountInput}>
-        <ParagraphText
-          title={NairaFormat(amount / 3)}
-          style={styles.splitAmount}
+const PaymentCard = ({ amount, user, updateAmount, percent }) => {
+  return (
+    <View style={styles.paymentView}>
+      <View style={styles.cardGrid}>
+        {/* <Image source={host} style={styles.host} /> */}
+        <RegularText
+          title={truncate(user.username, 20)}
+          style={styles.hostName}
         />
-      </View>
-      <View style={styles.quotaView}>
-        <ParagraphText title="34%" style={styles.quota} />
+        <TextInput
+          value={String(amount)}
+          onChangeText={(value) => updateAmount(value)}
+          placeholder="Enter amount"
+          style={[styles.amountInput]} // , titleError && styles.errorBorder]}
+          noIcon
+          keyboardType={'number-pad'}
+        />
+        <View style={styles.quotaView}>
+          <ParagraphText title={`${percent}%`} style={styles.quota} />
+        </View>
       </View>
     </View>
-  </View>
-);
+  );
+};
 
 const Merchant = ({ source, imageStyle, merchant, bgColor }) => (
   <View style={[styles.merchantView, bgColor && { backgroundColor: bgColor }]}>
@@ -75,15 +86,47 @@ const PaymentModal = () => (
   </View>
 );
 
-const ProcessBill = ({ title }) => {
-  const [amount, setAmount] = useState(30);
-  const [duedate, setDuedate] = useState('');
+const ProcessBill = ({ data }) => {
+  const [amount, setAmount] = useState(data?.bill || 30000);
   const [modal, setModal] = useState(false);
+
+  const { home } = useSelector((state) => state.profile);
+  const defaultAmount = amount / home.users.length;
+  const userState = {};
+  const map = new Map();
+  home.users.map((user) => {
+    map.set(user.username, user.id);
+    return Object.assign(userState, { [user.username]: defaultAmount });
+  });
+  const [userAmounts, setUserAmounts] = useState(userState);
+
   const currentAmount = Math.round(amount);
   const formattedAmount = NairaFormat(amount);
+  const { title } = data;
+
+  const handleBill = () => {
+    const amountSum = Object.values(userAmounts).reduce(
+      (a, b) => Number(a) + Number(b),
+      0,
+    );
+    if (amountSum !== Number(amount)) {
+      showToast('Total amount must be equal to Bill amount', 'error');
+    } else {
+      const users = Object.keys(userAmounts).map((user) => ({
+        id: String(map.get(user)),
+        amount: String(userAmounts[user]),
+      }));
+      const payload = {
+        ...data,
+        users,
+      };
+      Actions.duration({ data: payload });
+    }
+  };
 
   return (
-    <View style={styles.background}>
+    <KeyboardAwareScrollView contentContainerStyle={styles.background}>
+      {/* <View> */}
       <Header title={title || 'Custom Bill'} />
       <MainView style={styles.mainView}>
         <View style={styles.amountView}>
@@ -124,30 +167,27 @@ const ProcessBill = ({ title }) => {
           <ParagraphText title="Split Payment" style={styles.splitText} />
           <RegularText title="Even split" style={styles.evenSplit} />
         </View>
-        <PaymentCard amount={amount} />
-        <PaymentCard amount={amount} />
-        <PaymentCard amount={amount} />
-        <View style={styles.dateInput}>
-          <View style={styles.calendar}>
-            <Calendar />
-          </View>
-          <View style={styles.dateView}>
-            <ParagraphText title="Due Date" style={styles.dateLabel} />
-            <DatePicker
-              placeholder="DD/MM/YYYY"
-              date={duedate}
-              dateStyle={{
-                height: hp(28),
-              }}
-              // futureDate
-              handleDateChange={(date) => setDuedate(date)}
+        {home.users.map((user) => {
+          const amt = userAmounts[user.username];
+          const percent = Math.round((amt / amount) * 100);
+          const updateAmount = (value) => {
+            setUserAmounts({ ...userAmounts, [user.username]: value });
+          };
+          console.log(amt);
+          return (
+            <PaymentCard
+              key={user.id}
+              user={user}
+              amount={amt}
+              percent={percent}
+              updateAmount={updateAmount}
             />
-          </View>
-        </View>
+          );
+        })}
         <ActionButton
           title="Proceed"
           style={styles.splitButton}
-          onPress={() => setModal(true)}
+          onPress={() => handleBill()}
         />
       </MainView>
       <ModalBlur
@@ -166,7 +206,8 @@ const ProcessBill = ({ title }) => {
         onBackdropPress={() => setModal(false)}
         render={<PaymentModal />}
       />
-    </View>
+      {/* </View> */}
+    </KeyboardAwareScrollView>
   );
 };
 

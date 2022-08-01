@@ -44,7 +44,6 @@ const SettlementAccount = (props) => {
   const [activity, setActivity] = useState(false);
   const {
     wallet: { banks },
-    profile: { profile },
   } = useSelector((state) => state);
 
   const selectBank = (id) => {
@@ -62,9 +61,10 @@ const SettlementAccount = (props) => {
     setLoading(true);
     validateAccount(data)
       .then((response) => setAccountName(response?.data?.account_name))
-      .catch((error) =>
-        showToast(error?.data?.message || 'Something went wrong', 'error'),
-      )
+      .catch((error) => {
+        console.log('ert', error);
+        showToast(error?.data?.message || 'Something went wrong', 'error');
+      })
       .finally(() => setLoading(false));
   };
 
@@ -76,28 +76,26 @@ const SettlementAccount = (props) => {
 
   const onSubmit = () => {
     setActivity(true);
-    const { title, bill, repeat, frequency, paymentDate } = props.data;
+    const { title, bill, repeat, frequency, paymentDate, plan, users } =
+      props.data;
     const payload = {
       title,
       amount: String(bill),
       date: paymentDate.split('/').reverse().join('-'),
       repeat,
       frequency,
-      users: [
-        {
-          id: String(profile.id),
-          amount: String(bill),
-        },
-      ],
+      users,
       account_number: accountNumber,
       bank_code: bank.code,
+      personal: plan === 'personal',
     };
 
     createBill(payload)
       .then((response) => {
-        Actions.bill({ data: response, payload, type: 'reset' });
+        Actions.dashboard({ data: response, payload, type: 'reset' });
       })
       .catch((error) => {
+        console.log('eryp', error);
         showToast(error?.message || 'Something went wrong', 'error');
       })
       .finally(() => setActivity(false));

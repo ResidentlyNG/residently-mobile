@@ -10,6 +10,7 @@ import { BoxShadow } from 'react-native-shadow';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import * as Sentry from '@sentry/react-native';
+import moment from 'moment';
 import {
   BillIcon,
   Button,
@@ -49,9 +50,11 @@ const ButtonPlus = () => (
 );
 
 const BillItem = ({ data }) => {
-  const { title } = data;
+  const { date, title } = data;
   const amount = NairaFormat(data.amount);
-  // const icon = title.includes('Electricity') ? flashBill
+  const today = moment();
+  const billDate = moment(date);
+  const length = billDate.diff(today, 'days');
 
   return (
     <TouchableOpacity
@@ -65,7 +68,7 @@ const BillItem = ({ data }) => {
         </View>
       </View>
       <View style={styles.amountRow}>
-        <TimeBadge />
+        <TimeBadge length={length} />
       </View>
     </TouchableOpacity>
   );
@@ -73,16 +76,16 @@ const BillItem = ({ data }) => {
 
 const NoBills = () => (
   <View style={styles.noBillCard}>
-    <ParagraphText title="You have no bill" style={styles.noBillLeadText} />
+    <ParagraphText title="No upcoming bill" style={styles.noBillLeadText} />
     <RegularText
-      title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. "
+      title="You have no upcoming bills at the moment, Go to bills tab to setup one"
       style={styles.noBillText}
     />
     <ButtonWithIcon
       title="Add a new bill"
       icon={<ButtonPlus />}
       style={styles.newBillButton}
-      onPress={() => Actions.create_bill()}
+      onPress={() => Actions.name_bill()}
       // titleStyle={styles.buttonTitle}
       left
       flex
@@ -119,7 +122,11 @@ class Home extends Component {
   render() {
     const { profile, home, bills } = this.props;
     const hasHome = profile.home_id;
-    const billCount = bills.length === 1 ? '1 bill' : `${bills.length} bills`;
+    const upcomingBills = bills.filter(
+      (bill) => moment().valueOf() < moment(bill.date).valueOf(),
+    );
+    const billCount =
+      upcomingBills.length === 1 ? '1 bill' : `${upcomingBills.length} bills`;
 
     return (
       <>
@@ -131,18 +138,6 @@ class Home extends Component {
           resizeMode="stretch">
           <View style={styles.headerGrid}>
             <View />
-            {/* <TouchableOpacity
-              onPress={() => Actions.settings()}
-              activeOpacity={0.2}>
-              <Image source={user} style={styles.profileImage} />
-            </TouchableOpacity>
-            <View style={styles.usernameView}>
-              <ParagraphText title={profile.fullname} style={styles.fullname} />
-              <RegularText
-                title={`@${profile.username}`}
-                style={styles.username}
-              />
-            </View> */}
             <View style={styles.bell}>
               <NotificationBell />
             </View>
@@ -158,12 +153,6 @@ class Home extends Component {
                 title={'Happily Thriving Together \nFocus on the Fun!'}
                 style={styles.colivingText}
               />
-              {/* <TouchableOpacity style={styles.readMore}>
-                  <ParagraphText
-                    title="Read More"
-                    style={styles.readMoreText}
-                  />
-                </TouchableOpacity> */}
               <Image source={doMore} style={styles.doMore} resizeMode="cover" />
             </View>
 
@@ -215,7 +204,7 @@ class Home extends Component {
                           />
                         </View>
 
-                        {bills.length ? (
+                        {upcomingBills.length ? (
                           <>
                             <View style={styles.leadRow}>
                               <ParagraphText
@@ -232,7 +221,7 @@ class Home extends Component {
                                 <ForwardArrow fill={PersianGreen} />
                               </TouchableOpacity>
                             </View>
-                            {bills.slice(0, 3).map((bill) => (
+                            {upcomingBills.slice(0, 3).map((bill) => (
                               <BillItem key={bill.id} data={bill} />
                             ))}
                             {/* <BillItem icon={flashBill} />

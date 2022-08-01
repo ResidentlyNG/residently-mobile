@@ -28,7 +28,7 @@ const SelectRecipient = (props) => {
           style={styles.leadText}
         />
         <RegularText
-          title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+          title="Your bill can either be paid to a bank account or your Tripplex wallet "
           style={styles.subText}
         />
         <MenuView
@@ -36,7 +36,7 @@ const SelectRecipient = (props) => {
           title="Bank account"
           onPress={() => Actions.settlement({ data: props.data })}
         />
-        <MenuView icon={<Residently />} title="Residently wallet" />
+        <MenuView icon={<Residently />} title="Tripplex wallet" />
       </View>
     </View>
   );

@@ -31,6 +31,7 @@ export const bills = StyleSheet.create({
     flex: 1,
     height: '100%',
     alignItems: 'center',
+    backgroundColor: White,
   },
   headerGrid: {
     flexDirection: 'row',
@@ -266,6 +267,10 @@ export const billList = StyleSheet.create({
   tabContainer: {
     marginTop: hp(12),
   },
+  noBillView: {
+    height: 86,
+    justifyContent: 'center',
+  },
 });
 
 export const newBill = StyleSheet.create({
@@ -464,7 +469,7 @@ export const processBill = StyleSheet.create({
     borderRadius: 16,
     borderWidth: 1,
     borderColor: Heather,
-    backgroundColor: CatskillWhite,
+    // backgroundColor: CatskillWhite,
     marginTop: hp(27),
   },
   amountLabel: {
@@ -519,7 +524,8 @@ export const processBill = StyleSheet.create({
   cardGrid: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: wp(15),
   },
   host: {
     width: wp(52),
@@ -528,8 +534,9 @@ export const processBill = StyleSheet.create({
   hostName: {
     fontSize: 12,
     color: MineShaft,
-    marginLeft: wp(7),
-    width: wp(30),
+    width: wp(60),
+    // marginLeft: wp(2),
+    // width: wp(50),
   },
   amountInput: {
     width: wp(165),
@@ -888,7 +895,7 @@ export const utils = StyleSheet.create({
   billDate: {
     fontSize: 12,
     color: MineShaft,
-    marginLeft: 3,
+    marginLeft: 8,
   },
   billDivider: {
     width: wp(286),

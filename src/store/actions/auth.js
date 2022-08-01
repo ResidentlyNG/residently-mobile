@@ -13,19 +13,31 @@ import {
 } from './types';
 import { getBanks, getCard } from './wallet';
 
+const authenticateUser = (response) => (dispatch) => {
+  const auth = { token: response.token.token, email: response.data.email };
+  dispatch({ type: LOGIN_SUCCESS, payload: auth });
+  dispatch({ type: GET_PROFILE_SUCCESS, payload: response.data });
+  dispatch({ type: GET_WALLET_SUCCESS, payload: response.wallet });
+  dispatch(getTransactions());
+  dispatch(getBanks());
+  dispatch(getCard());
+  dispatch(getBills());
+};
+
 export const login = (data) => (dispatch) => {
   dispatch({ type: LOGIN });
   api('/login', 'POST', data)
     .then((res) => {
-      const auth = { token: res.token.token, email: res.data.email };
+      // const auth = { token: res.token.token, email: res.data.email };
       const profile = res.data;
-      dispatch({ type: LOGIN_SUCCESS, payload: auth });
-      dispatch({ type: GET_PROFILE_SUCCESS, payload: res.data });
-      dispatch({ type: GET_WALLET_SUCCESS, payload: res.wallet });
-      dispatch(getTransactions());
-      dispatch(getBanks());
-      dispatch(getCard());
-      dispatch(getBills());
+      dispatch(authenticateUser(res));
+      // dispatch({ type: LOGIN_SUCCESS, payload: auth });
+      // dispatch({ type: GET_PROFILE_SUCCESS, payload: res.data });
+      // dispatch({ type: GET_WALLET_SUCCESS, payload: res.wallet });
+      // dispatch(getTransactions());
+      // dispatch(getBanks());
+      // dispatch(getCard());
+      // dispatch(getBills());
       if (profile.email_verified !== 'false') {
         if (profile.home_id) Actions.dashboard({ type: 'reset' });
         else Actions.intro({ type: 'reset' });
@@ -38,6 +50,13 @@ export const login = (data) => (dispatch) => {
 
       showToast(error?.message || 'Something went wrong', 'error');
     });
+};
+
+export const handleEmailVerification = (response) => (dispatch) => {
+  const profile = response.data;
+  dispatch(authenticateUser(response));
+  if (profile.home_id) Actions.dashboard({ type: 'reset' });
+  else Actions.intro({ type: 'reset' });
 };
 
 export const logout = () => (dispatch) => dispatch({ type: LOGOUT });
