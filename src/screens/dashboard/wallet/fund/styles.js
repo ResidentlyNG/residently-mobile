@@ -35,8 +35,13 @@ export const selectStyles = StyleSheet.create({
   },
   leadText: {
     fontSize: 20,
-    width: wp(272),
+    width: wp(297),
     marginTop: hp(25),
+    fontWeight: '700',
+  },
+  subText: {
+    fontSize: 13,
+    width: wp(297),
   },
   amount: {
     fontSize: 20,

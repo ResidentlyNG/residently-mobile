@@ -85,7 +85,7 @@ const BillList = () => {
             title="Add a new bill"
             icon={<ButtonPlus />}
             style={styles.button}
-            onPress={() => Actions.bill_list()}
+            onPress={() => Actions.name_bill()}
             // titleStyle={styles.buttonTitle}
             left
             flex

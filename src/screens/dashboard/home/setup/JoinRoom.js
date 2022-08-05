@@ -36,7 +36,7 @@ const JoinRoom = (props) => {
   const label = verification ? 'Verification code' : 'Invite code';
   const leadText = verification ? 'Verify your Account' : 'Become a roommate';
   const subText = `Please enter the ${
-    verification ? 'verification' : 'invite'
+    verification ? 'e-mail verification' : 'SMS invite'
   } code you received`;
 
   const submitFn = (data) =>
@@ -88,7 +88,7 @@ const JoinRoom = (props) => {
           <View style={styles.mainView}>
             <HeaderText title={subText} style={styles.leadText} />
             <ParagraphText
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. Lorem ipsum."
+              title="Enter the code you received below."
               style={styles.subText}
             />
             <TextInput

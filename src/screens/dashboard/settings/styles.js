@@ -228,7 +228,7 @@ export const myHome = StyleSheet.create({
     width: '100%',
     height: '122%',
     position: 'absolute',
-    bottom: 0,
+    bottom: 10,
   },
   plusView: circle(31, ScienceBlue),
 
@@ -293,7 +293,7 @@ export const myHome = StyleSheet.create({
     marginTop: 58,
     paddingHorizontal: 13,
     width: '100%',
-    marginBottom: 10,
+    // marginBottom: 10,
   },
   mainTitle: {
     fontSize: 20,

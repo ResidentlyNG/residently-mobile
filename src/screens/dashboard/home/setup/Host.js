@@ -44,9 +44,9 @@ const Host = () => {
               <HeaderText title="1" style={styles.one} />
             </View>
           </View>
-          <HeaderText title="Set up your room" style={styles.leadText} />
+          <HeaderText title="Set up your apartment" style={styles.leadText} />
           <RegularText
-            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. "
+            title="Enter the name you would like to give your apartment on Tripplex. If you live with other people, you would be able to invite them to join with this account"
             style={styles.subText}
           />
           <TextInput

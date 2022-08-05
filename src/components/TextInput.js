@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     // backgroundColor: AthensGray,
   },
   input: {
-    width: wp(223),
+    width: wp(273),
     height: hp(42),
     paddingLeft: wp(10),
     color: MineShaft,

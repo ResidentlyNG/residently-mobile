@@ -14,13 +14,13 @@ import { profileGroup } from '../../../../../assets/images';
 const Roommate = () => {
   return (
     <View style={styles.background}>
-      <Header title="Join a Room" />
+      <Header title="Join an Apartment" />
 
       <View style={styles.mainCard}>
         <Image source={profileGroup} style={styles.profileGroup} />
-        <HeaderText title="Set up your room" style={styles.leadText} />
+        <HeaderText title="Proceed to setup" style={styles.leadText} />
         <RegularText
-          title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. "
+          title="If you already got an invite, proceed to the next screen to join the apartment account on Tripplex"
           style={styles.subText}
         />
         <Button
