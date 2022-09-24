@@ -93,7 +93,7 @@ const UserIntro = () => {
           </View>
           <ParagraphText title="Please Note:" style={styles.noteLead} />
           <RegularText
-            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. Mauris vitae gravida erat, in vehicula augue. Sed vitae rhoncus odio."
+            title="This app is solely to help you manage your bills and automate your bill payments either with friends, house mates or just solo!"
             style={styles.note}
           />
         </BoxShadow>

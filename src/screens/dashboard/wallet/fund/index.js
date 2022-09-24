@@ -33,6 +33,10 @@ const SelectWallet = () => {
           title="Select your preferred wallet to fund"
           style={styles.leadText}
         />
+        <RegularText
+          title="You fund your personal wallet from your card and your crib wallet is funded from your personal wallet"
+          style={styles.subText}
+        />
         <TouchableOpacity
           style={[
             styles.planCard,

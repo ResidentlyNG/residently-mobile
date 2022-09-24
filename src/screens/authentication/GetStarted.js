@@ -39,7 +39,7 @@ const GetStarted = () => {
           <MainIcon />
           <SemiBoldText title="Welcome Back!" style={styles.welcome} />
           <RegularText
-            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. Mauris vitae gravida erat, in vehicula augue. Sed vitae rhoncus odio. "
+            title="Good to have you here, if this is your first time, proceed to create an account by tapping the Sign up button. If you already have an account, then sign in!"
             style={styles.subText}
           />
         </View>

@@ -116,22 +116,22 @@ const MyHome = (props) => {
       />
       {/* <View style={styles.mainView}> */}
       <View style={styles.headerRow}>
-        <HeaderText title="Your roommates" style={styles.mainTitle} />
+        <HeaderText title="Your house mates" style={styles.mainTitle} />
         <ButtonPlus />
       </View>
 
       {noFlatmates ? (
         <View style={styles.noFlatmatesView}>
           <HeaderText
-            title="Invite your roommates today"
+            title="Invite your house mates"
             style={styles.noRoommatesHeader}
           />
           <RegularText
-            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverr"
+            title="If you live with someone or a group of people, you can add them here with just their phone number"
             style={styles.noRoommatesText}
           />
           <ActionButton
-            title="Add a roommate"
+            title="Add a house mate"
             style={styles.noRoommatesButton}
             // icon={<Cross />}
             onPress={() => Actions.crib_invite()}

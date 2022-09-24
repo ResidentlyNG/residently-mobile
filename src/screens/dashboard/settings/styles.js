@@ -12,7 +12,7 @@ import {
   WhiteLilac,
   WoodSmoke,
 } from '../../../components';
-import { circle, hp, wp } from '../../../components/utils';
+import { circle, hp, notchTopPad, wp } from '../../../components/utils';
 
 export const settings = StyleSheet.create({
   background: {
@@ -42,7 +42,7 @@ export const settings = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: wp(331),
-    marginTop: hp(13),
+    marginTop: notchTopPad || hp(13),
   },
   profileImageView: circle(49, White),
   profileImage: circle(46),
@@ -228,7 +228,7 @@ export const myHome = StyleSheet.create({
     width: '100%',
     height: '122%',
     position: 'absolute',
-    bottom: 0,
+    bottom: 10,
   },
   plusView: circle(31, ScienceBlue),
 
@@ -293,7 +293,7 @@ export const myHome = StyleSheet.create({
     marginTop: 58,
     paddingHorizontal: 13,
     width: '100%',
-    marginBottom: 10,
+    // marginBottom: 10,
   },
   mainTitle: {
     fontSize: 20,

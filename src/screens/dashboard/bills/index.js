@@ -19,6 +19,9 @@ import { hp, NairaFormat, wp } from '../../../components/utils';
 import NewBill from '../../authentication/SetUp';
 import { bills as styles } from './styles';
 import { BillGroup } from './utils';
+import { getWallet } from '../../../store/actions/wallet';
+import { getBills } from '../../../store/actions/bills';
+import { getHome } from '../../../store/actions/profile';
 
 const ButtonPlus = ({ fill }) => (
   <View style={styles.plusView}>
@@ -50,19 +53,24 @@ class Bills extends Component {
 
   render() {
     const { modal } = this.state;
-    const { home, profile, bills } = this.props;
+    const { home, profile, bills, loading } = this.props;
 
     const homeExists = Object.entries(home).length > 0;
     const walletBalance = NairaFormat(home?.account?.balance || 0);
     const userShare = NairaFormat(home?.user_account?.balance || 0);
     const debtSum = profile.debts.length
-      ? profile.debts.reduce((total, value) => total + Number(value?.amount))
+      ? profile.debts.reduce((total, value) => total + Number(value?.amount), 0)
       : 0;
 
     const debt = NairaFormat(debtSum);
     const personalBills = bills.filter((bill) => bill?.account_id === null);
     const jointBills = bills.filter((bill) => bill?.account_id !== null);
     const set = getBillSet(personalBills, jointBills);
+    const pullToRefresh = () => {
+      this.props.getBills();
+      this.props.getHome();
+      this.props.getWallet();
+    };
 
     return (
       <>
@@ -146,7 +154,11 @@ class Bills extends Component {
                 </TouchableOpacity>
               </View>
 
-              <ScrollView contentContainerStyle={styles.scrollContainer}>
+              <ScrollView
+                contentContainerStyle={styles.scrollContainer}
+                refreshControl={true}
+                isRefreshing={loading}
+                handlePullToRefresh={pullToRefresh}>
                 {set.map((type, index) => (
                   <BillGroup
                     key={index}
@@ -185,6 +197,13 @@ const mapStateToProps = (state) => ({
   profile: state.profile.profile,
   home: state.profile.home,
   bills: state.bills.bills,
+  loading: state.wallet.loading,
 });
 
-export default connect(mapStateToProps)(Bills);
+const mapDispatchToProps = {
+  getWallet,
+  getBills,
+  getHome,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Bills);

@@ -21,12 +21,19 @@ const SelectPlan = ({ title, bill }) => {
 
   const {
     home: { name },
+    profile,
   } = useSelector((state) => state.profile);
   const propsData = {
     title,
     bill,
     plan,
     personal,
+    users: [
+      {
+        id: String(profile.id),
+        amount: String(bill),
+      },
+    ],
   };
   const routeName = roomPlan ? 'process_bill' : 'duration';
 

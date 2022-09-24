@@ -239,7 +239,7 @@ class Home extends Component {
                 {profile.home_id ? (
                   <TouchableOpacity
                     style={styles.topupView}
-                    activeOpacity={0.4}
+                    activeOpacity={0.7}
                     onPress={() => Actions.select_wallet()}>
                     <View>
                       <SemiBoldText

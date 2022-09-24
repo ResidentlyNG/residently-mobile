@@ -112,7 +112,7 @@ const SettlementAccount = (props) => {
               <HeaderText title="Bank account" style={styles.leadText} />
             </View>
             <RegularText
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+              title="Enter the bank account details of the beneficiary of this bill"
               style={styles.subText}
             />
             <TouchableOpacity onPress={() => setModal(true)}>

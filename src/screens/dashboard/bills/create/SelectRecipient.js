@@ -3,6 +3,7 @@ import { TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Bank, MenuChevrolet, Residently } from '../../../../../assets/svgs';
 import { Header, HeaderText, RegularText } from '../../../../components';
+import showToast from '../../../../components/Toast';
 import { recipient as styles } from './styles';
 
 const MenuView = ({ icon, title, onPress }) => (
@@ -36,7 +37,11 @@ const SelectRecipient = (props) => {
           title="Bank account"
           onPress={() => Actions.settlement({ data: props.data })}
         />
-        <MenuView icon={<Residently />} title="Tripplex wallet" />
+        <MenuView
+          icon={<Residently />}
+          title="Tripplex wallet"
+          onPress={() => showToast('This feature is not yet available...')}
+        />
       </View>
     </View>
   );

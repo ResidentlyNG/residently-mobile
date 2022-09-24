@@ -38,7 +38,7 @@ const Success = (props) => {
             <Text style={styles.home}>{`${props.home || 'Block 5A'}`}</Text>
           </Text>
           <RegularText
-            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dignissim orci. "
+            title="Congratulations! Now you can fund your account ahead of time and create bills that will be paid automatically"
             style={styles.subText}
           />
           <Button
