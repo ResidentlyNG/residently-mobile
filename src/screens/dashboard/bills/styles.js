@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import {
   AthensGray,
   AzureRadiance,
@@ -24,7 +24,7 @@ import {
   WildSand,
   WoodSmoke,
 } from '../../../components';
-import { circle, hp, wp } from '../../../components/utils';
+import { circle, hp, notchTopPad, wp } from '../../../components/utils';
 
 export const bills = StyleSheet.create({
   background: {
@@ -38,7 +38,7 @@ export const bills = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: wp(331),
-    marginTop: hp(13),
+    marginTop: notchTopPad || hp(13),
   },
   profileImage: circle(46),
   usernameView: {
@@ -732,7 +732,7 @@ export const bill = StyleSheet.create({
     backgroundColor: White,
     elevation: 7,
     borderColor: 'rgba(0, 0, 0, 0.06)',
-    borderWidth: 0.2,
+    borderWidth: Platform.OS === 'ios' ? 3.2 : 0.2,
     alignItems: 'center',
   },
   amountTitle: {
@@ -756,6 +756,7 @@ export const bill = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: White,
     elevation: 3,
+    borderWidth: Platform.OS === 'ios' ? 0.2 : 0,
     marginTop: hp(23),
     alignItems: 'center',
   },

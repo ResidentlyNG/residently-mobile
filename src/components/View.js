@@ -12,7 +12,7 @@ import {
   WoodSmoke,
 } from './Colors';
 import { ParagraphText, RegularText } from './Text';
-import { circle, hp, wp } from './utils';
+import { circle, hp, notchTopPad, wp } from './utils';
 
 export const MainView = (props) => {
   return (
@@ -174,6 +174,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingRight: wp(16),
     paddingLeft: wp(16),
+    marginTop: notchTopPad || 0,
   },
   headerTitle: {
     color: WoodSmoke,

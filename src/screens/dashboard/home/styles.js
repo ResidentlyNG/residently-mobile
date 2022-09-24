@@ -16,7 +16,7 @@ import {
   PersianGreen,
   RoyalBlue,
 } from '../../../components';
-import { circle, hp, wp } from '../../../components/utils';
+import { circle, hp, notchTopPad, wp } from '../../../components/utils';
 
 export const home = StyleSheet.create({
   background: {
@@ -34,7 +34,7 @@ export const home = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: wp(331),
-    marginTop: hp(5),
+    marginTop: notchTopPad || hp(5),
     height: 50,
   },
   profileImage: circle(46),

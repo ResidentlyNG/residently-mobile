@@ -13,11 +13,13 @@ import {
   WhiteLilac,
   WoodSmoke,
 } from '../../components';
-import { circle, hp, wp } from '../../components/utils';
+import { circle, hp, isIPhoneX, wp } from '../../components/utils';
 
 const footerHeight = () => {
   const deviceHeight = hdp('100%');
   const iOS = Platform.OS === 'ios';
+  const hasNotch = isIPhoneX();
+  if (iOS && hasNotch && deviceHeight > 790) return 75;
   if (deviceHeight > 700 && iOS) return 55;
   return 65;
 };
@@ -30,7 +32,7 @@ export const dashboard = StyleSheet.create({
   footer: {
     height: footerHeight(),
     width: '100%',
-    position: 'absolute',
+    // position: 'absolute',
     bottom: 0,
     zIndex: 80,
   },

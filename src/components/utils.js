@@ -1,9 +1,11 @@
+import { Platform } from 'react-native';
 import {
   widthPercentageToDP as wdp,
   heightPercentageToDP as hdp,
 } from 'react-native-responsive-screen';
 import accounting from 'accounting';
 import truncateString from 'lodash.truncate';
+import DeviceInfo from 'react-native-device-info';
 // import { store } from '../store';
 
 const CustomHeight = 800; // 740;
@@ -18,6 +20,14 @@ export const wp = (value) => {
   const dimension = (value / CustomWidth) * 100;
   return wdp(`${dimension}%`);
 };
+
+export const isIPhoneX = () => {
+  // const checkHeight = hdp('100%') === 812 || hdp('100%') === 896;
+  const hasNotch = DeviceInfo.hasNotch();
+  return Platform.OS === 'ios' && hasNotch;
+};
+
+export const notchTopPad = isIPhoneX() && hp(30);
 
 export const validatePhone = (number) => {
   if (number.length !== 11) return false;
