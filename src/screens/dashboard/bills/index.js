@@ -58,8 +58,11 @@ class Bills extends Component {
     const homeExists = Object.entries(home).length > 0;
     const walletBalance = NairaFormat(home?.account?.balance || 0);
     const userShare = NairaFormat(home?.user_account?.balance || 0);
-    const debtSum = profile.debts.length
-      ? profile.debts.reduce((total, value) => total + Number(value?.amount), 0)
+    const debtSum = profile?.debts?.length
+      ? profile?.debts?.reduce(
+          (total, value) => total + Number(value?.amount),
+          0,
+        )
       : 0;
 
     const debt = NairaFormat(debtSum);

@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import {
   CatskillWhite,
+  CodGray,
   Green,
   Heather,
   Midnight,
@@ -123,6 +124,29 @@ export const duration = StyleSheet.create({
   },
   input: {
     marginTop: hp(20),
+  },
+  frequencyView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: wp(324),
+    marginTop: hp(20),
+  },
+  frequencyInput: {
+    width: wp(200),
+    // alignSelf: 'flex-start',
+    // marginLeft: wp(25),
+  },
+  frquencyTitle: {
+    color: 'black',
+    fontSize: 16,
+    marginLeft: wp(15),
+  },
+  frequencyInfo: {
+    color: CodGray,
+    width: wp(200),
+    marginTop: hp(7),
+    alignSelf: 'flex-start',
+    marginLeft: wp(26),
   },
   buttonView: {
     position: 'absolute',
